@@ -1,22 +1,22 @@
 package entities;
 
-import java.awt.*;
+import java.util.ArrayList;
 
 public class Organizer extends User{
 
-    List listOfTalks;
+    ArrayList listOfEvents;
 
     public Organizer(String username, String password, int ID) {
         super(username, password, ID);
-        this.listOfTalks = new List();
+        this.listOfEvents = new ArrayList();
     }
 
-    public List getListOfTalks(){
-        return this.listOfTalks;
+    public ArrayList getListOfEvents(){
+        return this.listOfEvents;
     }
 
-    public void addTalk(Talk newTalk){
-        this.listOfTalks.add(newTalk);
+    public void addEvent(Event newEvent){
+        listOfEvents.add(newEvent);
     }
 
 }
