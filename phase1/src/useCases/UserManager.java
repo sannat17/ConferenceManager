@@ -8,9 +8,9 @@ import java.util.*;
 public class UserManager{
     public static boolean login() {
         try {
-            Scanner myReader = new Scanner(new File("Login.txt"));
+            Scanner myReader = new Scanner(new File("phase1/LoginDetails.txt"));
             String[] loginDetails = LoginSystem.getLoginInformation();
-            String[] loginCheck = new String[2];
+            String[] loginCheck;
             while (myReader.hasNextLine()){
                 String curr = myReader.nextLine();
                 loginCheck = curr.split(", ");
