@@ -4,19 +4,19 @@ import java.util.ArrayList;
 
 public class Organizer extends User{
 
-    ArrayList listOfEvents;
+    ArrayList listOfEventIDs;
 
     public Organizer(String username, String password, int ID) {
         super(username, password, ID);
-        this.listOfEvents = new ArrayList();
+        this.listOfEventIDs = new ArrayList();
     }
 
     public ArrayList getListOfEvents(){
-        return this.listOfEvents;
+        return this.listOfEventIDs;
     }
 
     public void addEvent(Event newEvent){
-        listOfEvents.add(newEvent);
+        listOfEventIDs.add(newEvent);
     }
 
 }
