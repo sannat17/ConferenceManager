@@ -13,6 +13,7 @@ public class Message {
         this.receiverID = receiverID;
         this.messageContent = messageContent;
         this.timeSent = LocalTime.now();  //immutable object that represents a time without a date and a time-zone
+        // shouldn't we define time sent when the user chooses to send?
     }
 
     public int getSenderID(){
