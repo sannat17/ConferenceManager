@@ -9,4 +9,8 @@ public class EventAttendants {
     public EventAttendants(User user){
         this.attending.add(user);
     }
+
+    public ArrayList<User> getAttending(){
+        return attending;
+    }
 }
