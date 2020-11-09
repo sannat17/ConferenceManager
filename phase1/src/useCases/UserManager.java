@@ -14,6 +14,8 @@ public class UserManager{
     }
 
     public static Boolean makeNewUser(int ID, String username, String password, String type){
+        //TODO: Take care of unique ID here itself and remove it from parameters.
+
         if (type.toLowerCase().equals("attendee")){
             Attendee a = new Attendee(username, password, ID);
             userHashMap.put(ID, a);

@@ -17,10 +17,11 @@ public class EventManager {
         if (eventHashMap.containsKey(eventID)) {return false;}
 
         for(Event e: eventHashMap.values()){
-            if (e.getTimeOfEvent().equals(timeOfEvent) || e.getRoomNumber() == roomNumber){
+            if (e.getTimeOfEvent().equals(timeOfEvent) && e.getRoomNumber() == roomNumber){
                 return false;
             }
         }
+        //TODO: Implement check for speaker and make sure he is not booked for another event at the same time.
 
         Event e = new Event(eventID, timeOfEvent, roomNumber, speakerID);
         eventHashMap.put(eventID, e);

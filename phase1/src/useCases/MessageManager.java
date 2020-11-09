@@ -21,6 +21,8 @@ public class MessageManager {
     }
 
     public static boolean makeReplyMessage(int senderID, int receiverID, int messageID, int replyToID, String messageContent) {
+        //TODO: Take care of the unique ID here itself and remove from parameters.
+
         if (messageHashMap.containsKey(messageID)) {return false;}
 
         Message m = new Message(senderID, receiverID, messageID, replyToID, messageContent);
