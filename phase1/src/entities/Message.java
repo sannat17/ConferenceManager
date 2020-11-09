@@ -17,6 +17,7 @@ public class Message {
         this.senderID = senderID;
         this.receiverID = receiverID;
         this.messageContent = messageContent;
+        this.replyToID = -1;
         this.timeSent = LocalTime.now();  //immutable object that represents a time without a date and a time-zone
         // shouldn't we define time sent when the user chooses to send?//im assuming the message constructor will be called when the message is sent?
     }
@@ -50,4 +51,5 @@ public class Message {
     public LocalTime getTimeSent(){
         return timeSent;
     }
+
 }
