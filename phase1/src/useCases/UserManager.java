@@ -2,33 +2,42 @@ package useCases;
 import controllers.LoginSystem;
 import java.io.*;
 import java.util.*;
+import entities.*;
 
-//returns true if they can login and false if they cant
-//users are saved in the Login class as "Username, Password"
+/** Manages the user and allows them to login */
 public class UserManager{
-    public static boolean login() {
-        try {
-            Scanner myReader = new Scanner(new File("phase1/LoginDetails.txt"));
-            String[] loginDetails = LoginSystem.getLoginInformation();
-            String[] loginCheck;
-            while (myReader.hasNextLine()){
-                String curr = myReader.nextLine();
-                loginCheck = curr.split(", ");
-                if ((loginDetails[0].equals(loginCheck[0])) && (loginDetails[1].equals(loginCheck[1]))){
-                    myReader.close();
-                    return true;
-                }
-            }
-            myReader.close();
-        }
-        catch(FileNotFoundException e) {
-            System.out.println("Login.txt is missing");
-            e.printStackTrace();
-        }
-        return false;
+
+    private static HashMap<Integer, User> userHashMap;
+
+    public static User getUser(int ID){
+        return userHashMap.get(ID);
     }
 
-    public static void main(String[] args) {
-        System.out.println(login());
+    public static Boolean makeNewUser(int ID, String username, String password, String type){
+        //TODO: Take care of unique ID here itself and remove it from parameters.
+
+        if (type.toLowerCase().equals("attendee")){
+            Attendee a = new Attendee(username, password, ID);
+            userHashMap.put(ID, a);
+        }
+        else if (type.toLowerCase().equals("organizer")){
+            Organizer o = new Organizer(username, password, ID);
+            userHashMap.put(ID, o);
+        }
+        else if (type.toLowerCase().equals("speaker")){
+            Speaker s = new Speaker(username, password, ID);
+            userHashMap.put(ID, s);
+        }
+        else{
+            return false;
+        }
+        return true;
+
+    }
+
+    public static ArrayList<User> getAllUsers(){
+        ArrayList<User> allUsers = new ArrayList<>();
+        allUsers.addAll(userHashMap.values());
+        return allUsers;
     }
 }
