@@ -38,7 +38,11 @@ public class Event {
         return attending;
     }
 
-    private void addAttendant(int userID){
+    public void addAttendant(int userID){
         attending.add(userID);
+    }
+
+    public void removeAttendant(int userID){
+        attending.remove(userID);
     }
 }
