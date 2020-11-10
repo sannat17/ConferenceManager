@@ -42,6 +42,12 @@ public class Event {
         attending.add(userID);
     }
 
+    @Override
+    public String toString() {
+        String delimiter = Character.toString((char) 31);
+        return  eventID + delimiter + timeOfEvent + delimiter + roomNumber + delimiter + speakerID;
+    }
+
     public void removeAttendant(int userID){
         attending.remove(userID);
     }

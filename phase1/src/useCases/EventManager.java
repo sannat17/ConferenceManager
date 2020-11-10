@@ -1,6 +1,7 @@
 package useCases;
 
 import entities.Event;
+import entities.User;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -57,6 +58,14 @@ public class EventManager {
 
     public static ArrayList<Event> getAllEvents() {
         return new ArrayList<>(eventHashMap.values());
+    }
+
+    public static ArrayList<String> getAllEventsInfo() {
+        ArrayList<String> allEventInfo = new ArrayList<>();
+        for (Event e: eventHashMap.values()){
+            allEventInfo.add(e.toString());
+        }
+        return allEventInfo;
     }
 
     private static int getNextID(){
