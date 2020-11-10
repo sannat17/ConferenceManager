@@ -13,9 +13,11 @@ public class UserManager{
         return userHashMap.get(ID);
     }
 
-    public static Boolean makeNewUser(int ID, String username, String password, String type){
-        //TODO: Take care of unique ID here itself and remove it from parameters.
-
+    public static Boolean makeNewUser(String username, String password, String type){
+        if (!(checkUsername(username))){
+            return false;
+        }
+        int ID = getNextID();
         if (type.toLowerCase().equals("attendee")){
             Attendee a = new Attendee(username, password, ID);
             userHashMap.put(ID, a);
@@ -33,6 +35,26 @@ public class UserManager{
         }
         return true;
 
+    }
+
+    private static boolean checkUsername(String username){
+        for (User u: userHashMap.values()){
+            if (username.equals(u.getUsername())){
+                System.out.println("This ID is already being used"); //im not sure if this can print in this method...
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static int getNextID(){
+        int maxID = -1;
+        for (Integer ID: userHashMap.keySet()){
+            if(ID > maxID){
+                maxID = ID;
+            }
+        }
+        return (maxID + 1);
     }
 
     public static ArrayList<User> getAllUsers(){
