@@ -22,23 +22,24 @@ public class UserManager{
      * @param ID The ID of the user being created
      * @param username The username of the user being created
      * @param password The password of the user being created
+     * @param name The name of the user being created
      * @param type The type of the user (Attendee, Organizer, Speaker)
      * @return A boolean with true if the User was successfully created and false if it wasn't
      */
-    public static Boolean makeUser(Integer ID, String username, String password, String type){
+    public static Boolean makeUser(Integer ID, String username, String password, String name, String type){
         if (!(checkUsername(username))){
             return false;
         }
         if (type.toLowerCase().equals("attendee")){
-            Attendee a = new Attendee(username, password, ID);
+            Attendee a = new Attendee(username, password, ID, name);
             userHashMap.put(ID, a);
         }
         else if (type.toLowerCase().equals("organizer")){
-            Organizer o = new Organizer(username, password, ID);
+            Organizer o = new Organizer(username, password, ID, name);
             userHashMap.put(ID, o);
         }
         else if (type.toLowerCase().equals("speaker")){
-            Speaker s = new Speaker(username, password, ID);
+            Speaker s = new Speaker(username, password, ID, name);
             userHashMap.put(ID, s);
         }
         else{
@@ -51,12 +52,13 @@ public class UserManager{
      *
      * @param username The username of the user being created
      * @param password The password of the user being created
+     * @param name The name of the user being created
      * @param type The type of the user (Attendee, Organizer, Speaker)
      * @return A boolean with true if the User was successfully created and false if it wasn't
      */
-    public static Boolean makeNewUser(String username, String password, String type){
+    public static Boolean makeNewUser(String username, String password, String name, String type){
         int ID = getNextID();
-        return makeUser(ID, username, password, type);
+        return makeUser(ID, username, password, type, name);
     }
 
     /** Checks whether a certain username is already being used
