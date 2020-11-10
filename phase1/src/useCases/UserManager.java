@@ -1,32 +1,45 @@
 package useCases;
-import controllers.LoginSystem;
-import java.io.*;
 import java.util.*;
 import entities.*;
 
-/** Manages the user and allows them to login */
+/** Manages the user*/
 public class UserManager{
 
-    private static HashMap<Integer, User> userHashMap;
+    /** A hashmap where the key is the ID of a user and the value is the object of the user with that ID*/
+    private static HashMap<Integer, User> userHashMap = new HashMap<>();
 
+    /** Returns the user object corresponding to an ID
+     *
+     * @param ID The ID of the user wanted
+     * @return the User object with a specified ID
+     */
     public static User getUser(int ID){
         return userHashMap.get(ID);
     }
 
-    public static Boolean makeUser(Integer ID,String username, String password, String type){
+    /** Creates a new User and adds it to the userHashMap
+     *
+     * @param ID The ID of the user being created
+     * @param username The username of the user being created
+     * @param password The password of the user being created
+     * @param name The name of the user being created
+     * @param type The type of the user (Attendee, Organizer, Speaker)
+     * @return A boolean with true if the User was successfully created and false if it wasn't
+     */
+    public static Boolean makeUser(Integer ID, String username, String password, String name, String type){
         if (!(checkUsername(username))){
             return false;
         }
         if (type.toLowerCase().equals("attendee")){
-            Attendee a = new Attendee(username, password, ID);
+            Attendee a = new Attendee(username, password, ID, name);
             userHashMap.put(ID, a);
         }
         else if (type.toLowerCase().equals("organizer")){
-            Organizer o = new Organizer(username, password, ID);
+            Organizer o = new Organizer(username, password, ID, name);
             userHashMap.put(ID, o);
         }
         else if (type.toLowerCase().equals("speaker")){
-            Speaker s = new Speaker(username, password, ID);
+            Speaker s = new Speaker(username, password, ID, name);
             userHashMap.put(ID, s);
         }
         else{
@@ -35,12 +48,24 @@ public class UserManager{
         return true;
     }
 
-    public static Boolean makeNewUser(String username, String password, String type){
+    /** Creates a new User who does not already have an ID
+     *
+     * @param username The username of the user being created
+     * @param password The password of the user being created
+     * @param name The name of the user being created
+     * @param type The type of the user (Attendee, Organizer, Speaker)
+     * @return A boolean with true if the User was successfully created and false if it wasn't
+     */
+    public static Boolean makeNewUser(String username, String password, String name, String type){
         int ID = getNextID();
-        return makeUser(ID, username, password, type);
-
+        return makeUser(ID, username, password, type, name);
     }
 
+    /** Checks whether a certain username is already being used
+     *
+     * @param username The username that we want to check
+     * @return Returns true if the username is not already being used and false if it is
+     */
     private static boolean checkUsername(String username){
         for (User u: userHashMap.values()){
             if (username.equals(u.getUsername())){
@@ -51,6 +76,10 @@ public class UserManager{
         return true;
     }
 
+    /** Gets the next usable ID for a user
+     *
+     * @return The maximum ID from all users plus 1
+     */
     private static int getNextID(){
         int maxID = -1;
         for (Integer ID: userHashMap.keySet()){
@@ -61,9 +90,14 @@ public class UserManager{
         return (maxID + 1);
     }
 
+    /** Returns a list of all the User objects
+     *
+     * @return a list of all the User objects*/
     public static ArrayList<User> getAllUsers(){
         ArrayList<User> allUsers = new ArrayList<>();
-        allUsers.addAll(userHashMap.values());
+        if (!(userHashMap.isEmpty())){
+            allUsers.addAll(userHashMap.values());
+        }
         return allUsers;
     }
 }

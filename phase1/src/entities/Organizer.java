@@ -16,8 +16,8 @@ public class Organizer extends User{
      * @param password the password of this organizer
      * @param ID the unique ID of this organizer
      */
-    public Organizer(String username, String password, int ID) {
-        super(username, password, ID);
+    public Organizer(String username, String password, int ID, String name) {
+        super(username, password, ID, name);
         this.listOfEventIDs = new ArrayList();
         this.menuOptions.add("message events");
         this.menuOptions.add("organize event");

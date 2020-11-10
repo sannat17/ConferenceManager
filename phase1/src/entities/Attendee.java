@@ -9,8 +9,8 @@ public class Attendee extends User{
      * @param password the password of this attendee
      * @param ID the unique ID of this attendee
      */
-    public Attendee(String username, String password, int ID) {
-        super(username, password, ID);
+    public Attendee(String username, String password, int ID, String name) {
+        super(username, password, ID, name);
     }
 
 }
