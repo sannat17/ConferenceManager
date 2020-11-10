@@ -1,6 +1,8 @@
 package entities;
 
 public abstract class User {
+    //TODO: Add a "name" attribute to the user
+
     private int userID;
     private String username;
     private String password;

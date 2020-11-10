@@ -2,33 +2,68 @@ package useCases;
 import controllers.LoginSystem;
 import java.io.*;
 import java.util.*;
+import entities.*;
 
-//returns true if they can login and false if they cant
-//users are saved in the Login class as "Username, Password"
+/** Manages the user and allows them to login */
 public class UserManager{
-    public static boolean login() {
-        try {
-            Scanner myReader = new Scanner(new File("phase1/LoginDetails.txt"));
-            String[] loginDetails = LoginSystem.getLoginInformation();
-            String[] loginCheck;
-            while (myReader.hasNextLine()){
-                String curr = myReader.nextLine();
-                loginCheck = curr.split(", ");
-                if ((loginDetails[0].equals(loginCheck[0])) && (loginDetails[1].equals(loginCheck[1]))){
-                    myReader.close();
-                    return true;
-                }
-            }
-            myReader.close();
-        }
-        catch(FileNotFoundException e) {
-            System.out.println("Login.txt is missing");
-            e.printStackTrace();
-        }
-        return false;
+
+    private static HashMap<Integer, User> userHashMap;
+
+    public static User getUser(int ID){
+        return userHashMap.get(ID);
     }
 
-    public static void main(String[] args) {
-        System.out.println(login());
+    public static Boolean makeUser(Integer ID,String username, String password, String type){
+        if (!(checkUsername(username))){
+            return false;
+        }
+        if (type.toLowerCase().equals("attendee")){
+            Attendee a = new Attendee(username, password, ID);
+            userHashMap.put(ID, a);
+        }
+        else if (type.toLowerCase().equals("organizer")){
+            Organizer o = new Organizer(username, password, ID);
+            userHashMap.put(ID, o);
+        }
+        else if (type.toLowerCase().equals("speaker")){
+            Speaker s = new Speaker(username, password, ID);
+            userHashMap.put(ID, s);
+        }
+        else{
+            return false;
+        }
+        return true;
+    }
+
+    public static Boolean makeNewUser(String username, String password, String type){
+        int ID = getNextID();
+        return makeUser(ID, username, password, type);
+
+    }
+
+    private static boolean checkUsername(String username){
+        for (User u: userHashMap.values()){
+            if (username.equals(u.getUsername())){
+                System.out.println("This ID is already being used"); //im not sure if this can print in this method...
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static int getNextID(){
+        int maxID = -1;
+        for (Integer ID: userHashMap.keySet()){
+            if(ID > maxID){
+                maxID = ID;
+            }
+        }
+        return (maxID + 1);
+    }
+
+    public static ArrayList<User> getAllUsers(){
+        ArrayList<User> allUsers = new ArrayList<>();
+        allUsers.addAll(userHashMap.values());
+        return allUsers;
     }
 }
