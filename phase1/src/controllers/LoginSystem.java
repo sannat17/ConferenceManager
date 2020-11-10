@@ -21,20 +21,19 @@ public class LoginSystem {
 
     /** Checks the inputted username and password with all the Users usernames and passwords
      *
-     * @return Returns true if the inputted username and password match an existing username and password from a user
-     * and returns false if it does not
+     * @return Returns the user being logged in if their login information is correct otherwise returns null
      */
-    public static boolean login(){
+    public static User login(){
         String[] loginDetails = getLoginInformation();
         ArrayList<User> users = UserManager.getAllUsers();
         if (users.isEmpty()){
-            return false;
+            return null;
         }
         for (User u: users){
             if ((loginDetails[0].equals(u.getUsername())) && (loginDetails[1].equals(u.getPassword()))){
-                return true;
+                return u;
             }
         }
-        return false;
+        return null;
     }
 }
