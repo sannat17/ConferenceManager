@@ -3,19 +3,36 @@ package entities;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
+/** An abstract user to be extended */
 public abstract class User {
-    //TODO: Add a "name" attribute to the user
-
+    /** The unique ID of this user */
     private int userID;
+    /** The username of this user */
     private String username;
+    /** The password of this user */
     private String password;
-    private String name;
+    /** The list of menu options available to this user */
+    public ArrayList<String> menuOptions;
+    /** The first name of this user */
+    public String firstName;
 
-    public User(String username, String password, int ID, String name) {
+    /**
+     * Create a new User and generate its base available menu options
+     *
+     * @param username the username of this user
+     * @param password the password of this user
+     * @param ID the unique ID of this user
+     */
+    public User(String username, String password, int ID, String firstName) {
         this.userID = ID;
         this.username = username;
         this.password = password;
-        this.name = name;
+        this.firstName = firstName;
+
+        this.menuOptions.add("messages");
+        this.menuOptions.add("contacts");
+        this.menuOptions.add("schedule");
+        this.menuOptions.add("events");
     }
 
     public int getUserID() {
@@ -38,12 +55,12 @@ public abstract class User {
         this.password = password;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String name) {
+        this.firstName = name;
     }
 
     @Override

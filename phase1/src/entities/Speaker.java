@@ -2,6 +2,7 @@ package entities;
 
 import java.util.ArrayList;
 
+/** A speaker user that gives speeches */
 public class Speaker extends User{
     /**
      * Has the list of IDs of events that the Speaker is speaking at
@@ -9,13 +10,14 @@ public class Speaker extends User{
     private ArrayList<Integer> listOfEventIDs;
 
     /**
-     * Calls the super constructor from Organizer
-     * @param username
-     * @param password
-     * @param ID
+     * Create a new Speaker
+     *
+     * @param username the user name of this speaker
+     * @param password the password of this speaker
+     * @param ID the unique ID of this speaker
      */
-    public Speaker(String username, String password, int ID, String name) {
-        super(username, password, ID, name);
+    public Speaker(String username, String password, int ID, String firstName) {
+        super(username, password, ID, firstName);
     }
 
     /**
