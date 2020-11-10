@@ -24,22 +24,33 @@ public class UserManager{
      * @param password The password of the user being created
      * @param name The name of the user being created
      * @param type The type of the user (Attendee, Organizer, Speaker)
+     * @param eventIDs List of all event ID's
      * @return A boolean with true if the User was successfully created and false if it wasn't
      */
-    public static Boolean makeUser(Integer ID, String username, String password, String name, String type){
+    public static Boolean makeUser(Integer ID, String username, String password, String name, String type,
+                                   Integer[] eventIDs){
         if (!(checkUsername(username))){
             return false;
         }
         if (type.toLowerCase().equals("attendee")){
             Attendee a = new Attendee(username, password, ID, name);
+            for (Integer eventID: eventIDs){
+                a.addEvent(eventID);
+            }
             userHashMap.put(ID, a);
         }
         else if (type.toLowerCase().equals("organizer")){
             Organizer o = new Organizer(username, password, ID, name);
+            for (Integer eventID: eventIDs){
+                o.addEvent(eventID);
+            }
             userHashMap.put(ID, o);
         }
         else if (type.toLowerCase().equals("speaker")){
             Speaker s = new Speaker(username, password, ID, name);
+            for (Integer eventID: eventIDs){
+                s.addEvent(eventID);
+            }
             userHashMap.put(ID, s);
         }
         else{
@@ -54,11 +65,12 @@ public class UserManager{
      * @param password The password of the user being created
      * @param name The name of the user being created
      * @param type The type of the user (Attendee, Organizer, Speaker)
+     * @param eventIDs List of all event ID's
      * @return A boolean with true if the User was successfully created and false if it wasn't
      */
-    public static Boolean makeNewUser(String username, String password, String name, String type){
+    public static Boolean makeNewUser(String username, String password, String name, String type, Integer[] eventIDs){
         int ID = getNextID();
-        return makeUser(ID, username, password, type, name);
+        return makeUser(ID, username, password, type, name, eventIDs);
     }
 
     /** Checks whether a certain username is already being used
@@ -99,5 +111,16 @@ public class UserManager{
             allUsers.addAll(userHashMap.values());
         }
         return allUsers;
+    }
+
+    /** Returns a list of all the Users information
+     *
+     * @return a list of all the Users information*/
+    public static ArrayList<String> getAllUsersInfo(){
+        ArrayList<String> allUsersInfo = new ArrayList<>();
+        for (User u: userHashMap.values()){
+            allUsersInfo.add(u.toString());
+        }
+        return allUsersInfo;
     }
 }
