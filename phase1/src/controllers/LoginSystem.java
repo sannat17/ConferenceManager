@@ -1,10 +1,11 @@
 package controllers;
+
 import java.util.*;
 import entities.*;
 import useCases.UserManager;
 
 public class LoginSystem {
-    public static String[] getLoginInformation(){ //retreives username and password from a user
+    public static String[] getLoginInformation(){ //retrieves username and password from a user
         Scanner s = new Scanner(System.in);
         System.out.println("Please enter your Username:");
         String username = s.nextLine();
