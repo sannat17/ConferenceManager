@@ -66,7 +66,7 @@ public abstract class User {
     @Override
     public String toString() {
         String delimiter = Character.toString((char) 31);
-        return  userID + delimiter + username + delimiter + password + delimiter + name;
+        return  userID + delimiter + username + delimiter + password + delimiter + firstName;
     }
 
     public abstract ArrayList<Integer> getListOfEventIDs();
