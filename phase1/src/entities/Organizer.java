@@ -2,33 +2,41 @@ package entities;
 
 import java.util.ArrayList;
 
+/** An organizer user with management level capabilities */
 public class Organizer extends User{
-    /**
-     * The list of IDs of events that this Organizer organizes
-     */
+
+    /** The list of IDs of events that this Organizer organize */
     ArrayList listOfEventIDs;
 
     /**
-     * Call the super constructor from User and initialize the list of IDs to be empty
+     * Create new Organizer, initialize a list of this Organizer's events
+     * based on ID, and add available menu options
+     *
+     * @param username the user name of this organizer
+     * @param password the password of this organizer
+     * @param ID the unique ID of this organizer
      */
     public Organizer(String username, String password, int ID) {
         super(username, password, ID);
         this.listOfEventIDs = new ArrayList();
+        this.menuOptions.add("message events");
+        this.menuOptions.add("organize event");
     }
 
     /**
-     * Returns the list of event IDs
-     * @return ArrayList
+     * Return the list of event IDs
+     *
+     * @return the list of IDs of this organizer's events
      */
     public ArrayList getListOfEvents(){
         return this.listOfEventIDs;
     }
 
     /**
-     * Adds the ID of the newEvent to the list
-     * @param newEvent
+     * Add the ID of a new event to the list
+     *
+     * @param newEvent the event ID of a new event this organizer organized
      */
-
     public void addEvent(Event newEvent){
         listOfEventIDs.add(newEvent.getEventID());
     }

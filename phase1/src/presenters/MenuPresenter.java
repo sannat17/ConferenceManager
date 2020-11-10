@@ -8,7 +8,7 @@ public class MenuPresenter {
     /**
      * Create a new MenuPresenter
      */
-    public MenuPresenter(){};
+    public MenuPresenter(){}
 
     /**
      * Format and return the given options
@@ -16,11 +16,11 @@ public class MenuPresenter {
      * @param options the list of options
      * @return the formatted string derived from the given options
      */
-    public static String getOptions(ArrayList options){
-        String formattedOptions = new String("");
-        for (int i = 0; i < options.size(); i++){
-            formattedOptions = formattedOptions + (String)options.get(i) + "\n";
+    public static String getOptions(ArrayList<String> options){
+        StringBuilder formattedOptions = new StringBuilder();
+        for (String option : options) {
+            formattedOptions.append(option).append("\n");
         }
-        return formattedOptions;
+        return formattedOptions.toString();
     }
 }
