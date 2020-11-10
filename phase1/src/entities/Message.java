@@ -1,6 +1,5 @@
 package entities;
 
-import controllers.MessageInput;
 
 import java.time.LocalTime;
 
@@ -13,6 +12,7 @@ public class Message {
     private LocalTime timeSent;
     private int messageID;
     private int replyToID;  //stores the ID of the message that this is a reply to(if it's a reply)
+
 
     public Message(int senderID,  int receiverID, int messageID, String messageContent){
         this.messageID = messageID;
