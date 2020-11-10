@@ -14,8 +14,8 @@ public class Speaker extends User{
      * @param password the password of this speaker
      * @param ID the unique ID of this speaker
      */
-    public Speaker(String username, String password, int ID, String name) {
-        super(username, password, ID, name);
+    public Speaker(String username, String password, int ID, String firstName) {
+        super(username, password, ID, firstName);
     }
 
     /**
