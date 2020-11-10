@@ -13,11 +13,10 @@ public class UserManager{
         return userHashMap.get(ID);
     }
 
-    public static Boolean makeNewUser(String username, String password, String type){
+    public static Boolean makeUser(Integer ID,String username, String password, String type){
         if (!(checkUsername(username))){
             return false;
         }
-        int ID = getNextID();
         if (type.toLowerCase().equals("attendee")){
             Attendee a = new Attendee(username, password, ID);
             userHashMap.put(ID, a);
@@ -34,6 +33,11 @@ public class UserManager{
             return false;
         }
         return true;
+    }
+
+    public static Boolean makeNewUser(String username, String password, String type){
+        int ID = getNextID();
+        return makeUser(ID, username, password, type);
 
     }
 
