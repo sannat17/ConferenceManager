@@ -4,7 +4,9 @@ import controllers.MessageInput;
 
 import java.time.LocalTime;
 
+/** Initializes a message as a reply or first message depending on the constructor called */
 public class Message {
+
     private String messageContent;
     private int senderID;
     private int receiverID;
@@ -19,7 +21,6 @@ public class Message {
         this.messageContent = messageContent;
         this.replyToID = -1;
         this.timeSent = LocalTime.now();  //immutable object that represents a time without a date and a time-zone
-        // shouldn't we define time sent when the user chooses to send?//im assuming the message constructor will be called when the message is sent?
     }
 
     public Message(int senderID,  int receiverID, int messageID, int replyToID, String messageContent){
@@ -29,7 +30,6 @@ public class Message {
         this.messageContent = messageContent;
         this.replyToID = replyToID;
         this.timeSent = LocalTime.now();  //immutable object that represents a time without a date and a time-zone
-        // shouldn't we define time sent when the user chooses to send?//im assuming the message constructor will be called when the message is sent?
     }
 
     public int getSenderID(){
