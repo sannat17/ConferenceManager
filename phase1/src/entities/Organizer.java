@@ -6,7 +6,7 @@ public class Organizer extends User{
     /**
      * The list of IDs of events that this Organizer organizes
      */
-    ArrayList listOfEventIDs;
+    private ArrayList<Integer> listOfEventIDs;
 
     /**
      * Call the super constructor from User and initialize the list of IDs to be empty
@@ -25,12 +25,21 @@ public class Organizer extends User{
     }
 
     /**
-     * Adds the ID of the newEvent to the list
-     * @param newEvent
+     * Adds the eventID to the list of events being organized
+     * @param eventID The ID of an event being organized by this Organizer.
      */
-
-    public void addEvent(Event newEvent){
-        listOfEventIDs.add(newEvent.getEventID());
+    public void addEvent(int eventID){
+        listOfEventIDs.add(eventID);
     }
 
+    @Override
+    public ArrayList<Integer> getListOfEventIDs() {
+        return listOfEventIDs;
+    }
+
+    @Override
+    public String toString() {
+        String delimiter = Character.toString((char) 31);
+        return super.toString() + delimiter + "organizer" + delimiter + listOfEventIDs.toString();
+    }
 }

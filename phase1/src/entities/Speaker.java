@@ -6,7 +6,7 @@ public class Speaker extends User{
     /**
      * Has the list of IDs of events that the Speaker is speaking at
      */
-    ArrayList listOfEventIDs;
+    private ArrayList<Integer> listOfEventIDs;
 
     /**
      * Calls the super constructor from Organizer
@@ -26,4 +26,18 @@ public class Speaker extends User{
         return this.listOfEventIDs.size();
     }
 
+    @Override
+    public ArrayList<Integer> getListOfEventIDs() {
+        return listOfEventIDs;
+    }
+
+    public void addEvent (int eventID) {
+        listOfEventIDs.add(eventID);
+    }
+
+    @Override
+    public String toString() {
+        String delimiter = Character.toString((char) 31);
+        return super.toString() + delimiter + "speaker" + delimiter + listOfEventIDs.toString();
+    }
 }

@@ -1,5 +1,8 @@
 package entities;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public abstract class User {
     //TODO: Add a "name" attribute to the user
 
@@ -35,4 +38,20 @@ public abstract class User {
         this.password = password;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        String delimiter = Character.toString((char) 31);
+        return  userID + delimiter + username + delimiter + password + delimiter + name;
+    }
+
+    public abstract ArrayList<Integer> getListOfEventIDs();
+    public abstract void addEvent(int userID);
 }
