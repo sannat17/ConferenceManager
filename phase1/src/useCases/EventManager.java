@@ -13,19 +13,26 @@ public class EventManager {
         return eventHashMap.get(ID);
     }
 
-    public static boolean makeNewEvent(int eventID, String timeOfEvent, int roomNumber, int speakerID) {
+    public static boolean makeEvent(int eventID, String timeOfEvent, int roomNumber, int speakerID) {
         if (eventHashMap.containsKey(eventID)) {return false;}
 
         for(Event e: eventHashMap.values()){
             if (e.getTimeOfEvent().equals(timeOfEvent) && e.getRoomNumber() == roomNumber){
                 return false;
             }
+            else if (e.getTimeOfEvent().equals(timeOfEvent) && e.getSpeakerID() == speakerID){
+                return false;
+            }
         }
-        //TODO: Implement check for speaker and make sure he is not booked for another event at the same time.
 
         Event e = new Event(eventID, timeOfEvent, roomNumber, speakerID);
         eventHashMap.put(eventID, e);
         return true;
+    }
+
+    public static boolean makeNewEvent(String timeOfEvent, int roomNumber, int speakerID){
+        int ID = getNextID();
+        return makeEvent(ID, timeOfEvent, roomNumber, speakerID);
     }
 
     public static boolean signUpForEvent(int userID, int eventID){
@@ -50,6 +57,16 @@ public class EventManager {
 
     public static ArrayList<Event> getAllEvents() {
         return new ArrayList<>(eventHashMap.values());
+    }
+
+    private static int getNextID(){
+        int maxID = -1;
+        for (Integer ID: eventHashMap.keySet()){
+            if(ID > maxID){
+                maxID = ID;
+            }
+        }
+        return (maxID + 1);
     }
 
 
