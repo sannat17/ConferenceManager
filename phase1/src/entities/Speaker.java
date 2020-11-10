@@ -2,7 +2,7 @@ package entities;
 
 import java.util.ArrayList;
 
-public class Speaker extends Organizer{
+public class Speaker extends User{
     /**
      * Has the list of IDs of events that the Speaker is speaking at
      */

@@ -9,7 +9,7 @@ public class Menu {
     public ArrayList options;
 
     /**
-     * Creates a new Menu with list of options
+     * Create a new Menu with list of options
      *
      * @param options the list of options
      */
