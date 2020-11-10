@@ -6,11 +6,13 @@ public abstract class User {
     private int userID;
     private String username;
     private String password;
+    private String name;
 
-    public User(String username, String password, int ID) {
+    public User(String username, String password, int ID, String name) {
         this.userID = ID;
         this.username = username;
         this.password = password;
+        this.name = name;
     }
 
     public int getUserID() {
