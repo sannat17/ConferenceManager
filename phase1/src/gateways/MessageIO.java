@@ -3,9 +3,7 @@ package gateways;
 import java.io.File;
 import java.util.Scanner;
 
-public class FileReader {
-
-    // set delimiter to ascii unit separator by default
+public class MessageIO {
     private static final String delimiter = Character.toString((char) 31);
 
     public static void readFile(){
@@ -23,5 +21,9 @@ public class FileReader {
             System.out.println("An error has occurred.");
             e.printStackTrace();
         }
+    }
+
+    public static void writeFile(){
+
     }
 }
