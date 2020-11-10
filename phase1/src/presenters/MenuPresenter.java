@@ -6,11 +6,6 @@ import java.util.ArrayList;
 public class MenuPresenter {
 
     /**
-     * Create a new MenuPresenter
-     */
-    public MenuPresenter(){}
-
-    /**
      * Format and return the given options
      *
      * @param options the list of options
