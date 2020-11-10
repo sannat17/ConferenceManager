@@ -7,8 +7,8 @@ public class Attendee extends User{
      * @param password
      * @param ID
      */
-    public Attendee(String username, String password, int ID) {
-        super(username, password, ID);
+    public Attendee(String username, String password, int ID, String name) {
+        super(username, password, ID, name);
     }
 
 }

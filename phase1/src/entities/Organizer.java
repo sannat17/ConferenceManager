@@ -11,8 +11,8 @@ public class Organizer extends User{
     /**
      * Call the super constructor from User and initialize the list of IDs to be empty
      */
-    public Organizer(String username, String password, int ID) {
-        super(username, password, ID);
+    public Organizer(String username, String password, int ID, String name) {
+        super(username, password, ID, name);
         this.listOfEventIDs = new ArrayList();
     }
 
