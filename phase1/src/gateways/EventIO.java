@@ -41,6 +41,7 @@ public class EventIO {
     }
 
     private static ArrayList<Integer> toIntArray(String csv){
+        csv = csv.substring(1, csv.length() - 1);
         //converts string with comma-separated values to an integer ArrayList
         String[] list = csv.split(",");
         ArrayList<Integer> intList = new ArrayList<Integer>();

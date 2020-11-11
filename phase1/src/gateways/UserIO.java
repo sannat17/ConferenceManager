@@ -62,10 +62,4 @@ public class UserIO {
         }
     }
 
-    public static Function<String, Boolean> exampleHOF(){
-        return (String dir) -> {
-            writeFile(dir);
-            return true;
-        };
-    }
 }
