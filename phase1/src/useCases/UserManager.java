@@ -2,7 +2,7 @@ package useCases;
 import java.util.*;
 import entities.*;
 
-/** Manages the user*/
+/** A user manager*/
 public class UserManager{
 
     /** A hashmap where the key is the ID of a user and the value is the object of the user with that ID*/

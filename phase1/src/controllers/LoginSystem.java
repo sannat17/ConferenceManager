@@ -4,12 +4,12 @@ import java.util.*;
 import entities.*;
 import useCases.UserManager;
 
-/** Allows a user to login if their credentials match an existing User */
+/** A login system allowing user logins if credentials match an existing user class */
 public class LoginSystem {
 
-    /** Gets a users username and password that they input
+    /** Get a user's username and password that they input
      *
-     * @return Returns an array with the inputted username and password*/
+     * @return Return an array with the inputted username and password*/
     private static String[] getLoginInformation(){
         Scanner s = new Scanner(System.in);
         System.out.println("Please enter your Username:");
@@ -19,9 +19,9 @@ public class LoginSystem {
         return new String[]{username, password};
     }
 
-    /** Checks the inputted username and password with all the Users usernames and passwords
+    /** Check username and password with all the Users usernames and passwords
      *
-     * @return Returns the user being logged in if their login information is correct otherwise returns null
+     * @return Return the user being logged in if their login information is correct otherwise returns null
      */
     private static User loginCheck(){
         String[] loginDetails = getLoginInformation();

@@ -11,7 +11,7 @@ public class MenuPresenter {
      * @param options the list of options
      * @return the formatted string derived from the given options
      */
-    public static String getOptions(ArrayList<String> options){
+    public static String formatOptions(ArrayList<String> options){
         StringBuilder formattedOptions = new StringBuilder();
         for (String option : options) {
             formattedOptions.append(option).append("\n");
