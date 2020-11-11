@@ -37,6 +37,11 @@ public class LoginSystem {
         return null;
     }
 
+
+    /** Keeps checking the username and password until it matches an existing User*
+     *
+     * @return Returns the User being logged in
+     */
     public static User login(){
         User loggedInUser = null;
         while (loggedInUser == null){
