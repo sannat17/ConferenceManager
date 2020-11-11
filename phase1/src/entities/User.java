@@ -70,4 +70,12 @@ public abstract class User {
         return  userID + delimiter + username + delimiter + password + delimiter + firstName;
     }
 
+    /**
+     * Return list of available menu options of this user
+     *
+     * @return list of available menu options
+     */
+    public ArrayList<String> getMenuOptions() {
+        return this.menuOptions;
+    }
 }

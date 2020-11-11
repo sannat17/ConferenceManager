@@ -2,8 +2,8 @@ package presenters;
 
 import java.util.ArrayList;
 
-/** A menu presenter that formats menu options to display */
-public class MenuPresenter {
+/** A message presenter that formats message options to display */
+public class MessagePresenter {
 
     /**
      * Format and return the given options

@@ -2,6 +2,7 @@ package userInterfaces;
 
 //import controllers.MenuInput;
 import controllers.MenuController;
+import entities.User;
 import presenters.MenuPresenter;
 
 import java.util.ArrayList;
@@ -13,19 +14,20 @@ public class MenuInterface {
     /**
      * Retrieve a menu choice from the user and return true if valid
      *
-     * @param choice the menu decision that the user makes
+     * @return menu selection string based on user input
      */
-    public static String getMenuChoice(String choice) {
+    public static String getMenuChoice() {
         Scanner s = new Scanner(System.in);
         System.out.println("Enter menu option:");
 
         return s.nextLine();
     }
 
-    public static void main(String[] args) {
-        System.out.println(MenuPresenter.getOptions(new ArrayList<>())); //retrieve menu options from current user
-
-        MenuController.handleMenuChoice(getMenuChoice("messages"));
+    /**
+     * Load the menu interface
+     */
+    public static void loadMenu(User user) {
+        System.out.println(MenuPresenter.formatOptions(user.getMenuOptions())); //retrieve menu options from current user
     }
 
     //messages - 1:1 messaging, contacts, schedule, events - sign up/cancel
