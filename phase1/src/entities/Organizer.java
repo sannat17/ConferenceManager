@@ -17,6 +17,12 @@ public class Organizer extends User{
         super(username, password, ID, name);
         this.menuOptions.add("message events");
         this.menuOptions.add("organize event");
+
+        this.messageOptions.add("Message all speakers");
+        this.messageOptions.add("Message a specific speaker");
+        this.messageOptions.add("Message all attendees");
+        this.messageOptions.add("Message a specific attendees");
+
     }
 
     @Override

@@ -1,8 +1,9 @@
 package userInterfaces;
 
-import controllers.MenuController;
+
 import entities.User;
-import presenters.MenuPresenter;
+
+import presenters.MessagePresenter;
 
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -23,11 +24,16 @@ public class MessageInterface {
     /**
      * Load the message interface
      */
-    //public static void loadMessageMenu(User user) {
-    //    System.out.println(MessagePresenter.formatOptions(user.getMenuOptions())); //retrieve menu options from current user
-    //}
+    public static void loadMessageMenu(User user) {
+        System.out.println(MessagePresenter.formatOptions(user.getMessageOptions())); //retrieve message options from current user
+    }
 
+    /**
+     * Display all messages sent or recieved by this user
+     */
+    public static void displayMessages(User user) {
 
+    }
     /**
      * Get message content from the user
      */
