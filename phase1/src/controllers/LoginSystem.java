@@ -10,7 +10,7 @@ public class LoginSystem {
     /** Gets a users username and password that they input
      *
      * @return Returns an array with the inputted username and password*/
-    public static String[] getLoginInformation(){
+    private static String[] getLoginInformation(){
         Scanner s = new Scanner(System.in);
         System.out.println("Please enter your Username:");
         String username = s.nextLine();
@@ -23,7 +23,7 @@ public class LoginSystem {
      *
      * @return Returns the user being logged in if their login information is correct otherwise returns null
      */
-    public static User login(){
+    private static User loginCheck(){
         String[] loginDetails = getLoginInformation();
         ArrayList<User> users = UserManager.getAllUsers();
         if (users.isEmpty()){
@@ -35,5 +35,16 @@ public class LoginSystem {
             }
         }
         return null;
+    }
+
+    public static User login(){
+        User loggedInUser = null;
+        while (loggedInUser == null){
+            loggedInUser = loginCheck();
+            if (loggedInUser == null){
+                System.out.println("Your username or password is incorrect. Please enter them again.");
+            }
+        }
+        return loggedInUser;
     }
 }
