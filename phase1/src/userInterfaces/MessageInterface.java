@@ -32,8 +32,9 @@ public class MessageInterface {
      * Display all messages sent or recieved by this user
      */
     public static void displayMessages(User user) {
-
+        //will call the message manager method to display all messages in order; tab(\t) for replies
     }
+
     /**
      * Get message content from the user
      */
