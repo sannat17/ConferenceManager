@@ -1,7 +1,9 @@
 package useCases;
 
+import com.sun.org.apache.bcel.internal.generic.ARRAYLENGTH;
 import entities.Event;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -130,6 +132,19 @@ public class EventManager {
             }
         }
         return (maxID + 1);
+    }
+
+    public static ArrayList<Event> getAllEventsByUser (int userID) {
+
+        ArrayList<Event> to_return = new ArrayList<>();
+
+        for (Event e: eventHashMap.values()){
+            if (e.getAttending().contains(userID) || userID == e.getOrganizerID() || userID == e.getSpeakerID()) {
+                to_return.add(e);
+            }
+        }
+
+        return to_return;
     }
 
 
