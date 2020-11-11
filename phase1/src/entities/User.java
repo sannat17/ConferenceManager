@@ -12,7 +12,7 @@ public abstract class User {
     /** The password of this user */
     private String password;
     /** The list of menu options available to this user */
-    public ArrayList<String> menuOptions;
+    public ArrayList<String> menuOptions = new ArrayList<String>();
     /** The first name of this user */
     public String firstName;
 

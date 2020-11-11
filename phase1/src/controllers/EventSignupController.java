@@ -1,6 +1,6 @@
 package controllers;
 
-public class EventSignup {
+public class EventSignupController {
 
     public static boolean signUpForEvent(){
         //returns true if signup is successful
