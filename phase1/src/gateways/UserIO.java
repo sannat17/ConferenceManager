@@ -4,9 +4,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Scanner;
+import java.util.function.Function;
 
 import useCases.UserManager;
 
@@ -23,7 +22,7 @@ public class UserIO {
             Scanner fs = new Scanner(file);
 
             while(fs.hasNextLine()){
-                //file format ID-Username-Password-Type
+                //file format ID-Username-Password-Name-Type-eventIDs
                 String[] user = fs.nextLine().split(delimiter);
                 Integer ID = Integer.parseInt(user[0]);
                 String username = user[1];
@@ -71,5 +70,12 @@ public class UserIO {
             System.out.println("An error has occurred.");
             e.printStackTrace();
         }
+    }
+
+    public static Function<String, Boolean> exampleHOF(){
+        return (String dir) -> {
+            writeFile(dir);
+            return true;
+        };
     }
 }

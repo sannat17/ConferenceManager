@@ -20,6 +20,7 @@ public class MessageInterface {
         System.out.println("Please enter the message content:");
         return s.nextLine();
         }
+
 }
 
 
