@@ -41,7 +41,7 @@ public class MessageIO {
             boolean existing = file.createNewFile(); //attempt to create new file if not preexisting
 
             FileWriter writer = new FileWriter(dir);
-            ArrayList<String> info = MessageManager();
+            ArrayList<String> info = MessageManager.getAllMessageInfo();
             info.forEach((String value) -> {
                 try {
                     writer.write(value);

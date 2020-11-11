@@ -29,23 +29,13 @@ public class UserIO {
                 String password = user[2];
                 String name = user[3];
                 String type = user[4];
-                Integer[] eventIDs = toEventIDs(user[5]); //this isn't implemented in user toString?
-                UserManager.makeUser(ID, username, password, name, type, eventIDs);
+                UserManager.makeUser(ID, username, password, name, type);
             }
         }
         catch(Exception e){
             System.out.println("An error has occurred.");
             e.printStackTrace();
         }
-    }
-
-    private static Integer[] toEventIDs(String raw){
-        //assumes comma separated int compatible values
-        String[] arr = raw.split(",");
-        Integer[] ints = new Integer[arr.length];
-        for(int i = 0; i < arr.length; i++)
-            ints[i] = Integer.parseInt(arr[i]);
-        return ints;
     }
 
     public static void writeFile(String dir){

@@ -6,7 +6,9 @@ import useCases.UserManager;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -27,13 +29,25 @@ public class EventIO {
                 String timeOfEvent = user[1];
                 int roomNumber = Integer.parseInt(user[2]);
                 int speakerID = Integer.parseInt(user[3]);
-                EventManager.makeEvent(eventID, timeOfEvent, roomNumber, speakerID);
+                int organizerID = Integer.parseInt(user[4]);
+                ArrayList<Integer> attendees = toIntArray(user[5]);
+                EventManager.makeEvent(eventID, timeOfEvent, roomNumber, speakerID, organizerID, attendees);
             }
         }
         catch(Exception e){
             System.out.println("An error has occurred.");
             e.printStackTrace();
         }
+    }
+
+    private static ArrayList<Integer> toIntArray(String csv){
+        //converts string with comma-separated values to an integer ArrayList
+        String[] list = csv.split(",");
+        ArrayList<Integer> intList = new ArrayList<Integer>();
+        for(String v: list){
+            intList.add(Integer.parseInt(v));
+        }
+        return intList;
     }
 
     public static void writeFile(String dir){
