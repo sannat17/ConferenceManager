@@ -78,7 +78,4 @@ public abstract class User {
     public ArrayList<String> getMenuOptions() {
         return this.menuOptions;
     }
-
-    public abstract ArrayList<Integer> getListOfEventIDs();
-    public abstract void addEvent(int userID);
 }
