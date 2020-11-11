@@ -47,23 +47,41 @@ public class Message {
         String delimiter = Character.toString((char) 31);
         return  senderID + delimiter + receiverID + delimiter + timeSent + delimiter + messageContent;
     }
-
+    /**
+     *
+     * @return The ID of the sender of this message
+     */
     public int getSenderID(){
        return senderID;
     }
-
+    /**
+     *
+     * @return The ID of the reciever of this message
+     */
     public int getReceiverID(){
         return receiverID;
     }
-
+    /**
+     *
+     * @return The ID of the messageID of this message
+     */
     public int getMessageID(){return messageID;}
-
+    /**
+     *
+     * @return The ID of the reply of this message
+     */
     public int getReplyToID() { return replyToID;}
-
+    /**
+     *
+     * @return The content of this message
+     */
     public String getMessageContent(){
         return messageContent;
     }
-
+    /**
+     *
+     * @return The time this message was sent
+     */
     public LocalTime getTimeSent(){
         return timeSent;
     }

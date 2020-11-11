@@ -15,6 +15,8 @@ public abstract class User {
     public ArrayList<String> menuOptions = new ArrayList<String>();
     /** The first name of this user */
     public String firstName;
+    /** The list of message options available to this user */
+    public ArrayList<String> messageOptions = new ArrayList<String>();
 
     /**
      * Create a new User and generate its base available menu options
@@ -35,6 +37,9 @@ public abstract class User {
         this.menuOptions.add("schedule");
         this.menuOptions.add("events");
         this.menuOptions.add("Sign out");
+
+        this.messageOptions.add("Go back to the previous screen");
+        this.messageOptions.add("Display all messages");
     }
 
     public int getUserID() {
@@ -79,4 +84,16 @@ public abstract class User {
     public ArrayList<String> getMenuOptions() {
         return this.menuOptions;
     }
+
+    /**
+     * Return list of available message options of this user
+     *
+     * @return list of available message options
+     */
+    public ArrayList<String> getMessageOptions() {
+        return this.messageOptions;
+    }
+
+    public abstract ArrayList<Integer> getListOfEventIDs();
+    public abstract void addEvent(int userID);
 }
