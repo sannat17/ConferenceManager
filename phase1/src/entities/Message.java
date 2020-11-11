@@ -34,11 +34,18 @@ public class Message {
         this.replyToID = replyToID;
         this.timeSent = LocalTime.now();  //immutable object that represents a time without a date and a time-zone
     }
+
     @Override
     public String toString() {
         String delimiter = Character.toString((char) 31);
         return  senderID + delimiter + receiverID + delimiter + messageID + delimiter + replyToID + delimiter
                 + messageContent + delimiter + timeSent;
+    }
+
+    /** Converts a message and its details to a string to be used by the presenter */
+    public String toStringP() {
+        String delimiter = Character.toString((char) 31);
+        return  senderID + delimiter + receiverID + delimiter + timeSent + delimiter + messageContent;
     }
 
     public int getSenderID(){
