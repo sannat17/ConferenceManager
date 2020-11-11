@@ -47,7 +47,7 @@ public class Event {
     @Override
     public String toString() {
         String delimiter = Character.toString((char) 31);
-        return  eventID + delimiter + timeOfEvent + delimiter + roomNumber + delimiter + speakerID;
+        return  eventID + delimiter + timeOfEvent + delimiter + roomNumber + delimiter + speakerID + delimiter + organizerID + attending;
     }
 
     public void removeAttendant(int userID){

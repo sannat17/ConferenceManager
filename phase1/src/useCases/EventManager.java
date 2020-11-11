@@ -14,7 +14,8 @@ public class EventManager {
         return eventHashMap.get(ID);
     }
 
-    public static boolean makeEvent(int eventID, String timeOfEvent, int roomNumber, int speakerID) {
+    public static boolean makeEvent(int eventID, String timeOfEvent, int roomNumber, int speakerID, int organizerID,
+                                    ArrayList<Integer> attendees) {
         if (eventHashMap.containsKey(eventID)) {return false;}
 
         for(Event e: eventHashMap.values()){
@@ -26,14 +27,19 @@ public class EventManager {
             }
         }
 
-        Event e = new Event(eventID, timeOfEvent, roomNumber, speakerID);
+        Event e = new Event(eventID, timeOfEvent, roomNumber, speakerID, organizerID);
         eventHashMap.put(eventID, e);
+
+        for (int ID: attendees) {
+            e.addAttendant(ID);
+        }
+
         return true;
     }
 
-    public static boolean makeNewEvent(String timeOfEvent, int roomNumber, int speakerID){
+    public static boolean makeNewEvent(String timeOfEvent, int roomNumber, int speakerID, int organizerID){
         int ID = getNextID();
-        return makeEvent(ID, timeOfEvent, roomNumber, speakerID);
+        return makeEvent(ID, timeOfEvent, roomNumber, speakerID, organizerID, new ArrayList<>());
     }
 
     public static boolean signUpForEvent(int userID, int eventID){
