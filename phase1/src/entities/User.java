@@ -12,11 +12,11 @@ public abstract class User {
     /** The password of this user */
     private String password;
     /** The list of menu options available to this user */
-    public ArrayList<String> menuOptions = new ArrayList<String>();
+    public ArrayList<String> menuOptions = new ArrayList<>();
     /** The first name of this user */
     public String firstName;
     /** The list of message options available to this user */
-    public ArrayList<String> messageOptions = new ArrayList<String>();
+    public ArrayList<String> messageOptions = new ArrayList<>();
 
     /**
      * Create a new User and generate its base available menu options
@@ -94,6 +94,4 @@ public abstract class User {
         return this.messageOptions;
     }
 
-    public abstract ArrayList<Integer> getListOfEventIDs();
-    public abstract void addEvent(int userID);
 }
