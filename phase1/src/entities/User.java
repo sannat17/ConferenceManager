@@ -22,6 +22,7 @@ public abstract class User {
      * @param username the username of this user
      * @param password the password of this user
      * @param ID the unique ID of this user
+     * @param firstName the first name of the user.
      */
     public User(String username, String password, int ID, String firstName) {
         this.userID = ID;
