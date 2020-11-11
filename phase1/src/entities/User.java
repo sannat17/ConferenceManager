@@ -70,6 +70,4 @@ public abstract class User {
         return  userID + delimiter + username + delimiter + password + delimiter + firstName;
     }
 
-    public abstract ArrayList<Integer> getListOfEventIDs();
-    public abstract void addEvent(int userID);
 }

@@ -2,6 +2,7 @@ package useCases;
 
 import entities.Message;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class MessageManager {
@@ -70,6 +71,21 @@ public class MessageManager {
                 to_return.add(m);
             }
         }
+        return to_return;
+    }
+
+    public static ArrayList<Message> getAllMessages() {
+        return (ArrayList<Message>) messageHashMap.values();
+    }
+
+    public static ArrayList<String> gettAllMessageInfo() {
+
+        ArrayList<String> to_return = new ArrayList<>();
+
+        for (Message m: messageHashMap.values()) {
+            to_return.add(m.toString());
+        }
+
         return to_return;
     }
 
