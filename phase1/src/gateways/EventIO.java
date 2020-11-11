@@ -43,8 +43,17 @@ public class EventIO {
     private static ArrayList<Integer> toIntArray(String csv){
         csv = csv.substring(1, csv.length() - 1);
         //converts string with comma-separated values to an integer ArrayList
-        String[] list = csv.split(",");
         ArrayList<Integer> intList = new ArrayList<Integer>();
+
+        //The csv.split will lead to unexpected outcome when given a string with no element or just 1 element (ie without the delimiter)
+        if (csv.isEmpty()){return intList;}
+        if (csv.length() == 1){
+            intList.add(Integer.parseInt(csv));
+            return intList;
+        }
+        // Once that is dealt with, continue as normal
+
+        String[] list = csv.split(", ");
         for(String v: list){
             intList.add(Integer.parseInt(v));
         }
