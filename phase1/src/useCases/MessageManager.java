@@ -6,26 +6,29 @@ import java.util.*;
 
 public class MessageManager {
 
-    private static HashMap<Integer, Message> messageHashMap;
+    private static HashMap<Integer, Message> messageHashMap = new HashMap<>();
 
     public static Message getMessage(int ID) {
         return messageHashMap.get(ID);
     }
 
-    public static boolean makeNewMessage(int senderID, int receiverID, int messageID, String messageContent) {
-        if (messageHashMap.containsKey(messageID)) {return false;}
-
-        Message m = new Message(senderID, receiverID, messageID, messageContent);
-        messageHashMap.put(messageID, m);
-        return true;
-    }
-
-    public static boolean makeReplyMessage(int senderID, int receiverID, int messageID, int replyToID, String messageContent) {
-        //TODO: Take care of the unique ID here itself and remove from parameters.
+    public static boolean makeMessage(int senderID, int receiverID, int messageID, int replyToID, String messageContent) {
 
         if (messageHashMap.containsKey(messageID)) {return false;}
 
         Message m = new Message(senderID, receiverID, messageID, replyToID, messageContent);
+
+        messageHashMap.put(messageID, m);
+        return true;
+    }
+
+    public static boolean makeNewMessage(int senderID, int receiverID, int replyToID, String messageContent) {
+
+        int messageID = Collections.max(messageHashMap.keySet()) + 1;
+
+        Message m = new Message(senderID, receiverID, messageID, replyToID, messageContent);
+
+        messageHashMap.put(messageID, m);
         return true;
     }
 

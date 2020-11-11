@@ -1,7 +1,13 @@
 package entities;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 /** An attendee user */
 public class Attendee extends User{
+
+    private ArrayList<Integer> listOfEventIDs;
+
     /**
      * Create a new Attendee
      *
@@ -13,4 +19,18 @@ public class Attendee extends User{
         super(username, password, ID, firstName);
     }
 
+    @Override
+    public String toString() {
+        String delimiter = Character.toString((char) 31);
+        return super.toString() + delimiter + "attendee" + delimiter + listOfEventIDs.toString();
+    }
+
+     public void addEvent(int eventID) {
+        listOfEventIDs.add(eventID);
+     }
+
+     @Override
+     public ArrayList<Integer> getListOfEventIDs() {
+        return listOfEventIDs;
+     }
 }

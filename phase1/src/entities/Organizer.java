@@ -4,9 +4,10 @@ import java.util.ArrayList;
 
 /** An organizer user with management level capabilities */
 public class Organizer extends User{
-
-    /** The list of IDs of events that this Organizer organize */
-    ArrayList listOfEventIDs;
+    /**
+     * The list of IDs of events that this Organizer organizes
+     */
+    private ArrayList<Integer> listOfEventIDs;
 
     /**
      * Create new Organizer, initialize a list of this Organizer's events
@@ -33,12 +34,21 @@ public class Organizer extends User{
     }
 
     /**
-     * Add the ID of a new event to the list
-     *
-     * @param newEvent the event ID of a new event this organizer organized
+     * Adds the eventID to the list of events being organized
+     * @param eventID The ID of an event being organized by this Organizer.
      */
-    public void addEvent(Event newEvent){
-        listOfEventIDs.add(newEvent.getEventID());
+    public void addEvent(int eventID){
+        listOfEventIDs.add(eventID);
     }
 
+    @Override
+    public ArrayList<Integer> getListOfEventIDs() {
+        return listOfEventIDs;
+    }
+
+    @Override
+    public String toString() {
+        String delimiter = Character.toString((char) 31);
+        return super.toString() + delimiter + "organizer" + delimiter + listOfEventIDs.toString();
+    }
 }

@@ -1,5 +1,6 @@
 package entities;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /** An abstract user to be extended */
@@ -54,4 +55,20 @@ public abstract class User {
         this.password = password;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String name) {
+        this.firstName = name;
+    }
+
+    @Override
+    public String toString() {
+        String delimiter = Character.toString((char) 31);
+        return  userID + delimiter + username + delimiter + password + delimiter + firstName;
+    }
+
+    public abstract ArrayList<Integer> getListOfEventIDs();
+    public abstract void addEvent(int userID);
 }

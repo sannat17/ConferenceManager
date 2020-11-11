@@ -4,8 +4,10 @@ import java.util.ArrayList;
 
 /** A speaker user that gives speeches */
 public class Speaker extends User{
-    /** This list of IDs of events at which this speaker will present */
-    ArrayList listOfEventIDs;
+    /**
+     * Has the list of IDs of events that the Speaker is speaking at
+     */
+    private ArrayList<Integer> listOfEventIDs;
 
     /**
      * Create a new Speaker
@@ -26,4 +28,18 @@ public class Speaker extends User{
         return this.listOfEventIDs.size();
     }
 
+    @Override
+    public ArrayList<Integer> getListOfEventIDs() {
+        return listOfEventIDs;
+    }
+
+    public void addEvent (int eventID) {
+        listOfEventIDs.add(eventID);
+    }
+
+    @Override
+    public String toString() {
+        String delimiter = Character.toString((char) 31);
+        return super.toString() + delimiter + "speaker" + delimiter + listOfEventIDs.toString();
+    }
 }

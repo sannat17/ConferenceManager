@@ -1,10 +1,11 @@
 package userInterfaces;
 
-import controllers.MenuInput;
-import controllers.MessageInput;
+import controllers.MenuController;
 import presenters.MenuPresenter;
 
+import java.util.Scanner;
 import java.util.ArrayList;
+
 /** A user interface for getting the message content from the sender */
 
 public class MessageInterface {
@@ -14,10 +15,11 @@ public class MessageInterface {
      */
     public MessageInterface(){}
 
-    public static void main() {
-
+    public static String getMessageContent() {
+        Scanner s = new Scanner(System.in);
         System.out.println("Please enter the message content:");
-
-        MessageInput.getMessageContent();   //Calling the controller class to get the input
-    }
+        return s.nextLine();
+        }
 }
+
+
