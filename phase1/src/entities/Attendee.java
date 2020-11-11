@@ -6,8 +6,6 @@ import java.util.ArrayList;
 /** An attendee user */
 public class Attendee extends User{
 
-    private ArrayList<Integer> listOfEventIDs;
-
     /**
      * Create a new Attendee
      *
@@ -22,15 +20,7 @@ public class Attendee extends User{
     @Override
     public String toString() {
         String delimiter = Character.toString((char) 31);
-        return super.toString() + delimiter + "attendee" + delimiter + listOfEventIDs.toString();
+        return super.toString() + delimiter + "attendee";
     }
 
-     public void addEvent(int eventID) {
-        listOfEventIDs.add(eventID);
-     }
-
-     @Override
-     public ArrayList<Integer> getListOfEventIDs() {
-        return listOfEventIDs;
-     }
 }
