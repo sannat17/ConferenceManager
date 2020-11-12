@@ -33,7 +33,7 @@ public abstract class User {
         this.menuOptions.add("contacts");
         this.menuOptions.add("schedule");
         this.menuOptions.add("events");
-        this.menuOptions.add("Sign out");
+        this.menuOptions.add("sign out");
     }
 
     public int getUserID() {
