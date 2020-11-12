@@ -78,7 +78,7 @@ public class MessageManager {
         return (ArrayList<Message>) messageHashMap.values();
     }
 
-    public static ArrayList<String> gettAllMessageInfo() {
+    public static ArrayList<String> getAllMessageInfo() {
 
         ArrayList<String> to_return = new ArrayList<>();
 

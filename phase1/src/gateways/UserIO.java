@@ -4,9 +4,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Scanner;
+import java.util.function.Function;
 
 import useCases.UserManager;
 
@@ -23,30 +22,20 @@ public class UserIO {
             Scanner fs = new Scanner(file);
 
             while(fs.hasNextLine()){
-                //file format ID-Username-Password-Type
+                //file format ID-Username-Password-Name-Type-eventIDs
                 String[] user = fs.nextLine().split(delimiter);
                 Integer ID = Integer.parseInt(user[0]);
                 String username = user[1];
                 String password = user[2];
                 String name = user[3];
                 String type = user[4];
-                Integer[] eventIDs = toEventIDs(user[5]); //this isn't implemented in user toString?
-                UserManager.makeUser(ID, username, password, name, type, eventIDs);
+                UserManager.makeUser(ID, username, password, name, type);
             }
         }
         catch(Exception e){
             System.out.println("An error has occurred.");
             e.printStackTrace();
         }
-    }
-
-    private static Integer[] toEventIDs(String raw){
-        //assumes comma separated int compatible values
-        String[] arr = raw.split(",");
-        Integer[] ints = new Integer[arr.length];
-        for(int i = 0; i < arr.length; i++)
-            ints[i] = Integer.parseInt(arr[i]);
-        return ints;
     }
 
     public static void writeFile(String dir){
@@ -72,4 +61,5 @@ public class UserIO {
             e.printStackTrace();
         }
     }
+
 }
