@@ -4,13 +4,14 @@ import java.util.*;
 import entities.*;
 import useCases.UserManager;
 
+// Due to getLoginInformation() this is also a UI
 /** A login system allowing user logins if credentials match an existing user class */
 public class LoginSystem {
 
     /** Get a user's username and password that they input
      *
      * @return Return an array with the inputted username and password*/
-    private static String[] getLoginInformation(){
+    private static String[] getLoginInformation(){    // returns list of login credentials
         Scanner s = new Scanner(System.in);
         System.out.println("Please enter your Username:");
         String username = s.nextLine();

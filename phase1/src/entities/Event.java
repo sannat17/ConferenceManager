@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 /** An Event */
 public class Event {
+    /** The title of this event */
+    private String title;
     /** The unique ID of this event */
     private int eventID;
     /** The time of this event */
@@ -18,14 +20,16 @@ public class Event {
     private ArrayList<Integer> attending;
 
     /**
+     * Create a new event
      *
      * @param eventID The unique ID of this event
+     * @param title the title of this event
      * @param timeOfEvent The time of this event
      * @param roomNumber The room number of this event
      * @param speakerID The unique ID of this speaker for the event
      * @param organizerID The unique ID of the organizer of the event
      */
-    public Event(int eventID, String timeOfEvent, int roomNumber, int speakerID, int organizerID){
+    public Event(int eventID, String title, String timeOfEvent, int roomNumber, int speakerID, int organizerID){
         this.eventID = eventID;
         this.timeOfEvent = timeOfEvent;
         this.roomNumber = roomNumber;

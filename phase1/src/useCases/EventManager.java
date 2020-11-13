@@ -25,6 +25,7 @@ public class EventManager {
     /** Creates a new Event and adds it to the eventHashMap
      *
      * @param eventID The ID of the event being created
+     * @param title The title of the event
      * @param timeOfEvent The time of the event being created
      * @param roomNumber The room number of the event being created
      * @param speakerID The ID of the speaker of the event being created
@@ -32,7 +33,7 @@ public class EventManager {
      * @param attendees The list of UserIDs that are attending the event
      * @return A boolean with true if the Event was successfully created and false if it wasn't
      */
-    public static boolean makeEvent(int eventID, String timeOfEvent, int roomNumber, int speakerID, int organizerID,
+    public static boolean makeEvent(int eventID, String title, String timeOfEvent, int roomNumber, int speakerID, int organizerID,
                                     ArrayList<Integer> attendees) {
         if (eventHashMap.containsKey(eventID)) {return false;}    // return false if event already exists
 
@@ -43,7 +44,7 @@ public class EventManager {
             }
         }
 
-        Event e = new Event(eventID, timeOfEvent, roomNumber, speakerID, organizerID);
+        Event e = new Event(eventID, title, timeOfEvent, roomNumber, speakerID, organizerID);
         eventHashMap.put(eventID, e);
 
         for (int ID: attendees) {    // record event attendants in event object's attendance sheet
@@ -61,9 +62,9 @@ public class EventManager {
      * @param organizerID The ID of the organizer of the event
      * @return A boolean with true if the Event was successfully created and false if it wasn't
      */
-    public static boolean makeNewEvent(String timeOfEvent, int roomNumber, int speakerID, int organizerID){
+    public static boolean makeNewEvent(String title, String timeOfEvent, int roomNumber, int speakerID, int organizerID){
         int ID = getNextID();
-        return makeEvent(ID, timeOfEvent, roomNumber, speakerID, organizerID, new ArrayList<>());
+        return makeEvent(ID, title, timeOfEvent, roomNumber, speakerID, organizerID, new ArrayList<>());
     }
 
     /** Sign up a user for an event
