@@ -3,8 +3,7 @@ import entities.Event;
 import useCases.EventManager;
 import java.util.HashMap;
 
-// This class controls the EventSignUp ie: it controls the implementation of the useCase class EventManager
-
+/** An event sign up controller class  */
 public class EventSignupController {
 
 //    This variable stores the hashMap for the presenter, however, in the background, when this method is called
