@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /** A user interface for interacting with the menu */
-public class MenuInterface {
+public class MenuUserInterface {
 
     /**
      * Retrieve a menu choice from the user and return true if valid

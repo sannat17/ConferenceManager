@@ -3,6 +3,9 @@ import entities.Event;
 import useCases.EventManager;
 import java.util.HashMap;
 
+// TODO create the corresponding presenter
+// TODO create the corresponding UI
+
 /** An event sign up controller class  */
 public class EventSignupController {
 

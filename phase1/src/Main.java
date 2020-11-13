@@ -2,7 +2,7 @@ import controllers.*;
 import entities.*;
 import gateways.*;
 import useCases.*;
-import userInterfaces.MenuInterface;
+import userInterfaces.MenuUserInterface;
 
 public class Main {
     public static void main(String[] args) {
@@ -11,7 +11,7 @@ public class Main {
         EventIO.readFile("/data.events.txt");
         MessageIO.readFile("/data.messages.txt");
         User loggedInUser = LoginSystem.login();
-        MenuInterface.loadMenu(loggedInUser);
-        MenuController.handleMenuChoice(MenuInterface.getMenuChoice(), loggedInUser);
+        MenuUserInterface.loadMenu(loggedInUser);
+        MenuController.handleMenuChoice(MenuUserInterface.getMenuChoice(), loggedInUser);
     }
 }
