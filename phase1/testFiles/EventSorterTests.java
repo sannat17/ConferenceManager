@@ -30,6 +30,16 @@ public class EventSorterTests {
         assertEquals(sortedEvents, sorted);
     }
 
+    @Test(timeout = 50)
+    public void testSortBySpeaker() throws Exception {
+        ArrayList<Event> sortedEvents = new ArrayList<Event>();
+        sortedEvents.add(e1);
+        sortedEvents.add(e2);
+        sortedEvents.add(e3);
+        ArrayList<Event> sorted = EventSorter.sortBySpeaker(eventInfo);
+        assertEquals(sortedEvents, sorted);
+    }
+
 
 
 

@@ -56,11 +56,23 @@ public class EventSorter {
      * @return a sorted list of events by speaker
      */
     public static ArrayList<Event> sortBySpeaker(ArrayList<Event> eventsInfo) {
-        ArrayList<Event> allEvents = eventsInfo;
-        for (Event e: allEvents) {
-            // sorting algorithm
+        ArrayList<Integer> speakerIDs = new ArrayList<Integer>();
+        ArrayList<Event> sortedBySpeakerID = new ArrayList<Event>();
+        for (Event e: eventsInfo) {
+            if (!speakerIDs.contains(e.getSpeakerID())) {
+                speakerIDs.add(e.getSpeakerID());
+            }
         }
-        return eventsInfo;
+        Collections.sort(speakerIDs);
+        for (Integer i: speakerIDs){
+            for (Event e: eventsInfo){
+                if (e.getSpeakerID() == i){
+                    sortedBySpeakerID.add(e);
+                }
+            }
+
+        }
+        return sortedBySpeakerID;
     }
 
     /**
