@@ -56,6 +56,7 @@ public class EventManager {
 
     /** Creates a new Event that does not already have an ID
      *
+     * @param title The title of the event being created
      * @param timeOfEvent The time of the event being created
      * @param roomNumber The number of the room of the event being created
      * @param speakerID The ID of the speaker of the event being created
@@ -80,6 +81,9 @@ public class EventManager {
                     return false;
                 }
             }
+        }
+        if (eventHashMap.get(eventID).getAttending().size() > 2){
+            return false;
         }
         eventHashMap.get(eventID).addAttendant(userID);
         return true;

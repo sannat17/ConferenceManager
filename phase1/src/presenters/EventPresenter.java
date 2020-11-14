@@ -27,7 +27,7 @@ public class EventPresenter {
         for (Event e: listOfEvents) {
             // format these events
         }
-
+        return "Filler String";
     }
 
 }

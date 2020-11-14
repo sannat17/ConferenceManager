@@ -1,5 +1,6 @@
 package userInterfaces;
 
+import com.sun.xml.internal.bind.v2.TODO;
 import entities.User;
 import presenters.EventPresenter;
 import presenters.MenuPresenter;
@@ -22,6 +23,7 @@ public class EventUserInterface {
 
         // allow for signup/cancellation to event
         // implement "go back" function
+        return "Filler String";
     }
 
     /**

@@ -26,12 +26,13 @@ public class EventIO {
                 //file format ID-Username-Password-Type
                 String[] user = fs.nextLine().split(delimiter);
                 int eventID = Integer.parseInt(user[0]);
-                String timeOfEvent = user[1];
-                int roomNumber = Integer.parseInt(user[2]);
-                int speakerID = Integer.parseInt(user[3]);
-                int organizerID = Integer.parseInt(user[4]);
-                ArrayList<Integer> attendees = toIntArray(user[5]);
-                EventManager.makeEvent(eventID, timeOfEvent, roomNumber, speakerID, organizerID, attendees);
+                String title = user[1];
+                String timeOfEvent = user[2];
+                int roomNumber = Integer.parseInt(user[3]);
+                int speakerID = Integer.parseInt(user[4]);
+                int organizerID = Integer.parseInt(user[5]);
+                ArrayList<Integer> attendees = toIntArray(user[6]);
+                EventManager.makeEvent(eventID, title, timeOfEvent, roomNumber, speakerID, organizerID, attendees);
             }
         }
         catch(Exception e){

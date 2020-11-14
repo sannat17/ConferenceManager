@@ -4,6 +4,7 @@ import entities.Event;
 import useCases.EventManager;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /** The class of which sorts events based on given sorting option */
 public class EventSorter {
@@ -15,10 +16,10 @@ public class EventSorter {
      * @return sorted list of available events by given sorting option
      */
     public static ArrayList<Event> sortBy(String sortingOption) {
-        if (sortingOption == "title") {
+        if (sortingOption.equals("title")) {
             return sortByTitle(EventManager.getAllEvents());
         }
-        else if (sortingOption == "speaker") {
+        else if (sortingOption.equals("speaker")) {
             return sortBySpeaker(EventManager.getAllEvents());
         }
         else {
@@ -32,10 +33,21 @@ public class EventSorter {
      * @return a sorted list of events by title
      */
     public static ArrayList<Event> sortByTitle(ArrayList<Event> eventsInfo) {
-        ArrayList<Event> allEvents = eventsInfo;
-        for (Event e: allEvents) {
-            // sorting algorithm
+        ArrayList<String> titles = new ArrayList<String>();
+        ArrayList<Event> sortedByTitle = new ArrayList<Event>();
+        for (Event e: eventsInfo) {
+            titles.add(e.getTitle().toUpperCase());
         }
+        Collections.sort(titles);
+        for (String t: titles){
+            for (Event e: eventsInfo){
+                if (e.getTitle().toUpperCase().equals(t)){
+                    sortedByTitle.add(e);
+                }
+            }
+
+        }
+        return sortedByTitle;
     }
 
     /**
@@ -48,6 +60,7 @@ public class EventSorter {
         for (Event e: allEvents) {
             // sorting algorithm
         }
+        return eventsInfo;
     }
 
     /**
@@ -60,6 +73,7 @@ public class EventSorter {
         for (Event e: allEvents) {
             // sorting algorithm
         }
+        return eventsInfo;
     }
 
 }
