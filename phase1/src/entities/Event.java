@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 /** An Event */
 public class Event {
+    /** The title of this event */
+    private String title;
     /** The unique ID of this event */
     private int eventID;
     /** The time of this event */
@@ -18,16 +20,19 @@ public class Event {
     private ArrayList<Integer> attending;
 
     /**
+     * Create a new event
      *
      * @param eventID The unique ID of this event
+     * @param title the title of this event
      * @param timeOfEvent The time of this event
      * @param roomNumber The room number of this event
      * @param speakerID The unique ID of this speaker for the event
      * @param organizerID The unique ID of the organizer of the event
      */
-    public Event(int eventID, String timeOfEvent, int roomNumber, int speakerID, int organizerID){
+    public Event(int eventID, String title, String timeOfEvent, int roomNumber, int speakerID, int organizerID){
         this.eventID = eventID;
         this.timeOfEvent = timeOfEvent;
+        this.title = title;
         this.roomNumber = roomNumber;
         this.speakerID = speakerID;
         this.organizerID = organizerID;
@@ -40,6 +45,14 @@ public class Event {
      */
     public int getEventID() {
         return eventID;
+    }
+
+    /**
+     *
+     * @return The Title of this event
+     */
+    public String getTitle() {
+        return title;
     }
 
     /**
@@ -92,12 +105,12 @@ public class Event {
 
     /** Returns the Event in the form of a string
      *
-     * @return The event in a string in the form of "eventID,timeOfEvent,roomNumber,speakerID,organizerID,attending"
+     * @return The event in a string in the form of "eventID,title,timeOfEvent,roomNumber,speakerID,organizerID,attending"
      */
     @Override
     public String toString() {
         String delimiter = Character.toString((char) 31);
-        return  eventID + delimiter + timeOfEvent + delimiter + roomNumber +
+        return  eventID + delimiter + title + delimiter + timeOfEvent + delimiter + roomNumber +
                 delimiter + speakerID + delimiter + organizerID + delimiter + attending;
     }
 

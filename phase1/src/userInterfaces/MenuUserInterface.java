@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /** A user interface for interacting with the menu */
-public class MenuInterface {
+public class MenuUserInterface {
 
     /**
      * Retrieve a menu choice from the user and return true if valid
@@ -30,7 +30,4 @@ public class MenuInterface {
         System.out.println(MenuPresenter.formatOptions(user.getMenuOptions())); //retrieve menu options from current user
     }
 
-    //messages - 1:1 messaging, contacts, schedule, events - sign up/cancel
-    //messages - 1:1 messaging, 1:many messaging, contacts,
-    //           schedule, events - organize event, sign up/cancel
 }
