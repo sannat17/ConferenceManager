@@ -16,12 +16,12 @@ public class MessageManager {
     /** Make an instance of a message with a specified ID (eg. while loading from a file) and store it in messageHashMap
      *  to be indexed by its ID.
      *
-     * @param senderID
-     * @param receiverID
-     * @param messageID
-     * @param replyToID
-     * @param messageContent
-     * @return
+     * @param senderID The ID of the sender of the message
+     * @param receiverID The ID of the receiver of the message
+     * @param messageID The ID of the message
+     * @param replyToID The ID of the reply of the message
+     * @param messageContent The ID of the sender of the message
+     * @return returns the boolean true is the message is made!
      */
     public static boolean makeMessage(int senderID, int receiverID, int messageID, int replyToID, String messageContent) {
 
@@ -36,11 +36,11 @@ public class MessageManager {
     /** Make an instance of a new message (eg. by a user) and automatically assign it a new unique ID. Store this in the
      * messageHashMap to be indexed by this new ID.
      *
-     * @param senderID
-     * @param receiverID
-     * @param replyToID
-     * @param messageContent
-     * @return
+     * @param senderID The ID of the sender of the message
+     * @param receiverID The ID of the receiver of the message
+     * @param replyToID The ID of the reply of the message
+     * @param messageContent The ID of the sender of the message
+     * @return retuens true if a new message is made.
      */
     public static boolean makeNewMessage(int senderID, int receiverID, int replyToID, String messageContent) {
 
