@@ -1,5 +1,6 @@
 package entities;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 /** An Event */
@@ -9,7 +10,7 @@ public class Event {
     /** The unique ID of this event */
     private int eventID;
     /** The time of this event */
-    private String timeOfEvent;
+    private LocalDateTime timeOfEvent;
     /** The room number of this event */
     private int roomNumber;
     /** The unique ID of this speaker for the event */
@@ -29,7 +30,7 @@ public class Event {
      * @param speakerID The unique ID of this speaker for the event
      * @param organizerID The unique ID of the organizer of the event
      */
-    public Event(int eventID, String title, String timeOfEvent, int roomNumber, int speakerID, int organizerID){
+    public Event(int eventID, String title, LocalDateTime timeOfEvent, int roomNumber, int speakerID, int organizerID){
         this.eventID = eventID;
         this.timeOfEvent = timeOfEvent;
         this.title = title;
@@ -59,7 +60,7 @@ public class Event {
      *
      * @return The time of this event
      */
-    public String getTimeOfEvent() {
+    public LocalDateTime getTimeOfEvent() {
         return timeOfEvent;
     }
 

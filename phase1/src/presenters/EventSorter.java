@@ -3,6 +3,8 @@ package presenters;
 import entities.Event;
 import useCases.EventManager;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -81,11 +83,23 @@ public class EventSorter {
      * @return a sorted list of events by time
      */
     public static ArrayList<Event> sortByTime(ArrayList<Event> eventsInfo) {
-        ArrayList<Event> allEvents = eventsInfo;
-        for (Event e: allEvents) {
-            // sorting algorithm
+        ArrayList<LocalDateTime> times = new ArrayList<LocalDateTime>();
+        ArrayList<Event> sortedByTime = new ArrayList<Event>();
+        for (Event e: eventsInfo) {
+            if (!times.contains(e.getTimeOfEvent())) {
+                times.add(e.getTimeOfEvent());
+            }
         }
-        return eventsInfo;
+        Collections.sort(times);
+        for (LocalDateTime t: times){
+            for (Event e: eventsInfo){
+                if (e.getTimeOfEvent() == t){
+                    sortedByTime.add(e);
+                }
+            }
+
+        }
+        return sortedByTime;
     }
 
 }

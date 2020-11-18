@@ -7,6 +7,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Array;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -14,6 +16,7 @@ import java.util.Scanner;
 
 public class EventIO {
     private static final String delimiter = Character.toString((char) 31);
+    private static DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
 
     public static void readFile(String dir){
         //reads in user file and returns HashMap mapping username to password
@@ -27,7 +30,7 @@ public class EventIO {
                 String[] user = fs.nextLine().split(delimiter);
                 int eventID = Integer.parseInt(user[0]);
                 String title = user[1];
-                String timeOfEvent = user[2];
+                LocalDateTime timeOfEvent = LocalDateTime.parse(user[2], formatter);
                 int roomNumber = Integer.parseInt(user[3]);
                 int speakerID = Integer.parseInt(user[4]);
                 int organizerID = Integer.parseInt(user[5]);

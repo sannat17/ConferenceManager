@@ -4,6 +4,7 @@ import com.sun.org.apache.bcel.internal.generic.ARRAYLENGTH;
 import entities.Event;
 
 import java.lang.reflect.Array;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -33,7 +34,7 @@ public class EventManager {
      * @param attendees The list of UserIDs that are attending the event
      * @return A boolean with true if the Event was successfully created and false if it wasn't
      */
-    public static boolean makeEvent(int eventID, String title, String timeOfEvent, int roomNumber, int speakerID, int organizerID,
+    public static boolean makeEvent(int eventID, String title, LocalDateTime timeOfEvent, int roomNumber, int speakerID, int organizerID,
                                     ArrayList<Integer> attendees) {
         if (eventHashMap.containsKey(eventID)) {return false;}    // return false if event already exists
 
@@ -63,7 +64,7 @@ public class EventManager {
      * @param organizerID The ID of the organizer of the event
      * @return A boolean with true if the Event was successfully created and false if it wasn't
      */
-    public static boolean makeNewEvent(String title, String timeOfEvent, int roomNumber, int speakerID, int organizerID){
+    public static boolean makeNewEvent(String title, LocalDateTime timeOfEvent, int roomNumber, int speakerID, int organizerID){
         int ID = getNextID();
         return makeEvent(ID, title, timeOfEvent, roomNumber, speakerID, organizerID, new ArrayList<>());
     }
