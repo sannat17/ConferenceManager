@@ -17,7 +17,7 @@ public class EventUserInterface {
      */
     public static String getEventChoice() {
         Scanner s = new Scanner(System.in);
-        System.out.println("Enter sorting option:");
+        System.out.println("Enter sorting option (Title, Time, Speaker):");
 
         System.out.println(EventPresenter.formatEvents(s.nextLine()));
 

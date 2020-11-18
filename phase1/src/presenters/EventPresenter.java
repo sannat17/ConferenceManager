@@ -23,11 +23,12 @@ public class EventPresenter {
     public static String formatEvents(String sortingOption) {
 
         ArrayList<Event> listOfEvents = EventSorter.sortBy(sortingOption);
+        String sortedEvents = "";
 
         for (Event e: listOfEvents) {
-            // format these events
+            sortedEvents = sortedEvents + "\n";
         }
-        return "Filler String";
+        return sortedEvents.trim();
     }
 
 }
