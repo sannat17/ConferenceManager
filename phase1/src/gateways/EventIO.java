@@ -16,7 +16,7 @@ import java.util.Scanner;
 
 public class EventIO {
     private static final String delimiter = Character.toString((char) 31);
-    private static DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
+    private static final DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
 
     public static void readFile(String dir){
         //reads in user file and returns HashMap mapping username to password
