@@ -15,11 +15,11 @@ public class EventUserInterface {
      *
      * @return menu selection string based on user input
      */
-    public static String getEventChoice() {
+    public static String getEventChoice(Integer userID) {
         Scanner s = new Scanner(System.in);
         System.out.println("Enter sorting option (Title, Time, Speaker):");
 
-        System.out.println(EventPresenter.formatEvents(s.nextLine()));
+        System.out.println(EventPresenter.formatEvents(s.nextLine(), userID));
 
         // allow for signup/cancellation to event
         // implement "go back" function

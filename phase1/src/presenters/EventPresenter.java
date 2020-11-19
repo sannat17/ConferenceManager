@@ -20,7 +20,7 @@ public class EventPresenter {
      * @param sortingOption method of which events are sorted
      * @return a formatted string displaying available events/the schedule
      */
-    public static String formatEvents(String sortingOption) {
+    public static String formatEvents(String sortingOption, Integer userID) {
 
         ArrayList<Event> listOfEvents = EventSorter.sortBy(sortingOption);
         String sortedEvents = "";
