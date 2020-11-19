@@ -49,15 +49,15 @@ public class MessagePresenter {
         Map<Integer, ArrayList<String>> presenterHashMap = new HashMap<>();
 
 
-        for (Integer integer: MessageController.presenterMessageHashMap.keySet()) {
-
-            for (Message message: MessageManager.getAllSentMessages(integer)) {
-
-//              This appends all the strings of messages into a list
-                messages.add(message.getMessageContent());
-                presenterHashMap.put(integer, messages);
-            }
-        }
+//        for (Integer integer: MessageController.presenterMessageHashMap.keySet()) {
+//
+//            for (Message message: MessageManager.getAllSentMessages(integer)) {
+//
+////              This appends all the strings of messages into a list
+//                messages.add(message.getMessageContent());
+//                presenterHashMap.put(integer, messages);
+//            }
+//        }
 
         for (Integer userID: presenterHashMap.keySet()) {
 
