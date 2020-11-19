@@ -25,7 +25,6 @@ public class MessagePresenter {
         return formattedOptions.toString();
     }
 
-
     /**
      * Format and return content of all the messages received by this user
      * @param user the user whose messages you want to display
@@ -37,7 +36,6 @@ public class MessagePresenter {
         for (Message message : allReceivedMessages) {
             messagesOfUser.append(message.getMessageContent()).append("\n");
         }
-
         return messagesOfUser.toString();
     }
 
@@ -63,7 +61,6 @@ public class MessagePresenter {
 
             String finalMessage = "These are all the messages sent by the user with ID"
                     + userID + formatOptions(presenterHashMap.get(userID));
-
         }
         return finalMessage;
     }

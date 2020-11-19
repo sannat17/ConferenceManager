@@ -22,7 +22,7 @@ public class Organizer extends User{
         this.messageOptions.add("Message all speakers");
         this.messageOptions.add("Message a specific speaker");
         this.messageOptions.add("Message all attendees");
-        this.messageOptions.add("Message a specific attendees");
+        this.messageOptions.add("Message a specific attendee");
 
     }
 
