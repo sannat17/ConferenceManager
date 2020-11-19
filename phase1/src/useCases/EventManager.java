@@ -1,6 +1,5 @@
 package useCases;
 
-import com.sun.org.apache.bcel.internal.generic.ARRAYLENGTH;
 import entities.Event;
 
 import java.lang.reflect.Array;

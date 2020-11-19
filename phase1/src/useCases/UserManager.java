@@ -58,7 +58,7 @@ public class UserManager{
      */
     public static Boolean makeNewUser(String username, String password, String name, String type){
         int ID = getNextID();
-        return makeUser(ID, username, password, type, name);
+        return makeUser(ID, username, password, name, type);
     }
 
     /** Checks whether a certain username is already being used
