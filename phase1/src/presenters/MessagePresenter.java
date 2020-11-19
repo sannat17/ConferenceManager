@@ -32,10 +32,19 @@ public class MessagePresenter {
      * @return the formatted string with content of all the messages received by this user
      */
     public static String displayReceivedMessagesOfUser(User user){
+
+
         StringBuilder messagesOfUser = new StringBuilder();
+
         ArrayList<Message> allReceivedMessages = MessageManager.getAllReceivedMessages(user.getUserID());
         for (Message message : allReceivedMessages) {
-            messagesOfUser.append(message.getMessageContent()).append("\n");
+
+            if (message.getReplyToID() == -1) {
+
+                messagesOfUser.append(message.getMessageContent()).append("\n");
+            } else {
+                messagesOfUser.append(message.getMessageContent()).append("\n");
+            }
         }
 
         return messagesOfUser.toString();
@@ -49,15 +58,15 @@ public class MessagePresenter {
         Map<Integer, ArrayList<String>> presenterHashMap = new HashMap<>();
 
 
-//        for (Integer integer: MessageController.presenterMessageHashMap.keySet()) {
-//
-//            for (Message message: MessageManager.getAllSentMessages(integer)) {
-//
-////              This appends all the strings of messages into a list
-//                messages.add(message.getMessageContent());
-//                presenterHashMap.put(integer, messages);
-//            }
-//        }
+        for (Integer integer: MessageController.presenterMessageHashMap.keySet()) {
+
+            for (Message message: MessageManager.getAllSentMessages(integer)) {
+
+//              This appends all the strings of messages into a list
+                messages.add(message.getMessageContent());
+                presenterHashMap.put(integer, messages);
+            }
+        }
 
         for (Integer userID: presenterHashMap.keySet()) {
 

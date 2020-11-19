@@ -32,6 +32,7 @@ public class MenuUserInterface {
                     break;
                 case "create user":
 //                UserCreationUserInterface.loadUserCreation();
+                    loadMenu(user);
                     System.out.println("FUNCTIONALITY IN PROGRESS");
                     break;
                 case "sign out":
