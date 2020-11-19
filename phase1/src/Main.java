@@ -12,6 +12,5 @@ public class Main {
         MessageIO.readFile("./phase1/src/data/messages.txt");
         User loggedInUser = LoginSystem.login();
         MenuUserInterface.loadMenu(loggedInUser);
-        MenuController.handleMenuChoice(MenuUserInterface.getMenuChoice(), loggedInUser);
     }
 }
