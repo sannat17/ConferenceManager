@@ -8,31 +8,20 @@ import useCases.UserManager;
 /** A login system allowing user logins if credentials match an existing user class */
 public class LoginSystem {
 
-    /** Get a user's username and password that they input
-     *
-     * @return Return an array with the inputted username and password*/
-    private static String[] getLoginInformation(){    // returns list of login credentials
-        Scanner s = new Scanner(System.in);
-        System.out.println("Please enter your Username:");
-        String username = s.nextLine();
-        System.out.println("Please enter your Password:");
-        String password = s.nextLine();
-        s.close();
-        return new String[]{username, password};
-    }
 
     /** Check username and password with all the Users usernames and passwords
      *
+     * @param username The username of the user being checked
+     * @param password The username of the user being checked
      * @return Return the user being logged in if their login information is correct otherwise returns null
      */
-    private static User loginCheck(){
-        String[] loginDetails = getLoginInformation();
+    private static User loginCheck(String username, String password){
         ArrayList<User> users = UserManager.getAllUsers();
         if (users.isEmpty()){
             return null;
         }
         for (User u: users){
-            if ((loginDetails[0].equals(u.getUsername())) && (loginDetails[1].equals(u.getPassword()))){
+            if ((username.equals(u.getUsername())) && (password.equals(u.getPassword()))){
                 return u;
             }
         }
@@ -42,12 +31,14 @@ public class LoginSystem {
 
     /** Keeps checking the username and password until it matches an existing User*
      *
+     * @param username The username of the user being checked
+     * @param password The username of the user being checked
      * @return Returns the User being logged in
      */
-    public static User login(){
+    public static User login(String username, String password){
         User loggedInUser = null;
         while (loggedInUser == null){
-            loggedInUser = loginCheck();
+            loggedInUser = loginCheck(username, password);
             if (loggedInUser == null){
                 System.out.println("Your username or password is incorrect. Please enter them again.");
             }
