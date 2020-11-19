@@ -17,6 +17,7 @@ public class LoginSystem {
         String username = s.nextLine();
         System.out.println("Please enter your Password:");
         String password = s.nextLine();
+        s.close();
         return new String[]{username, password};
     }
 
