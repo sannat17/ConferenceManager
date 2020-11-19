@@ -30,27 +30,24 @@ public class MessageUserInterface {
                     MessagePresenter.displayReceivedMessagesOfUser(user);
                     break;
                 case "Message all attendees of the talk":
-                    System.out.println("FUNCTIONALITY IN PROGRESS");
+                    System.out.println("FUNCTIONALITY IN PROGRESS"); //waiting for controller to implement
                     break;
                 case "Respond to an attendee":
-                    System.out.println("FUNCTIONALITY IN PROGRESS");
+                    System.out.println("FUNCTIONALITY IN PROGRESS"); //waiting for controller to implement
                     break;
                 case "Message all speakers":
-                    System.out.println("FUNCTIONALITY IN PROGRESS");
+                    System.out.println("FUNCTIONALITY IN PROGRESS"); //waiting for controller to implement
                     break;
                 case "Message a specific speaker" : //for organizers
                 case "Message a speaker":     //for attendee
-                    System.out.println("FUNCTIONALITY IN PROGRESS");
+                    System.out.println("FUNCTIONALITY IN PROGRESS"); //waiting for controller to implement
                     break;
                 case "Message all attendees":
-                    System.out.println("FUNCTIONALITY IN PROGRESS");
+                    System.out.println("FUNCTIONALITY IN PROGRESS"); //waiting for controller to implement
                     break;
                 case "Message a specific attendee": //for organizers
                 case "Message an attendee": //for attendees
-                    //Scanner s = new Scanner(System.in);
-                    System.out.println("Enter the attendee");
-
-                    //String messageChoice = s.nextLine();
+                    //waiting for controller to implement
                     break;
 
             }
