@@ -2,7 +2,6 @@ package userInterfaces;
 
 import useCases.UserManager;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserCreationUserInterface {
