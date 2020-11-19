@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 /** A user interface for getting the message content from the sender */
 
-public class MessageInterface {
+public class MessageUserInterface {
 
     /**
      * Create a new MessageInterface
@@ -29,10 +29,10 @@ public class MessageInterface {
     }
 
     /**
-     * Display all messages sent or recieved by this user
+     * Display all messages sent or received by this user
      */
     public static void displayMessages(User user) {
-        //will call the message manager method to display all messages in order; tab(\t) for replies
+        System.out.println(MessagePresenter.displayReceivedMessagesOfUser(user)); //retrieve all messages for the current user
     }
 
     /**

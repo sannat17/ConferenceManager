@@ -4,6 +4,7 @@ import java.util.*;
 
 import controllers.MessageController;
 import entities.Message;
+import entities.User;
 import useCases.MessageManager;
 
 /** A message presenter that formats message options to display */
@@ -13,7 +14,7 @@ public class MessagePresenter {
 
     /**
      * Format and return the given options
-     * @param options the list of options
+     * @param options the list of message options available to this User
      * @return the formatted string derived from the given options
      */
     public static String formatOptions(ArrayList<String> options){
@@ -23,6 +24,23 @@ public class MessagePresenter {
         }
         return formattedOptions.toString();
     }
+
+
+    /**
+     * Format and return content of all the messages received by this user
+     * @param user the user whose messages you want to display
+     * @return the formatted string with content of all the messages received by this user
+     */
+    public static String displayReceivedMessagesOfUser(User user){
+        StringBuilder messagesOfUser = new StringBuilder();
+        ArrayList<Message> allReceivedMessages = MessageManager.getAllReceivedMessages(user.getUserID());
+        for (Message message : allReceivedMessages) {
+            messagesOfUser.append(message.getMessageContent()).append("\n");
+        }
+
+        return messagesOfUser.toString();
+    }
+
 
     public String displayAllMessages() {
 
@@ -49,5 +67,4 @@ public class MessagePresenter {
         }
         return finalMessage;
     }
-
 }
