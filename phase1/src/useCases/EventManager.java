@@ -11,7 +11,7 @@ import java.util.HashMap;
 public class EventManager {
 
     /** A hashmap where the key is the ID of an event and the value is the object of the event with that ID*/
-    private static HashMap<Integer, Event> eventHashMap;
+    private static HashMap<Integer, Event> eventHashMap = new HashMap<Integer, Event>();
 
     /** Returns the event object corresponding to an ID
      *
