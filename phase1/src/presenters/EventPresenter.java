@@ -26,6 +26,10 @@ public class EventPresenter {
         String sortedEvents = "";
 
         for (Event e: listOfEvents) {
+            sortedEvents = sortedEvents + e;
+            if (e.getAttending().contains(userID)){
+                sortedEvents = sortedEvents + " Currently Attending";
+            }
             sortedEvents = sortedEvents + "\n";
         }
         return sortedEvents.trim();
