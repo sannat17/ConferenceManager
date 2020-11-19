@@ -44,7 +44,7 @@ public class UserIO {
             File file = new File(dir);
             boolean existing = file.createNewFile(); //attempt to create new file if not preexisting
 
-            FileWriter writer = new FileWriter("./phase1/src/data/users.txt");
+            FileWriter writer = new FileWriter(dir);
             ArrayList<String> info = UserManager.getAllUsersInfo();
             info.forEach((String value) -> {
                 try {
