@@ -50,7 +50,7 @@ public class MessageIO {
             ArrayList<String> info = MessageManager.getAllMessageInfo();
             info.forEach((String value) -> {
                 try {
-                    writer.write(value);
+                    writer.write(value + "\n");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

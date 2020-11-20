@@ -84,7 +84,7 @@ public class EventIO {
             ArrayList<String> info = EventManager.getAllEventsInfo();
             info.forEach((String value) -> {
                 try {
-                    writer.write(value);
+                    writer.write(value + "\n");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
