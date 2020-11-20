@@ -2,6 +2,9 @@ package userInterfaces;
 
 //import controllers.MenuInput;
 import entities.User;
+import gateways.EventIO;
+import gateways.MessageIO;
+import gateways.UserIO;
 import presenters.MenuPresenter;
 
 import java.util.Scanner;
@@ -43,6 +46,9 @@ public class MenuUserInterface {
                         break;
 
                     case "close program":
+                        UserIO.writeFile("./phase1/src/data/users.txt");
+                        MessageIO.writeFile("./phase1/src/data/messages.txt");
+                        EventIO.writeFile("./phase1/src/data/events.txt");
                         running = false;
                         break;
                 }

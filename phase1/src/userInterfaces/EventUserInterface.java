@@ -57,7 +57,7 @@ public class EventUserInterface {
 
         System.out.println("main menu");
         String t = s.nextLine();
-        
+
         switch (t){
             case "main menu":
                 break;
