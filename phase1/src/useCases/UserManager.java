@@ -127,4 +127,18 @@ public class UserManager{
         }
         return allUsersInfo;
     }
+
+    /**
+     * Returns the ID of user with username
+     * @param username
+     * @return u.getUserID()
+     */
+    public static int giveIDOfUsername(String username){
+        for(User u : getAllUsers()){
+            if (u.getUsername().equals(username)){
+                return u.getUserID();
+            }
+        }
+        return -1;
+    }
 }

@@ -172,5 +172,17 @@ public class EventManager {
         //else if no event matches, return an empty ArrayList
     }
 
-
+    /**
+     * Returns the ID of event with title.
+     * @param title
+     * @return e.getEventID()
+     */
+    public static int giveEventIDOfTitle (String title){
+        for(Event e: getAllEvents()){
+            if (e.getTitle().equals(title)){
+                return e.getEventID();
+            }
+        }
+        return -1;
+    }
 }
