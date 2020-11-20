@@ -14,6 +14,7 @@ public class Main {
         UserIO.readFile("./phase1/src/data/users.txt");
         EventIO.readFile("./phase1/src/data/events.txt");
         MessageIO.readFile("./phase1/src/data/messages.txt");
+        while (true) {
 
 //        uncomment to try out event system
 //        ArrayList a = new ArrayList<>();
@@ -28,18 +29,22 @@ public class Main {
 //
 //        EventManager.makeEvent(3, "a is for alphabetical order testing", LocalDateTime.now(), 5,
 //                1, 1, a);
-        User loggedInUser = null;
-        Scanner s = new Scanner(System.in);
-        while(loggedInUser == null) {
-            System.out.println("Please enter your Username:");
-            String username = s.nextLine();
-            System.out.println("Please enter your Password:");
-            String password = s.nextLine();
-            loggedInUser = LoginSystem.loginCheck(username, password);
-            if (loggedInUser == null){
-                System.out.println("Your username or password is incorrect. Please enter them again.");
+            User loggedInUser = null;
+            Scanner s = new Scanner(System.in);
+            while (loggedInUser == null) {
+                System.out.println("Please enter your Username:");
+                String username = s.nextLine();
+                System.out.println("Please enter your Password:");
+                String password = s.nextLine();
+                loggedInUser = LoginSystem.loginCheck(username, password);
+                if (loggedInUser == null) {
+                    System.out.println("Your username or password is incorrect. Please enter them again.");
+                }
             }
+            MenuUserInterface.loadMenu(loggedInUser);
+            UserIO.writeFile("./phase1/src/data/users.txt");
+            MessageIO.writeFile("./phase1/src/data/messages.txt");
+            EventIO.writeFile("./phase1/src/data/events.txt");
         }
-        MenuUserInterface.loadMenu(loggedInUser);
     }
 }

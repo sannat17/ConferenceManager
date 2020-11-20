@@ -53,7 +53,7 @@ public class UserIO {
             ArrayList<String> info = UserManager.getAllUsersInfo();
             info.forEach((String value) -> {
                 try {
-                    writer.write(value);
+                    writer.write(value + "\n");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

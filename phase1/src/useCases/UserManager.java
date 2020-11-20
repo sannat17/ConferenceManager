@@ -30,6 +30,9 @@ public class UserManager{
         if (!(checkUsername(username))){
             return false;
         }
+        if(!(checkID(ID))){
+            return false;
+        }
         if (type.toLowerCase().equals("attendee")){
             Attendee a = new Attendee(username, password, ID, name);
             userHashMap.put(ID, a);
@@ -69,6 +72,21 @@ public class UserManager{
     private static boolean checkUsername(String username){
         for (User u: userHashMap.values()){
             if (username.equals(u.getUsername())){
+                System.out.println("This Username is already being used"); //im not sure if this can print in this method...
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /** Checks whether a certain ID is already being used
+     *
+     * @param ID The ID that we want to check
+     * @return Returns true if the ID is not already being used and false if it is
+     */
+    private static boolean checkID(int ID){
+        for (User u: userHashMap.values()){
+            if (ID == u.getUserID()){
                 System.out.println("This ID is already being used"); //im not sure if this can print in this method...
                 return false;
             }
