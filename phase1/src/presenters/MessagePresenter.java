@@ -11,8 +11,6 @@ import useCases.MessageManager;
 /** A message presenter that formats message options to display */
 public class MessagePresenter {
 
-    public static String finalMessage;
-
     /**
      * Format and return the given options
      * @param options the list of message options available to this User
@@ -33,7 +31,6 @@ public class MessagePresenter {
      */
     public static String displayReceivedMessagesOfUser(User user) {
 
-
         StringBuilder to_return = new StringBuilder();
 
         ArrayList<Message> allSentMessages = MessageManager.getAllSentMessages(user.getUserID());
@@ -42,11 +39,13 @@ public class MessagePresenter {
         for (Message sent: allSentMessages) {
             for (Message replied: allReceivedMessages) {
                 if (sent.getReplyToID() == -1) {
-                    to_return.append("You sent:").append(sent).append("No one replied -_-");
+                    to_return.append("You sent: ").append(sent);
                 } else if (sent.getMessageID() == replied.getReplyToID()) {
-                    to_return.append("You sent:").
-                            append(sent).append("\n").
-                            append(user.firstName).append("replied:").append(replied);
+                    to_return.append("You sent: ").append("with messageID ").append(sent.getMessageID()).
+                            append(sent).append("\n").append(replied.getSenderID()).
+                            append("replied: ").append(replied).append("\n");
+                } else {
+                    to_return.append("New incoming message: ").append(replied);
                 }
             }
         } return to_return.toString();
