@@ -3,10 +3,9 @@ package userInterfaces;
 import entities.User;
 import useCases.EventManager;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
+import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 /** User interface for organizing an event */
@@ -29,9 +28,9 @@ public class EventOrganizationUserInterface {
         try {
             DateTimeFormatter formatter= DateTimeFormatter.ofPattern("dd-MMM-yyyy HH:mm:ss");
             eventDate = LocalDateTime.parse(dateTime, formatter);
-        } catch (ExceptionInInitializerError e) {
+        } catch (DateTimeParseException e) {
             System.out.println("Please enter a valid format");
-            loadEventOrganization(user);
+            //loadEventOrganization(user);
         }
 
         System.out.println("Please enter the room number of the event:");
