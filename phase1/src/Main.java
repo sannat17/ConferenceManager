@@ -11,9 +11,9 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         //need to get all users and messages from files
-        UserIO.readFile("./src/data/users.txt");
-        EventIO.readFile("./src/data/events.txt");
-        MessageIO.readFile("./src/data/messages.txt");
+        UserIO.readFile("./phase1/src/data/users.txt");
+        EventIO.readFile("./phase1/src/data/events.txt");
+        MessageIO.readFile("./phase1/src/data/messages.txt");
 
 //        uncomment to try out event system
 //        ArrayList a = new ArrayList<>();
@@ -28,13 +28,18 @@ public class Main {
 //
 //        EventManager.makeEvent(3, "a is for alphabetical order testing", LocalDateTime.now(), 5,
 //                1, 1, a);
-
+        User loggedInUser = null;
         Scanner s = new Scanner(System.in);
-        System.out.println("Please enter your Username:");
-        String username = s.nextLine();
-        System.out.println("Please enter your Password:");
-        String password = s.nextLine();
-        User loggedInUser = LoginSystem.login(username, password);
+        while(loggedInUser == null) {
+            System.out.println("Please enter your Username:");
+            String username = s.nextLine();
+            System.out.println("Please enter your Password:");
+            String password = s.nextLine();
+            loggedInUser = LoginSystem.loginCheck(username, password);
+            if (loggedInUser == null){
+                System.out.println("Your username or password is incorrect. Please enter them again.");
+            }
+        }
         MenuUserInterface.loadMenu(loggedInUser);
     }
 }

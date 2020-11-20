@@ -33,7 +33,6 @@ public abstract class User {
         this.firstName = firstName;
 
         this.menuOptions.add("messages");
-        this.menuOptions.add("events");
         this.menuOptions.add("sign out");
         this.menuOptions.add("close program");
 
