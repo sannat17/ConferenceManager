@@ -31,6 +31,6 @@ public class UserCreationUserInterface {
             }
         }
         UserManager.makeNewUser(username, password, name, type);
-        MenuUserInterface.loadMenu(user);
+        //MenuUserInterface.loadMenu(user);
     }
 }

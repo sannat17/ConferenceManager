@@ -2,6 +2,7 @@ package userInterfaces;
 
 import entities.User;
 import useCases.EventManager;
+import useCases.UserManager;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -20,8 +21,7 @@ public class EventOrganizationUserInterface {
         LocalDateTime eventDate = null;
         boolean keepGoing = false;
         int roomNumber = -1;
-        //int speakerID = -1;
-        //int organizerID = -1;
+        int speakerID = -1;
 
         Scanner u = new Scanner(System.in);
         System.out.println("Please enter the title of the event:");
@@ -50,13 +50,24 @@ public class EventOrganizationUserInterface {
                 System.out.println("Please enter a valid room number:");
             }
         }
-        //keepGoing = false;
         System.out.println("Please enter the username of the speaker of the event:");
-        String speakerID = u.nextLine();
-        System.out.println("Please enter the username of the organizer of the event:");
-        String organizerID = u.nextLine();
-
-        EventManager.makeNewEvent(title, eventDate, roomNumber, Integer.parseInt(speakerID), Integer.parseInt(organizerID));
+        while (speakerID == -1){
+            String speakerIDString = u.nextLine();
+            if (speakerIDString.equals("end")){
+                speakerID = -2;
+                System.out.println("Event Not Created. Returning to the Main Menu... \n");
+                break;
+            }
+            speakerID = UserManager.giveIDOfUsername(speakerIDString);
+            if (speakerID == -1) {
+                System.out.println("This username does not exist. Please enter the username of the speaker of the event if you would like to try again otherwise, please enter 'end':");
+            }
+        }
+        if (speakerID != -2) {
+            EventManager.makeNewEvent(title, eventDate, roomNumber, speakerID, user.getUserID());
+            System.out.println("Event Created!\n");
+        }
+        MenuUserInterface.loadMenu(user);
     }
 
 }
