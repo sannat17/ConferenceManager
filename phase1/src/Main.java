@@ -10,7 +10,6 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        //need to get all users and messages from files
         UserIO.readFile();
         EventIO.readFile();
         MessageIO.readFile();
