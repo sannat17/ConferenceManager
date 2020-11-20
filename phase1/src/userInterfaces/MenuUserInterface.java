@@ -42,13 +42,10 @@ public class MenuUserInterface {
                         break;
                     case "create user":
                         UserCreationUserInterface.loadUserCreation(user);
-//                        loadMenu(user);
                         break;
-
                     case "sign out":
                         running = false;
                         break;
-
                     case "close program":
                         UserIO.writeFile("./phase1/src/data/users.txt");
                         MessageIO.writeFile("./phase1/src/data/messages.txt");
