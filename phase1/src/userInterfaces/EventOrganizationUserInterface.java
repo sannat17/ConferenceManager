@@ -9,6 +9,11 @@ import java.util.Scanner;
 /** User interface for organizing an event */
 public class EventOrganizationUserInterface {
 
+    /**
+     * load event organization user interface
+     *
+     * @param user the user of which this user interface is loading for
+     */
     public static void loadEventOrganization(User user) {
         Scanner u = new Scanner(System.in);
         System.out.println("Please enter the title of the event:");
