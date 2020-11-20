@@ -34,7 +34,7 @@ public class MessagePresenter {
     public static String displayReceivedMessagesOfUser(User user) {
 
 
-        StringBuilder to_return = new StringBuilder(user.firstName + "replied:");
+        StringBuilder to_return = new StringBuilder();
 
         ArrayList<Message> allSentMessages = MessageManager.getAllSentMessages(user.getUserID());
         ArrayList<Message> allReceivedMessages = MessageManager.getAllReceivedMessages(user.getUserID());
