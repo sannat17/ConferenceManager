@@ -1,8 +1,5 @@
 package userInterfaces;
 
-
-import entities.Attendee;
-import entities.Speaker;
 import entities.User;
 
 import presenters.MessagePresenter;
@@ -10,7 +7,6 @@ import presenters.MessagePresenter;
 import java.util.Scanner;
 
 import static controllers.MessageController.*;
-import static useCases.UserManager.getAllUsers;
 
 /** A user interface for getting the message content from the sender */
 
@@ -34,7 +30,7 @@ public class MessageUserInterface {
                     MessagePresenter.displayReceivedMessagesOfUser(user);
                     break;
                 case "Message all attendees of the talk":
-                    System.out.println("FUNCTIONALITY IN PROGRESS"); //waiting for controller to implement
+                    System.out.println("FUNCTIONALITY IN PROGRESS");
                     break;
                 case "Respond to an attendee":
                 case "Message a specific speaker" : //for organizers
@@ -50,13 +46,13 @@ public class MessageUserInterface {
                     int replyToID = s.nextInt();
                     String content = getMessageContent();
 
-                    replyOrNewMessage(senderID, receiverID, replyToID, content);
+                    createNewMessage(senderID, receiverID, replyToID, content);
                     break;
                 case "Message all speakers":
                     System.out.println("Please enter your ID");
                     int senderIDAllSpeakers= s.nextInt();
                     String contentAllSpeakers = getMessageContent();
-                    messageAllSpeakers( senderIDAllSpeakers, contentAllSpeakers);
+                    messageAllSpeakers(senderIDAllSpeakers, contentAllSpeakers);
                     break;
                 case "Message all attendees":
                     System.out.println("Please enter your ID");

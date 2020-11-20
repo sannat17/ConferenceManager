@@ -3,11 +3,6 @@ package controllers;
 //import entities.Event;
 import entities.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Scanner;
-
-import static useCases.MessageManager.makeMessage;
 import static useCases.MessageManager.makeNewMessage;
 import static useCases.UserManager.getAllUsers;
 
@@ -25,15 +20,9 @@ public class MessageController {
      * @param content    - the content of the message
      */
 
-    public static void replyOrNewMessage(int receiverID, int senderID,
+    public static void createNewMessage(int receiverID, int senderID,
                                          int replyToID, String content) {
-        if (replyToID != -1) {
-            makeNewMessage(senderID, receiverID, replyToID, content);
-            //make a message with the given input
-        } else {
-            makeNewMessage(senderID, receiverID, -1, content);
-            //-1 because it isn't a reply
-        }
+        makeNewMessage(senderID, receiverID, replyToID, content);
     }
 
     public static void messageAllSpeakers(int senderID, String content){
