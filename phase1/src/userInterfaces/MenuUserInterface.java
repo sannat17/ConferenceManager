@@ -14,6 +14,8 @@ public class MenuUserInterface {
 
     /**
      * Load the menu interface
+     *
+     * @param user the user of which the menu is displayed for
      */
     public static void loadMenu(User user) {
 
