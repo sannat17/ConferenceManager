@@ -1,42 +1,31 @@
 package controllers;
 import entities.Event;
+import entities.User;
 import useCases.EventManager;
+import useCases.UserManager;
+
 import java.util.HashMap;
 
 /** The controller class for events */
 public class EventController {
 
-//    This variable stores the hashMap for the presenter, however, in the background, when this method is called
-//    the private variable in the useCase EventManager stores the signUp information.
-
-    public static HashMap<Integer, Event> presenterEventHashMap;
-
-    public static String exceptionMessage;
-
-    public static boolean controlSignUp(int userID, int eventID){
-
-        if (EventManager.signUpForEvent(userID, eventID)) {
-            presenterEventHashMap.get(eventID).addAttendant(userID);
-            return true;
-        } else {
-            exceptionMessage = "The User with userID" + userID + "already exists in the Event with ID" + eventID;
-            return false;
+    public static boolean signUp(User user, int eventID) {
+        for (Event e: EventManager.getAllEventsByUser(user.getUserID())) {
+            if (e.getEventID() == eventID) {
+                return false;
+            }
         }
+        EventManager.signUpForEvent(user.getUserID(), eventID);
+        return true;
     }
 
-//  ********************************************************************************************************************
-
-    public static boolean controlCancel(int userID, int eventID){
-
-        if (EventManager.cancelSpotForEvent(userID, eventID)) {
-            presenterEventHashMap.get(eventID).removeAttendant(userID);
-            return true;
-        } else {
-            exceptionMessage = "The User with userID" + userID + "doesn't exist in the Event with ID" + eventID;
-            return false;
+    public static boolean cancelSignUp(User user, int eventID) {
+        for (Event e: EventManager.getAllEventsByUser(user.getUserID())) {
+            if (e.getEventID() == eventID) {
+                EventManager.cancelSpotForEvent(user.getUserID(), eventID);
+                return true;
+            }
         }
+        return false;
     }
-
-//  ********************************************************************************************************************
-
 }

@@ -1,5 +1,6 @@
 package userInterfaces;
 
+import controllers.EventController;
 import entities.User;
 import presenters.EventPresenter;
 import presenters.MenuPresenter;
@@ -25,12 +26,20 @@ public class EventUserInterface {
 
         switch (t) {
             case "signup":
-//                EventController.signUp();
-                System.out.println("FUNCTIONALITY IN PROGRESS");
+                System.out.println("Please enter the event ID of the event you would like to sign up for");
+                if (EventController.signUp(user, new Integer(s.nextLine()))) {
+                    System.out.println("Sign up successful!");
+                } else {
+                    System.out.println("Sign up failed");
+                }
                 break;
             case "cancel signup":
-//                EventController.cancelSignUp();
-                System.out.println("FUNCTIONALITY IN PROGRESS");
+                System.out.println("Please enter the event ID of the event you would like to cancel from");
+                if (EventController.cancelSignUp(user, new Integer(s.nextLine()))) {
+                    System.out.println("Cancellation successful!");
+                } else {
+                    System.out.println("Cancellation failed");
+                }
                 break;
             case "main menu":
                 MenuUserInterface.loadMenu(user);
