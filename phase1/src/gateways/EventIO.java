@@ -23,7 +23,7 @@ public class EventIO {
      */
     public static void readFile(){
         try{
-            String dir = "../data/events.txt";
+            String dir = "./phase1/src/data/events.txt";
             File file = new File(dir);
             Scanner fs = new Scanner(file);
 
@@ -75,7 +75,7 @@ public class EventIO {
      */
     public static void writeFile(){
         try{
-            String dir = "../data/events.txt";
+            String dir = "./phase1/src/data/events.txt";
             File file = new File(dir);
             boolean existing = file.createNewFile(); //attempt to create new file if not preexisting
 
