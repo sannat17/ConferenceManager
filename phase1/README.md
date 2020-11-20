@@ -12,7 +12,8 @@ Navigate your social conference easily with our text-based communication softwar
 
 ## How to use?
 1. Open the Main class
-2. Enter corresponding credentials to log in
+2. Enter corresponding credentials to log in 
+(Default Admin Credentials: Username: Group0384, Password: CSC207)
 3. To create a new user for the conference, ensure you are logged in as an organizer
 4. Navigate the program based on given options
 
