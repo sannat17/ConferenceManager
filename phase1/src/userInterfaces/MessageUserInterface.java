@@ -23,7 +23,7 @@ public class MessageUserInterface {
         String messageChoice = s.nextLine();
         if (user.getMessageOptions().contains(messageChoice)) {
             switch (messageChoice) {
-                case "Go back to the previous screen":
+                case "Back":
                     MenuUserInterface.loadMenu(user);
                     break;
                 case "Display all messages":

@@ -36,7 +36,7 @@ public abstract class User {
         this.menuOptions.add("sign out");
         this.menuOptions.add("close program");
 
-        this.messageOptions.add("Go back to the previous screen");
+        this.messageOptions.add("Back");
         this.messageOptions.add("Display all messages");
     }
 
