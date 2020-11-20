@@ -42,9 +42,9 @@ public class MenuUserInterface {
                         break;
                     case "create user":
                         UserCreationUserInterface.loadUserCreation(user);
-//                        loadMenu(user);
                         break;
-
+                    case "organize event":
+                        EventOrganizationUserInterface.loadEventOrganization(user);
                     case "sign out":
                         running = false;
                         break;
