@@ -39,8 +39,8 @@ public class MenuUserInterface {
                         EventUserInterface.loadEvents(user);
                         break;
                     case "create user":
-                        UserCreationUserInterface.loadUserCreation();
-                        loadMenu(user);
+                        UserCreationUserInterface.loadUserCreation(user);
+//                        loadMenu(user);
                         break;
 
                     case "sign out":
