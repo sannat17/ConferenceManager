@@ -48,11 +48,10 @@ public class MenuUserInterface {
                     case "sign out":
                         running = false;
                         break;
-
                     case "close program":
-                        UserIO.writeFile("./phase1/src/data/users.txt");
-                        MessageIO.writeFile("./phase1/src/data/messages.txt");
-                        EventIO.writeFile("./phase1/src/data/events.txt");
+                        UserIO.writeFile();
+                        MessageIO.writeFile();
+                        EventIO.writeFile();
                         running = false;
                         System.exit(0);
                         break;

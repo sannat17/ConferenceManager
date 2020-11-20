@@ -18,8 +18,18 @@ public class UserCreationUserInterface {
         String password = s.nextLine();
         System.out.println("Please enter the new users Name");
         String name = s.nextLine();
-        System.out.println("Please enter the new users type (organizer, speaker, attendee)");
-        String type = s.nextLine();
+        String type = new String();
+        Boolean trueType = false;
+        while (!trueType) {
+            System.out.println("Please enter the new users type (organizer, speaker, attendee)");
+            type = s.nextLine().toLowerCase();
+            if ((type.equals("organizer") || (type.equals("speaker") || (type.equals("attendee"))))){
+                trueType = true;
+            }
+            else{
+                System.out.println("Incorrect type entered");
+            }
+        }
         UserManager.makeNewUser(username, password, name, type);
         MenuUserInterface.loadMenu(user);
     }
