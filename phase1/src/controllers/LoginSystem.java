@@ -4,7 +4,6 @@ import java.util.*;
 import entities.*;
 import useCases.UserManager;
 
-// Due to getLoginInformation() this is also a UI
 /** A login system allowing user logins if credentials match an existing user class */
 public class LoginSystem {
 
