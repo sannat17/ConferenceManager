@@ -11,9 +11,9 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         //need to get all users and messages from files
-        UserIO.readFile("./src/data/users.txt");
-        EventIO.readFile("./src/data/events.txt");
-        MessageIO.readFile("./src/data/messages.txt");
+        UserIO.readFile("./phase1/src/data/users.txt");
+        EventIO.readFile("./phase1/src/data/events.txt");
+        MessageIO.readFile("./phase1/src/data/messages.txt");
         while (true) {
 
 //        uncomment to try out event system
@@ -42,9 +42,9 @@ public class Main {
                 }
             }
             MenuUserInterface.loadMenu(loggedInUser);
-            UserIO.writeFile("./src/data/users.txt");
-            MessageIO.writeFile("./src/data/messages.txt");
-            EventIO.writeFile("./src/data/events.txt");
+            UserIO.writeFile("./phase1/src/data/users.txt");
+            MessageIO.writeFile("./phase1/src/data/messages.txt");
+            EventIO.writeFile("./phase1/src/data/events.txt");
         }
     }
 }
