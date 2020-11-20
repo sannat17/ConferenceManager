@@ -2,8 +2,7 @@ package presenters;
 
 import java.lang.reflect.Array;
 import java.util.*;
-
-import controllers.MessageController;
+import useCases.UserManager;
 import entities.Message;
 import entities.User;
 import useCases.MessageManager;
@@ -13,10 +12,11 @@ public class MessagePresenter {
 
     /**
      * Format and return the given options
+     *
      * @param options the list of message options available to this User
      * @return the formatted string derived from the given options
      */
-    public static String formatOptions(ArrayList<String> options){
+    public static String formatOptions(ArrayList<String> options) {
         StringBuilder formattedOptions = new StringBuilder();
         for (String option : options) {
             formattedOptions.append(option).append("\n");
@@ -26,6 +26,7 @@ public class MessagePresenter {
 
     /**
      * Format and return content of all the messages received by this user
+     *
      * @param user the user whose messages you want to display
      * @return the formatted string with content of all the messages received by this user
      */
@@ -33,21 +34,17 @@ public class MessagePresenter {
 
         StringBuilder to_return = new StringBuilder();
 
-        ArrayList<Message> allSentMessages = MessageManager.getAllSentMessages(user.getUserID());
         ArrayList<Message> allReceivedMessages = MessageManager.getAllReceivedMessages(user.getUserID());
 
-        for (Message sent: allSentMessages) {
-            for (Message replied: allReceivedMessages) {
-                if (sent.getReplyToID() == -1) {
-                    to_return.append("You sent: ").append(sent);
-                } else if (sent.getMessageID() == replied.getReplyToID()) {
-                    to_return.append("You sent: ").append("with messageID ").append(sent.getMessageID()).
-                            append(sent).append("\n").append(replied.getSenderID()).
-                            append("replied: ").append(replied).append("\n");
-                } else {
-                    to_return.append("New incoming message: ").append(replied);
-                }
-            }
+        for (Message received : allReceivedMessages) {
+
+            to_return.append("You received a message from ").append(UserManager.getUser(received.getSenderID())).
+                    append("with messageID: ").append(received.getMessageID()).append(received.getMessageID()).
+                    append(received).append("\n");
+
         } return to_return.toString();
     }
 }
+
+
+
