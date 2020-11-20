@@ -34,7 +34,7 @@ public class MessagePresenter {
     public static String displayReceivedMessagesOfUser(User user) {
 
 
-        StringBuilder to_return = new StringBuilder(user.firstName + "replied:");
+        StringBuilder to_return = new StringBuilder();
 
         ArrayList<Message> allSentMessages = MessageManager.getAllSentMessages(user.getUserID());
         ArrayList<Message> allReceivedMessages = MessageManager.getAllReceivedMessages(user.getUserID());
@@ -43,7 +43,7 @@ public class MessagePresenter {
             for (Message replied: allReceivedMessages) {
                 if (sent.getReplyToID() == -1) {
                     to_return.append("You sent:").append(sent).append("No one replied -_-");
-                } else if (sent.getReplyToID() == replied.getMessageID()) {
+                } else if (sent.getMessageID() == replied.getReplyToID()) {
                     to_return.append("You sent:").
                             append(sent).append("\n").
                             append(user.firstName).append("replied:").append(replied);

@@ -1,12 +1,16 @@
 package userInterfaces;
 
 
+import entities.Attendee;
+import entities.Speaker;
 import entities.User;
 
 import presenters.MessagePresenter;
 
 import java.util.Scanner;
-import java.util.ArrayList;
+
+import static controllers.MessageController.*;
+import static useCases.UserManager.getAllUsers;
 
 /** A user interface for getting the message content from the sender */
 
@@ -33,21 +37,32 @@ public class MessageUserInterface {
                     System.out.println("FUNCTIONALITY IN PROGRESS"); //waiting for controller to implement
                     break;
                 case "Respond to an attendee":
-                    System.out.println("FUNCTIONALITY IN PROGRESS"); //waiting for controller to implement
+                case "Message a specific speaker" : //for organizers
+                case "Message an attendee": //for attendees
+                case "Message a specific attendee":
+                case "Message a speaker":     //for attendee
+                    System.out.println("Please enter your ID");
+                    int senderID = s.nextInt();
+                    System.out.println("Please enter the receiver's ID");
+                    int receiverID = s.nextInt();
+                    System.out.println("Please enter the ID of the message you're replying to " +
+                            "or enter -1 if you're starting a new message");
+                    int replyToID = s.nextInt();
+                    String content = getMessageContent();
+
+                    replyOrNewMessage(senderID, receiverID, replyToID, content);
                     break;
                 case "Message all speakers":
-                    System.out.println("FUNCTIONALITY IN PROGRESS"); //waiting for controller to implement
-                    break;
-                case "Message a specific speaker" : //for organizers
-                case "Message a speaker":     //for attendee
-                    System.out.println("FUNCTIONALITY IN PROGRESS"); //waiting for controller to implement
+                    System.out.println("Please enter your ID");
+                    int senderIDAllSpeakers= s.nextInt();
+                    String contentAllSpeakers = getMessageContent();
+                    messageAllSpeakers( senderIDAllSpeakers, contentAllSpeakers);
                     break;
                 case "Message all attendees":
-                    System.out.println("FUNCTIONALITY IN PROGRESS"); //waiting for controller to implement
-                    break;
-                case "Message a specific attendee": //for organizers
-                case "Message an attendee": //for attendees
-                    //waiting for controller to implement
+                    System.out.println("Please enter your ID");
+                    int senderIDAllAttendees = s.nextInt();
+                    String contentAllAttendees = getMessageContent();
+                    messageAllAttendees(senderIDAllAttendees, contentAllAttendees);
                     break;
 
             }
