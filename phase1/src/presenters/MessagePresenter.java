@@ -1,6 +1,4 @@
 package presenters;
-
-import java.lang.reflect.Array;
 import java.util.*;
 import useCases.UserManager;
 import entities.Message;
