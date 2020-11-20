@@ -1,11 +1,9 @@
 package userInterfaces;
 
 //import controllers.MenuInput;
-import controllers.MenuController;
 import entities.User;
 import presenters.MenuPresenter;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 /** A user interface for interacting with the menu */

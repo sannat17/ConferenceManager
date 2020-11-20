@@ -21,7 +21,7 @@ public class MessageUserInterface {
         System.out.println("Enter message option:");
 
         String messageChoice = s.nextLine();
-        if (user.getMenuOptions().contains(messageChoice)) {
+        if (user.getMessageOptions().contains(messageChoice)) {
             switch (messageChoice) {
                 case "Go back to the previous screen":
                     MenuUserInterface.loadMenu(user);
