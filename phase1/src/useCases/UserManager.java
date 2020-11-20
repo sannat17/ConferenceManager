@@ -72,7 +72,6 @@ public class UserManager{
     private static boolean checkUsername(String username){
         for (User u: userHashMap.values()){
             if (username.equals(u.getUsername())){
-                System.out.println("This Username is already being used"); //im not sure if this can print in this method...
                 return false;
             }
         }
@@ -87,7 +86,6 @@ public class UserManager{
     private static boolean checkID(int ID){
         for (User u: userHashMap.values()){
             if (ID == u.getUserID()){
-                System.out.println("This ID is already being used"); //im not sure if this can print in this method...
                 return false;
             }
         }
