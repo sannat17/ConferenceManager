@@ -58,6 +58,11 @@ public class MessageManager {
         return true;
     }
 
+    /** Return all messages sent by user.
+     *
+     * @param ID The userID of the user
+     * @return return an ArrayList of all the Message objects of messages sent by the user
+     */
     public static ArrayList<Message> getAllSentMessages(int ID) {
 
         ArrayList<Message> to_return = new ArrayList<>();
@@ -69,6 +74,11 @@ public class MessageManager {
         return to_return;
     }
 
+    /** Return all messages received by user
+     *
+     * @param ID The userID of the user
+     * @return return an ArrayList of all the Message objects of messages received by the user
+     */
     public static ArrayList<Message> getAllReceivedMessages(int ID) {
 
         ArrayList<Message> to_return = new ArrayList<>();
@@ -80,10 +90,18 @@ public class MessageManager {
         return to_return;
     }
 
+    /** Return all the messages in the system.
+     *
+     * @return return an ArrayList of all Message objects that exist on the system.
+     */
     public static ArrayList<Message> getAllMessages() {
         return (ArrayList<Message>) messageHashMap.values();
     }
 
+    /** Return all the information of the messages in the system
+     *
+     * @return return an ArrayList of the string representation of all Message objects that exist in the system.s
+     */
     public static ArrayList<String> getAllMessageInfo() {
 
         ArrayList<String> to_return = new ArrayList<>();
