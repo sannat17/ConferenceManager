@@ -30,22 +30,18 @@ public class MessageUserInterface {
                     MessagePresenter.displayReceivedMessagesOfUser(user);
                     break;
                 case "Message all attendees of the talk":
-                    System.out.println("Please enter your username:");
-                    String senderUsernameSpecificEvent = s.nextLine();
                     System.out.println("Please enter the title of the talk you " +
                             "would like to message the attendees of:");
                     String eventTitle = s.nextLine();
                     String contentSpecificEvent = getMessageContent();
                     //method to message all the attendees of a talk
-                    messageAllAttendeesOfTalk(senderUsernameSpecificEvent, eventTitle, contentSpecificEvent);
+                    messageAllAttendeesOfTalk(user.getUsername(), eventTitle, contentSpecificEvent);
                     break;
                 case "Respond to an attendee":
                 case "Message a specific speaker" : //for organizers
                 case "Message an attendee": //for attendees
                 case "Message a specific attendee":
                 case "Message a speaker":     //for attendee
-                    System.out.println("Please enter your username");
-                    String senderUsername = s.nextLine();
                     System.out.println("Please enter the receiver's username");
                     String receiverUsername = s.nextLine();
                     System.out.println("Please enter the ID of the message you're replying to " +
@@ -53,19 +49,15 @@ public class MessageUserInterface {
                     int replyToID = s.nextInt();
                     String content = getMessageContent();
 
-                    createNewMessage(senderUsername, receiverUsername, replyToID, content);
+                    createNewMessage(user.getUsername(), receiverUsername, replyToID, content);
                     break;
                 case "Message all speakers":
-                    System.out.println("Please enter your username");
-                    String senderUsernameAllSpeakers= s.nextLine();
                     String contentAllSpeakers = getMessageContent();
-                    messageAllSpeakers(senderUsernameAllSpeakers, contentAllSpeakers);
+                    messageAllSpeakers(user.getUsername(), contentAllSpeakers);
                     break;
                 case "Message all attendees":
-                    System.out.println("Please enter your username");
-                    String senderUsernameAllAttendees = s.nextLine();
                     String contentAllAttendees = getMessageContent();
-                    messageAllAttendees(senderUsernameAllAttendees, contentAllAttendees);
+                    messageAllAttendees(user.getUsername(), contentAllAttendees);
                     break;
 
             }
