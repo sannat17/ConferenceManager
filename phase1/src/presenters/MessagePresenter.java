@@ -1,5 +1,6 @@
 package presenters;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 import controllers.MessageController;
@@ -25,55 +26,29 @@ public class MessagePresenter {
         return formattedOptions.toString();
     }
 
-
     /**
      * Format and return content of all the messages received by this user
      * @param user the user whose messages you want to display
      * @return the formatted string with content of all the messages received by this user
      */
-    public static String displayReceivedMessagesOfUser(User user){
+    public static String displayReceivedMessagesOfUser(User user) {
 
 
-        StringBuilder messagesOfUser = new StringBuilder();
+        StringBuilder to_return = new StringBuilder(user.firstName + "replied:");
 
+        ArrayList<Message> allSentMessages = MessageManager.getAllSentMessages(user.getUserID());
         ArrayList<Message> allReceivedMessages = MessageManager.getAllReceivedMessages(user.getUserID());
-        for (Message message : allReceivedMessages) {
 
-            if (message.getReplyToID() == -1) {
-
-                messagesOfUser.append(message.getMessageContent()).append("\n");
-            } else {
-                messagesOfUser.append(message.getMessageContent()).append("\n");
+        for (Message sent: allSentMessages) {
+            for (Message replied: allReceivedMessages) {
+                if (sent.getReplyToID() == -1) {
+                    to_return.append("You sent:").append(sent).append("No one replied -_-");
+                } else if (sent.getReplyToID() == replied.getMessageID()) {
+                    to_return.append("You sent:").
+                            append(sent).append("\n").
+                            append(user.firstName).append("replied:").append(replied);
+                }
             }
-        }
-
-        return messagesOfUser.toString();
-    }
-
-
-    public String displayAllMessages() {
-
-        ArrayList<String> messages = new ArrayList<>();
-
-        Map<Integer, ArrayList<String>> presenterHashMap = new HashMap<>();
-
-
-        for (Integer integer: MessageController.presenterMessageHashMap.keySet()) {
-
-            for (Message message: MessageManager.getAllSentMessages(integer)) {
-
-//              This appends all the strings of messages into a list
-                messages.add(message.getMessageContent());
-                presenterHashMap.put(integer, messages);
-            }
-        }
-
-        for (Integer userID: presenterHashMap.keySet()) {
-
-            String finalMessage = "These are all the messages sent by the user with ID"
-                    + userID + formatOptions(presenterHashMap.get(userID));
-
-        }
-        return finalMessage;
+        } return to_return.toString();
     }
 }

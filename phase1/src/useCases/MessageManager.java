@@ -40,7 +40,7 @@ public class MessageManager {
      * @param receiverID The ID of the receiver of the message
      * @param replyToID The ID of the reply of the message
      * @param messageContent The ID of the sender of the message
-     * @return retuens true if a new message is made.
+     * @return returns true if a new message is made.
      */
     public static boolean makeNewMessage(int senderID, int receiverID, int replyToID, String messageContent) {
 
