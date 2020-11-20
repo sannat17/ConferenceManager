@@ -23,7 +23,7 @@ public class MenuUserInterface {
             System.out.println("Enter menu option:");
 
             String menuChoice = s.nextLine();
-
+            System.out.println(user.getMenuOptions());
             if (user.getMenuOptions().contains(menuChoice)) {
                 switch (menuChoice) {
                     case "messages":
@@ -38,6 +38,7 @@ public class MenuUserInterface {
                         break;
                     case "sign out":
                         break;
+
                     case "close program":
                         running = false;
                         break;
