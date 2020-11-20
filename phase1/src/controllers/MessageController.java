@@ -36,4 +36,26 @@ public class MessageController {
         }
     }
 
+    public static void messageAllSpeakers(int senderID, String content){
+        for (User i : getAllUsers()) { //goes through each User one by one
+            //from UserManager
+            if (i instanceof Speaker) { //if the current user is an instance of Speaker
+                makeNewMessage(senderID, i.getUserID(),
+                        -1, content);
+                //create the message with no reply
+            }
+        }
+    }
+
+    public static void messageAllAttendees(int senderID, String content){
+        for (User i : getAllUsers()) {//goes through each User one by one
+            //from UserManager
+            if (i instanceof Attendee) { //if the current user is an instance of Attendee
+                makeNewMessage(senderID, i.getUserID(),
+                        -1, content);
+                //create a message with no reply
+            }
+        }
+    }
+
 }

@@ -9,7 +9,7 @@ import presenters.MessagePresenter;
 
 import java.util.Scanner;
 
-import static controllers.MessageController.replyOrNewMessage;
+import static controllers.MessageController.*;
 import static useCases.UserManager.getAllUsers;
 
 /** A user interface for getting the message content from the sender */
@@ -55,31 +55,14 @@ public class MessageUserInterface {
                 case "Message all speakers":
                     System.out.println("Please enter your ID");
                     int senderIDAllSpeakers= s.nextInt();
-
                     String contentAllSpeakers = getMessageContent();
-                    for (User i : getAllUsers()) { //goes through each User one by one
-                        //from UserManager
-                        if (i instanceof Speaker) { //if the current user is an instance of Speaker
-                            replyOrNewMessage(senderIDAllSpeakers, i.getUserID(),
-                                    -1, contentAllSpeakers);
-                            //create the message with no reply
-                        }
-                    }
+                    messageAllSpeakers( senderIDAllSpeakers, contentAllSpeakers);
                     break;
                 case "Message all attendees":
                     System.out.println("Please enter your ID");
                     int senderIDAllAttendees = s.nextInt();
-
                     String contentAllAttendees = getMessageContent();
-
-                    for (User i : getAllUsers()) {//goes through each User one by one
-                        //from UserManager
-                        if (i instanceof Attendee) { //if the current user is an instance of Attendee
-                            replyOrNewMessage(senderIDAllAttendees, i.getUserID(),
-                                    -1, contentAllAttendees);
-                            //create a message with no reply
-                        }
-                    }
+                    messageAllAttendees(senderIDAllAttendees, contentAllAttendees);
                     break;
 
             }
