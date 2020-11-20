@@ -8,10 +8,8 @@ import entities.User;
 import presenters.MessagePresenter;
 
 import java.util.Scanner;
-import java.util.ArrayList;
 
 import static controllers.MessageController.replyOrNewMessage;
-import static useCases.MessageManager.makeNewMessage;
 import static useCases.UserManager.getAllUsers;
 
 /** A user interface for getting the message content from the sender */
