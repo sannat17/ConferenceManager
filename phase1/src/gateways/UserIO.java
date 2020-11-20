@@ -16,10 +16,10 @@ public class UserIO {
 
     /**
      * reads in user file and passes user data to UserManager
-     * @param dir - the file path relative to the project root
      */
-    public static void readFile(String dir){
+    public static void readFile(){
         try{
+            String dir = "../data/users.txt";
             File file = new File(dir);
             Scanner fs = new Scanner(file);
 
@@ -42,10 +42,10 @@ public class UserIO {
 
     /**
      * writes all user data from UserManager to file
-     * @param dir - the file path relative to the project root
      */
-    public static void writeFile(String dir){
+    public static void writeFile(){
         try{
+            String dir = "../data/users.txt";
             File file = new File(dir);
             boolean existing = file.createNewFile(); //attempt to create new file if not preexisting
 

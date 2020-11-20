@@ -14,6 +14,8 @@ public class MenuUserInterface {
 
     /**
      * Load the menu interface
+     *
+     * @param user the user of which the menu is displayed for
      */
     public static void loadMenu(User user) {
 
@@ -40,17 +42,14 @@ public class MenuUserInterface {
                         break;
                     case "create user":
                         UserCreationUserInterface.loadUserCreation(user);
-//                        loadMenu(user);
                         break;
-
                     case "sign out":
                         running = false;
                         break;
-
                     case "close program":
-                        UserIO.writeFile("./phase1/src/data/users.txt");
-                        MessageIO.writeFile("./phase1/src/data/messages.txt");
-                        EventIO.writeFile("./phase1/src/data/events.txt");
+                        UserIO.writeFile();
+                        MessageIO.writeFile();
+                        EventIO.writeFile();
                         running = false;
                         System.exit(0);
                         break;
