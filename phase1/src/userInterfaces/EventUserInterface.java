@@ -47,4 +47,21 @@ public class EventUserInterface {
 
     }
 
+    public static void loadEvents(User user) {
+        System.out.println("View events by title \n View events by time \n View events by speaker \n");
+
+        Scanner s = new Scanner(System.in);
+        System.out.println("Enter sorting option (title, time, speaker):");
+
+        System.out.println(EventPresenter.formatEvents(s.nextLine(), user.getUserID()));
+
+        System.out.println("main menu");
+        String t = s.nextLine();
+        
+        switch (t){
+            case "main menu":
+                break;
+        }
+    }
+
 }

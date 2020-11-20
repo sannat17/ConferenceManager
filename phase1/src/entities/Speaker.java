@@ -14,6 +14,7 @@ public class Speaker extends User{
      */
     public Speaker(String username, String password, int ID, String firstName) {
         super(username, password, ID, firstName);
+        this.menuOptions.add("view events");
         this.messageOptions.add("Message all attendees of the talk");
         this.messageOptions.add("Respond to an attendee");
     }

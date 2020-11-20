@@ -32,6 +32,9 @@ public class MenuUserInterface {
                     case "events":
                         EventUserInterface.loadEventChoices(user);
                         break;
+                    case "view events":
+                        EventUserInterface.loadEvents(user);
+                        break;
                     case "create user":
                         UserCreationUserInterface.loadUserCreation();
                         loadMenu(user);
