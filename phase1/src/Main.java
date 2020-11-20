@@ -11,24 +11,10 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         //need to get all users and messages from files
-        UserIO.readFile("./phase1/src/data/users.txt");
-        EventIO.readFile("./phase1/src/data/events.txt");
-        MessageIO.readFile("./phase1/src/data/messages.txt");
+        UserIO.readFile();
+        EventIO.readFile();
+        MessageIO.readFile();
         while (true) {
-
-//        uncomment to try out event system
-//        ArrayList a = new ArrayList<>();
-//        a.add(new Integer(1));
-//        a.add(new Integer(0));
-//
-//        EventManager.makeEvent(1, "how to cure PTSD from cs post", LocalDateTime.now(), 1,
-//                1, 1, a);
-//
-//        EventManager.makeEvent(2, "waterloo is for clowns", LocalDateTime.now(), 2,
-//                2, 1, a);
-//
-//        EventManager.makeEvent(3, "a is for alphabetical order testing", LocalDateTime.now(), 5,
-//                1, 1, a);
             User loggedInUser = null;
             Scanner s = new Scanner(System.in);
             while (loggedInUser == null) {
@@ -42,9 +28,9 @@ public class Main {
                 }
             }
             MenuUserInterface.loadMenu(loggedInUser);
-            UserIO.writeFile("./phase1/src/data/users.txt");
-            MessageIO.writeFile("./phase1/src/data/messages.txt");
-            EventIO.writeFile("./phase1/src/data/events.txt");
+            UserIO.writeFile();
+            MessageIO.writeFile();
+            EventIO.writeFile();
         }
     }
 }

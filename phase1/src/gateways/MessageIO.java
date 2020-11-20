@@ -13,11 +13,10 @@ public class MessageIO {
 
     /**
      * reads in messages file and passes message data to MessageManager
-     * @param dir - the file path relative to the project root
      */
-    public static void readFile(String dir) {
-
+    public static void readFile() {
         try {
+            String dir = "./phase1/src/data/messages.txt";
             File file = new File(dir);
             Scanner fs = new Scanner(file);
 
@@ -39,10 +38,10 @@ public class MessageIO {
 
     /**
      * writes all user data from MessageManager to file
-     * @param dir - the file path relative to the project root
      */
-    public static void writeFile(String dir){
+    public static void writeFile(){
         try{
+            String dir = "./phase1/src/data/messages.txt";
             File file = new File(dir);
             boolean existing = file.createNewFile(); //attempt to create new file if not preexisting
 
