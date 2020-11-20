@@ -30,7 +30,14 @@ public class MessageUserInterface {
                     MessagePresenter.displayReceivedMessagesOfUser(user);
                     break;
                 case "Message all attendees of the talk":
-                    System.out.println("FUNCTIONALITY IN PROGRESS");
+                    System.out.println("Please enter your ID:");
+                    int senderIDSpecificEvent = s.nextInt();
+                    System.out.println("Please enter the ID of the talk you " +
+                            "would like to message the attendees of:");
+                    int eventID = s.nextInt();
+                    String contentSpecificEvent = getMessageContent();
+                    //method to message all the attendees of a talk
+                    messageAllAttendeesOfTalk(senderIDSpecificEvent, eventID, contentSpecificEvent);
                     break;
                 case "Respond to an attendee":
                 case "Message a specific speaker" : //for organizers

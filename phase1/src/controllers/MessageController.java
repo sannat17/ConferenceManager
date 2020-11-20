@@ -1,8 +1,10 @@
 package controllers;
 
-//import entities.Event;
 import entities.*;
 
+import java.util.ArrayList;
+
+import static useCases.EventManager.getAttendingSpecificEvent;
 import static useCases.MessageManager.makeNewMessage;
 import static useCases.UserManager.getAllUsers;
 
@@ -27,7 +29,7 @@ public class MessageController {
 
     public static void messageAllSpeakers(int senderID, String content){
         for (User i : getAllUsers()) { //goes through each User one by one
-            //from UserManager
+                                        //from UserManager
             if (i instanceof Speaker) { //if the current user is an instance of Speaker
                 makeNewMessage(senderID, i.getUserID(),
                         -1, content);
@@ -38,12 +40,28 @@ public class MessageController {
 
     public static void messageAllAttendees(int senderID, String content){
         for (User i : getAllUsers()) {//goes through each User one by one
-            //from UserManager
+                                        //from UserManager
             if (i instanceof Attendee) { //if the current user is an instance of Attendee
                 makeNewMessage(senderID, i.getUserID(),
                         -1, content);
                 //create a message with no reply
             }
+        }
+    }
+
+    /**
+     * Messages every attendee attending the event with EventID
+     * @param senderID - ID of the sender (the speaker)
+     * @param eventID - ID of the event
+     * @param content - content of the message
+     */
+    public static void messageAllAttendeesOfTalk(int senderID, int eventID, String content){
+        ArrayList<Integer> attendees = getAttendingSpecificEvent(eventID);
+        //list of all attendeeIDs attending
+        for (Integer attendeeID: attendees){
+            makeNewMessage(senderID, attendeeID, -1, content);
+            //for every attendee, create message with no reply
+            //if attendees is empty, no messages will be created
         }
     }
 

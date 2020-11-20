@@ -156,5 +156,21 @@ public class EventManager {
         return eventsByUser;
     }
 
+    /**
+     * Returns the attendees of event with ID eventID
+     * @param eventID - ID of event
+     * @return event.getAttending()
+     */
+    public static ArrayList<Integer> getAttendingSpecificEvent(int eventID){
+        for(Event event : getAllEvents()){ //for all events..
+            if (eventID == event.getEventID()){
+            //if the eventID matches...
+                return event.getAttending(); //return the list of attendees
+            }
+        }
+        return new ArrayList<Integer>();
+        //else if no event matches, return an empty ArrayList
+    }
+
 
 }
