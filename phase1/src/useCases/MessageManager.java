@@ -44,7 +44,13 @@ public class MessageManager {
      */
     public static boolean makeNewMessage(int senderID, int receiverID, int replyToID, String messageContent) {
 
-        int messageID = Collections.max(messageHashMap.keySet()) + 1;
+        int messageID;
+
+        if (messageHashMap.keySet().isEmpty()){
+            messageID = 0;
+        } else{
+            messageID = Collections.max(messageHashMap.keySet()) + 1;
+        }
 
         Message m = new Message(senderID, receiverID, messageID, replyToID, messageContent);
 
