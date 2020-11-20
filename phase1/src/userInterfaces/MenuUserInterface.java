@@ -13,34 +13,40 @@ public class MenuUserInterface {
      * Load the menu interface
      */
     public static void loadMenu(User user) {
-        System.out.println(MenuPresenter.formatOptions(user.getMenuOptions())); //retrieve menu options from current user
 
-        Scanner s = new Scanner(System.in);
-        System.out.println("Enter menu option:");
+        boolean running = true;
 
-        String menuChoice = s.nextLine();
+        while (running) {
+            System.out.println(MenuPresenter.formatOptions(user.getMenuOptions())); //retrieve menu options from current user
 
-        if (user.getMenuOptions().contains(menuChoice)) {
-            switch (menuChoice) {
-                case "messages":
-                    MessageUserInterface.loadMessageMenu(user);
-                    break;
-                case "events":
-                    EventUserInterface.loadEventChoices(user);
-                    break;
-                case "create user":
-//                UserCreationUserInterface.loadUserCreation();
-                    loadMenu(user);
-                    System.out.println("FUNCTIONALITY IN PROGRESS");
-                    break;
-                case "sign out":
-                    System.out.println("FUNCTIONALITY IN PROGRESS");
-                    break;
+            Scanner s = new Scanner(System.in);
+            System.out.println("Enter menu option:");
+
+            String menuChoice = s.nextLine();
+
+            if (user.getMenuOptions().contains(menuChoice)) {
+                switch (menuChoice) {
+                    case "messages":
+                        MessageUserInterface.loadMessageMenu(user);
+                        break;
+                    case "events":
+                        EventUserInterface.loadEventChoices(user);
+                        break;
+                    case "create user":
+                        UserCreationUserInterface.loadUserCreation();
+                        loadMenu(user);
+                        break;
+                    case "sign out":
+                        break;
+                    case "close program":
+                        running = false;
+                        break;
+                }
+            } else {
+                System.out.println("Menu option was invalid, please try again");
             }
-        } else {
-            System.out.println("Menu option was invalid, please try again");
-            loadMenu(user);
         }
+
     }
 
 }

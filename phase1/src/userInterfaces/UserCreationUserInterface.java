@@ -5,7 +5,7 @@ import useCases.UserManager;
 import java.util.Scanner;
 
 public class UserCreationUserInterface {
-    public boolean loadUserCreation(){
+    public static boolean loadUserCreation(){
         Scanner s = new Scanner(System.in);
         System.out.println("Please enter the new users Username");
         String username = s.nextLine();

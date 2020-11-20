@@ -42,7 +42,6 @@ public class EventUserInterface {
                 }
                 break;
             case "main menu":
-                MenuUserInterface.loadMenu(user);
                 break;
         }
 
