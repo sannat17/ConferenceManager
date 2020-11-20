@@ -18,9 +18,11 @@ public class EventIO {
     private static final String delimiter = Character.toString((char) 31);
     private static final DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
 
+    /**
+     * reads in events file and passes event data to EventManager
+     * @param dir - the file path relative to the project root
+     */
     public static void readFile(String dir){
-        //reads in user file and returns HashMap mapping username to password
-
         try{
             File file = new File(dir);
             Scanner fs = new Scanner(file);
@@ -44,6 +46,10 @@ public class EventIO {
         }
     }
 
+    /**
+     * converts comma-separated string to array of integers
+     * @param csv - a string with comma separated values
+     */
     private static ArrayList<Integer> toIntArray(String csv){
         csv = csv.substring(1, csv.length() - 1);
         //converts string with comma-separated values to an integer ArrayList
@@ -64,6 +70,10 @@ public class EventIO {
         return intList;
     }
 
+    /**
+     * writes all event data from event to file
+     * @param dir - the file path relative to the project root
+     */
     public static void writeFile(String dir){
         //writes all user data from EventManager to file
         try{
