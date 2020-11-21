@@ -129,7 +129,7 @@ to the main screen showed in 2.1.
 **PLEASE NOTE: In the event the username is not unique, the code will run, however the user will not be created.**
 
 ####2.2 - Using the program as a Speaker
-After opening up the program as an speaker, you will see a dropdown menu with the following options:  
+After opening up the program as a speaker, you will see a dropdown menu with the following options:  
 - messages
 - sign out
 - close program
@@ -182,8 +182,8 @@ This function works the exact same way as 2.1.4.2 except the user will be return
 ######2.2.4.3 - main menu
 This function works the exact same way as 2.1.4.3 except the user will be return to the main menu in 2.2.
 
-####2.3 - Using the program as a Speaker
-After opening up the program as an speaker, you will see a dropdown menu with the following options:  
+####2.3 - Using the program as an Attendee
+After opening up the program as an attendee, you will see a dropdown menu with the following options:  
 - messages
 - sign out
 - close program
@@ -204,19 +204,20 @@ This function will display all the messages that have been sent to the user as w
 being received followed by returning you to the previous the dropdown shown in 2.3.
 
 ######2.3.1.3 - Message an attendee
-This function will allow the speaker to message all the attendees of a talk.
-Firstly, the speaker must enter the title of the talk that they want to send a message to.  
-Then they will be required to enter the content that they want to be in the message.
-Regardless of if the information is correct or not, the user will then return to the screen in 2.2.  
-**PLEASE NOTE: If the message goes to an event that does not exist, it will not be sent at all.**
-
-######2.3.1.4 - Message a speaker
 This function works also if the user is starting a conversation with an attendee.
 Upon entering the function, you will be prompted to enter the username of the attendee you are trying to contact.
 Next, you will be asked to enter the ID of the message you're replying to. If it is a new message, enter '-1' otherwise,
 enter the ID of the message you are replying to. Finally, you will be prompted to enter the content of the message
 that you are sending to the speaker. Once you click the enter key for the final time, the message will be sent, 
-and you will be returned to the main menu that is displayed in 2.2. 
+and you will be returned to the main menu that is displayed in 2.3. 
+
+######2.3.1.4 - Message a speaker
+This function works also if the user is starting a conversation with a speaker.
+Upon entering the function, you will be prompted to enter the username of the speaker you are trying to contact.
+Next, you will be asked to enter the ID of the message you're replying to. If it is a new message, enter '-1' otherwise,
+enter the ID of the message you are replying to. Finally, you will be prompted to enter the content of the message
+that you are sending to the speaker. Once you click the enter key for the final time, the message will be sent, 
+and you will be returned to the main menu that is displayed in 2.3. 
 
 #####2.3.2 - sign out
 This function works the exact same way as 2.1.2
