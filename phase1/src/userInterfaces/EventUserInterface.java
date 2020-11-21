@@ -48,7 +48,7 @@ public class EventUserInterface {
     }
 
     public static void loadEvents(User user) {
-        System.out.println("View events by title \nView events by time \nView events by speaker \n");
+        System.out.println("View events by title\nView events by time\nView events by speaker\n");
 
         Scanner s = new Scanner(System.in);
         System.out.println("Enter sorting option (title, time, speaker):");
