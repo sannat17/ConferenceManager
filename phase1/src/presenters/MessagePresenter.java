@@ -36,8 +36,13 @@ public class MessagePresenter {
 
         for (Message received : allReceivedMessages) {
 
-            to_return.append("\nMessage from ").append(UserManager.getUser(received.getSenderID()).getUsername()).
-                    append(" with messageID ").append(received.getMessageID()).append(" : ").append(received.getMessageContent()).append("\n");
+            to_return.append("\nMessage from ").
+                    append(UserManager.getUser(received.getSenderID()).getUsername()).
+                    append(" with messageID ").
+                    append(received.getMessageID()).
+                    append(" : ").
+                    append(received.getMessageContent()).
+                    append("\n");
 
         } return to_return;
     }
