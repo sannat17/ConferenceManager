@@ -28,7 +28,7 @@ public class MessagePresenter {
      * @param user the user whose messages you want to display
      * @return the formatted string with content of all the messages received by this user
      */
-    public static String displayReceivedMessagesOfUser(User user) {
+    public static StringBuilder displayReceivedMessagesOfUser(User user) {
 
         StringBuilder to_return = new StringBuilder();
 
@@ -36,11 +36,15 @@ public class MessagePresenter {
 
         for (Message received : allReceivedMessages) {
 
-            to_return.append("You received a message from ").append(UserManager.getUser(received.getSenderID())).
-                    append("with messageID: ").append(received.getMessageID()).append(received.getMessageID()).
-                    append(received.getMessageContent()).append("\n");
+            to_return.append("\nMessage from ").
+                    append(UserManager.getUser(received.getSenderID()).getUsername()).
+                    append(" with messageID ").
+                    append(received.getMessageID()).
+                    append(" : ").
+                    append(received.getMessageContent()).
+                    append("\n");
 
-        } return to_return.toString();
+        } return to_return;
     }
 }
 
