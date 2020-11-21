@@ -50,7 +50,7 @@ public class EventOrganizationUserInterface {
                 System.out.println("Please enter a valid room number:");
             }
         }
-        System.out.println("Please enter the username of the speaker of the event:");
+        System.out.println("Please enter the username of the speaker of the event. In the event that there is no speaker available, please write 'end':");
         while (speakerID == -1){
             String speakerIDString = u.nextLine();
             if (speakerIDString.equals("end")){

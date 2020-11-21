@@ -14,7 +14,7 @@ public class EventUserInterface {
      * Load the event interface
      */
     public static void loadEventChoices(User user) {
-        System.out.println("View events by title \n View events by time \n View events by speaker \n");
+        System.out.println("View events by title\nView events by time\nView events by speaker\n");
 
         Scanner s = new Scanner(System.in);
         System.out.println("Enter sorting option (title, time, speaker):");
@@ -43,6 +43,10 @@ public class EventUserInterface {
                 break;
             case "main menu":
                 break;
+
+            default:
+                System.out.println("Menu option was invalid, please try again");
+                loadEventChoices(user);
         }
 
     }
