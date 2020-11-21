@@ -1,9 +1,6 @@
 ## CSC207 Project Phase 1
 Navigate your social conference easily with our text-based communication software.
 
-## Screenshots
-![](screenshot.PNG)
-
 ## Features
 - Fully functional login system
 - Interactive event functionalities
@@ -49,7 +46,8 @@ When calling messages, the organizer will get the following dropdown:
 Going back to the previous screen will return you to the dropdown shown in 2.1
 
 ######2.1.1.2 - Display all messages
-This function will display all the messages that have been sent to the user
+This function will display all the messages that have been sent to the user as well as the ID of the message 
+being received.
 
 ######2.1.1.3 - Message all speakers
 This function will send a message to every user that is registered as a speaker.
@@ -60,8 +58,31 @@ that is displayed in 2.1.
 ######2.1.1.3 - Message a specific speaker
 This function will send a message to a specific user that is registered as a speaker.
 Upon entering the function, you will be prompted to enter the username of the speaker you are trying to contact.
-Next, you will be asked to enter the 
+Next, you will be asked to enter the ID of the message you're replying to. If it is a new message, enter '-1' otherwise,
+enter the ID of the message you are replying to. Finally, you will be promted to enter the content of the mesage
+that you are sending to the speaker. Once you click the enter key for the final time, the message will be sent and you will be returned to the main menu
+that is displayed in 2.1. 
 
+######2.1.1.4 - Message all attendees
+This function works similarly to 2.1.1.3, however instead of sending a message to all speakers, you will
+send a message to all attendees.
+
+######2.1.1.5 - Message a specific attendee
+This function works similarly to 2.1.1.4, however instead of sending a message to all speakers, you will
+send a message to a specific attendee.
+
+#####2.1.2 - sign out
+This function will allow the user to sign out and will return the user to the screen that they see
+in chapter 2, which will once again prompt them for a username and password.  
+
+**PLEASE NOTE: In order for the information to be saved to the txt files, the user will need to sign into any account
+and use the close program function.**
+
+#####2.1.3 - close program
+This function will end the program and save all of the data that was created/edited/deleted into their respective txt files.
+
+#####2.1.4 - events
+This function will allow the user to view all of the events by 3 categories.
 
 ## Credits
 - Ananya Jha: ananya.jha@mail.utoronto.ca
