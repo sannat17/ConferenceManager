@@ -27,7 +27,7 @@ public class MessageUserInterface {
                     MenuUserInterface.loadMenu(user);
                     break;
                 case "Display all messages":
-                    MessagePresenter.displayReceivedMessagesOfUser(user);
+                    System.out.println(MessagePresenter.displayReceivedMessagesOfUser(user));
                     break;
                 case "Message all attendees of the talk":
                     System.out.println("Please enter the title of the talk you " +
