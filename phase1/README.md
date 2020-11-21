@@ -171,15 +171,9 @@ This function works the exact same way as 2.1.2
 This function works the exact same way as 2.1.3
 
 #####2.2.4 - view events
-This function works the exact same way as 2.1.4
+This function works the exact same way as 2.1.4 except the only dropdown option is main menu
 
-######2.2.4.1 - signup
-This function works the exact same way as 2.1.4.1 except the user will be return to the main menu in 2.2.
-
-######2.2.4.2 - cancel signup
-This function works the exact same way as 2.1.4.2 except the user will be return to the main menu in 2.2.
-
-######2.2.4.3 - main menu
+######2.2.4.1 - main menu
 This function works the exact same way as 2.1.4.3 except the user will be return to the main menu in 2.2.
 
 ####2.3 - Using the program as an Attendee
