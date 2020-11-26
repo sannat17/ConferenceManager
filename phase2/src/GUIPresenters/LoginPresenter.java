@@ -1,6 +1,7 @@
 package GUIPresenters;
 
 
+import GUI.mainView;
 import entities.User;
 import useCases.UserManager;
 
@@ -8,16 +9,16 @@ import java.util.ArrayList;
 
 public class LoginPresenter {
 
-    public static User loginCheck(String username, String password) {
+    public static void loginCheck(String username, String password) {
         ArrayList<User> users = UserManager.getAllUsers();
-        if (users.isEmpty()) {;
-            return null;
+        if (users.isEmpty()) {
+            mainView.createPopUp("No users found");
         }
         for (User u : users) {
             if ((username.equals(u.getUsername())) && (password.equals(u.getPassword()))) {
-                return u;
+                mainView.toMenu();
             }
         }
-        return null;
+        mainView.createPopUp("Your username or password is incorrect. Please enter them again.");
     }
 }
