@@ -16,7 +16,7 @@ public class LoginPresenter {
         }
         for (User u : users) {
             if ((username.equals(u.getUsername())) && (password.equals(u.getPassword()))) {
-                mainView.toMenu();
+                mainView.toNextPanel("Menu");
             }
         }
         mainView.createPopUp("Your username or password is incorrect. Please enter them again.");

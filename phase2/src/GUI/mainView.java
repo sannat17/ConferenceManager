@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class mainView {
     private static JFrame mainFrame;
-    private JPanel mainContainer;
+    private static JPanel mainContainer;
     private static CardLayout mainCL;
     private JPanel loginPanel;
     private static JPanel menuPanel;
@@ -27,7 +27,7 @@ public class mainView {
         mainFrame.add(mainContainer);
 
         mainFrame.setVisible(true);
-        mainCL.show(loginPanel, "Login");
+        mainCL.show(mainContainer, "Login");
 
     }
 
@@ -35,8 +35,8 @@ public class mainView {
         JOptionPane.showMessageDialog(mainFrame, message);
     }
 
-    public static void toMenu(){
-        mainCL.show(menuPanel, "Menu");
+    public static void toNextPanel(String panelName){
+        mainCL.show(mainContainer, panelName);
     }
 
     public static void main(String[] args) {
