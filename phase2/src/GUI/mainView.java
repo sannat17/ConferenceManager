@@ -1,5 +1,7 @@
 package GUI;
 
+import gateways.UserIO;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -40,6 +42,7 @@ public class mainView {
     }
 
     public static void main(String[] args) {
+        UserIO.readFile();
         new mainView();
     }
 }
