@@ -33,6 +33,8 @@ public class loginView {
         loginButton.setBounds(10, 80, 80, 25);
         loginPanel.add(loginButton);
 
+
+
         return loginPanel;
     }
 
