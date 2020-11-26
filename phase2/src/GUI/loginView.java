@@ -18,13 +18,13 @@ public class loginView  implements ActionListener {
     private JButton loginButton;
     private CardLayout c1;
 
-    public loginView(){
+    public loginView() {
         createUI();
     }
 
-    private void createUI(){
+    private void createUI() {
         loginFrame = new JFrame();
-        c1 = new CardLayout(5,5);
+        c1 = new CardLayout(5, 5);
         container = new JPanel(c1);
         loginPanel = new JPanel();
         secondPanel = new JPanel();
@@ -39,7 +39,7 @@ public class loginView  implements ActionListener {
         secondPanel.setLayout(null);
 
         secondLabel = new JLabel("Test");
-        secondLabel.setBounds(10,20,80,25);
+        secondLabel.setBounds(10, 20, 80, 25);
         secondPanel.add(secondLabel);
 
         usernameLabel = new JLabel("Username");
@@ -69,9 +69,5 @@ public class loginView  implements ActionListener {
 
     public static void main(String[] args) {
         new loginView();
-    }
-    
-    public void actionPerformed(ActionEvent e){
-        System.out.println("Hello World");
     }
 }
