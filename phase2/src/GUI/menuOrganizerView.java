@@ -1,5 +1,7 @@
 package GUI;
 
+import GUIPresenters.SignoutPresenter;
+
 import javax.swing.*;
 
 public class menuOrganizerView {
@@ -16,6 +18,12 @@ public class menuOrganizerView {
         JButton confirmButton = new JButton("Confirm");
         confirmButton.setBounds(10, 60, 160, 25);
         organizerMenuPanel.add(confirmButton);
+
+        JButton signoutButton = new JButton("Sign Out");
+        signoutButton.setBounds(10, 260, 100, 25);
+        organizerMenuPanel.add(signoutButton);
+        signoutButton.addActionListener(e -> SignoutPresenter.signOut());
+
 
         return organizerMenuPanel;
     }
