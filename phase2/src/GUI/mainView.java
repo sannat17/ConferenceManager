@@ -16,6 +16,7 @@ public class mainView {
 
     private void createUI(){
         loginPanel = loginView.getLoginPanel();
+        menuPanel = new JPanel();
         mainFrame = new JFrame();
         mainCL = new CardLayout(5,5);
         mainContainer = new JPanel(mainCL);
