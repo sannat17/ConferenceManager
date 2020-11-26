@@ -14,11 +14,14 @@ public class LoginPresenter {
         if (users.isEmpty()) {
             mainView.createPopUp("No users found");
         }
-        for (User u : users) {
-            if ((username.equals(u.getUsername())) && (password.equals(u.getPassword()))) {
-                mainView.toNextPanel("Menu");
+        else{
+            for (User u : users) {
+                if ((username.equals(u.getUsername())) && (password.equals(u.getPassword()))) {
+                    mainView.toNextPanel("Menu");
+                    return;
+                }
             }
+            mainView.createPopUp("Your username or password is incorrect. Please enter them again.");
         }
-        mainView.createPopUp("Your username or password is incorrect. Please enter them again.");
     }
 }
