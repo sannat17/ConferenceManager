@@ -13,12 +13,8 @@ public class loginView {
     private static User user;
 
     public static JPanel getLoginPanel(){
-
-
         JPanel loginPanel = new JPanel();
-
         loginPanel.setLayout(null);
-
 
         JLabel usernameLabel = new JLabel("Username");
         usernameLabel.setBounds(10, 20, 80, 25);

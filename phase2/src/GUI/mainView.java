@@ -10,7 +10,7 @@ public class mainView {
     private static JPanel mainContainer;
     private static CardLayout mainCL;
     private JPanel loginPanel;
-    private static JPanel menuPanel;
+    private static JPanel organizerMenuPanel;
 
     public mainView(){
         createUI();
@@ -18,12 +18,12 @@ public class mainView {
 
     private void createUI(){
         loginPanel = loginView.getLoginPanel();
-        menuPanel = new JPanel();
+        organizerMenuPanel =menuOrganizerView.getOrganizerMenuPanel();
         mainFrame = new JFrame();
         mainCL = new CardLayout(5,5);
         mainContainer = new JPanel(mainCL);
         mainContainer.add(loginPanel, "Login");
-        mainContainer.add(menuPanel, "Menu");
+        mainContainer.add(organizerMenuPanel, "Organizer Menu");
         mainFrame.setSize(500, 350);
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.add(mainContainer);
