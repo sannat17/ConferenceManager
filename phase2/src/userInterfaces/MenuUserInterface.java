@@ -40,7 +40,10 @@ public class MenuUserInterface {
                     case "view events":
                         EventUserInterface.loadEvents(user);
                         break;
-                    case "create user":
+                    case "cancel an event":
+                        //EventUserInterface.cancelEvent(event); to be implemented
+                        break;
+                    case "create a new user account":
                         UserCreationUserInterface.loadUserCreation(user);
                         break;
                     case "organize event":
