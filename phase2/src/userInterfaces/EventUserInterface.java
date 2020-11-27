@@ -68,4 +68,21 @@ public class EventUserInterface {
         }
     }
 
+    public static void cancelEvent(User user){
+        System.out.println("Enter the title of the event that you want to cancel\n");
+
+        Scanner s = new Scanner(System.in);
+
+        if (EventController.cancelEvent(user, s.nextLine())) {
+            System.out.println("Cancellation successful!");
+        } else {
+            System.out.println("Cancellation failed please recheck the title");
+        }
+        String t = s.nextLine();
+        switch (t){
+            case "main menu":
+                break;
+        }
+    }
+
 }

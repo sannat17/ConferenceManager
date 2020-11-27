@@ -41,7 +41,7 @@ public class MenuUserInterface {
                         EventUserInterface.loadEvents(user);
                         break;
                     case "cancel an event":
-                        //EventUserInterface.cancelEvent(event); to be implemented
+                        EventUserInterface.cancelEvent(user);
                         break;
                     case "create a new user account":
                         UserCreationUserInterface.loadUserCreation(user);
