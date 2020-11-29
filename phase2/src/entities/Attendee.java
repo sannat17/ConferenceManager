@@ -15,7 +15,7 @@ public class Attendee extends User{
      */
     public Attendee(String username, String password, int ID, String firstName) {
         super(username, password, ID, firstName);
-        this.menuOptions.add("events");
+        this.menuOptions.add("Events");
         this.messageOptions.add("Message an attendee");
         this.messageOptions.add("Message a speaker");
 

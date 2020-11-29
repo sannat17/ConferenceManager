@@ -15,7 +15,7 @@ public class Organizer extends User{
      */
     public Organizer(String username, String password, int ID, String name) {
         super(username, password, ID, name);
-        this.menuOptions.add("events");
+        this.menuOptions.add("Events");
         this.menuOptions.add("organize event");
         this.menuOptions.add("cancel an event");
         this.menuOptions.add("create a new user account");

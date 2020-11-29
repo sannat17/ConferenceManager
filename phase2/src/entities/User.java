@@ -32,9 +32,9 @@ public abstract class User {
         this.password = password;
         this.firstName = firstName;
 
-        this.menuOptions.add("messages");
-        this.menuOptions.add("sign out");
-        this.menuOptions.add("close program");
+        this.menuOptions.add("Messages");
+        this.menuOptions.add("Sign out");
+        this.menuOptions.add("Close program");
 
         this.messageOptions.add("Back");
         this.messageOptions.add("Display all messages");
