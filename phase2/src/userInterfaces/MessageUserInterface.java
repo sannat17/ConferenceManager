@@ -50,7 +50,7 @@ public class MessageUserInterface {
                     int replyToID = s.nextInt();
                     String content = getMessageContent();
 
-                    createNewMessage(user.getUsername(), receiverUsername, statusID, replyToID, content);
+                    //createNewMessage(user.getUsername(), receiverUsername, statusID, replyToID, content);
                     break;
                 case "Message all speakers":
                     String contentAllSpeakers = getMessageContent();

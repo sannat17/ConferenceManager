@@ -8,9 +8,13 @@ import gateways.UserIO;
 public class SignoutPresenter {
 
     public static void signOut() {
+        writeFiles();
+        mainView.toLoginPanel();
+    }
+
+    public static void writeFiles(){
         UserIO.writeFile();
         MessageIO.writeFile();
         EventIO.writeFile();
-        mainView.toNextPanel("Login");
     }
 }

@@ -28,7 +28,7 @@ public class MessageController {
                                          int replyToID, String content) {
         int senderID = giveIDOfUsername(senderUsername);
         int receiverID = giveIDOfUsername(receiverUsername);
-        makeNewMessage(senderID, receiverID, replyToID, content);
+        //makeNewMessage(senderID, receiverID, replyToID, content);
     }
 
     /**
@@ -41,8 +41,8 @@ public class MessageController {
         for (User i : getAllUsers()) { //goes through each User one by one
                                         //from UserManager
             if (i instanceof Speaker) { //if the current user is an instance of Speaker
-                makeNewMessage(senderID, i.getUserID(),
-                        -1, content);
+                //makeNewMessage(senderID, i.getUserID(),
+                        //-1, content);
                 //create the message with no reply
             }
         }
@@ -58,8 +58,8 @@ public class MessageController {
         for (User i : getAllUsers()) {//goes through each User one by one
                                         //from UserManager
             if (i instanceof Attendee) { //if the current user is an instance of Attendee
-                makeNewMessage(senderID, i.getUserID(),
-                        -1, content);
+                //makeNewMessage(senderID, i.getUserID(),
+                  //      -1, content);
                 //create a message with no reply
             }
         }
@@ -78,7 +78,7 @@ public class MessageController {
         int senderID = giveIDOfUsername(senderUsername);
 
         for (Integer attendeeID: attendees){
-            makeNewMessage(senderID, attendeeID, -1, content);
+            //makeNewMessage(senderID, attendeeID, -1, content);
             //for every attendee, create message with no reply
             //if attendees is empty, no messages will be created
         }
