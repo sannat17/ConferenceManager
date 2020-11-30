@@ -15,6 +15,7 @@ public class mainView {
     private static CardLayout mainCL;
     private JPanel loginPanel;
     private static JPanel MenuPanel;
+    private static JPanel createUserPanel;
 
     public mainView(){
         createUI();
@@ -53,6 +54,12 @@ public class mainView {
 
     public static void toLoginPanel(){
         mainCL.show(mainContainer, "Login");
+    }
+
+    public static void toCreateUserPanel(User u){
+        createUserPanel = createUserView.getCreateUserPanel(u);
+        mainContainer.add(createUserPanel, "Create User");
+        mainCL.show(mainContainer, "Create User");
     }
 
     public static void main(String[] args) {
