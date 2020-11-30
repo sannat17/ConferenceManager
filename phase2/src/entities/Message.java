@@ -17,7 +17,10 @@ public class Message {
     private int messageID;
     /** The ID of the message that this message is a reply to(if it's a reply); -1 if not a reply*/
     private int replyToID;
+    /** The ID of the message that this message is either inInbox (0), deleted (-1), archived (-2), or unread (-3)*/
+    private int statusID;
     /**
+    private
      * Create a new Message
      *
      * @param senderID the ID of the sender of this message
@@ -26,9 +29,10 @@ public class Message {
      * @param replyToID the unique ID of the message that this message is a reply to(if it's a reply); -1 if not a reply
      * @param messageContent the content of this message
      */
-    public Message(int senderID,  int receiverID, int messageID, int replyToID, String messageContent){
+    public Message(int senderID, int statusID,  int receiverID, int messageID, int replyToID, String messageContent){
         this.messageID = messageID;
         this.senderID = senderID;
+        this.statusID = statusID;
         this.receiverID = receiverID;
         this.messageContent = messageContent;
         this.replyToID = replyToID;
@@ -86,4 +90,15 @@ public class Message {
         return timeSent;
     }
 
+    /**
+     *
+     * @return The statusID of this message
+     */
+    public int getStatusID() { return statusID; }
+
+    /**
+     * @param ID ID that the progam wants to set as the status of the message.
+     * Sets the statusID of the message according to the parameter
+     */
+    public void setStatusID(int ID) { this.statusID = ID; }
 }
