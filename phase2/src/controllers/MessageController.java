@@ -29,7 +29,6 @@ public class MessageController {
         int senderID = giveIDOfUsername(senderUsername);
         int receiverID = giveIDOfUsername(receiverUsername);
         makeNewMessage(senderID, receiverID, replyToID, content);
-
     }
 
     /**
