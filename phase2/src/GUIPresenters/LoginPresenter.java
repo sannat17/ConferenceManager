@@ -17,7 +17,7 @@ public class LoginPresenter {
         else{
             for (User u : users) {
                 if ((username.toLowerCase().equals(u.getUsername().toLowerCase())) && (password.equals(u.getPassword()))) {
-                    mainView.toNextPanel("Organizer Menu");
+                    mainView.toMenuPanel(u);
                     return;
                 }
             }

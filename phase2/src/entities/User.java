@@ -31,11 +31,7 @@ public abstract class User {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
-
         this.menuOptions.add("Messages");
-        this.menuOptions.add("Sign out");
-        this.menuOptions.add("Close program");
-
         this.messageOptions.add("Back");
         this.messageOptions.add("Display all messages");
     }
