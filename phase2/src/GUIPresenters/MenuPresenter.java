@@ -13,6 +13,9 @@ public class MenuPresenter {
             case "create a new user account":
                 mainView.toCreateUserPanel(u);
                 break;
+            case "Messages":
+                mainView.toMessagesPanel(u);
+                break;
         }
     }
 

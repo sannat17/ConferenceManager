@@ -18,6 +18,7 @@ public class mainView {
     private static JPanel createUserPanel;
     private static JPanel eventPanel;
     private static JPanel yourEventsPanel;
+    private static JPanel messagePanel;
 
     public mainView(){
         createUI();
@@ -74,6 +75,12 @@ public class mainView {
         yourEventsPanel = yourEventsView.getYourEventsPanel(u);
         mainContainer.add(yourEventsPanel, "Your Events");
         mainCL.show(mainContainer, "Your Events");
+    }
+
+    public static void toMessagesPanel(User u){
+        messagePanel = messageView.getMessageView(u);
+        mainContainer.add(messagePanel, "Messages");
+        mainCL.show(mainContainer, "Messages");
     }
 
     public static void main(String[] args) {
