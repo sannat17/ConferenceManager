@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import static useCases.EventManager.getAttendingSpecificEvent;
 import static useCases.EventManager.giveEventIDOfTitle;
+import static useCases.MessageManager.archiveReceivedMessage;
 import static useCases.MessageManager.makeNewMessage;
 import static useCases.UserManager.getAllUsers;
 import static useCases.UserManager.giveIDOfUsername;
@@ -85,8 +86,16 @@ public class MessageController {
         }
     }
 
-    public static void markAsUnRead(Message message) {
-        message.setStatusID(-3);
+    public static void markAsArchived(Message message) {
+
+//      Calls the archiveReceivedMessage function from the MessageManager to set the statusID to -2 ie: archived!
+
+        MessageManager.archiveReceivedMessage(message.getMessageID());
+
+//      Adds the archived messages to the archived messages list for the presenter to present the list.
+
+        MessageManager.getAllArchivedMessages(message.getReceiverID()).add(message);
+
     }
 
     public static void deleteMessage(Message message) {
