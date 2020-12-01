@@ -36,16 +36,51 @@ public class MessagePresenter {
 
         for (Message received : allReceivedMessages) {
 
-            to_return.append("\nMessage from ").
-                    append(UserManager.getUser(received.getSenderID()).getUsername()).
-                    append(" with messageID ").
-                    append(received.getMessageID()).
-                    append(" : ").
-                    append(received.getMessageContent()).
-                    append("\n");
+//            This condition ensures that all the messages that are in the inbox are only displayed, ie:
+//            this prevents to include the deleted/archived messages.
+//            statusID == 0 are the messages that are unarchived/not-deleted
 
+            if(received.getStatusID() == 0) {
+
+                to_return.append("\nMessage from ").
+                        append(UserManager.getUser(received.getSenderID()).getUsername()).
+                        append(" with messageID ").
+                        append(received.getMessageID()).
+                        append(" : ").
+                        append(received.getMessageContent()).
+                        append("\n");
+
+            }
         } return to_return;
     }
+
+    public static StringBuilder displayDeletedMessages(User user) {
+
+        StringBuilder to_return = new StringBuilder();
+
+        ArrayList<Message> allDeletedMessages = MessageManager.getAllDeletedMessages(user.getUserID());
+
+        for (Message deleted : allDeletedMessages) {
+            to_return.append("These are the deleted message of the user with userID ").
+                    append(user.getUserID()).append(" ").
+                    append(deleted.getMessageContent());
+        } return to_return;
+    }
+
+
+    public static StringBuilder displayArchivedMessages(User user) {
+
+        StringBuilder to_return = new StringBuilder();
+
+        ArrayList<Message> allArchivedMessages = MessageManager.getAllArchivedMessages(user.getUserID());
+
+        for (Message archived : allArchivedMessages) {
+            to_return.append("These are the archived messages of the user with userID ").
+                    append(user.getUserID()).append(" ").
+                    append(archived.getMessageContent());
+        } return to_return;
+    }
+
 }
 
 

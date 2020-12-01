@@ -1,11 +1,13 @@
 package controllers;
 
 import entities.*;
+import useCases.MessageManager;
 
 import java.util.ArrayList;
 
 import static useCases.EventManager.getAttendingSpecificEvent;
 import static useCases.EventManager.giveEventIDOfTitle;
+import static useCases.MessageManager.archiveReceivedMessage;
 import static useCases.MessageManager.makeNewMessage;
 import static useCases.UserManager.getAllUsers;
 import static useCases.UserManager.giveIDOfUsername;
@@ -28,7 +30,7 @@ public class MessageController {
                                          int replyToID, String content) {
         int senderID = giveIDOfUsername(senderUsername);
         int receiverID = giveIDOfUsername(receiverUsername);
-        //makeNewMessage(senderID, receiverID, replyToID, content);
+        makeNewMessage(senderID, -1, receiverID, replyToID, content);
     }
 
     /**
@@ -41,9 +43,9 @@ public class MessageController {
         for (User i : getAllUsers()) { //goes through each User one by one
                                         //from UserManager
             if (i instanceof Speaker) { //if the current user is an instance of Speaker
-                //makeNewMessage(senderID, i.getUserID(),
-                        //-1, content);
-                //create the message with no reply
+                makeNewMessage(senderID, -1, i.getUserID(),
+                        -1, content);
+//                create the message with no reply
             }
         }
     }
@@ -58,9 +60,9 @@ public class MessageController {
         for (User i : getAllUsers()) {//goes through each User one by one
                                         //from UserManager
             if (i instanceof Attendee) { //if the current user is an instance of Attendee
-                //makeNewMessage(senderID, i.getUserID(),
-                  //      -1, content);
-                //create a message with no reply
+                makeNewMessage(senderID, -1, i.getUserID(),
+                        -1, content);
+//                create a message with no reply
             }
         }
     }
@@ -78,10 +80,30 @@ public class MessageController {
         int senderID = giveIDOfUsername(senderUsername);
 
         for (Integer attendeeID: attendees){
-            //makeNewMessage(senderID, attendeeID, -1, content);
-            //for every attendee, create message with no reply
-            //if attendees is empty, no messages will be created
+            makeNewMessage(senderID, -1, attendeeID, -1, content);
+//            for every attendee, create message with no reply
+//            if attendees is empty, no messages will be created
         }
     }
 
+    public static void markAsArchived(Message message) {
+
+//      Calls the archiveReceivedMessage function from the MessageManager to set the statusID to -2 ie: archived!
+
+        MessageManager.archiveReceivedMessage(message.getMessageID());
+
+//      Adds the archived messages to the archived messages list for the presenter to present the list.
+
+        MessageManager.getAllArchivedMessages(message.getReceiverID()).add(message);
+
+    }
+
+    public static void deleteMessage(Message message) {
+
+//      Calls the deleteReceivedMessage function from the MessageManager to set the statusID to -1 ie: deleted!
+        MessageManager.deleteReceivedMessage(message.getMessageID());
+
+//      Adds the deleted messages to the deleted messages list for the presenter to present the list.
+        MessageManager.getAllDeletedMessages(message.getReceiverID()).add(message);
+    }
 }

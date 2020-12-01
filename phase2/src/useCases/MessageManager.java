@@ -120,4 +120,74 @@ public class MessageManager {
 
         return to_return;
     }
+//*****************************************************************************************************************
+
+    public static void deleteReceivedMessage(int ID) {
+
+        for (Message message: messageHashMap.values()) {
+            if (message.getMessageID() == ID) {
+                message.setStatusID(-1);
+            }
+        }
+    }
+
+    public static void undoDeleteMessage(int ID) {
+
+        for (Message message: messageHashMap.values()) {
+            if (message.getMessageID() == ID) {
+                message.setStatusID(0);
+            }
+        }
+    }
+
+    public static ArrayList<Message> getAllDeletedMessages(int ID) {
+
+        ArrayList<Message> to_return = new ArrayList<>();
+        for (Message m : messageHashMap.values()) {
+            if (m.getReceiverID() == ID) {
+                if (m.getStatusID() == -1) {
+                    to_return.add(m);
+                }
+            }
+
+        } return to_return;
+    }
+
+//*****************************************************************************************************************
+    public static void archiveReceivedMessage(int ID) {
+
+        for (Message message: messageHashMap.values()) {
+            if (message.getMessageID() == ID) {
+                message.setStatusID(-2);
+            }
+        }
+    }
+
+    public static void unArchiveReceivedMessage(int ID) {
+
+        for (Message message: messageHashMap.values()) {
+            if (message.getMessageID() == ID) {
+                message.setStatusID(0);
+            }
+        }
+    }
+
+    public static ArrayList<Message> getAllArchivedMessages(int ID) {
+
+        ArrayList<Message> to_return = new ArrayList<>();
+        for (Message m : messageHashMap.values()) {
+            if (m.getReceiverID() == ID) {
+                if (m.getStatusID() == -2) {
+                    to_return.add(m);
+                }
+            }
+
+        } return to_return;
+    }
+
+//*****************************************************************************************************************
+
+
+
+
 }
