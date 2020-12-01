@@ -35,7 +35,7 @@ public abstract class User {
         this.firstName = firstName;
         this.menuOptions.add("Messages");
         this.menuOptions.add("Events");
-        this.eventOptions.add("View Events");
+        this.eventOptions.add("View Your Events");
         this.messageOptions.add("Back");
         this.messageOptions.add("Display all messages");
     }
