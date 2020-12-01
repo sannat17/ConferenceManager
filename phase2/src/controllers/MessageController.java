@@ -1,6 +1,7 @@
 package controllers;
 
 import entities.*;
+import useCases.MessageManager;
 
 import java.util.ArrayList;
 
@@ -84,4 +85,16 @@ public class MessageController {
         }
     }
 
+    public static void markAsUnRead(Message message) {
+        message.setStatusID(-3);
+    }
+
+    public static void deleteMessage(Message message) {
+
+//      Calls the deleteReceivedMessage function from the MessageManager to set the statusID to -1 ie: deleted!
+        MessageManager.deleteReceivedMessage(message.getMessageID());
+
+//      Adds the deleted messages to the deleted messages list for the presenter to present the list.
+        MessageManager.getAllDeletedMessages(message.getReceiverID()).add(message);
+    }
 }
