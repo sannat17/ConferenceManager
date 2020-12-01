@@ -46,6 +46,19 @@ public class MessagePresenter {
 
         } return to_return;
     }
+
+    public static StringBuilder displayDeletedMessages(User user) {
+
+        StringBuilder to_return = new StringBuilder();
+
+        ArrayList<Message> allDeletedMessages = MessageManager.getAllDeletedMessages(user.getUserID());
+
+        for (Message deleted : allDeletedMessages) {
+            to_return.append("These are the deleted message of the user with userID ").
+                    append(user.getUserID()).append(" ").
+                    append(deleted.getMessageContent());
+        } return to_return;
+    }
 }
 
 

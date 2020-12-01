@@ -120,4 +120,26 @@ public class MessageManager {
 
         return to_return;
     }
+
+    public static void deleteReceivedMessage(int ID) {
+
+        for (Message message: messageHashMap.values()) {
+            if (message.getMessageID() == ID) {
+                message.setStatusID(-1);
+            }
+        }
+    }
+
+    public static ArrayList<Message> getAllDeletedMessages(int ID) {
+
+        ArrayList<Message> to_return = new ArrayList<>();
+        for (Message m : messageHashMap.values()) {
+            if (m.getReceiverID() == ID) {
+                if (m.getStatusID() == -1) {
+                    to_return.add(m);
+                }
+            }
+
+        } return to_return;
+    }
 }

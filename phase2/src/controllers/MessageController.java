@@ -1,6 +1,7 @@
 package controllers;
 
 import entities.*;
+import useCases.MessageManager;
 
 import java.util.ArrayList;
 
@@ -24,11 +25,11 @@ public class MessageController {
      * @param content    - the content of the message
      */
 
-    public static void createNewMessage(String senderUsername, String receiverUsername,
+    public static void createNewMessage(String senderUsername, String receiverUsername, int statusID,
                                          int replyToID, String content) {
         int senderID = giveIDOfUsername(senderUsername);
         int receiverID = giveIDOfUsername(receiverUsername);
-        makeNewMessage(senderID, receiverID, replyToID, content);
+        makeNewMessage(senderID, statusID, receiverID, replyToID, content);
     }
 
     /**
@@ -41,7 +42,7 @@ public class MessageController {
         for (User i : getAllUsers()) { //goes through each User one by one
                                         //from UserManager
             if (i instanceof Speaker) { //if the current user is an instance of Speaker
-                makeNewMessage(senderID, i.getUserID(),
+                makeNewMessage(senderID, 0, i.getUserID(),
                         -1, content);
                 //create the message with no reply
             }
@@ -58,7 +59,7 @@ public class MessageController {
         for (User i : getAllUsers()) {//goes through each User one by one
                                         //from UserManager
             if (i instanceof Attendee) { //if the current user is an instance of Attendee
-                makeNewMessage(senderID, i.getUserID(),
+                makeNewMessage(senderID, 0, i.getUserID(),
                         -1, content);
                 //create a message with no reply
             }
@@ -78,10 +79,22 @@ public class MessageController {
         int senderID = giveIDOfUsername(senderUsername);
 
         for (Integer attendeeID: attendees){
-            makeNewMessage(senderID, attendeeID, -1, content);
+            makeNewMessage(senderID, 0, attendeeID, -1, content);
             //for every attendee, create message with no reply
             //if attendees is empty, no messages will be created
         }
     }
 
+    public static void markAsUnRead(Message message) {
+        message.setStatusID(-3);
+    }
+
+    public static void deleteMessage(Message message) {
+
+//      Calls the deleteReceivedMessage function from the MessageManager to set the statusID to -1 ie: deleted!
+        MessageManager.deleteReceivedMessage(message.getMessageID());
+
+//      Adds the deleted messages to the deleted messages list for the presenter to present the list.
+        MessageManager.getAllDeletedMessages(message.getReceiverID()).add(message);
+    }
 }
