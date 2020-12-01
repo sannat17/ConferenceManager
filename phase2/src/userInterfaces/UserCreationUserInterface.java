@@ -6,9 +6,9 @@ import useCases.UserManager;
 import java.util.Scanner;
 /** Gets information about a user that the Organizer wants to create*/
 public class UserCreationUserInterface {
-    /** Gets the information for the user from the Organizer
+    /** Gets the information for the creation of a new user account from the Organizer
      *
-     * @param user The current user
+     * @param user The current organizer
      */
     public static void loadUserCreation(User user){
         Scanner s = new Scanner(System.in);
@@ -18,8 +18,8 @@ public class UserCreationUserInterface {
         String password = s.nextLine();
         System.out.println("Please enter the new users Name");
         String name = s.nextLine();
-        String type = new String();
-        Boolean trueType = false;
+        String type = "";
+        boolean trueType = false;
         while (!trueType) {
             System.out.println("Please enter the new users type (organizer, speaker, attendee)");
             type = s.nextLine().toLowerCase();

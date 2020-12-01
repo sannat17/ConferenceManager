@@ -24,11 +24,12 @@ public class MessageIO {
                 //file format ID-Username-Password-Type
                 String[] user = fs.nextLine().split(delimiter);
                 int senderID = Integer.parseInt(user[0]);
-                int receiverID = Integer.parseInt(user[1]);
-                int messageID = Integer.parseInt(user[2]);
-                int replyToID = Integer.parseInt(user[3]);
-                String messageContent = user[4];
-                MessageManager.makeMessage(senderID, receiverID, messageID, replyToID, messageContent);
+                int statusID = Integer.parseInt(user[1]);
+                int receiverID = Integer.parseInt(user[2]);
+                int messageID = Integer.parseInt(user[3]);
+                int replyToID = Integer.parseInt(user[4]);
+                String messageContent = user[5];
+                MessageManager.makeMessage(senderID, statusID, receiverID, messageID, replyToID, messageContent);
             }
         } catch (Exception e) {
             System.out.println("An error has occurred.");

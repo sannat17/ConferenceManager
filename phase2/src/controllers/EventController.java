@@ -17,7 +17,11 @@ public class EventController {
      * @return true if signup successful or false if signup unsuccessful
      */
     public static boolean signUp(User user, int eventID) {
-        for (Event e: EventManager.getAllEventsByUser(user.getUserID())) {
+        if (EventManager.getAllEvents().isEmpty()) {
+            return false;
+        }
+
+        for (Event e: EventManager.getAllEvents()) {
             if (e.getEventID() == eventID) {
                 return false;
             }
@@ -42,4 +46,15 @@ public class EventController {
         }
         return false;
     }
+
+//    /**
+//     * Cancel the event the user wants to cancel
+//     *
+//     * @param user the organizer who is cancelling the event
+//     * @param title the title of the event the organizer wants to cancel
+//     * @return true if cancellation successful or false if cancellation unsuccessful
+//     */
+//    public static boolean cancelEvent(User user, String title) {
+//        return EventManager.cancelEvent(title);
+//    }
 }
