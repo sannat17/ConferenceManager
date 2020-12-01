@@ -17,6 +17,8 @@ public abstract class User {
     public String firstName;
     /** The list of message options available to this user */
     public ArrayList<String> messageOptions = new ArrayList<>();
+    /** The list of event options available to this user */
+    public ArrayList<String> eventOptions = new ArrayList<>();
 
     /**
      * Create a new User and generate its base available menu options
@@ -32,6 +34,8 @@ public abstract class User {
         this.password = password;
         this.firstName = firstName;
         this.menuOptions.add("Messages");
+        this.menuOptions.add("Events");
+        this.eventOptions.add("View Events");
         this.messageOptions.add("Back");
         this.messageOptions.add("Display all messages");
     }
@@ -86,6 +90,15 @@ public abstract class User {
      */
     public ArrayList<String> getMessageOptions() {
         return this.messageOptions;
+    }
+
+    /**
+     * Return list of available event options of this user
+     *
+     * @return list of available event options
+     */
+    public ArrayList<String> getEventOptions() {
+        return this.eventOptions;
     }
 
 }
