@@ -1,6 +1,6 @@
 0Group0384OCSC207Grouporganizer
 1Group0384SCSC207Groupspeaker
 2Group0384ACSC207Groupattendee
-3abGroupattendee
+3abGrouporganizer
 4ShivTanejaShivorganizer
 5KarimKimiKarimorganizer
