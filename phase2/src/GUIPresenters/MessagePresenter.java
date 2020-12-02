@@ -9,8 +9,8 @@ public class MessagePresenter {
     public static void nextMessagePanel(String messagePanelChoice, User u){
         System.out.println(messagePanelChoice);
         switch (messagePanelChoice){
-            case "View Your Events":
-                mainView.toYourEventsPanel(u);
+            case "Message a specific speaker":
+                mainView.toMessageUserPanel(u);
                 break;
 
         }

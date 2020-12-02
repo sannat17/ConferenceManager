@@ -22,7 +22,7 @@ public class messageView {
         JButton confirmButton = new JButton("Confirm");
         confirmButton.setBounds(10, 60, 160, 25);
         messagePanel.add(confirmButton);
-        confirmButton.addActionListener(e -> EventPresenter.nextEventPanel((String)messageComboBox.getSelectedItem(), u));
+        confirmButton.addActionListener(e -> MessagePresenter.nextMessagePanel((String)messageComboBox.getSelectedItem(), u));
 
         JButton backButton = new JButton("Back");
         backButton.setBounds(10, 230, 100, 25);
