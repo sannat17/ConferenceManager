@@ -2,14 +2,13 @@ package controllers;
 
 import entities.*;
 import useCases.MessageManager;
+import useCases.MessageStatusManager;
+import useCases.UserManager;
 
 import java.util.ArrayList;
 
 import static useCases.EventManager.getAttendingSpecificEvent;
 import static useCases.EventManager.giveEventIDOfTitle;
-import static useCases.MessageManager.archiveReceivedMessage;
-import static useCases.MessageManager.makeNewMessage;
-import static useCases.UserManager.getAllUsers;
 import static useCases.UserManager.giveIDOfUsername;
 
 /** A message controller which handles user input for message content */
@@ -30,7 +29,7 @@ public class MessageController {
                                          int replyToID, String content) {
         int senderID = giveIDOfUsername(senderUsername);
         int receiverID = giveIDOfUsername(receiverUsername);
-        makeNewMessage(senderID, -1, receiverID, replyToID, content);
+        MessageManager.makeNewMessage(senderID, receiverID, replyToID, content);
     }
 
     /**
@@ -40,10 +39,10 @@ public class MessageController {
      */
     public static void messageAllSpeakers(String senderUsername, String content){
         int senderID = giveIDOfUsername(senderUsername);
-        for (User i : getAllUsers()) { //goes through each User one by one
+        for (User i : UserManager.getAllUsers()) { //goes through each User one by one
                                         //from UserManager
             if (i instanceof Speaker) { //if the current user is an instance of Speaker
-                makeNewMessage(senderID, -1, i.getUserID(),
+                MessageManager.makeNewMessage(senderID, i.getUserID(),
                         -1, content);
 //                create the message with no reply
             }
@@ -57,10 +56,10 @@ public class MessageController {
      */
     public static void messageAllAttendees(String senderUsername, String content){
         int senderID = giveIDOfUsername(senderUsername);
-        for (User i : getAllUsers()) {//goes through each User one by one
+        for (User i : UserManager.getAllUsers()) {//goes through each User one by one
                                         //from UserManager
             if (i instanceof Attendee) { //if the current user is an instance of Attendee
-                makeNewMessage(senderID, 0, i.getUserID(),
+                MessageManager.makeNewMessage(senderID, i.getUserID(),
                         -1, content);
 //                create a message with no reply
             }
@@ -70,7 +69,7 @@ public class MessageController {
     /**
      * Messages every attendee attending the event with EventID
      * @param senderUsername - username of the sender (the speaker)
-     * @param eventTitle - title of the event
+     * @param eventID - ID of event
      * @param content - content of the message
      */
     public static void messageAllAttendeesOfTalk(String senderUsername, int eventID, String content){
@@ -80,30 +79,28 @@ public class MessageController {
         int senderID = giveIDOfUsername(senderUsername);
 
         for (Integer attendeeID: attendees){
-            makeNewMessage(senderID, 0, attendeeID, -1, content);
+            MessageManager.makeNewMessage(senderID, attendeeID, -1, content);
 //            for every attendee, create message with no reply
 //            if attendees is empty, no messages will be created
         }
     }
 
-    public static void markAsArchived(Message message) {
+    public static void markAsArchived(int messageID) {
 
-//      Calls the archiveReceivedMessage function from the MessageManager to set the statusID to -2 ie: archived!
-
-        MessageManager.archiveReceivedMessage(message.getMessageID());
-
-//      Adds the archived messages to the archived messages list for the presenter to present the list.
-
-        MessageManager.getAllArchivedMessages(message.getReceiverID()).add(message);
+        MessageStatusManager.markMessageAsArchived(messageID);
 
     }
 
-    public static void deleteMessage(Message message) {
-
-//      Calls the deleteReceivedMessage function from the MessageManager to set the statusID to -1 ie: deleted!
-        MessageManager.deleteReceivedMessage(message.getMessageID());
-
-//      Adds the deleted messages to the deleted messages list for the presenter to present the list.
-        MessageManager.getAllDeletedMessages(message.getReceiverID()).add(message);
+    public static void deleteMessage(int ID) {
+        MessageManager.removeMessage(ID);
     }
+
+//    public static void deleteMessage(Message message) {
+//
+////      Calls the deleteReceivedMessage function from the MessageManager to set the statusID to -1 ie: deleted!
+//        MessageStatusManager.deleteReceivedMessage(message.getMessageID());
+//
+////      Adds the deleted messages to the deleted messages list for the presenter to present the list.
+//        MessageStatusManager.getAllDeletedMessages(message.getReceiverID()).add(message);
+//    }
 }

@@ -4,6 +4,7 @@ import useCases.UserManager;
 import entities.Message;
 import entities.User;
 import useCases.MessageManager;
+import useCases.*;
 
 /** A message presenter that formats message options to display */
 public class MessagePresenter extends Presenter {
@@ -29,7 +30,7 @@ public class MessagePresenter extends Presenter {
      * @return a dictionary of the message options
      */
     public static HashMap<Integer, String> getMessageDict(ArrayList<String> options) {
-        HashMap<Integer, String> optionsDict = new HashMap<Integer, String>();
+        HashMap<Integer, String> optionsDict = new HashMap<>();
         int i = 1;
         for (String option : options) {
             if (!(optionsDict.containsValue(option))) {
@@ -74,31 +75,33 @@ public class MessagePresenter extends Presenter {
         } return to_return;
     }
 
-    public static StringBuilder displayDeletedMessages(User user) {
-
-        StringBuilder to_return = new StringBuilder();
-
-        ArrayList<Message> allDeletedMessages = MessageManager.getAllDeletedMessages(user.getUserID());
-
-        for (Message deleted : allDeletedMessages) {
-            to_return.append("These are the deleted message of the user with userID ").
-                    append(user.getUserID()).append(" ").
-                    append(deleted.getMessageContent());
-        } return to_return;
-    }
+//    public static StringBuilder displayDeletedMessages(User user) {
+//
+//        StringBuilder to_return = new StringBuilder();
+//
+//        ArrayList<Message> allDeletedMessages = MessageManager.getAllDeletedMessages(user.getUserID());
+//
+//        for (Message deleted : allDeletedMessages) {
+//            to_return.append("These are the deleted message of the user with userID ").
+//                    append(user.getUserID()).append(" ").
+//                    append(deleted.getMessageContent());
+//        } return to_return;
+//    }
 
 
     public static StringBuilder displayArchivedMessages(User user) {
 
         StringBuilder to_return = new StringBuilder();
 
-        ArrayList<Message> allArchivedMessages = MessageManager.getAllArchivedMessages(user.getUserID());
+        ArrayList<Message> allArchivedMessages =
+                MessageStatusManager.getAllReceivedMessagesByStatus(user.getUserID(), -2);
 
         for (Message archived : allArchivedMessages) {
             to_return.append("These are the archived messages of the user with userID ").
                     append(user.getUserID()).append(" ").
                     append(archived.getMessageContent());
-        } return to_return;
+        }
+        return to_return;
     }
 
 }
