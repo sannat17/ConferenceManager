@@ -141,4 +141,26 @@ public class UserManager{
         }
         return -1;
     }
+
+    /**
+     * Returns the ID of user with username
+     * @param username
+     * @return u.getUserID()
+     */
+    public static int giveIDOfUser(User u){
+        return u.getUserID();
+    }
+
+
+    public static String[] getMenuOptionsList(User u){
+        return u.getMenuOptions().toArray(new String[0]);
+    }
+
+    public static String[] getEventOptionsList(User u){
+        return u.getEventOptions().toArray(new String[0]);
+    }
+
+    public static String[] getMessageOptionsList(User u){
+        return u.getMessageOptions().toArray(new String[0]);
+    }
 }

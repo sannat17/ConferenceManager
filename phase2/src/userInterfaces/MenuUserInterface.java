@@ -22,33 +22,34 @@ public class MenuUserInterface {
         boolean running = true;
 
         while (running) {
-            System.out.println(MenuPresenter.formatOptions(user.getMenuOptions())); //retrieve menu options from current user
-
+            System.out.println(MenuPresenter.formatOptions(MenuPresenter.getOptionsDict(user.getMenuOptions())));
             Scanner s = new Scanner(System.in);
             System.out.println("Enter menu option:");
 
-            String menuChoice = s.nextLine();
-
-            if (user.getMenuOptions().contains(menuChoice)) {
-                switch (menuChoice) {
-                    case "messages":
+            try {
+                Integer menuChoice = Integer.parseInt(s.nextLine());
+                switch (MenuPresenter.getOptionsDict(user.getMenuOptions()).get(menuChoice)) {
+                    case "Messages":
                         MessageUserInterface.loadMessageMenu(user);
                         break;
-                    case "events":
+                    case "Events":
                         EventUserInterface.loadEventChoices(user);
                         break;
-                    case "view events":
-                        EventUserInterface.loadEvents(user);
-                        break;
-                    case "create user":
+//                    case "view events":
+//                        EventUserInterface.loadEvents(user);
+//                        break;
+//                    case "cancel an event":
+//                        EventUserInterface.cancelEvent(user);
+//                        break;
+                    case "create a new user account":
                         UserCreationUserInterface.loadUserCreation(user);
                         break;
                     case "organize event":
                         EventOrganizationUserInterface.loadEventOrganization(user);
-                    case "sign out":
+                    case "Sign out":
                         running = false;
                         break;
-                    case "close program":
+                    case "Close program":
                         UserIO.writeFile();
                         MessageIO.writeFile();
                         EventIO.writeFile();
@@ -56,7 +57,7 @@ public class MenuUserInterface {
                         System.exit(0);
                         break;
                 }
-            } else {
+            } catch (Exception e) {
                 System.out.println("Menu option was invalid, please try again");
             }
         }

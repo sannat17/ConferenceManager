@@ -18,10 +18,10 @@ public class EventSorter {
      * @return sorted list of available events by given sorting option
      */
     public static ArrayList<Event> sortBy(String sortingOption) {
-        if (sortingOption.equals("title")) {
+        if (sortingOption.equals("Title")) {
             return sortByTitle(EventManager.getAllEvents());
         }
-        else if (sortingOption.equals("speaker")) {
+        else if (sortingOption.equals("Speaker")) {
             return sortBySpeaker(EventManager.getAllEvents());
         }
         else {

@@ -44,12 +44,13 @@ public class MessageUserInterface {
                 case "Message a speaker":     //for attendee
                     System.out.println("Please enter the receiver's username");
                     String receiverUsername = s.nextLine();
+                    int statusID = 0;
                     System.out.println("Please enter the ID of the message you're replying to " +
                             "or enter -1 if you're starting a new message");
                     int replyToID = s.nextInt();
                     String content = getMessageContent();
 
-                    createNewMessage(user.getUsername(), receiverUsername, replyToID, content);
+                    //createNewMessage(user.getUsername(), receiverUsername, statusID, replyToID, content);
                     break;
                 case "Message all speakers":
                     String contentAllSpeakers = getMessageContent();

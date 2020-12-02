@@ -103,6 +103,20 @@ public class EventManager {
         return false;
     }
 
+    /** Allows an organizer to cancel any Event
+     *
+     * @param title the tile of the event that the organizer is cancelling
+     * @return A boolean with true if the Organizer successfully cancelled the event
+     */
+    public static boolean cancelEvent(String title){
+        int id = giveEventIDOfTitle(title);
+        if (eventHashMap.containsKey(id)) {
+            eventHashMap.remove(id);
+            return true;
+        }
+        return false;
+    }
+
     /** Returns a list of all the Event objects
      *
      * @return a list of all the Event objects
@@ -174,7 +188,7 @@ public class EventManager {
 
     /**
      * Returns the ID of event with title.
-     * @param title
+     * @param title - the title of the event
      * @return e.getEventID()
      */
     public static int giveEventIDOfTitle (String title){
