@@ -60,7 +60,7 @@ public class MessageController {
         for (User i : getAllUsers()) {//goes through each User one by one
                                         //from UserManager
             if (i instanceof Attendee) { //if the current user is an instance of Attendee
-                makeNewMessage(senderID, -1, i.getUserID(),
+                makeNewMessage(senderID, 0, i.getUserID(),
                         -1, content);
 //                create a message with no reply
             }
@@ -80,7 +80,7 @@ public class MessageController {
         int senderID = giveIDOfUsername(senderUsername);
 
         for (Integer attendeeID: attendees){
-            makeNewMessage(senderID, -1, attendeeID, -1, content);
+            makeNewMessage(senderID, 0, attendeeID, -1, content);
 //            for every attendee, create message with no reply
 //            if attendees is empty, no messages will be created
         }
