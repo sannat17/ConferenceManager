@@ -73,10 +73,10 @@ public class MessageController {
      * @param eventTitle - title of the event
      * @param content - content of the message
      */
-    public static void messageAllAttendeesOfTalk(String senderUsername, String eventTitle, String content){
-        int eventID = giveEventIDOfTitle(eventTitle);
+    public static void messageAllAttendeesOfTalk(String senderUsername, int eventID, String content){
+//        int eventID = giveEventIDOfTitle(eventTitle);
         ArrayList<Integer> attendees = getAttendingSpecificEvent(eventID);
-        //list of all attendeeIDs attending
+//        list of all attendeeIDs attending
         int senderID = giveIDOfUsername(senderUsername);
 
         for (Integer attendeeID: attendees){

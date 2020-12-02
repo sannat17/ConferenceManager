@@ -6,20 +6,40 @@ import entities.User;
 import useCases.MessageManager;
 
 /** A message presenter that formats message options to display */
-public class MessagePresenter {
+public class MessagePresenter extends Presenter {
+
+//    /**
+//     * Format and return the given options
+//     *
+//     * @param options the list of message options available to this User
+//     * @return the formatted string derived from the given options
+//     */
+//    public static String formatOptions(ArrayList<String> options) {
+//        StringBuilder formattedOptions = new StringBuilder();
+//        for (String option : options) {
+//            formattedOptions.append(option).append("\n");
+//        }
+//        return formattedOptions.toString();
+//    }
 
     /**
-     * Format and return the given options
+     * Create and returns a dictionary of the message options
      *
-     * @param options the list of message options available to this User
-     * @return the formatted string derived from the given options
+     * @param options the list of options that needs to be organized
+     * @return a dictionary of the message options
      */
-    public static String formatOptions(ArrayList<String> options) {
-        StringBuilder formattedOptions = new StringBuilder();
+    public static HashMap<Integer, String> getMessageDict(ArrayList<String> options) {
+        HashMap<Integer, String> optionsDict = new HashMap<Integer, String>();
+        int i = 1;
         for (String option : options) {
-            formattedOptions.append(option).append("\n");
+            if (!(optionsDict.containsValue(option))) {
+                optionsDict.put(i, option);
+                i += 1;
+            }
         }
-        return formattedOptions.toString();
+        optionsDict.put(i + 1, "Return to main menu");
+
+        return optionsDict;
     }
 
     /**

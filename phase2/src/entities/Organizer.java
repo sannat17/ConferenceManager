@@ -22,9 +22,12 @@ public class Organizer extends User{
         this.menuOptions.add("create a new user account");
 
         this.messageOptions.add("Message all speakers");
-        this.messageOptions.add("Message a specific speaker");
+//        this.messageOptions.add("Message a specific speaker");
+        this.messageOptions.add("Message a speaker");
+        this.messageOptions.add("Message an attendee");
         this.messageOptions.add("Message all attendees");
-        this.messageOptions.add("Message a specific attendee");
+//        this.messageOptions.add("Message a specific attendee");
+        this.messageOptions.add("Message all attendees of an event");
 
     }
 
