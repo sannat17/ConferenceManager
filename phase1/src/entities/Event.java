@@ -6,20 +6,20 @@ import java.util.ArrayList;
 /** An Event */
 public class Event {
     /** The title of this event */
-    private String title;
+    protected String title;
     /** The unique ID of this event */
-    private int eventID;
+    protected int eventID;
     /** The time of this event */
-    private LocalDateTime timeOfEvent;
+    protected LocalDateTime timeOfEvent;
     /** The room number of this event */
-    private int roomNumber;
+    protected int roomNumber;
     /** The unique ID of this speaker for the event */
-    private int speakerID;
+    protected ArrayList<Integer> speakerIDs;
     /** The unique ID of the organizer of the event */
-    private int organizerID;
+    protected int organizerID;
     /** The list of UserIDs that are attending the event */
-    private ArrayList<Integer> attending;
-
+    protected ArrayList<Integer> attending;
+ 
     /**
      * Create a new event
      *
@@ -27,17 +27,31 @@ public class Event {
      * @param title the title of this event
      * @param timeOfEvent The time of this event
      * @param roomNumber The room number of this event
-     * @param speakerID The unique ID of this speaker for the event
+     * @param speakerIDs The list of unique IDs of the speakers for the event
      * @param organizerID The unique ID of the organizer of the event
      */
-    public Event(int eventID, String title, LocalDateTime timeOfEvent, int roomNumber, int speakerID, int organizerID){
+    public Event(int eventID, String title, LocalDateTime timeOfEvent, int roomNumber,
+                 ArrayList<Integer> speakerIDs, int organizerID){
         this.eventID = eventID;
         this.timeOfEvent = timeOfEvent;
         this.title = title;
         this.roomNumber = roomNumber;
-        this.speakerID = speakerID;
+        this.speakerIDs = speakerIDs;
         this.organizerID = organizerID;
         this.attending = new ArrayList<Integer>();
+    }
+
+    /**
+     * A constructor for an event that doesn't contain any speakers.
+     * Calls the previous constructor but passes an empty ArrayList for the speakerIDs
+     * @param eventID The unique ID of this event
+     * @param title the title of this event
+     * @param timeOfEvent The time of this event
+     * @param roomNumber The room number of this event
+     * @param organizerID The unique ID of the organizer of the event
+     */
+    public Event(int eventID, String title, LocalDateTime timeOfEvent, int roomNumber, int organizerID){
+        this(eventID, title, timeOfEvent, roomNumber, new ArrayList<Integer>(), organizerID);
     }
 
     /**
@@ -74,10 +88,10 @@ public class Event {
 
     /**
      *
-     * @return The unique ID of this speaker for the event
+     * @return The list of unique IDs of speakers for the event
      */
-    public int getSpeakerID() {
-        return speakerID;
+    public ArrayList<Integer> getSpeakerIDs() {
+        return speakerIDs;
     }
 
     /**
@@ -106,13 +120,13 @@ public class Event {
 
     /** Returns the Event in the form of a string
      *
-     * @return The event in a string in the form of "eventID,title,timeOfEvent,roomNumber,speakerID,organizerID,attending"
+     * @return The event in a string in the form of "eventID,title,timeOfEvent,roomNumber,speakerIDs,organizerID,attending"
      */
     @Override
     public String toString() {
         String delimiter = Character.toString((char) 31);
         return  eventID + delimiter + title + delimiter + timeOfEvent + delimiter + roomNumber +
-                delimiter + speakerID + delimiter + organizerID + delimiter + attending;
+                delimiter + speakerIDs + delimiter + organizerID + delimiter + attending;
     }
 
     /** Removes the unique ID of the user to the attending list
