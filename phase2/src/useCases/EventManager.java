@@ -1,8 +1,8 @@
 package useCases;
 
 import entities.Event;
+import entities.User;
 
-import java.lang.reflect.Array;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,7 +11,7 @@ import java.util.HashMap;
 public class EventManager {
 
     /** A hashmap where the key is the ID of an event and the value is the object of the event with that ID*/
-    private static HashMap<Integer, Event> eventHashMap = new HashMap<Integer, Event>();
+    private static HashMap<Integer, Event> eventHashMap = new HashMap<>();
 
     /** Returns the event object corresponding to an ID
      *
@@ -198,5 +198,21 @@ public class EventManager {
             }
         }
         return -1;
+    }
+
+    /**
+     * Returns the events that a user can sign up for
+     *
+     * @param u The user checked to see if they can sing up for events
+     * @return A list of events that the user can sign up for
+     */
+    public static ArrayList<String> getSignUpEventsTitle(User u){
+        ArrayList<String> signUp = new ArrayList<>();
+        for (Event e: eventHashMap.values()){
+            if (!(e.getAttending().contains(u)) && (e.getAttending().size() <= 2)){
+                signUp.add(e.getTitle());
+            }
+        }
+        return signUp;
     }
 }
