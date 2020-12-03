@@ -91,8 +91,8 @@ public class mainView {
         mainCL.show(mainContainer, "Messages");
     }
 
-    public static void toMessageUserPanel(User u){
-        messageUserPanel = messageUserView.getMessageUserView(u);
+    public static void toMessageUserPanel(User u, String type){
+        messageUserPanel = messageUserView.getMessageUserView(u,type);
         mainContainer.add(messageUserPanel, "Message User");
         mainCL.show(mainContainer, "Message User");
     }

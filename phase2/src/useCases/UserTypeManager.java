@@ -19,7 +19,7 @@ public class UserTypeManager {
 
         for (User u: UserManager.getAllUsers()){
             if (u.getType().equals(type)) {
-                to_return.add(u.getType());
+                to_return.add(u.getUsername());
             }
         }
 
