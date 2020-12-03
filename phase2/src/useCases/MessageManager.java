@@ -58,7 +58,7 @@ public class MessageManager {
             messageID = Collections.max(messageHashMap.keySet()) + 1;
         }
 
-        if (!messageHashMap.containsKey(replyToID)){
+        if (!messageHashMap.containsKey(replyToID) && replyToID != -1){
             return false;
         }
 
