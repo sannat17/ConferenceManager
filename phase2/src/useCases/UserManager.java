@@ -2,6 +2,8 @@ package useCases;
 import java.util.*;
 import entities.*;
 
+import javax.swing.text.html.parser.Entity;
+
 /** A user manager*/
 public class UserManager{
 
@@ -144,7 +146,7 @@ public class UserManager{
 
     /**
      * Returns the ID of user with username
-     * @param username
+     * @param u
      * @return u.getUserID()
      */
     public static int giveIDOfUser(User u){
