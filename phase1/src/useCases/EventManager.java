@@ -1,9 +1,6 @@
 package useCases;
 
-import entities.Event;
-import entities.PanelDiscussion;
-import entities.Party;
-import entities.Talk;
+import entities.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -35,8 +32,9 @@ public class EventManager {
      * @param attendees The list of UserIDs that are attending the event
      * @return A boolean with true if the Event was successfully created and false if it wasn't
      */
-    public static boolean makeEvent(int eventID, String title, LocalDateTime timeOfEvent, int roomNumber,
-                                    ArrayList<Integer> speakerIDs, int organizerID, ArrayList<Integer> attendees) {
+    public static boolean makeEvent(int eventID, String title, LocalDateTime timeOfEvent,
+     int roomNumber, ArrayList<Integer> speakerIDs, int organizerID, ArrayList<Integer> attendees, boolean vip) {
+
         if (eventHashMap.containsKey(eventID)) {return false;}    // return false if event already exists
 
         for(int speaker: speakerIDs) {
@@ -62,18 +60,18 @@ public class EventManager {
         if(speakerIDs.size() == 0){ //if there are no speakers, create a Party
             PartyCreator p = new PartyCreator(); //create an instance of the PartyCreator
                                                  //and call the createEvent method to create a Party
-            event = p.createEvent(eventID, title, timeOfEvent, roomNumber, speakerIDs, organizerID);
+            event = p.createEvent(eventID, title, timeOfEvent, roomNumber, speakerIDs, organizerID, vip);
         }
         else if (speakerIDs.size() == 1){ //if there is 1 speaker, create a Talk
             TalkCreator t = new TalkCreator(); //create an instance of the TalkCreator
                                                //and call the createEvent method to create a Talk
-            event = t.createEvent(eventID, title, timeOfEvent, roomNumber, speakerIDs, organizerID);
+            event = t.createEvent(eventID, title, timeOfEvent, roomNumber, speakerIDs, organizerID, vip);
 
         }
         else { //if there are 2 or more speakers, create a PanelDiscussion
             PanelDiscussionCreator pd = new PanelDiscussionCreator();//create an instance of the PanelDiscussionCreator
             //and call the createEvent method to create a PanelDiscussion
-            event = pd.createEvent(eventID, title, timeOfEvent, roomNumber, speakerIDs, organizerID);
+            event = pd.createEvent(eventID, title, timeOfEvent, roomNumber, speakerIDs, organizerID, vip);
         }
 
         eventHashMap.put(eventID, event); //put the Event onto the hashmap
@@ -95,9 +93,9 @@ public class EventManager {
      * @return A boolean with true if the Event was successfully created and false if it wasn't
      */
     public static boolean makeNewEvent(String title, LocalDateTime timeOfEvent,
-                                       int roomNumber, ArrayList<Integer> speakerIDs, int organizerID){
+                                       int roomNumber, ArrayList<Integer> speakerIDs, int organizerID, boolean vip){
         int ID = getNextID();
-        return makeEvent(ID, title, timeOfEvent, roomNumber, speakerIDs, organizerID, new ArrayList<>());
+        return makeEvent(ID, title, timeOfEvent, roomNumber, speakerIDs, organizerID, new ArrayList<>(), vip);
     }
 
     /** Sign up a user for an event
@@ -107,8 +105,12 @@ public class EventManager {
      * @return A boolean with true if the User successfully signed up for the event and false if it wasn't
      */
     public static boolean signUpForEvent(int userID, int eventID){
+
         for(Event e: eventHashMap.values()) {    // this loop is unnecessary, just check for our event of interest
             if (e.getAttending().contains(userID)) {
+                if (!(UserManager.getUser(userID) instanceof VIP) && (getEvent(eventID).getVIP())){
+                    return false; //return false if event is VIP and user isn't VIP
+                }
                 if (e.getEventID() == eventID || e.getTimeOfEvent().equals(eventHashMap.get(eventID).getTimeOfEvent())) {
                     return false;
                 }

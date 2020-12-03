@@ -30,10 +30,11 @@ public class EventIO {
                 String title = user[1];
                 LocalDateTime timeOfEvent = LocalDateTime.parse(user[2], formatter);
                 int roomNumber = Integer.parseInt(user[3]);
-                ArrayList<Integer> speakerIDs = toIntArray(user[6]);
+                ArrayList<Integer> speakerIDs = toIntArray(user[4]);
                 int organizerID = Integer.parseInt(user[5]);
                 ArrayList<Integer> attendees = toIntArray(user[6]);
-                EventManager.makeEvent(eventID, title, timeOfEvent, roomNumber, speakerIDs, organizerID, attendees);
+                boolean vip = Boolean.parseBoolean(user[7]);
+                EventManager.makeEvent(eventID, title, timeOfEvent, roomNumber, speakerIDs, organizerID, attendees, vip);
             }
         }
         catch(Exception e){

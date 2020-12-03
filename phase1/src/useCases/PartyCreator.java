@@ -18,8 +18,8 @@ public class PartyCreator extends EventCreator {
      */
     @Override
     public Party createEvent(int eventID, String title, LocalDateTime timeOfEvent,
-                                    int roomNumber, ArrayList<Integer> speakerIDs, int organizerID){
-        return new Party(eventID, title, timeOfEvent, roomNumber, speakerIDs, organizerID);
+                                    int roomNumber, ArrayList<Integer> speakerIDs, int organizerID, boolean vip){
+        return new Party(eventID, title, timeOfEvent, roomNumber, speakerIDs, organizerID, vip);
     }
 
 }

@@ -20,5 +20,5 @@ public abstract class EventCreator {
      * @return
      */
     public abstract Event createEvent(int eventID, String title, LocalDateTime timeOfEvent,
-                                    int roomNumber, ArrayList<Integer> speakerIDs, int organizerID);
+                                    int roomNumber, ArrayList<Integer> speakerIDs, int organizerID, boolean vip);
 }

@@ -13,7 +13,8 @@ public class Party extends Event{
      * @param speakerIDs  The unique number of IDs of speakers. Always empty since there are no speakers
      * @param organizerID The unique ID of the organizer of the event
      */
-    public Party(int eventID, String title, LocalDateTime timeOfEvent, int roomNumber, ArrayList<Integer> speakerIDs, int organizerID) {
-        super(eventID, title, timeOfEvent, roomNumber, organizerID);
+    public Party(int eventID, String title, LocalDateTime timeOfEvent, int roomNumber,
+                 ArrayList<Integer> speakerIDs, int organizerID, boolean vip) {
+        super(eventID, title, timeOfEvent, roomNumber, speakerIDs, organizerID, vip);
     }
 }

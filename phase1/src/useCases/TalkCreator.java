@@ -20,7 +20,7 @@ public class TalkCreator extends EventCreator {
      */
     @Override
     public Talk createEvent(int eventID, String title, LocalDateTime timeOfEvent,
-                            int roomNumber, ArrayList<Integer> speakerIDs, int organizerID) {
-        return new Talk(eventID, title, timeOfEvent, roomNumber, speakerIDs, organizerID);
+                            int roomNumber, ArrayList<Integer> speakerIDs, int organizerID, boolean vip) {
+        return new Talk(eventID, title, timeOfEvent, roomNumber, speakerIDs, organizerID, vip);
     }
 }

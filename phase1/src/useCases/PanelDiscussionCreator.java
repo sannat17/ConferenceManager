@@ -19,9 +19,9 @@ public class PanelDiscussionCreator extends EventCreator {
      */
     @Override
     public PanelDiscussion createEvent(int eventID, String title, LocalDateTime timeOfEvent,
-                                       int roomNumber, ArrayList<Integer> speakerIDs, int organizerID) {
+                                       int roomNumber, ArrayList<Integer> speakerIDs, int organizerID, boolean vip) {
 
-        return new PanelDiscussion(eventID, title, timeOfEvent, roomNumber, speakerIDs, organizerID);
+        return new PanelDiscussion(eventID, title, timeOfEvent, roomNumber, speakerIDs, organizerID, vip);
     }
 
 }

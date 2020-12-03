@@ -14,7 +14,7 @@ public class PanelDiscussion extends Event{
      * @param organizerID The unique ID of the organizer of the event
      */
     public PanelDiscussion(int eventID, String title, LocalDateTime timeOfEvent,
-                           int roomNumber, ArrayList<Integer> speakerIDs, int organizerID) {
-        super(eventID, title, timeOfEvent, roomNumber, speakerIDs, organizerID);
+                           int roomNumber, ArrayList<Integer> speakerIDs, int organizerID, boolean vip) {
+        super(eventID, title, timeOfEvent, roomNumber, speakerIDs, organizerID, vip);
     }
 }
