@@ -5,6 +5,7 @@ import java.util.ArrayList;
 /** A speaker user that gives speeches */
 public class Speaker extends User{
 
+    private String type = "speaker";
     /**
      * Create a new Speaker
      *
@@ -22,5 +23,10 @@ public class Speaker extends User{
     public String toString() {
         String delimiter = Character.toString((char) 31);
         return super.toString() + delimiter + "speaker";
+    }
+
+    @Override
+    public String getType() {
+        return type;
     }
 }

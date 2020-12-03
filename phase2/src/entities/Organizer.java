@@ -5,6 +5,7 @@ import java.util.ArrayList;
 /** An organizer user with management level capabilities */
 public class Organizer extends User{
 
+    private String type = "organizer";
     /**
      * Create new Organizer, initialize a list of this Organizer's events
      * based on ID, and add available menu options
@@ -36,4 +37,7 @@ public class Organizer extends User{
         String delimiter = Character.toString((char) 31);
         return super.toString() + delimiter + "organizer";
     }
+
+    @Override
+    public String getType(){ return type; }
 }

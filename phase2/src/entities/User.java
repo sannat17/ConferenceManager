@@ -100,4 +100,6 @@ public abstract class User {
         return this.eventOptions;
     }
 
+    public abstract String getType();
+
 }

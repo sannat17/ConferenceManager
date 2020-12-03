@@ -6,6 +6,7 @@ import java.util.ArrayList;
 /** An attendee user */
 public class Attendee extends User{
 
+    private String type = "attendee";
     /**
      * Create a new Attendee
      *
@@ -28,4 +29,8 @@ public class Attendee extends User{
         return super.toString() + delimiter + "attendee";
     }
 
+    @Override
+    public String getType() {
+        return type;
+    }
 }
