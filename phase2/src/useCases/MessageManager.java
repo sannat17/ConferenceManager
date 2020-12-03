@@ -131,5 +131,7 @@ public class MessageManager {
         messageHashMap.remove(ID);
     }
 
+    public static String getContent(Message m){return m.getMessageContent();}
+
 //*****************************************************************************************************************
 }
