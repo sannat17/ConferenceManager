@@ -133,5 +133,9 @@ public class MessageManager {
 
     public static String getContent(int ID){return getMessage(ID).getMessageContent();}
 
+    public static int getSendersID(int ID){return getMessage(ID).getSenderID();}
+
+    public static int getIDOfMessage(Message m){return m.getMessageID();}
+
 //*****************************************************************************************************************
 }

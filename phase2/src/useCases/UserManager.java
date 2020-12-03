@@ -153,6 +153,8 @@ public class UserManager{
         return u.getUserID();
     }
 
+    public static String giveUsername(User u){return u.getUsername();}
+
 
     public static String[] getMenuOptionsList(User u){
         return u.getMenuOptions().toArray(new String[0]);

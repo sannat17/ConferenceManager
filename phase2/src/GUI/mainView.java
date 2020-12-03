@@ -21,6 +21,7 @@ public class mainView {
     private static JPanel messagePanel;
     private static JPanel messageUserPanel;
     private static JPanel signUpEventPanel;
+    private static JPanel displayMessagesPanel;
 
     public mainView(){
         createUI();
@@ -95,6 +96,12 @@ public class mainView {
         messageUserPanel = messageUserView.getMessageUserView(u,type);
         mainContainer.add(messageUserPanel, "Message User");
         mainCL.show(mainContainer, "Message User");
+    }
+
+    public static void toDisplayMessagesPanel(User u){
+        displayMessagesPanel = displayMessagesView.getDisplayMessagesPanel(u);
+        mainContainer.add(displayMessagesPanel, "Display Messages");
+        mainCL.show(mainContainer, "Display Messages");
     }
 
     public static void main(String[] args) {
