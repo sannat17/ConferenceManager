@@ -39,17 +39,13 @@ public class Message {
         this.timeSent = LocalTime.now();  //immutable object that represents a time without a date and a time-zone
     }
 
+
+    /** Converts a message and its details to a string. */
     @Override
     public String toString() {
         String delimiter = Character.toString((char) 31);
         return  senderID + delimiter + statusID + delimiter + receiverID + delimiter + messageID + delimiter + replyToID
                 + delimiter + messageContent;
-    }
-
-    /** Converts a message and its details to a string to be used by the presenter */
-    public String toStringP() {
-        String delimiter = Character.toString((char) 31);
-        return  senderID + delimiter + receiverID + delimiter + timeSent + delimiter + messageContent;
     }
     /**
      *

@@ -24,7 +24,7 @@ public class MessageManager {
      * @param messageContent The ID of the sender of the message
      * @return returns the boolean true is the message is made!
      */
-    public static boolean makeMessage(int senderID, int statusID, int receiverID, int messageID, int replyToID,
+    public static boolean loadMessage(int senderID, int statusID, int receiverID, int messageID, int replyToID,
                                       String messageContent) {
 
         if (messageHashMap.containsKey(messageID)) {

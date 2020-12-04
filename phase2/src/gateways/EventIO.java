@@ -33,7 +33,7 @@ public class EventIO {
                 int speakerID = Integer.parseInt(user[4]);
                 int organizerID = Integer.parseInt(user[5]);
                 ArrayList<Integer> attendees = toIntArray(user[6]);
-                EventManager.makeEvent(eventID, title, timeOfEvent, roomNumber, speakerID, organizerID, attendees);
+                EventManager.loadEvent(eventID, title, timeOfEvent, roomNumber, speakerID, organizerID, attendees);
             }
         }
         catch(Exception e){

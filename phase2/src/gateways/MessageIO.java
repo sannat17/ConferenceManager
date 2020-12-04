@@ -29,7 +29,7 @@ public class MessageIO {
                 int messageID = Integer.parseInt(user[3]);
                 int replyToID = Integer.parseInt(user[4]);
                 String messageContent = user[5];
-                MessageManager.makeMessage(senderID, statusID, receiverID, messageID, replyToID, messageContent);
+                MessageManager.loadMessage(senderID, statusID, receiverID, messageID, replyToID, messageContent);
             }
         } catch (Exception e) {
             System.out.println("An error has occurred.");

@@ -30,7 +30,7 @@ public class UserIO {
                 String password = user[2];
                 String name = user[3];
                 String type = user[4];
-                UserManager.makeUser(ID, username, password, name, type);
+                UserManager.loadUser(ID, username, password, name, type);
             }
         }
         catch(Exception e){

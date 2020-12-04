@@ -28,7 +28,7 @@ public class UserManager{
      * @param type The type of the user (Attendee, Organizer, Speaker)
      * @return A boolean with true if the User was successfully created and false if it wasn't
      */
-    public static Boolean makeUser(Integer ID, String username, String password, String name, String type){
+    public static Boolean loadUser(Integer ID, String username, String password, String name, String type){
         if (!(checkUsername(username))){
             return false;
         }
@@ -63,7 +63,7 @@ public class UserManager{
      */
     public static Boolean makeNewUser(String username, String password, String name, String type){
         int ID = getNextID();
-        return makeUser(ID, username, password, name, type);
+        return loadUser(ID, username, password, name, type);
     }
 
     /** Checks whether a certain username is already being used
