@@ -101,9 +101,13 @@ public class EventUserInterface {
 //                break;
 //        }
 //    }
-//
+//    /**
+//     * Cancel an event
+//     * @param user the current organizer who is cancelling the event
+//     */
 //    public static void cancelEvent(User user){
-//        System.out.println("Enter the ID of the event that you want to cancel\n");
+//        System.out.println("Enter the ID of the event that you want to cancel; you can only cancel
+//        an event that you organized\n");
 
 //        Scanner s = new Scanner(System.in);
 //        String eventTitle = s.nextLine();
