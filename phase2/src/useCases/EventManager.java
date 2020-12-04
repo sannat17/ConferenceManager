@@ -105,7 +105,7 @@ public class EventManager {
 
     /** Allows an organizer to cancel any Event
      *
-     * @param title the tile of the event that the organizer is cancelling
+     * @param title the ID of the event that the organizer is cancelling
      * @return A boolean with true if the Organizer successfully cancelled the event
      */
     public static boolean cancelEvent(String title){

@@ -1,9 +1,11 @@
 package userInterfaces;
 
 import controllers.EventController;
+import controllers.MessageController;
 import entities.User;
 import presenters.EventPresenter;
 import presenters.MenuPresenter;
+import useCases.EventManager;
 
 import java.util.Scanner;
 
@@ -101,11 +103,13 @@ public class EventUserInterface {
 //    }
 //
 //    public static void cancelEvent(User user){
-//        System.out.println("Enter the title of the event that you want to cancel\n");
-//
+//        System.out.println("Enter the ID of the event that you want to cancel\n");
+
 //        Scanner s = new Scanner(System.in);
-//
-//        if (EventController.cancelEvent(user, s.nextLine())) {
+//        String eventTitle = s.nextLine();
+//        String content = "Sorry, your event"+ eventTitle +"has been cancelled ";
+//        if (EventController.cancelEvent(user, eventTitle)) {
+//            MessageController.messageAllAttendeesOfTalk(user.getUsername(), EventManager.giveEventIDOfTitle(eventTitle), content);
 //            System.out.println("Cancellation successful!");
 //        } else {
 //            System.out.println("Cancellation failed please recheck the title");
