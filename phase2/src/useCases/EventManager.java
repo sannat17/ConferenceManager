@@ -113,7 +113,7 @@ public class EventManager {
     public static boolean cancelEvent(User user, String title){
         int id = giveEventIDOfTitle(title);
         if (eventHashMap.containsKey(id)){
-            if (user.getUserID() == giveEventIDOfTitle(title)) {
+            if (user.getUserID() == giveOrganizerIDOfTitle(title)) {
                 eventHashMap.remove(id);
                 return true;
             }
