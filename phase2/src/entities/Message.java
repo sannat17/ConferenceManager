@@ -42,8 +42,8 @@ public class Message {
     @Override
     public String toString() {
         String delimiter = Character.toString((char) 31);
-        return  senderID + delimiter + receiverID + delimiter + messageID + delimiter + replyToID + delimiter
-                + messageContent + delimiter + timeSent;
+        return  senderID + delimiter + statusID + delimiter + receiverID + delimiter + messageID + delimiter + replyToID
+                + delimiter + messageContent;
     }
 
     /** Converts a message and its details to a string to be used by the presenter */
