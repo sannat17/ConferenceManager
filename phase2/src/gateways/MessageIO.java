@@ -16,7 +16,7 @@ public class MessageIO {
      */
     public static void readFile() {
         try {
-            String dir = "./src/data/messages.txt";
+            String dir = "./phase2/src/data/messages.txt";
             File file = new File(dir);
             Scanner fs = new Scanner(file);
 
@@ -42,7 +42,7 @@ public class MessageIO {
      */
     public static void writeFile(){
         try{
-            String dir = "./src/data/messages.txt";
+            String dir = "./phase2/src/data/messages.txt";
             File file = new File(dir);
             boolean existing = file.createNewFile(); //attempt to create new file if not preexisting
 

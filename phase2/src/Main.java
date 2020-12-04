@@ -8,11 +8,21 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import java.io.IOException;
+
 public class Main {
     public static void main(String[] args) {
         UserIO.readFile();
         EventIO.readFile();
         MessageIO.readFile();
+
+        try{
+            EventExporter.requestExport(0);
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+
         while (true) {
             User loggedInUser = null;
             Scanner s = new Scanner(System.in);

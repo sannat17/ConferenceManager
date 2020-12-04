@@ -3,6 +3,7 @@ package useCases;
 import entities.Event;
 
 import java.lang.reflect.Array;
+import org.json.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
