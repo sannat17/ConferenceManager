@@ -55,6 +55,6 @@ public class EventController {
        * @return true if cancellation successful or false if cancellation unsuccessful
        */
        public static boolean cancelEvent(User user, String title) {
-       return EventManager.cancelEvent(title);
+       return EventManager.cancelEvent(user, title);
     }
 }

@@ -105,14 +105,18 @@ public class EventManager {
 
     /** Allows an organizer to cancel any Event
      *
-     * @param title the ID of the event that the organizer is cancelling
+     *
+     * @param user the current user
+     * @param title the title of the event that the organizer is cancelling
      * @return A boolean with true if the Organizer successfully cancelled the event
      */
-    public static boolean cancelEvent(String title){
+    public static boolean cancelEvent(User user, String title){
         int id = giveEventIDOfTitle(title);
-        if (eventHashMap.containsKey(id)) {
-            eventHashMap.remove(id);
-            return true;
+        if (eventHashMap.containsKey(id)){
+            if (user.getUserID() == giveEventIDOfTitle(title)) {
+                eventHashMap.remove(id);
+                return true;
+            }
         }
         return false;
     }
@@ -195,6 +199,20 @@ public class EventManager {
         for(Event e: getAllEvents()){
             if (e.getTitle().equals(title)){
                 return e.getEventID();
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * Returns the organizerID of event with title.
+     * @param title - the title of the event
+     * @return e.getEventID()
+     */
+    public static int giveOrganizerIDOfTitle (String title){
+        for(Event e: getAllEvents()){
+            if (e.getTitle().equals(title)){
+                return e.getOrganizerID();
             }
         }
         return -1;

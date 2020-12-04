@@ -112,7 +112,7 @@ public class EventUserInterface {
 //            MessageController.messageAllAttendeesOfTalk(user.getUsername(), EventManager.giveEventIDOfTitle(eventTitle), content);
 //            System.out.println("Cancellation successful!");
 //        } else {
-//            System.out.println("Cancellation failed please recheck the title");
+//            System.out.println("Cancellation failed please recheck the title; only the organizer of the event can cancel it");
 //        }
 //        String t = s.nextLine();
 //        switch (t){
