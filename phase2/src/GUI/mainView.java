@@ -2,6 +2,8 @@ package GUI;
 
 import GUIPresenters.SignoutPresenter;
 import entities.User;
+import gateways.EventIO;
+import gateways.MessageIO;
 import gateways.UserIO;
 
 import javax.swing.*;
@@ -106,6 +108,8 @@ public class mainView {
 
     public static void main(String[] args) {
         UserIO.readFile();
+        EventIO.readFile();
+        MessageIO.readFile();
         new mainView();
     }
 }

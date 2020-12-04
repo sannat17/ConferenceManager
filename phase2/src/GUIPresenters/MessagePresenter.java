@@ -10,6 +10,7 @@ import useCases.UserManager;
 import useCases.UserTypeManager;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MessagePresenter {
 
@@ -33,14 +34,17 @@ public class MessagePresenter {
         MessageManager.makeNewMessage(UserManager.giveIDOfUser(u), UserManager.giveIDOfUsername(receiver), -1, content);
     }
 
-    public static String[] messageUsernamnes(User u){
-        ArrayList<String> usernames = new ArrayList<>();
+    public static HashMap<Integer, String> messageUsernamnes(User u){
+        HashMap<Integer, String> userHash = new HashMap<>();
         ArrayList<Message> messages = MessageManager.getAllReceivedMessages(UserManager.giveIDOfUser(u));
         for (Message m: messages){
-            usernames.add(UserManager.giveUsername(UserManager.getUser(MessageManager.getSendersID(MessageManager.getIDOfMessage(m)))));
+            userHash.put(MessageManager.getIDOfMessage(m),
+                    UserManager.giveUsername(UserManager.getUser(MessageManager.getSendersID(MessageManager.getIDOfMessage(m)))));
         }
-        return usernames.toArray(new String[0]);
+        return userHash;
     }
+
+    public static String getMessageContent(int ID){return MessageManager.getContent(ID);}
 
     public static String[] messageOptions(User u){
         return UserManager.getMessageOptionsList(u);
