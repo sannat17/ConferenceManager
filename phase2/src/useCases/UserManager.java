@@ -32,7 +32,7 @@ public class UserManager{
         if (!(checkUsername(username))){
             return false;
         }
-        if(!(checkID(ID))){
+        if(!(userHashMap.containsKey(ID))){
             return false;
         }
         if (type.toLowerCase().equals("attendee")){
@@ -74,20 +74,6 @@ public class UserManager{
     private static boolean checkUsername(String username){
         for (User u: userHashMap.values()){
             if (username.equals(u.getUsername())){
-                return false;
-            }
-        }
-        return true;
-    }
-
-    /** Checks whether a certain ID is already being used
-     *
-     * @param ID The ID that we want to check
-     * @return Returns true if the ID is not already being used and false if it is
-     */
-    private static boolean checkID(int ID){
-        for (User u: userHashMap.values()){
-            if (ID == u.getUserID()){
                 return false;
             }
         }

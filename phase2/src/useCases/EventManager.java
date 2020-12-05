@@ -3,6 +3,7 @@ package useCases;
 import entities.Event;
 import entities.User;
 
+import java.lang.reflect.Array;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -180,14 +181,12 @@ public class EventManager {
      * @return event.getAttending()
      */
     public static ArrayList<Integer> getAttendingSpecificEvent(int eventID){
-        for(Event event : getAllEvents()){ //for all events..
-            if (eventID == event.getEventID()){
-            //if the eventID matches...
-                return event.getAttending(); //return the list of attendees
-            }
+        Event e =  getEvent(eventID);
+        if (e == null) {
+            return new ArrayList<>();
         }
-        return new ArrayList<Integer>();
-        //else if no event matches, return an empty ArrayList
+
+        return e.getAttending();
     }
 
     /**
@@ -221,13 +220,13 @@ public class EventManager {
     /**
      * Returns the events that a user can sign up for
      *
-     * @param u The user checked to see if they can sing up for events
+     * @param userID The userID of the user.
      * @return A list of events that the user can sign up for
      */
-    public static ArrayList<String> getSignUpEventsTitle(User u){
+    public static ArrayList<String> getSignUpEventsTitle(int userID){
         ArrayList<String> signUp = new ArrayList<>();
         for (Event e: eventHashMap.values()){
-            if (!(e.getAttending().contains(u)) && (e.getAttending().size() <= 2)){
+            if (!(e.getAttending().contains(userID)) && (e.getAttending().size() <= 2)){
                 signUp.add(e.getTitle());
             }
         }
