@@ -20,12 +20,6 @@ public class Speaker extends User{
     }
 
     @Override
-    public String toString() {
-        String delimiter = Character.toString((char) 31);
-        return super.toString() + delimiter + "speaker";
-    }
-
-    @Override
     public String getType() {
         return type;
     }
