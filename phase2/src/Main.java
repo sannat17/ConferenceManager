@@ -16,12 +16,12 @@ public class Main {
         EventIO.readFile();
         MessageIO.readFile();
 
-        try{
-            EventExporter.requestExport(0);
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try{
+//            EventExporter.requestExport(0);
+//        }
+//        catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
         while (true) {
             User loggedInUser = null;

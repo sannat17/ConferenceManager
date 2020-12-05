@@ -12,7 +12,7 @@ public class EventExporter{
 
     public static void requestExport(int userID) throws IOException {
         JSONArray eventsJSON = new JSONArray(EventManager.getAllEvents());
-        URL url = new URL("http://localhost:5000/upload");
+        URL url = new URL("http://localhost:5000/upload/" + userID);
         HttpURLConnection req = (HttpURLConnection) url.openConnection();
         req.setRequestMethod("POST");
         req.setRequestProperty("Content-Type", "application/json");

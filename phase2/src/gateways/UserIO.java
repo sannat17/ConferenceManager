@@ -18,7 +18,7 @@ public class UserIO {
      */
     public static void readFile(){
         try{
-            String dir = "./phase2/src/data/users.txt";
+            String dir = "./src/data/users.txt";
             File file = new File(dir);
             Scanner fs = new Scanner(file);
 
@@ -44,7 +44,7 @@ public class UserIO {
      */
     public static void writeFile(){
         try{
-            String dir = "./phase2/src/data/users.txt";
+            String dir = "./src/data/users.txt";
             File file = new File(dir);
             boolean existing = file.createNewFile(); //attempt to create new file if not preexisting
 
