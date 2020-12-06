@@ -121,8 +121,15 @@ public class Event {
     @Override
     public String toString() {
         String delimiter = Character.toString((char) 31);
-        return  eventID + delimiter + title + delimiter + timeOfEvent + delimiter + roomNumber +
-                delimiter + speakerIDs + delimiter + organizerID + delimiter + attending;
+        if (!(speakerIDs.isEmpty())) {
+            return  eventID + delimiter + title + delimiter + timeOfEvent + delimiter + roomNumber +
+                    delimiter + speakerIDs.get(0) + delimiter + organizerID + delimiter + attending +
+                    delimiter + vip + delimiter + maxCapacity;
+        } else {
+            return  eventID + delimiter + title + delimiter + timeOfEvent + delimiter + roomNumber +
+                    delimiter + -99 + delimiter + organizerID + delimiter + attending + delimiter + vip +
+                    delimiter + maxCapacity;
+        }
     }
 
     /** Removes the unique ID of the user to the attending list

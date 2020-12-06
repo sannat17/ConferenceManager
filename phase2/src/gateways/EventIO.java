@@ -34,7 +34,10 @@ public class EventIO {
                 int organizerID = Integer.parseInt(user[5]);
                 ArrayList<Integer> attendees = toIntArray(user[6]);
                 boolean vip = Boolean.parseBoolean(user[7]);
-                EventManager.loadEvent(eventID, title, timeOfEvent, roomNumber, speakerIDs, organizerID, attendees, vip);
+                int maxCapacity = Integer.parseInt(user[8]);
+
+                EventManager.loadEvent(eventID, title, timeOfEvent, roomNumber, speakerIDs, organizerID, attendees, vip,
+                        maxCapacity);
             }
         }
         catch(Exception e){
