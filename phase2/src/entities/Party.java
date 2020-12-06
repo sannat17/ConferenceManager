@@ -12,9 +12,11 @@ public class Party extends Event{
      * @param roomNumber  The room number of this event
      * @param speakerIDs  The unique number of IDs of speakers. Always empty since there are no speakers
      * @param organizerID The unique ID of the organizer of the event
+     * @param vip A boolean specifying whether this event is restricted to VIP users
+     * @param maxCapacity The maximum capacity of this event
      */
     public Party(int eventID, String title, LocalDateTime timeOfEvent, int roomNumber,
-                 ArrayList<Integer> speakerIDs, int organizerID, boolean vip) {
-        super(eventID, title, timeOfEvent, roomNumber, speakerIDs, organizerID, vip);
+                 ArrayList<Integer> speakerIDs, int organizerID, boolean vip, int maxCapacity) {
+        super(eventID, title, timeOfEvent, roomNumber, speakerIDs, organizerID, vip, maxCapacity);
     }
 }

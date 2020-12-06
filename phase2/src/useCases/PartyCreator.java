@@ -15,12 +15,14 @@ public class PartyCreator extends EventCreator {
      * @param roomNumber    The room number of the Party
      * @param speakerIDs    A list of IDs of the speakers (has to be empty)
      * @param organizerID   The ID of the Organizer
+     * @param vip A boolean specifying whether this event is restricted to VIP users
+     * @param maxCapacity The maximum capacity of this event
      * @return Talk
      */
     @Override
     public Party createEvent(int eventID, String title, LocalDateTime timeOfEvent,
-                             int roomNumber, ArrayList<Integer> speakerIDs, int organizerID, boolean vip){
-        return new Party(eventID, title, timeOfEvent, roomNumber, speakerIDs, organizerID, vip);
+                             int roomNumber, ArrayList<Integer> speakerIDs, int organizerID, boolean vip, int maxCapacity){
+        return new Party(eventID, title, timeOfEvent, roomNumber, speakerIDs, organizerID, vip, maxCapacity);
     }
 
 }

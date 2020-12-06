@@ -32,10 +32,11 @@ public class EventManager {
      * @param speakerIDs The list of IDs of the speakers of the event being created
      * @param organizerID The ID of the organizer of the event
      * @param attendees The list of UserIDs that are attending the event
+     * @param maxCapacity The maximum capacity of the event
      * @return A boolean with true if the Event was successfully created and false if it wasn't
      */
     public static boolean loadEvent(int eventID, String title, LocalDateTime timeOfEvent, int roomNumber, ArrayList<Integer> speakerIDs, int organizerID,
-                                    ArrayList<Integer> attendees, boolean vip) {
+                                    ArrayList<Integer> attendees, boolean vip, int maxCapacity) {
         if (eventHashMap.containsKey(eventID)) {return false;}    // return false if event already exists
 
         for(int speakerID: speakerIDs)
@@ -60,18 +61,18 @@ public class EventManager {
         if(speakerIDs.size() == 0){ //if there are no speakers, create a Party
             PartyCreator p = new PartyCreator(); //create an instance of the PartyCreator
             //and call the createEvent method to create a Party
-            event = p.createEvent(eventID, title, timeOfEvent, roomNumber, speakerIDs, organizerID, vip);
+            event = p.createEvent(eventID, title, timeOfEvent, roomNumber, speakerIDs, organizerID, vip, maxCapacity);
         }
         else if (speakerIDs.size() == 1){ //if there is 1 speaker, create a Talk
             TalkCreator t = new TalkCreator(); //create an instance of the TalkCreator
             //and call the createEvent method to create a Talk
-            event = t.createEvent(eventID, title, timeOfEvent, roomNumber, speakerIDs, organizerID, vip);
+            event = t.createEvent(eventID, title, timeOfEvent, roomNumber, speakerIDs, organizerID, vip, maxCapacity);
 
         }
         else { //if there are 2 or more speakers, create a PanelDiscussion
             PanelDiscussionCreator pd = new PanelDiscussionCreator();//create an instance of the PanelDiscussionCreator
             //and call the createEvent method to create a PanelDiscussion
-            event = pd.createEvent(eventID, title, timeOfEvent, roomNumber, speakerIDs, organizerID, vip);
+            event = pd.createEvent(eventID, title, timeOfEvent, roomNumber, speakerIDs, organizerID, vip, maxCapacity);
         }
 
         eventHashMap.put(eventID, event); //put the Event onto the hashmap
@@ -93,9 +94,10 @@ public class EventManager {
      * @return A boolean with true if the Event was successfully created and false if it wasn't
      */
     public static boolean makeNewEvent(String title, LocalDateTime timeOfEvent,
-                                       int roomNumber, ArrayList<Integer> speakerIDs, int organizerID, boolean vip){
+                                       int roomNumber, ArrayList<Integer> speakerIDs, int organizerID, boolean vip,
+                                       int maxCapacity){
         int ID = getNextID();
-        return loadEvent(ID, title, timeOfEvent, roomNumber, speakerIDs, organizerID, new ArrayList<>(), vip);
+        return loadEvent(ID, title, timeOfEvent, roomNumber, speakerIDs, organizerID, new ArrayList<>(), vip, maxCapacity);
     }
 
     /** Sign up a user for an event

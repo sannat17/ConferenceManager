@@ -21,6 +21,8 @@ public class Event {
     private ArrayList<Integer> attending;
     /** Whether event is VIP or not */
     private boolean vip;
+    /** The maximum capacity of this event */
+    private int maxCapacity;
 
     /**
      * Create a new event
@@ -31,9 +33,12 @@ public class Event {
      * @param roomNumber The room number of this event
      * @param speakerIDs The unique ID of this speaker for the event
      * @param organizerID The unique ID of the organizer of the event
+     * @param vip A boolean specifying whether this event is restricted to VIP users
+     * @param maxCapacity The maximum capacity of this event
      */
     public Event(int eventID, String title, LocalDateTime timeOfEvent,
-                 int roomNumber, ArrayList<Integer> speakerIDs, int organizerID){
+                 int roomNumber, ArrayList<Integer> speakerIDs, int organizerID,
+                 boolean vip, int maxCapacity){
         this.eventID = eventID;
         this.timeOfEvent = timeOfEvent;
         this.title = title;
@@ -41,11 +46,8 @@ public class Event {
         this.speakerIDs = speakerIDs;
         this.organizerID = organizerID;
         this.attending = new ArrayList<Integer>();
-    }
-
-    public Event(int eventID, String title, LocalDateTime timeOfEvent, int roomNumber, ArrayList<Integer> speakerIDs, int organizerID, boolean vip) {
-        this(eventID, title, timeOfEvent, roomNumber, speakerIDs, organizerID);
         this.vip = vip;
+        this.maxCapacity = maxCapacity;
     }
 
     /**

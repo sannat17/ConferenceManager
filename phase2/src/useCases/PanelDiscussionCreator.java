@@ -15,13 +15,15 @@ public class PanelDiscussionCreator extends EventCreator {
      * @param roomNumber    The room number of the PanelDiscussion
      * @param speakerIDs    A list of IDs of the speakers
      * @param organizerID   The ID of the Organizer
+     * @param vip A boolean specifying whether this event is restricted to VIP users
+     * @param maxCapacity The maximum capacity of this event
      * @return Talk
      */
     @Override
     public PanelDiscussion createEvent(int eventID, String title, LocalDateTime timeOfEvent,
-                                       int roomNumber, ArrayList<Integer> speakerIDs, int organizerID, boolean vip) {
+                                       int roomNumber, ArrayList<Integer> speakerIDs, int organizerID, boolean vip, int maxCapacity) {
 
-        return new PanelDiscussion(eventID, title, timeOfEvent, roomNumber, speakerIDs, organizerID, vip);
+        return new PanelDiscussion(eventID, title, timeOfEvent, roomNumber, speakerIDs, organizerID, vip, maxCapacity);
     }
 
 }

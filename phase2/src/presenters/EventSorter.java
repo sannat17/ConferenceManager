@@ -61,14 +61,14 @@ public class EventSorter {
         ArrayList<Integer> speakerIDs = new ArrayList<Integer>();
         ArrayList<Event> sortedBySpeakerID = new ArrayList<Event>();
         for (Event e: eventsInfo) {
-            if (!speakerIDs.contains(e.getSpeakerID())) {
-                speakerIDs.add(e.getSpeakerID());
+            if (!speakerIDs.contains(e.getSpeakerIDs().get(0))) {
+                speakerIDs.add(e.getSpeakerIDs().get(0));
             }
         }
         Collections.sort(speakerIDs);
         for (Integer i: speakerIDs){
             for (Event e: eventsInfo){
-                if (e.getSpeakerID() == i){
+                if (e.getSpeakerIDs().get(0) == i){
                     sortedBySpeakerID.add(e);
                 }
             }

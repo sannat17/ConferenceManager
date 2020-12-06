@@ -55,7 +55,7 @@ public class EventPresenter {
      * @return A list of events titles that the user can sign up for
      */
     public static ArrayList<String> getSignUpEventTitle(User u){
-        return EventManager.getSignUpEventsTitle(u);
+        return EventManager.getSignUpEventsTitle(UserManager.giveIDOfUser(u));
 
     }
 

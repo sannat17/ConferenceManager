@@ -13,10 +13,12 @@ public class Talk extends Event {
      * @param roomNumber  The room number of this event
      * @param speakerIDs  The list of unique ID of this speaker for the event, precondition: has to be of length 1
      * @param organizerID The unique ID of the organizer of the event
+     * @param vip A boolean specifying whether this event is restricted to VIP users
+     * @param maxCapacity The maximum capacity of this event
      */
     public Talk(int eventID, String title, LocalDateTime timeOfEvent, int roomNumber,
-                ArrayList<Integer> speakerIDs, int organizerID, boolean vip) {
-        super(eventID, title, timeOfEvent, roomNumber, speakerIDs, organizerID, vip);
+                ArrayList<Integer> speakerIDs, int organizerID, boolean vip, int maxCapacity) {
+        super(eventID, title, timeOfEvent, roomNumber, speakerIDs, organizerID, vip, maxCapacity);
 
     }
 }
