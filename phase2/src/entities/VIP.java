@@ -1,6 +1,9 @@
 package entities;
 
 public class VIP extends User{
+
+    private String type = "VIP";
+
     /**
      * Create a new User and generate its base available menu options
      *
@@ -9,6 +12,7 @@ public class VIP extends User{
      * @param ID        the unique ID of this user
      * @param firstName the first name of the user.
      */
+
     public VIP(String username, String password, int ID, String firstName) {
         super(username, password, ID, firstName);
 
@@ -22,6 +26,11 @@ public class VIP extends User{
     public String toString() {
         String delimiter = Character.toString((char) 31);
         return super.toString() + delimiter + "VIP";
+    }
+
+    @Override
+    public String getType() {
+        return type;
     }
 
 }

@@ -29,27 +29,55 @@ public class EventManager {
      * @param title The title of the event
      * @param timeOfEvent The time of the event being created
      * @param roomNumber The room number of the event being created
-     * @param speakerID The ID of the speaker of the event being created
+     * @param speakerIDs The list of IDs of the speakers of the event being created
      * @param organizerID The ID of the organizer of the event
      * @param attendees The list of UserIDs that are attending the event
      * @return A boolean with true if the Event was successfully created and false if it wasn't
      */
-    public static boolean loadEvent(int eventID, String title, LocalDateTime timeOfEvent, int roomNumber, int speakerID, int organizerID,
-                                    ArrayList<Integer> attendees) {
+    public static boolean loadEvent(int eventID, String title, LocalDateTime timeOfEvent, int roomNumber, ArrayList<Integer> speakerIDs, int organizerID,
+                                    ArrayList<Integer> attendees, boolean vip) {
         if (eventHashMap.containsKey(eventID)) {return false;}    // return false if event already exists
 
+        for(int speakerID: speakerIDs)
         for(Event e: eventHashMap.values()){    // return false if there is a time-room number or time-speakerID overlap
             if ((e.getTimeOfEvent().equals(timeOfEvent) && e.getRoomNumber() == roomNumber) ||
-                    (e.getTimeOfEvent().equals(timeOfEvent) && e.getSpeakerID() == speakerID)){
+                    (e.getTimeOfEvent().equals(timeOfEvent) && e.getSpeakerIDs().contains(speakerID))){
                 return false;
             }
         }
 
-        Event e = new Event(eventID, title, timeOfEvent, roomNumber, speakerID, organizerID);
-        eventHashMap.put(eventID, e);
+        if (speakerIDs.size() == 0){ //if there is no speaker
+            for (Event e : eventHashMap.values()) {    // return false if there is only a time-room number conflict                if ((e.getTimeOfEvent().equals(timeOfEvent) && e.getRoomNumber() == roomNumber))
+                {
+                    return false;
+                }
+            }
+        }
+
+        Event event; // create an event
+
+        //decide whether the Event should be a Party, Talk or PanelDiscussion based on the speaker size
+        if(speakerIDs.size() == 0){ //if there are no speakers, create a Party
+            PartyCreator p = new PartyCreator(); //create an instance of the PartyCreator
+            //and call the createEvent method to create a Party
+            event = p.createEvent(eventID, title, timeOfEvent, roomNumber, speakerIDs, organizerID, vip);
+        }
+        else if (speakerIDs.size() == 1){ //if there is 1 speaker, create a Talk
+            TalkCreator t = new TalkCreator(); //create an instance of the TalkCreator
+            //and call the createEvent method to create a Talk
+            event = t.createEvent(eventID, title, timeOfEvent, roomNumber, speakerIDs, organizerID, vip);
+
+        }
+        else { //if there are 2 or more speakers, create a PanelDiscussion
+            PanelDiscussionCreator pd = new PanelDiscussionCreator();//create an instance of the PanelDiscussionCreator
+            //and call the createEvent method to create a PanelDiscussion
+            event = pd.createEvent(eventID, title, timeOfEvent, roomNumber, speakerIDs, organizerID, vip);
+        }
+
+        eventHashMap.put(eventID, event); //put the Event onto the hashmap
 
         for (int ID: attendees) {    // record event attendants in event object's attendance sheet
-            e.addAttendant(ID);
+            event.addAttendant(ID);
         }
 
         return true;
@@ -60,13 +88,14 @@ public class EventManager {
      * @param title The title of the event being created
      * @param timeOfEvent The time of the event being created
      * @param roomNumber The number of the room of the event being created
-     * @param speakerID The ID of the speaker of the event being created
+     * @param speakerIDs The list of IDs of the speakers of the event being created
      * @param organizerID The ID of the organizer of the event
      * @return A boolean with true if the Event was successfully created and false if it wasn't
      */
-    public static boolean makeNewEvent(String title, LocalDateTime timeOfEvent, int roomNumber, int speakerID, int organizerID){
+    public static boolean makeNewEvent(String title, LocalDateTime timeOfEvent,
+                                       int roomNumber, ArrayList<Integer> speakerIDs, int organizerID, boolean vip){
         int ID = getNextID();
-        return loadEvent(ID, title, timeOfEvent, roomNumber, speakerID, organizerID, new ArrayList<>());
+        return loadEvent(ID, title, timeOfEvent, roomNumber, speakerIDs, organizerID, new ArrayList<>(), vip);
     }
 
     /** Sign up a user for an event
@@ -167,7 +196,7 @@ public class EventManager {
         ArrayList<Event> eventsByUser = new ArrayList<>();
 
         for (Event e: eventHashMap.values()){
-            if (e.getAttending().contains(userID) || userID == e.getOrganizerID() || userID == e.getSpeakerID()) {
+            if (e.getAttending().contains(userID) || userID == e.getOrganizerID() || e.getSpeakerIDs().contains(userID)) {
                 eventsByUser.add(e);
             }
         }
