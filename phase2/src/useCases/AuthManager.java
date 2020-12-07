@@ -1,6 +1,9 @@
 package useCases;
 
 import entities.User;
+import gateways.EventIO;
+import gateways.MessageIO;
+import gateways.UserIO;
 
 import java.util.ArrayList;
 

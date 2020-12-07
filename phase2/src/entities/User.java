@@ -70,7 +70,7 @@ public abstract class User {
     @Override
     public String toString() {
         String delimiter = Character.toString((char) 31);
-        return  userID + delimiter + username + delimiter + password + delimiter + firstName + getType();
+        return  userID + delimiter + username + delimiter + password + delimiter + firstName + delimiter + getType();
     }
 
     /**

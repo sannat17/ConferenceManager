@@ -1,5 +1,6 @@
 package GUI;
 
+import GUIPresenters.LoginPresenter;
 import GUIPresenters.SignoutPresenter;
 import entities.User;
 import gateways.EventIO;
@@ -30,6 +31,7 @@ public class mainView {
     }
 
     private void createUI(){
+        LoginPresenter.readFiles();
         loginPanel = loginView.getLoginPanel();
         mainFrame = new JFrame();
         mainCL = new CardLayout(5,5);

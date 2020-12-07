@@ -1,7 +1,6 @@
 package GUIPresenters;
 
 import GUI.mainView;
-import com.sun.corba.se.spi.ior.MakeImmutable;
 import entities.Message;
 import entities.Speaker;
 import entities.User;

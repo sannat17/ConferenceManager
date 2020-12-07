@@ -32,7 +32,7 @@ public class UserManager{
         if (!(checkUsername(username))){
             return false;
         }
-        if(!(userHashMap.containsKey(ID))){
+        if((userHashMap.containsKey(ID))){
             return false;
         }
         if (type.toLowerCase().equals("attendee")){
@@ -78,6 +78,16 @@ public class UserManager{
             }
         }
         return true;
+    }
+
+    public static User getUserFromUsername(String username){
+        User user = null;
+        for (User u: userHashMap.values()){
+            if (username.equals(u.getUsername())){
+                user = u;
+            }
+        }
+        return user;
     }
 
     /** Gets the next usable ID for a user

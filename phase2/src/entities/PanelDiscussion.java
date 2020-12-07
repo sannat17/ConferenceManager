@@ -17,6 +17,6 @@ public class PanelDiscussion extends Event{
      */
     public PanelDiscussion(int eventID, String title, LocalDateTime timeOfEvent,
                            int roomNumber, ArrayList<Integer> speakerIDs, int organizerID, boolean vip, int maxCapacity) {
-        super(eventID, title, timeOfEvent, roomNumber, speakerIDs, organizerID, vip);
+        super(eventID, title, timeOfEvent, roomNumber, speakerIDs, organizerID, vip, maxCapacity);
     }
 }
