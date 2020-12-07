@@ -24,6 +24,7 @@ public class mainView {
     private static JPanel messagePanel;
     private static JPanel messageUserPanel;
     private static JPanel signUpEventPanel;
+    private static JPanel cancelSignUpEventPanel;
     private static JPanel displayMessagesPanel;
 
     public mainView(){
@@ -88,6 +89,12 @@ public class mainView {
         signUpEventPanel = signUpEventView.getSignUpEventPanel(u);
         mainContainer.add(signUpEventPanel, "Sign Up for Event");
         mainCL.show(mainContainer, "Sign Up for Event");
+    }
+
+    public static void toCancelSignUpEventsPanel(User u){
+        cancelSignUpEventPanel = cancelSignUpEventView.getCancelSignUpEventPanel(u);
+        mainContainer.add(cancelSignUpEventPanel, "Cancel Sign Up for Event");
+        mainCL.show(mainContainer, "Cancel Sign Up for Event");
     }
 
     public static void toMessagesPanel(User u){
