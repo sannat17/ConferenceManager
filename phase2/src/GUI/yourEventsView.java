@@ -21,7 +21,7 @@ public class yourEventsView {
         confirmTypeButton.setBounds(10, 60, 160, 25);
         yourEventsPanel.add(confirmTypeButton);
 
-        JTextField yourEventsField = new JTextField();
+        JTextArea yourEventsField = new JTextArea();
         yourEventsField.setBounds(10, 100, 250, 110);
         yourEventsField.setEditable(false);
         yourEventsPanel.add(yourEventsField);

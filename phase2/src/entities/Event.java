@@ -137,6 +137,6 @@ public class Event {
      * @param userID The unique ID of the user
      */
     public void removeAttendant(int userID){
-        attending.remove(userID);
+        attending.remove(attending.indexOf(userID));
     }
 }

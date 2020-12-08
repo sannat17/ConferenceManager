@@ -270,11 +270,11 @@ public class EventManager {
      * @param UserID The userID of the user.
      * @return A list of events that the user is attending
      */
-    public static ArrayList<Event> getAttending(int UserID){
-        ArrayList<Event> attending = null;
+    public static ArrayList<String> getAttending(int UserID){
+        ArrayList<String> attending = new ArrayList<>();
         for (Event e: getAllEvents()){
             if (e.getAttending().contains(UserID)){
-                attending.add(e);
+                attending.add(e.getTitle());
             }
         }
         return attending;

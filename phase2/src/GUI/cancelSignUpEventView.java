@@ -18,7 +18,7 @@ public class cancelSignUpEventView {
         JButton cancelSignUpButton = new JButton("Cancel Sign Up");
         cancelSignUpButton.setBounds(10, 60, 160, 25);
         CancelSignUpEventPanel.add(cancelSignUpButton);
-        cancelSignUpButton.addActionListener(e -> EventPresenter.signUpForEvent(u, (String) eventsComboBox.getSelectedItem()));
+        cancelSignUpButton.addActionListener(e -> EventPresenter.cancelSpotEvent(u, (String) eventsComboBox.getSelectedItem()));
 
         JButton backButton = new JButton("Back");
         backButton.setBounds(10, 230, 100, 25);

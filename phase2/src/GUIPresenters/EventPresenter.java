@@ -48,9 +48,9 @@ public class EventPresenter {
         String sortedEvents = "";
 
         for (Event e: listOfEvents) {
-            sortedEvents = sortedEvents + e;
+            sortedEvents = sortedEvents + e.getTitle();
             if (e.getAttending().contains(UserManager.giveIDOfUser(u))){
-                sortedEvents = sortedEvents + " Currently Attending";
+                sortedEvents = sortedEvents + " (Currently Attending)";
             }
             sortedEvents = sortedEvents + "\n";
         }
@@ -74,7 +74,7 @@ public class EventPresenter {
      * @param u The user.
      * @return A list of events that the user is attending
      */
-    public static ArrayList<Event> getAttending(User u){
+    public static ArrayList<String> getAttending(User u){
         return EventManager.getAttending(u.getUserID());
     }
 
@@ -85,11 +85,25 @@ public class EventPresenter {
      * @return A boolean with true if the User successfully cancelled their spot for the event and false if it wasn't
      */
     public static void cancelSpotEvent(User u, String title){
-        EventManager.cancelSpotForEvent(u.getUserID(), EventManager.giveEventIDOfTitle(title));
+        boolean cancelled = EventController.cancelSignUp(u, EventManager.giveEventIDOfTitle(title));
+        if (cancelled == false){
+            mainView.createPopUp("Could not cancel your spot ");
+        }
+        else{
+            mainView.createPopUp("Cancelled spot");
+            mainView.toEventsPanel(u);
+        }
     }
 
     public static void signUpForEvent(User u, String title){
-        EventController.signUp(u,EventManager.giveEventIDOfTitle(title));
+        Boolean signedUp = EventController.signUp(u,EventManager.giveEventIDOfTitle(title));
+        if (signedUp == false){
+            mainView.createPopUp("Could not sign you up for this event");
+        }
+        else{
+            mainView.createPopUp("Signed up!");
+            mainView.toEventsPanel(u);
+        }
     }
 
     public static DefaultListModel<String> getSpeakers(){
