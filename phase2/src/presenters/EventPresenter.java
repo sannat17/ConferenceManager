@@ -15,8 +15,7 @@ public class EventPresenter extends Presenter {
      *
      * @return a dictionary of the available sorting options
      */
-    public static HashMap<Integer, String> getSortingOptionsDict() {
-        ArrayList<String> options = new ArrayList<String>();
+    public static HashMap<Integer, String> getSortingOptionsDict(ArrayList<String> options) {
         options.add("View events by title");
         options.add("View events by time");
         options.add("View events by speaker");
