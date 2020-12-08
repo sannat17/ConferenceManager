@@ -11,7 +11,7 @@ public class cancelSignUpEventView {
         JPanel CancelSignUpEventPanel = new JPanel();
         CancelSignUpEventPanel.setLayout(null);
 
-        JComboBox eventsComboBox = new JComboBox(EventPresenter.getAllEventsUser(u).toArray(new String[0]));
+        JComboBox eventsComboBox = new JComboBox(EventPresenter.getAttending(u).toArray(new String[0]));
         eventsComboBox.setBounds(10, 20, 160, 25);
         CancelSignUpEventPanel.add(eventsComboBox);
 

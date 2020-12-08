@@ -26,6 +26,7 @@ public class mainView {
     private static JPanel signUpEventPanel;
     private static JPanel cancelSignUpEventPanel;
     private static JPanel displayMessagesPanel;
+    private static JPanel organizeEventPanel;
 
     public mainView(){
         createUI();
@@ -95,6 +96,12 @@ public class mainView {
         cancelSignUpEventPanel = cancelSignUpEventView.getCancelSignUpEventPanel(u);
         mainContainer.add(cancelSignUpEventPanel, "Cancel Sign Up for Event");
         mainCL.show(mainContainer, "Cancel Sign Up for Event");
+    }
+
+    public static void toOrganizeEventPanel(User u){
+        organizeEventPanel = organizeEvent.getOrganizeEventPanel(u);
+        mainContainer.add(organizeEventPanel, "Organize event");
+        mainCL.show(mainContainer, "Organize event");
     }
 
     public static void toMessagesPanel(User u){

@@ -7,7 +7,10 @@ import entities.User;
 import presenters.EventSorter;
 import useCases.EventManager;
 import useCases.UserManager;
+import useCases.UserTypeManager;
 
+import javax.swing.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class EventPresenter {
@@ -22,6 +25,9 @@ public class EventPresenter {
                 break;
             case "Cancel sign up for an event":
                 mainView.toCancelSignUpEventsPanel(u);
+                break;
+            case "Organize event":
+                mainView.toOrganizeEventPanel(u);
                 break;
         }
     }
@@ -63,13 +69,13 @@ public class EventPresenter {
     }
 
     /**
-     * Return events of which a user is attending, speaking at, or organizing
+     * Returns the events a user is attending
      *
-     * @param u the user
-     * @return an unsorted list of events of which the user is attending, speaking at, or organizing
+     * @param u The user.
+     * @return A list of events that the user is attending
      */
-    public static ArrayList<Event> getAllEventsUser(User u) {
-        return EventManager.getAllEventsByUser(u.getUserID());
+    public static ArrayList<Event> getAttending(User u){
+        return EventManager.getAttending(u.getUserID());
     }
 
     /** Allows a User to cancel their spot for an Event
@@ -84,5 +90,31 @@ public class EventPresenter {
 
     public static void signUpForEvent(User u, String title){
         EventController.signUp(u,EventManager.giveEventIDOfTitle(title));
+    }
+
+    public static DefaultListModel<String> getSpeakers(){
+        ArrayList<String> speakersArrayList = UserTypeManager.getUsersByType("speaker");
+        DefaultListModel<String> speakers = new DefaultListModel<>();
+        for(String speaker: speakersArrayList){
+            speakers.addElement(speaker);
+        }
+        return speakers;
+    }
+
+    public static void makeEvent(String title, LocalDateTime time, int roomNumber,
+                                 DefaultListModel<String> speakerNames, User organizer, boolean vip, int maxCapacity){
+        ArrayList<Integer> speakerIDs = new ArrayList<>();
+        for(int i = 0; i < speakerNames.size(); i++ ){
+            speakerIDs.add(UserManager.giveIDOfUsername(speakerNames.get(i)));
+        }
+        Boolean made = EventManager.makeNewEvent(title, time, roomNumber, speakerIDs, UserManager.giveIDOfUser(organizer), vip,
+                maxCapacity);
+        if (made == false){
+            mainView.createPopUp("There was a conflict while trying to create your event.");
+        }
+        else{
+            mainView.createPopUp("Event Created!");
+            mainView.toEventsPanel(organizer);
+        }
     }
 }

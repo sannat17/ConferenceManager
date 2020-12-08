@@ -263,4 +263,20 @@ public class EventManager {
         }
         return signUp;
     }
+
+    /**
+     * Returns the events a user is attending
+     *
+     * @param UserID The userID of the user.
+     * @return A list of events that the user is attending
+     */
+    public static ArrayList<Event> getAttending(int UserID){
+        ArrayList<Event> attending = null;
+        for (Event e: getAllEvents()){
+            if (e.getAttending().contains(UserID)){
+                attending.add(e);
+            }
+        }
+        return attending;
+    }
 }

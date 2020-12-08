@@ -123,7 +123,7 @@ public class Event {
         String delimiter = Character.toString((char) 31);
         if (!(speakerIDs.isEmpty())) {
             return  eventID + delimiter + title + delimiter + timeOfEvent + delimiter + roomNumber +
-                    delimiter + speakerIDs.get(0) + delimiter + organizerID + delimiter + attending +
+                    delimiter + speakerIDs + delimiter + organizerID + delimiter + attending +
                     delimiter + vip + delimiter + maxCapacity;
         } else {
             return  eventID + delimiter + title + delimiter + timeOfEvent + delimiter + roomNumber +
