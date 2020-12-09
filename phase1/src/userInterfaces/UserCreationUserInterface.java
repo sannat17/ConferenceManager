@@ -21,9 +21,9 @@ public class UserCreationUserInterface {
         String type = new String();
         Boolean trueType = false;
         while (!trueType) {
-            System.out.println("Please enter the new users type (organizer, speaker, attendee)");
+            System.out.println("Please enter the new users type (organizer, speaker, attendee or vip)");
             type = s.nextLine().toLowerCase();
-            if ((type.equals("organizer") || (type.equals("speaker") || (type.equals("attendee"))))){
+            if ((type.equals("organizer") || (type.equals("speaker") || (type.equals("attendee") || (type.equals("vip")))))){
                 trueType = true;
             }
             else{

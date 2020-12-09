@@ -24,26 +24,33 @@ public class UserManager{
      * @param password The password of the user being created
      * @param name The name of the user being created
      * @param type The type of the user (Attendee, Organizer, Speaker)
+     * @param dietaryRestrictions the dietary restrictions of this user
+     * @param accessibilityRequirements the accessibility requirements of this user
      * @return A boolean with true if the User was successfully created and false if it wasn't
      */
-    public static Boolean makeUser(Integer ID, String username, String password, String name, String type){
+    public static Boolean loadUser(Integer ID, String username, String password, String name, String type, String dietaryRestrictions,
+                                   String accessibilityRequirements){
         if (!(checkUsername(username))){
             return false;
         }
-        if(!(checkID(ID))){
+        if((userHashMap.containsKey(ID))){
             return false;
         }
         if (type.toLowerCase().equals("attendee")){
-            Attendee a = new Attendee(username, password, ID, name);
+            Attendee a = new Attendee(username, password, ID, name, dietaryRestrictions, accessibilityRequirements);
             userHashMap.put(ID, a);
         }
         else if (type.toLowerCase().equals("organizer")){
-            Organizer o = new Organizer(username, password, ID, name);
+            Organizer o = new Organizer(username, password, ID, name, dietaryRestrictions, accessibilityRequirements);
             userHashMap.put(ID, o);
         }
         else if (type.toLowerCase().equals("speaker")){
-            Speaker s = new Speaker(username, password, ID, name);
+            Speaker s = new Speaker(username, password, ID, name, dietaryRestrictions, accessibilityRequirements);
             userHashMap.put(ID, s);
+        }
+        else if (type.toLowerCase().equals("vip")){
+            VIP v = new VIP(username, password, ID, name, dietaryRestrictions, accessibilityRequirements);
+            userHashMap.put(ID, v);
         }
         else{
             return false;
@@ -56,12 +63,15 @@ public class UserManager{
      * @param username The username of the user being created
      * @param password The password of the user being created
      * @param name The name of the user being created
-     * @param type The type of the user (Attendee, Organizer, Speaker)
+     * @param type The type of the user (Attendee, Organizer, Speaker, VIP)
+     * @param accessibilityRequirements Accessibility requirements of this user
+     * @param dietaryRestrictions Dietary restrictions of this user
      * @return A boolean with true if the User was successfully created and false if it wasn't
      */
-    public static Boolean makeNewUser(String username, String password, String name, String type){
+    public static Boolean makeNewUser(String username, String password, String name, String type, String dietaryRestrictions,
+                                      String accessibilityRequirements){
         int ID = getNextID();
-        return makeUser(ID, username, password, name, type);
+        return loadUser(ID, username, password, name, type, dietaryRestrictions, accessibilityRequirements);
     }
 
     /** Checks whether a certain username is already being used
@@ -78,18 +88,14 @@ public class UserManager{
         return true;
     }
 
-    /** Checks whether a certain ID is already being used
-     *
-     * @param ID The ID that we want to check
-     * @return Returns true if the ID is not already being used and false if it is
-     */
-    private static boolean checkID(int ID){
+    public static User getUserFromUsername(String username){
+        User user = null;
         for (User u: userHashMap.values()){
-            if (ID == u.getUserID()){
-                return false;
+            if (username.equals(u.getUsername())){
+                user = u;
             }
         }
-        return true;
+        return user;
     }
 
     /** Gets the next usable ID for a user
@@ -144,12 +150,14 @@ public class UserManager{
 
     /**
      * Returns the ID of user with username
-     * @param username
+     * @param u
      * @return u.getUserID()
      */
     public static int giveIDOfUser(User u){
         return u.getUserID();
     }
+
+    public static String giveUsername(User u){return u.getUsername();}
 
 
     public static String[] getMenuOptionsList(User u){
@@ -162,5 +170,53 @@ public class UserManager{
 
     public static String[] getMessageOptionsList(User u){
         return u.getMessageOptions().toArray(new String[0]);
+    }
+
+    /**
+     * Return a dictionary of userID's and their associated dietary restrictions
+     *
+     * @return a dictionary of userID's and their associated dietary restrictions
+     */
+    public static HashMap<Integer, String> getDietaryRestrictionsDict() {
+        HashMap<Integer, String> dietaryRestrictionsDict = new HashMap<Integer, String>();
+        for (int userID : userHashMap.keySet()) {
+            dietaryRestrictionsDict.put(userID, userHashMap.get(userID).getDietaryRestrictions());
+        }
+
+        return dietaryRestrictionsDict;
+    }
+
+    /**
+     * Return a dictionary of userID's and their associated accessibility requirements
+     *
+     * @return a dictionary of userID's and their associated accessibility requirements
+     */
+    public static HashMap<Integer, String> getAccessibilityRequirementsDict() {
+        HashMap<Integer, String> accessibilityRequirementsDict = new HashMap<Integer, String>();
+        for (int userID : userHashMap.keySet()) {
+            accessibilityRequirementsDict.put(userID, userHashMap.get(userID).getAccessibilityRequirements());
+        }
+
+        return accessibilityRequirementsDict;
+    }
+
+    /**
+     * Set the dietary restriction status of a user
+     *
+     * @param userID the id of the user
+     * @param status the string of which represents the new status
+     */
+    public static void setDietaryRestrictionStatus(int userID, String status) {
+        getUser(userID).setDietaryRestrictionStatus(status);
+    }
+
+    /**
+     * Set the accessibility requirement status of a user
+     *
+     * @param userID the id of the user
+     * @param status the string of which represents the new status
+     */
+    public static void setAccessibilityRequirementStatus(int userID, String status) {
+        getUser(userID).setAccessibilityRequirementStatus(status);
     }
 }

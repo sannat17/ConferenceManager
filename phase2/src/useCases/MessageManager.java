@@ -24,13 +24,15 @@ public class MessageManager {
      * @param messageContent The ID of the sender of the message
      * @return returns the boolean true is the message is made!
      */
-    public static boolean makeMessage(int senderID, int statusID, int receiverID, int messageID, int replyToID, String messageContent) {
+    public static boolean loadMessage(int senderID, int statusID, int receiverID, int messageID, int replyToID,
+                                      String messageContent) {
 
         if (messageHashMap.containsKey(messageID)) {
             return false;
         }
 
-        Message m = new Message(senderID, statusID, receiverID, messageID, replyToID, messageContent);
+        Message m = new Message(senderID, receiverID, messageID, replyToID, messageContent);
+        m.setStatusID(statusID);
 
         messageHashMap.put(messageID, m);
         return true;
@@ -46,7 +48,7 @@ public class MessageManager {
      * @param messageContent The ID of the sender of the message
      * @return returns true if a new message is made.
      */
-    public static boolean makeNewMessage(int senderID, int statusID, int receiverID, int replyToID, String messageContent) {
+    public static boolean makeNewMessage(int senderID, int receiverID, int replyToID, String messageContent) {
 
         int messageID;
 
@@ -56,7 +58,11 @@ public class MessageManager {
             messageID = Collections.max(messageHashMap.keySet()) + 1;
         }
 
-        Message m = new Message(senderID, receiverID, messageID, replyToID, statusID, messageContent);
+        if (!messageHashMap.containsKey(replyToID) && replyToID != -1){
+            return false;
+        }
+
+        Message m = new Message(senderID, receiverID, messageID, replyToID, messageContent);
 
         messageHashMap.put(messageID, m);
         return true;
@@ -120,74 +126,16 @@ public class MessageManager {
 
         return to_return;
     }
-//*****************************************************************************************************************
 
-    public static void deleteReceivedMessage(int ID) {
-
-        for (Message message: messageHashMap.values()) {
-            if (message.getMessageID() == ID) {
-                message.setStatusID(-1);
-            }
-        }
+    public static void removeMessage(int ID) {
+        messageHashMap.remove(ID);
     }
 
-    public static void undoDeleteMessage(int ID) {
+    public static String getContent(int ID){return getMessage(ID).getMessageContent();}
 
-        for (Message message: messageHashMap.values()) {
-            if (message.getMessageID() == ID) {
-                message.setStatusID(0);
-            }
-        }
-    }
+    public static int getSendersID(int ID){return getMessage(ID).getSenderID();}
 
-    public static ArrayList<Message> getAllDeletedMessages(int ID) {
-
-        ArrayList<Message> to_return = new ArrayList<>();
-        for (Message m : messageHashMap.values()) {
-            if (m.getReceiverID() == ID) {
-                if (m.getStatusID() == -1) {
-                    to_return.add(m);
-                }
-            }
-
-        } return to_return;
-    }
+    public static int getIDOfMessage(Message m){return m.getMessageID();}
 
 //*****************************************************************************************************************
-    public static void archiveReceivedMessage(int ID) {
-
-        for (Message message: messageHashMap.values()) {
-            if (message.getMessageID() == ID) {
-                message.setStatusID(-2);
-            }
-        }
-    }
-
-    public static void unArchiveReceivedMessage(int ID) {
-
-        for (Message message: messageHashMap.values()) {
-            if (message.getMessageID() == ID) {
-                message.setStatusID(0);
-            }
-        }
-    }
-
-    public static ArrayList<Message> getAllArchivedMessages(int ID) {
-
-        ArrayList<Message> to_return = new ArrayList<>();
-        for (Message m : messageHashMap.values()) {
-            if (m.getReceiverID() == ID) {
-                if (m.getStatusID() == -2) {
-                    to_return.add(m);
-                }
-            }
-
-        } return to_return;
-    }
-
-//*****************************************************************************************************************
-
-
-
-
 }

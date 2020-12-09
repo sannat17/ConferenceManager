@@ -2,16 +2,15 @@ package GUI;
 
 import GUIPresenters.MenuPresenter;
 import GUIPresenters.SignoutPresenter;
-import entities.User;
 
 import javax.swing.*;
 
 public class menuView {
-    public static JPanel getMenuPanel(User u){
+    public static JPanel getMenuPanel(){
         JPanel MenuPanel = new JPanel();
         MenuPanel.setLayout(null);
 
-        String[] menuOptions = MenuPresenter.menuOptions(u);
+        String[] menuOptions = MenuPresenter.menuOptions();
         JComboBox<String> menuComboBox = new JComboBox<>(menuOptions);
         menuComboBox.setBounds(10, 20, 160, 25);
         menuComboBox.setSelectedIndex(0);
@@ -20,7 +19,7 @@ public class menuView {
         JButton confirmButton = new JButton("Confirm");
         confirmButton.setBounds(10, 60, 160, 25);
         MenuPanel.add(confirmButton);
-        confirmButton.addActionListener(e -> MenuPresenter.nextPanel((String) menuComboBox.getSelectedItem(), u));
+        confirmButton.addActionListener(e -> MenuPresenter.nextPanel((String) menuComboBox.getSelectedItem()));
 
         JButton signoutButton = new JButton("Sign Out");
         signoutButton.setBounds(10, 260, 100, 25);

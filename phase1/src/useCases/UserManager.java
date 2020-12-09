@@ -45,6 +45,10 @@ public class UserManager{
             Speaker s = new Speaker(username, password, ID, name);
             userHashMap.put(ID, s);
         }
+        else if (type.toLowerCase().equals("vip")){
+            VIP v = new VIP(username, password, ID, name);
+            userHashMap.put(ID, v);
+        }
         else{
             return false;
         }

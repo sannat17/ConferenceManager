@@ -2,12 +2,11 @@ package GUI;
 
 import GUIPresenters.CreateUserPresenter;
 import GUIPresenters.SignoutPresenter;
-import entities.User;
 
 import javax.swing.*;
 
 public class createUserView {
-    public static JPanel getCreateUserPanel(User u){
+    public static JPanel getCreateUserPanel(){
         JPanel createUserPanel = new JPanel();
         createUserPanel.setLayout(null);
 
@@ -39,7 +38,7 @@ public class createUserView {
         typeLabel.setBounds(10, 110, 80, 25);
         createUserPanel.add(typeLabel);
 
-        String [] typeOptions = {"Organizer", "Attendee", "Speaker"};
+        String [] typeOptions = {"Organizer", "Attendee", "Speaker", "VIP"};
         JComboBox typeComboBox = new JComboBox(typeOptions);
         typeComboBox.setBounds(100, 110, 165, 25);
         createUserPanel.add(typeComboBox);
@@ -47,13 +46,13 @@ public class createUserView {
         JButton createUserButton = new JButton("Create User");
         createUserButton.setBounds(10, 140, 165, 25);
         createUserPanel.add(createUserButton);
-        createUserButton.addActionListener(e -> CreateUserPresenter.createNewUser(usernameTextField.getText(),
-                passwordField.getText(), nameField.getText(), (String)typeComboBox.getSelectedItem()));
+//        createUserButton.addActionListener(e -> CreateUserPresenter.createNewUser(usernameTextField.getText(),
+//                passwordField.getText(), nameField.getText(), (String)typeComboBox.getSelectedItem()));
 
         JButton backButton = new JButton("Back");
         backButton.setBounds(10, 230, 100, 25);
         createUserPanel.add(backButton);
-        backButton.addActionListener(e -> mainView.toMenuPanel(u));
+        backButton.addActionListener(e -> mainView.toPanel("Menu"));
 
         JButton signoutButton = new JButton("Sign Out");
         signoutButton.setBounds(10, 260, 100, 25);

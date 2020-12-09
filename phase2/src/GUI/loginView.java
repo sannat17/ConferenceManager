@@ -60,7 +60,8 @@ public class loginView {
 
         loginButton.setBounds(10, 80, 80, 25);
         loginPanel.add(loginButton);
-        loginButton.addActionListener(e -> LoginPresenter.loginCheck(usernameTextField.getText(), String.valueOf(passwordField.getPassword())));
+        loginButton.addActionListener(e -> LoginPresenter.loginCheck(usernameTextField.getText(),
+                String.valueOf(passwordField.getPassword())));
 
 
 

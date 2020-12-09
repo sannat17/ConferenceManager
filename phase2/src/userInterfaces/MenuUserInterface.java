@@ -35,16 +35,10 @@ public class MenuUserInterface {
                     case "Events":
                         EventUserInterface.loadEventChoices(user);
                         break;
-//                    case "view events":
-//                        EventUserInterface.loadEvents(user);
-//                        break;
-//                    case "cancel an event":
-//                        EventUserInterface.cancelEvent(user);
-//                        break;
-                    case "create a new user account":
+                    case "Create a new user account":
                         UserCreationUserInterface.loadUserCreation(user);
                         break;
-                    case "organize event":
+                    case "Organize event":
                         EventOrganizationUserInterface.loadEventOrganization(user);
                     case "Sign out":
                         running = false;

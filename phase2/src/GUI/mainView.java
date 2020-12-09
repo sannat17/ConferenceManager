@@ -1,7 +1,10 @@
 package GUI;
 
+import GUIPresenters.LoginPresenter;
 import GUIPresenters.SignoutPresenter;
 import entities.User;
+import gateways.EventIO;
+import gateways.MessageIO;
 import gateways.UserIO;
 
 import javax.swing.*;
@@ -14,18 +17,13 @@ public class mainView {
     private static JPanel mainContainer;
     private static CardLayout mainCL;
     private JPanel loginPanel;
-    private static JPanel MenuPanel;
-    private static JPanel createUserPanel;
-    private static JPanel eventPanel;
-    private static JPanel yourEventsPanel;
-    private static JPanel messagePanel;
-    private static JPanel messageUserPanel;
 
     public mainView(){
         createUI();
     }
 
     private void createUI(){
+        LoginPresenter.readFiles();
         loginPanel = loginView.getLoginPanel();
         mainFrame = new JFrame();
         mainCL = new CardLayout(5,5);
@@ -39,6 +37,7 @@ public class mainView {
                 System.exit(0);
             }
         });
+
         mainFrame.add(mainContainer);
 
         mainFrame.setVisible(true);
@@ -46,52 +45,36 @@ public class mainView {
 
     }
 
+    public static void addPanels(){
+        mainContainer.add(menuView.getMenuPanel(), "Menu");
+        mainContainer.add(createUserView.getCreateUserPanel(), "Create User");
+        mainContainer.add(eventView.getEventView(), "Events");
+        mainContainer.add(yourEventsView.getYourEventsPanel(), "Your Events");
+        mainContainer.add(signUpEventView.getSignUpEventPanel(), "Sign Up for Event");
+        mainContainer.add(cancelSignUpEventView.getCancelSignUpEventPanel(), "Cancel Sign Up for Event");
+        mainContainer.add(organizeEvent.getOrganizeEventPanel(), "Organize event");
+        mainContainer.add(messageView.getMessageView(), "Messages");
+        mainContainer.add(displayMessagesView.getDisplayMessagesPanel(), "Display Messages");
+        mainContainer.add(cancelEventView.getCancelEventPanel(), "Cancel Event");
+    }
+
     public static void createPopUp(String message) {
         JOptionPane.showMessageDialog(mainFrame, message);
     }
 
-    public static void toMenuPanel(User u){
-        MenuPanel = menuView.getMenuPanel(u);
-        mainContainer.add(MenuPanel, "Menu");
-        mainCL.show(mainContainer, "Menu");
+    public static void toPanel(String name){
+        addPanels();
+        mainCL.show(mainContainer, name);
     }
 
     public static void toLoginPanel(){
+        mainContainer.add(loginView.getLoginPanel(), "Login");
         mainCL.show(mainContainer, "Login");
     }
 
-    public static void toCreateUserPanel(User u){
-        createUserPanel = createUserView.getCreateUserPanel(u);
-        mainContainer.add(createUserPanel, "Create User");
-        mainCL.show(mainContainer, "Create User");
-    }
-
-    public static void toEventsPanel(User u){
-        eventPanel = eventView.getEventView(u);
-        mainContainer.add(eventPanel, "Events");
-        mainCL.show(mainContainer, "Events");
-    }
-
-    public static void toYourEventsPanel(User u){
-        yourEventsPanel = yourEventsView.getYourEventsPanel(u);
-        mainContainer.add(yourEventsPanel, "Your Events");
-        mainCL.show(mainContainer, "Your Events");
-    }
-
-    public static void toMessagesPanel(User u){
-        messagePanel = messageView.getMessageView(u);
-        mainContainer.add(messagePanel, "Messages");
-        mainCL.show(mainContainer, "Messages");
-    }
-
-    public static void toMessageUserPanel(User u){
-        messageUserPanel = messageUserView.getMessageUserView(u);
-        mainContainer.add(messageUserPanel, "Message User");
+    public static void toMessageUserPanel(String type){
+        mainContainer.add(messageUserView.getMessageUserView(type), "Message User");
         mainCL.show(mainContainer, "Message User");
     }
 
-    public static void main(String[] args) {
-        UserIO.readFile();
-        new mainView();
-    }
 }
