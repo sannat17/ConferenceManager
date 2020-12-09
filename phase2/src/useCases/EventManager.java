@@ -268,4 +268,37 @@ public class EventManager {
         }
         return signUp;
     }
+
+    /**
+     * Returns the events a user is attending
+     *
+     * @param UserID The userID of the user.
+     * @return A list of events that the user is attending
+     */
+    public static ArrayList<String> getAttending(int UserID){
+        ArrayList<String> attending = new ArrayList<>();
+        for (Event e: getAllEvents()){
+            if (e.getAttending().contains(UserID)){
+                attending.add(e.getTitle());
+            }
+        }
+        return attending;
+    }
+
+    /**
+     * Returns the events an organizer is organizing
+     *
+     * @param UserID The userID of the organizer.
+     * @return A list of events that the user is organizing
+     */
+    public static ArrayList<String> getOrganizing(int UserID){
+        ArrayList <String> organizing = new ArrayList<>();
+        for (Event e: getAllEvents()){
+            if (e.getOrganizerID() == UserID){
+                organizing.add(e.getTitle());
+            }
+        }
+        return organizing;
+    }
+
 }

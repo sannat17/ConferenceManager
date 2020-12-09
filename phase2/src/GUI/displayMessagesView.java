@@ -1,7 +1,6 @@
 package GUI;
 
 import GUIPresenters.MessagePresenter;
-import entities.User;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -12,10 +11,10 @@ import java.util.HashMap;
 
 public class displayMessagesView {
 
-    public static JPanel getDisplayMessagesPanel(User u) {
+    public static JPanel getDisplayMessagesPanel() {
         JPanel DisplayMessagesPanel = new JPanel();
         DisplayMessagesPanel.setLayout(null);
-        HashMap<Integer, String> messageHash = MessagePresenter.messageUsernamnes(u);
+        HashMap<Integer, String> messageHash = MessagePresenter.messageUsernamnes();
         ArrayList<String> messageUsernamesList = new ArrayList<>(messageHash.values());
         ArrayList<Integer> messageIDList = new ArrayList<>(messageHash.keySet());
         messageUsernamesList.add(0,"Select an Option");
@@ -52,7 +51,7 @@ public class displayMessagesView {
         JButton backButton = new JButton("Back");
         backButton.setBounds(10, 230, 100, 25);
         DisplayMessagesPanel.add(backButton);
-        backButton.addActionListener(e -> mainView.toMenuPanel(u));
+        backButton.addActionListener(e -> mainView.toPanel("Menu"));
 
         return DisplayMessagesPanel;
     }

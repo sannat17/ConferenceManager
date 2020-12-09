@@ -64,7 +64,7 @@ public class EventOrganizationUserInterface {
             }
         }
         if (speakerID != -2) {
-            EventManager.makeNewEvent(title, eventDate, roomNumber, speakerID, user.getUserID());
+            //EventManager.makeNewEvent(title, eventDate, roomNumber, speakerID, user.getUserID());
             System.out.println("Event Created!\n");
         }
         MenuUserInterface.loadMenu(user);

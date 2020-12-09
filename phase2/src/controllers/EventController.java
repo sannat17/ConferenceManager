@@ -20,12 +20,6 @@ public class EventController {
         if (EventManager.getAllEvents().isEmpty()) {
             return false;
         }
-
-        for (Event e: EventManager.getAllEvents()) {
-            if (e.getEventID() == eventID) {
-                return false;
-            }
-        }
         EventManager.signUpForEvent(user.getUserID(), eventID);
         return true;
     }

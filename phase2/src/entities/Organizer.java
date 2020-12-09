@@ -20,14 +20,12 @@ public class Organizer extends User{
         this.eventOptions.add("Cancel sign up for an event");
         this.eventOptions.add("Organize event");
         this.eventOptions.add("Cancel an event");
-        this.menuOptions.add("create a new user account");
+        this.menuOptions.add("Create a new user account");
 
         this.messageOptions.add("Message all speakers");
-//        this.messageOptions.add("Message a specific speaker");
         this.messageOptions.add("Message a speaker");
         this.messageOptions.add("Message an attendee");
         this.messageOptions.add("Message all attendees");
-//        this.messageOptions.add("Message a specific attendee");
         this.messageOptions.add("Message all attendees of an event");
 
     }

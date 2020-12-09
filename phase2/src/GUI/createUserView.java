@@ -2,12 +2,11 @@ package GUI;
 
 import GUIPresenters.CreateUserPresenter;
 import GUIPresenters.SignoutPresenter;
-import entities.User;
 
 import javax.swing.*;
 
 public class createUserView {
-    public static JPanel getCreateUserPanel(User u){
+    public static JPanel getCreateUserPanel(){
         JPanel createUserPanel = new JPanel();
         createUserPanel.setLayout(null);
 
@@ -53,7 +52,7 @@ public class createUserView {
         JButton backButton = new JButton("Back");
         backButton.setBounds(10, 230, 100, 25);
         createUserPanel.add(backButton);
-        backButton.addActionListener(e -> mainView.toMenuPanel(u));
+        backButton.addActionListener(e -> mainView.toPanel("Menu"));
 
         JButton signoutButton = new JButton("Sign Out");
         signoutButton.setBounds(10, 260, 100, 25);
