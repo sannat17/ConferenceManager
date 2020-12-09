@@ -63,7 +63,13 @@ public class mainView {
     }
 
     public static void toPanel(String name){
+        addPanels();
         mainCL.show(mainContainer, name);
+    }
+
+    public static void toLoginPanel(){
+        mainContainer.add(loginView.getLoginPanel(), "Login");
+        mainCL.show(mainContainer, "Login");
     }
 
     public static void toMessageUserPanel(String type){
@@ -71,11 +77,4 @@ public class mainView {
         mainCL.show(mainContainer, "Message User");
     }
 
-
-    public static void main(String[] args) {
-        UserIO.readFile();
-        EventIO.readFile();
-        MessageIO.readFile();
-        new mainView();
-    }
 }
