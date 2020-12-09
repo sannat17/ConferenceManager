@@ -71,11 +71,4 @@ public class mainView {
         mainCL.show(mainContainer, "Message User");
     }
 
-
-    public static void main(String[] args) {
-        UserIO.readFile();
-        EventIO.readFile();
-        MessageIO.readFile();
-        new mainView();
-    }
 }

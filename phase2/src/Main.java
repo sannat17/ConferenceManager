@@ -1,3 +1,4 @@
+import GUI.mainView;
 import gateways.*;
 import userInterfaces.*;
 import useCases.AuthManager;
@@ -11,15 +12,6 @@ public class Main {
         UserIO.readFile();
         EventIO.readFile();
         MessageIO.readFile();
-
-        while (true) {
-            LoginUserInterface.login();
-            MenuUserInterface.loadMenu(AuthManager.getLoggedInUser());
-            AuthManager.logout();
-
-            UserIO.writeFile();
-            MessageIO.writeFile();
-            EventIO.writeFile();
-        }
+        new mainView();
     }
 }
