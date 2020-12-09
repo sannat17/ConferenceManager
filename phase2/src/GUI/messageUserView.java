@@ -1,14 +1,12 @@
 package GUI;
 
 import GUIPresenters.MessagePresenter;
-import entities.User;
 
 import javax.swing.*;
-import java.util.ArrayList;
 
 public class messageUserView {
 
-    public static JPanel getMessageUserView(User u, String type) {
+    public static JPanel getMessageUserView(String type) {
         JPanel messageUserPanel = new JPanel();
         messageUserPanel.setLayout(null);
 
@@ -29,13 +27,14 @@ public class messageUserView {
         JButton confirmButton = new JButton("Confirm");
         confirmButton.setBounds(10, 130, 160, 25);
         messageUserPanel.add(confirmButton);
-        confirmButton.addActionListener(e -> MessagePresenter.sendMessage(u, (String)messageUsersComboBox.getSelectedItem(),message.getText()));
+        confirmButton.addActionListener(e -> MessagePresenter.sendMessage(
+                (String)messageUsersComboBox.getSelectedItem(),message.getText()));
 
 
         JButton backButton = new JButton("Back");
         backButton.setBounds(10, 230, 100, 25);
         messageUserPanel.add(backButton);
-        backButton.addActionListener(e -> mainView.toMessagesPanel(u));
+        backButton.addActionListener(e -> mainView.toPanel("Messages"));
 
         return messageUserPanel;
     }

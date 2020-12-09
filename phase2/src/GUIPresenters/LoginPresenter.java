@@ -16,7 +16,8 @@ public class LoginPresenter {
     public static void loginCheck(String username, String password) {
         boolean loggedIn = AuthManager.login(username, password);
         if (loggedIn == true){
-            mainView.toMenuPanel(UserManager.getUserFromUsername(username));
+            mainView.addPanels();
+            mainView.toPanel("Menu");
         }
         else{
             mainView.createPopUp("Your username or password is incorrect. Please enter them again.");

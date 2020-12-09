@@ -2,8 +2,6 @@ package GUI;
 
 import GUIPresenters.EventPresenter;
 import GUIPresenters.SignoutPresenter;
-import entities.Speaker;
-import entities.User;
 
 import javax.swing.*;
 import javax.swing.text.NumberFormatter;
@@ -17,7 +15,7 @@ import java.time.format.DateTimeParseException;
 import java.util.Date;
 
 public class organizeEvent {
-    public static JPanel getOrganizeEventPanel(User u){
+    public static JPanel getOrganizeEventPanel(){
         JPanel organizeEventPanel = new JPanel();
         organizeEventPanel.setLayout(null);
 
@@ -123,13 +121,14 @@ public class organizeEvent {
                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MMM-yyyy HH:mm:ss");
                     LocalDateTime eventDate = LocalDateTime.parse(dateTime, formatter);
                     EventPresenter.makeEvent(titleTextField.getText(), eventDate,
-                            Integer.parseInt(roomTextField.getText()), selectedSpeaker, u,
+                            Integer.parseInt(roomTextField.getText()), selectedSpeaker,
                             Boolean.parseBoolean((String)vipComboBox.getSelectedItem()),
                             Integer.parseInt(maxCapacityTextField.getText()));
 
                 }
                 catch (DateTimeParseException a){
-                    mainView.createPopUp("Please enter a valid format, For Example, November 20th 2020 at 6:35:05PM will be written as 20-Nov-2020 18:35:05:");
+                    mainView.createPopUp("Please enter a valid format, For Example, November 20th 2020 at 6:35:05PM " +
+                            "will be written as 20-Nov-2020 18:35:05:");
                 }
             }
         });
@@ -137,7 +136,7 @@ public class organizeEvent {
         JButton backButton = new JButton("Back");
         backButton.setBounds(10, 230, 100, 25);
         organizeEventPanel.add(backButton);
-        backButton.addActionListener(e -> mainView.toEventsPanel(u));
+        backButton.addActionListener(e -> mainView.toPanel("Menu"));
 
         JButton signoutButton = new JButton("Sign Out");
         signoutButton.setBounds(10, 260, 100, 25);

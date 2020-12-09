@@ -2,12 +2,11 @@ package GUI;
 
 import GUIPresenters.EventPresenter;
 import GUIPresenters.SignoutPresenter;
-import entities.User;
 
 import javax.swing.*;
 
 public class yourEventsView {
-    public static JPanel getYourEventsPanel(User u){
+    public static JPanel getYourEventsPanel(){
         JPanel yourEventsPanel = new JPanel();
         yourEventsPanel.setLayout(null);
 
@@ -27,12 +26,12 @@ public class yourEventsView {
         yourEventsPanel.add(yourEventsField);
 
         confirmTypeButton.addActionListener(e -> yourEventsField.setText(EventPresenter.formatSchedule(
-                (String)eventsViewComboBox.getSelectedItem() ,u)));
+                (String)eventsViewComboBox.getSelectedItem())));
 
         JButton backButton = new JButton("Back");
         backButton.setBounds(10, 230, 100, 25);
         yourEventsPanel.add(backButton);
-        backButton.addActionListener(e -> mainView.toEventsPanel(u));
+        backButton.addActionListener(e -> mainView.toPanel("Menu"));
 
         JButton signoutButton = new JButton("Sign Out");
         signoutButton.setBounds(10, 260, 100, 25);

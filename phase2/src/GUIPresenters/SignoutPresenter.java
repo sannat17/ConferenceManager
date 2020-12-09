@@ -11,7 +11,7 @@ public class SignoutPresenter {
     public static void signOut() {
         writeFiles();
         AuthManager.logout();
-        mainView.toLoginPanel();
+        mainView.toPanel("Login");
     }
 
     public static void writeFiles(){
