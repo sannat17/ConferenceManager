@@ -49,6 +49,7 @@ public class EventManager {
 
         if (speakerIDs.size() == 0){ //if there is no speaker
             for (Event e : eventHashMap.values()) {    // return false if there is only a time-room number conflict                if ((e.getTimeOfEvent().equals(timeOfEvent) && e.getRoomNumber() == roomNumber))
+                if ((e.getTimeOfEvent().equals(timeOfEvent) && e.getRoomNumber() == roomNumber))
                 {
                     return false;
                 }
