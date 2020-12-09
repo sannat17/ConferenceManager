@@ -86,11 +86,11 @@ public class organizeEvent {
         });
 
         //Make boolean
-        JLabel vip = new JLabel("Allow VIP's?:");
+        JLabel vip = new JLabel("VIP Event?:");
         vip.setBounds(10, 170, 100, 25);
         organizeEventPanel.add(vip);
 
-        JComboBox vipComboBox = new JComboBox(new String[]{"true", "false"});
+        JComboBox vipComboBox = new JComboBox(new String[]{"false", "true"});
         vipComboBox.setBounds(290, 170, 165, 25);
         organizeEventPanel.add(vipComboBox);
 
