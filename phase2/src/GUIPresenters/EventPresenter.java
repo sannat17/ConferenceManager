@@ -77,11 +77,10 @@ public class EventPresenter {
     /** Allows a User to cancel their spot for an Event
      *
      * @param title the title of the event that the user is cancelling their spot for
-     * @return A boolean with true if the User successfully cancelled their spot for the event and false if it wasn't
      */
     public static void cancelSpotEvent(String title){
         boolean cancelled = EventController.cancelSignUp(AuthManager.getLoggedInUser(), EventManager.giveEventIDOfTitle(title));
-        if (cancelled == false){
+        if (!cancelled){
             mainView.createPopUp("Could not cancel your spot ");
         }
         else{
@@ -91,8 +90,8 @@ public class EventPresenter {
     }
 
     public static void signUpForEvent(String title){
-        Boolean signedUp = EventManager.signUpForEvent(AuthManager.getLoggedInUser().getUserID(),EventManager.giveEventIDOfTitle(title));
-        if (signedUp == false){
+        boolean signedUp = EventManager.signUpForEvent(AuthManager.getLoggedInUser().getUserID(),EventManager.giveEventIDOfTitle(title));
+        if (!signedUp){
             mainView.createPopUp("Could not sign you up for this event");
         }
         else{
@@ -116,9 +115,9 @@ public class EventPresenter {
         for(int i = 0; i < speakerNames.size(); i++ ){
             speakerIDs.add(UserManager.giveIDOfUsername(speakerNames.get(i)));
         }
-        Boolean made = EventManager.makeNewEvent(title, time, roomNumber, speakerIDs,
+        boolean made = EventManager.makeNewEvent(title, time, roomNumber, speakerIDs,
                 UserManager.giveIDOfUser(AuthManager.getLoggedInUser()), vip, maxCapacity);
-        if (made == false){
+        if (!made){
             mainView.createPopUp("There was a conflict while trying to create your event.");
         }
         else{
@@ -132,8 +131,8 @@ public class EventPresenter {
     }
 
     public static void cancelEvent(String title){
-        Boolean cancelled = EventManager.cancelEvent(AuthManager.getLoggedInUser(), title);
-        if (cancelled == false) {
+        boolean cancelled = EventManager.cancelEvent(AuthManager.getLoggedInUser(), title);
+        if (!cancelled) {
             mainView.createPopUp("Could not cancel event");
         }
         else{
