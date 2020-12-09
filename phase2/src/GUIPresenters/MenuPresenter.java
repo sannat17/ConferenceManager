@@ -11,7 +11,7 @@ public class MenuPresenter {
             case "Events":
                 mainView.toPanel("Events");
                 break;
-            case "create a new user account":
+            case "Create a new user account":
                 mainView.toPanel("Create User");
                 break;
             case "Messages":

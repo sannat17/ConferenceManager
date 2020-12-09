@@ -279,4 +279,21 @@ public class EventManager {
         }
         return attending;
     }
+
+    /**
+     * Returns the events an organizer is organizing
+     *
+     * @param UserID The userID of the organizer.
+     * @return A list of events that the user is organizing
+     */
+    public static ArrayList<String> getOrganizing(int UserID){
+        ArrayList <String> organizing = new ArrayList<>();
+        for (Event e: getAllEvents()){
+            if (e.getOrganizerID() == UserID){
+                organizing.add(e.getTitle());
+            }
+        }
+        return organizing;
+    }
+
 }

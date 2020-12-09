@@ -136,7 +136,7 @@ public class organizeEvent {
         JButton backButton = new JButton("Back");
         backButton.setBounds(10, 230, 100, 25);
         organizeEventPanel.add(backButton);
-        backButton.addActionListener(e -> mainView.toPanel("Menu"));
+        backButton.addActionListener(e -> mainView.toPanel("Events"));
 
         JButton signoutButton = new JButton("Sign Out");
         signoutButton.setBounds(10, 260, 100, 25);

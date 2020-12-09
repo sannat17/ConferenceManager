@@ -30,8 +30,12 @@ public class EventPresenter {
             case "Organize event":
                 mainView.toPanel("Organize event");
                 break;
+            case "Cancel an event":
+                mainView.toPanel("Cancel Event");
+                break;
+            }
         }
-    }
+
 
     public static String[] eventOptions(){
         return UserManager.getEventOptionsList(AuthManager.getLoggedInUser());
@@ -127,6 +131,21 @@ public class EventPresenter {
         else{
             mainView.createPopUp("Event Created!");
             mainView.toPanel("Events");;
+        }
+    }
+
+    public static ArrayList<String> getOrganizingTitles(){
+        return EventManager.getOrganizing(AuthManager.getLoggedInUser().getUserID());
+    }
+
+    public static void cancelEvent(String title){
+        Boolean cancelled = EventManager.cancelEvent(AuthManager.getLoggedInUser(), title);
+        if (cancelled == false) {
+            mainView.createPopUp("Could not cancel event");
+        }
+        else{
+            mainView.createPopUp("Event Cancelled!");
+            mainView.toPanel("Events");
         }
     }
 }

@@ -55,6 +55,7 @@ public class mainView {
         mainContainer.add(organizeEvent.getOrganizeEventPanel(), "Organize event");
         mainContainer.add(messageView.getMessageView(), "Messages");
         mainContainer.add(displayMessagesView.getDisplayMessagesPanel(), "Display Messages");
+        mainContainer.add(cancelEventView.getCancelEventPanel(), "Cancel Event");
     }
 
     public static void createPopUp(String message) {
