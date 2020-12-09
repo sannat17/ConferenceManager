@@ -23,8 +23,6 @@ public class Organizer extends User{
         this.eventOptions.add("Cancel sign up for an event");
         this.eventOptions.add("Organize event");
         this.eventOptions.add("Cancel an event");
-        this.menuOptions.add("Dietary Restrictions");
-        this.menuOptions.add("Accessibility Requirements");
         this.menuOptions.add("Create a new user account");
 
         this.messageOptions.add("Message all speakers");
