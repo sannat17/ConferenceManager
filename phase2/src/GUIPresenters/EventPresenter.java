@@ -98,7 +98,7 @@ public class EventPresenter {
     }
 
     public static void signUpForEvent(String title){
-        Boolean signedUp = EventController.signUp(AuthManager.getLoggedInUser(),EventManager.giveEventIDOfTitle(title));
+        Boolean signedUp = EventManager.signUpForEvent(AuthManager.getLoggedInUser().getUserID(),EventManager.giveEventIDOfTitle(title));
         if (signedUp == false){
             mainView.createPopUp("Could not sign you up for this event");
         }
