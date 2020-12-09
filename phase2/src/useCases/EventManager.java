@@ -116,7 +116,7 @@ public class EventManager {
             }
         }
 
-        if(getEvent(eventID).getVIP() && !(UserManager.getUser(userID).getType() == "VIP")){
+        if(getEvent(eventID).getVIP() && !(UserManager.getUser(userID).getType().equals("VIP"))){
             return false; //false if event is for vips but user isn't vip
         }
 
