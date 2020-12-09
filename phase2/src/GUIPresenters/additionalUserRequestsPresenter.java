@@ -14,12 +14,13 @@ public class additionalUserRequestsPresenter {
      * @param accommodation a string describing the corresponding accommodation
      * @return a string that details the corresponding accommodations for all users
      */
-    public static String formatAdditionalUserRequests(String accommodation, HashMap<Integer) {
+    public static String formatAdditionalUserRequests(String accommodation) {
         if (accommodation.equals("Dietary Restrictions")) {
             return formatDietaryRestrictions(UserManager.getDietaryRestrictionsDict());
         } else if (accommodation.equals("Accessibility Requirements")) {
             return formatAccessibilityRequirements(UserManager.getAccessibilityRequirementsDict());
         }
+        return "Invalid Option";
     }
 
     /**
