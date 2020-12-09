@@ -37,4 +37,12 @@ function getCalendarDates(){
 
 function toDate(str){
   //converts java date string to js date obj
+  //assumes str is a java date string
+  return new Date(str);
+}
+
+function getStartEnd(){
+  let first = new Date(state.current);
+  let day = first.getDate();
+  first = new Date(first.setDate())
 }
