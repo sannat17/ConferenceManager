@@ -3,11 +3,8 @@ package GUIPresenters;
 import GUI.mainView;
 import controllers.EventController;
 import gateways.EventExporter;
-import useCases.EventSorter;
-import useCases.AuthManager;
-import useCases.EventManager;
-import useCases.UserManager;
-import useCases.UserTypeManager;
+
+import useCases.*;
 
 import javax.swing.*;
 import java.io.IOException;
