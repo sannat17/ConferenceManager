@@ -41,6 +41,13 @@ function generateCalendar(){
   }
 }
 
+async function generateSidebar(){
+  let json = getJSON();
+  for(const obj in json){
+    let date = new Date(obj.timeOfEvent);
+  }
+}
+
 async function getJSON(){
   //gets event data from remote API
 
