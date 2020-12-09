@@ -12,6 +12,7 @@ public class EventExporter{
 
     public static void requestExport(int userID) throws IOException {
         JSONArray eventsJSON = new JSONArray(EventManager.getAllEvents());
+        System.out.println(userID);
         URL url = new URL("http://localhost:5000/upload/" + userID);
         HttpURLConnection req = (HttpURLConnection) url.openConnection();
         req.setRequestMethod("POST");
@@ -19,9 +20,11 @@ public class EventExporter{
         req.setDoOutput(true);
         req.connect();
 
+        System.out.println(eventsJSON);
+
         try{
             OutputStream os = req.getOutputStream();
-            byte[] bytes = getBytesFromJSON(eventsJSON);
+            byte[] bytes = eventsJSON.toString().getBytes();
             os.write(bytes, 0, bytes.length);
         }
         catch(IOException e) {
@@ -30,10 +33,6 @@ public class EventExporter{
 
         req.getInputStream();
         System.out.println("POST attempted");
-    }
-
-    private static byte[] getBytesFromJSON(JSONArray json){
-        return json.toString().getBytes();
     }
 
 }

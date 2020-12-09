@@ -1,4 +1,87 @@
-.text{
-    color: "grey";
-    font-size: 36px;
+body{
+    background-color: #F5DBB6;
+    user-select: none;
+}
+
+.calendar{
+    width: 630px;
+    height: 620px;
+    border-radius: 24px;
+    background-color: #F5DBB6;
+    margin: auto;
+}
+
+#year{
+    height: 60px;
+    background-color: #F5DBB6;
+    text-align: center;
+    color: black;
+    line-height: 60px;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#month{
+    height: 60px;
+    background-color: #1A3540;
+    text-align: center;
+    color: white;
+    line-height: 60px;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+}
+
+.days{
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    background-color: #FF623F;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.day-label{
+    flex: 1;
+    font-size: 20px;
+    color: white;
+    font-size: 22px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    line-height: 60px;
+    font-weight: bold;
+}
+
+#calendar-body{
+    height: 440px;
+    background-color: white;
+    border-bottom-left-radius: 24px;
+    border-bottom-right-radius: 24px;
+    padding: 8px;
+}
+
+.calendar-date{
+    flex: 1;
+    display: inline-block;
+    width: calc(100% / 7);
+    height: 70px;
+    box-sizing: border-box;
+    text-align: center;
+    line-height: 70px;
+    font-size: 18px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.calendar-date:hover{
+    border: 1px solid #DDDDDD;
+    border-radius: 8px;
+    line-height: 68px;
+}
+
+.calendar-date-greyed{
+    color: #BBBBBB;
 }

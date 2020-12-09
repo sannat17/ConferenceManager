@@ -16,13 +16,6 @@ public class Main {
         EventIO.readFile();
         MessageIO.readFile();
 
-//        try{
-//            EventExporter.requestExport(0);
-//        }
-//        catch (IOException e) {
-//            e.printStackTrace();
-//        }
-
         while (true) {
             User loggedInUser = null;
             Scanner s = new Scanner(System.in);
@@ -36,6 +29,14 @@ public class Main {
                     System.out.println("Your username or password is incorrect. Please enter them again.");
                 }
             }
+
+            try{
+                EventExporter.requestExport(loggedInUser.getUserID());
+            }
+            catch(IOException e){
+
+            }
+
             MenuUserInterface.loadMenu(loggedInUser);
             UserIO.writeFile();
             MessageIO.writeFile();
