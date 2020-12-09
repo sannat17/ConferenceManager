@@ -13,8 +13,8 @@ public class VIP extends User{
      * @param firstName the first name of the user.
      */
 
-    public VIP(String username, String password, int ID, String firstName) {
-        super(username, password, ID, firstName);
+    public VIP(String username, String password, int ID, String firstName, String dietaryRestrictions, String accessibilityRequirements) {
+        super(username, password, ID, firstName, dietaryRestrictions, accessibilityRequirements);
 
         this.messageOptions.add("Message an attendee");
         this.messageOptions.add("Message a speaker");

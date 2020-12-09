@@ -30,6 +30,6 @@ public class UserCreationUserInterface {
                 System.out.println("Incorrect type entered");
             }
         }
-        UserManager.makeNewUser(username, password, name, type);
+        UserManager.makeNewUser(username, password, name, type, "some dietary restriction", "some accessibility requirement");
     }
 }

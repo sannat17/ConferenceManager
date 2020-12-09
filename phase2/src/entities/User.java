@@ -18,8 +18,14 @@ public abstract class User {
     public ArrayList<String> messageOptions = new ArrayList<>();
     /** The list of event options available to this user */
     public ArrayList<String> eventOptions = new ArrayList<>();
-
-
+    /** The dietary restrictions of this user */
+    private String dietaryRestrictions;
+    /** The accessbility requirements of this user */
+    private String accessibilityRequirements;
+    /** The status of the dietary restrictions of this user */
+    private String dietaryRestrictionsStatus;
+    /** The status of the accessibility requirements of this user */
+    private String accessibilityRequirementsStatus;
     /**
      * Create a new User and generate its base available menu options
      *
@@ -28,11 +34,15 @@ public abstract class User {
      * @param ID the unique ID of this user
      * @param firstName the first name of the user.
      */
-    public User(String username, String password, int ID, String firstName) {
+    public User(String username, String password, int ID, String firstName, String dietaryRestrictions, String accessibilityRequirements) {
         this.userID = ID;
         this.username = username;
         this.password = password;
         this.firstName = firstName;
+        this.dietaryRestrictions = dietaryRestrictions;
+        this.accessibilityRequirements = accessibilityRequirements;
+        this.dietaryRestrictionsStatus = "pending";
+        this.accessibilityRequirementsStatus = "pending";
         this.menuOptions.add("Messages");
         this.menuOptions.add("Events");
         this.eventOptions.add("View Your Events");
@@ -71,7 +81,8 @@ public abstract class User {
     @Override
     public String toString() {
         String delimiter = Character.toString((char) 31);
-        return  userID + delimiter + username + delimiter + password + delimiter + firstName + delimiter + getType();
+        return  userID + delimiter + username + delimiter + password + delimiter + firstName + delimiter + getType() +
+                delimiter + this.dietaryRestrictions + delimiter + this.accessibilityRequirements;
     }
 
     /**
@@ -103,4 +114,57 @@ public abstract class User {
 
     public abstract String getType();
 
+    /**
+     * Return the dietary restrictions of this user
+     *
+     * @return a string of which describes this user's dietary restrictions
+     */
+    public String getDietaryRestrictions() {
+        return this.dietaryRestrictions;
+    }
+
+    /**
+     * Return the accessibility requirements of this user
+     *
+     * @return a string of which describes this user's accessbility requirements
+     */
+    public String getAccessibilityRequirements() {
+        return this.accessibilityRequirements;
+    }
+
+    /**
+     * Return the status of dietary restrictions of this user
+     *
+     * @return a string of which describes this user's dietary restrictions's status
+     */
+    public String getDietaryRestrictionsStatus() {
+        return this.dietaryRestrictionsStatus;
+    }
+
+    /**
+     * Return the status of accessibility requirements of this user
+     *
+     * @return a string of which describes this user's accessbility requirements's status
+     */
+    public String getAccessibilityRequirementsStatus() {
+        return this.accessibilityRequirementsStatus;
+    }
+
+    /**
+     * Set the dietary restriction status of a user
+     *
+     * @param status the string of which represents the new status
+     */
+    public void setDietaryRestrictionStatus(String status) {
+        this.dietaryRestrictionsStatus = status;
+    }
+
+    /**
+     * Set the accessibility requirement status of a user
+     *
+     * @param status the string of which represents the new status
+     */
+    public void setAccessibilityRequirementStatus(String status) {
+        this.accessibilityRequirementsStatus = status;
+    }
 }

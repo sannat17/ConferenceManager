@@ -13,9 +13,12 @@ public class Organizer extends User{
      * @param username the user name of this organizer
      * @param password the password of this organizer
      * @param ID the unique ID of this organizer
+     * @param dietaryRestrictions the dietary restrictions of this organizer
+     * @param accessibilityRequirements the accessbility requirements of this organizer
+     * @param name the name of this organizer
      */
-    public Organizer(String username, String password, int ID, String name) {
-        super(username, password, ID, name);
+    public Organizer(String username, String password, int ID, String name, String dietaryRestrictions, String accessibilityRequirements) {
+        super(username, password, ID, name, dietaryRestrictions, accessibilityRequirements);
         this.eventOptions.add("Sign up for an event");
         this.eventOptions.add("Cancel sign up for an event");
         this.eventOptions.add("Organize event");

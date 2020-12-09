@@ -46,8 +46,8 @@ public class createUserView {
         JButton createUserButton = new JButton("Create User");
         createUserButton.setBounds(10, 140, 165, 25);
         createUserPanel.add(createUserButton);
-        createUserButton.addActionListener(e -> CreateUserPresenter.createNewUser(usernameTextField.getText(),
-                passwordField.getText(), nameField.getText(), (String)typeComboBox.getSelectedItem()));
+//        createUserButton.addActionListener(e -> CreateUserPresenter.createNewUser(usernameTextField.getText(),
+//                passwordField.getText(), nameField.getText(), (String)typeComboBox.getSelectedItem()));
 
         JButton backButton = new JButton("Back");
         backButton.setBounds(10, 230, 100, 25);

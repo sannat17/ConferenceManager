@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class Attendee extends User{
 
     private String type = "attendee";
+
     /**
      * Create a new Attendee
      *
@@ -14,8 +15,8 @@ public class Attendee extends User{
      * @param password the password of this attendee
      * @param ID the unique ID of this attendee
      */
-    public Attendee(String username, String password, int ID, String firstName) {
-        super(username, password, ID, firstName);
+    public Attendee(String username, String password, int ID, String firstName, String dietaryRestrictions, String accessibilityRequirements) {
+        super(username, password, ID, firstName, dietaryRestrictions, accessibilityRequirements);
         this.eventOptions.add("Sign up for an event");
         this.eventOptions.add("Cancel sign up for an event");
         this.messageOptions.add("Message an attendee");

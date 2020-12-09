@@ -23,14 +23,16 @@ public class UserIO {
             Scanner fs = new Scanner(file);
 
             while(fs.hasNextLine()){
-                //file format ID-Username-Password-Name-Type-eventIDs
+                //file format ID-Username-Password-Name-Type-eventIDs-dietaryRestrictions-accessbilityRequirements
                 String[] user = fs.nextLine().split(delimiter);
                 Integer ID = Integer.parseInt(user[0]);
                 String username = user[1];
                 String password = user[2];
                 String name = user[3];
                 String type = user[4];
-                UserManager.loadUser(ID, username, password, name, type);
+                String dietaryRestrictions = user[5];
+                String accessibilityRequirements = user[6];
+                UserManager.loadUser(ID, username, password, name, type, dietaryRestrictions, accessibilityRequirements);
             }
         }
         catch(Exception e){
