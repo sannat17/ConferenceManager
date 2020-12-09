@@ -38,7 +38,7 @@ public class createUserView {
         typeLabel.setBounds(10, 110, 80, 25);
         createUserPanel.add(typeLabel);
 
-        String [] typeOptions = {"Organizer", "Attendee", "Speaker"};
+        String [] typeOptions = {"Organizer", "Attendee", "Speaker", "VIP"};
         JComboBox typeComboBox = new JComboBox(typeOptions);
         typeComboBox.setBounds(100, 110, 165, 25);
         createUserPanel.add(typeComboBox);
