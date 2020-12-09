@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="com.github.Simonwep:java-express:0.0.10" type="repository">
+    <properties maven-id="com.github.Simonwep:java-express:0.0.10" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/github/Simonwep/java-express/0.0.10/java-express-0.0.10.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
