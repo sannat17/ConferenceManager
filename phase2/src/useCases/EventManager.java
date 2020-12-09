@@ -263,9 +263,11 @@ public class EventManager {
     public static ArrayList<String> getSignUpEventsTitle(int userID){
         ArrayList<String> signUp = new ArrayList<>();
         for (Event e: eventHashMap.values()){
-
-            if (!(e.getAttending().contains(userID)) && (e.getAttending().size() <= 2)){
-                if (((UserManager.getUser(userID) instanceof VIP) && e.getVIP()) || !e.getVIP()) {
+            if (!(e.getAttending().contains(userID)) && (e.getAttending().size() <= 2) && (!e.getVIP())){
+                signUp.add(e.getTitle());
+            }
+            else if(!(e.getAttending().contains(userID)) && (e.getAttending().size() <= 2) && (e.getVIP())){
+                if (UserManager.getUser(userID).getType().equals("VIP")){
                     signUp.add(e.getTitle());
                 }
             }
