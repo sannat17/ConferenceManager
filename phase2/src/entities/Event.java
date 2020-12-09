@@ -106,6 +106,12 @@ public class Event {
         return attending;
     }
 
+    /**
+     *
+     * @return if Event is VIP or not
+     */
+    public boolean getVIP(){ return this.vip; }
+
     /** Adds the unique ID of the user to the attending list
      *
      * @param userID The unique ID of the user

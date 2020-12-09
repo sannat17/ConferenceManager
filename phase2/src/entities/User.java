@@ -20,6 +20,7 @@ public abstract class User {
     /** The list of event options available to this user */
     public ArrayList<String> eventOptions = new ArrayList<>();
 
+
     /**
      * Create a new User and generate its base available menu options
      *
@@ -66,6 +67,7 @@ public abstract class User {
     public void setFirstName(String name) {
         this.firstName = name;
     }
+
 
     @Override
     public String toString() {

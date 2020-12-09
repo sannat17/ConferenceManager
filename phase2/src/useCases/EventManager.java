@@ -2,8 +2,8 @@ package useCases;
 
 import entities.Event;
 import entities.User;
+import entities.VIP;
 
-import java.lang.reflect.Array;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -114,6 +114,11 @@ public class EventManager {
                 }
             }
         }
+
+        if(getEvent(eventID).getVIP() && !(UserManager.getUser(userID) instanceof VIP)){
+            return false; //false if event is for vips but user isn't vip
+        }
+
         if (eventHashMap.get(eventID).getAttending().size() > 2){
             return false;
         }
