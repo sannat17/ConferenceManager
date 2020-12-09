@@ -17,6 +17,9 @@ public class MenuPresenter {
             case "Messages":
                 mainView.toPanel("Messages");
                 break;
+            case "Dietary Restrictions":
+
+            case "Accessibility Requirements":
         }
     }
 
