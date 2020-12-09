@@ -4,6 +4,9 @@ import useCases.AuthManager;
 
 /** A login system allowing user logins if credentials match an existing user class */
 public class LoginSystem {
+
+    public static String currentUsername = null;
+
     /**
      * Check username and password with all the Users usernames and passwords
      *
