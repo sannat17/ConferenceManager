@@ -24,9 +24,13 @@ public class additionalUserRequestsView {
         additionalUserRequestsPanel.add(confirmTypeButton);
 
         JTextArea userRequestsField = new JTextArea();
-        userRequestsField.setBounds(10, 100, 250, 110);
+        userRequestsField.setLineWrap(true);
+        userRequestsField.setWrapStyleWord(true);
+        JScrollPane JScrollPanel = new JScrollPane(userRequestsField);
+        JScrollPanel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        JScrollPanel.setBounds(10, 100, 250, 110);
         userRequestsField.setEditable(false);
-        additionalUserRequestsPanel.add(userRequestsField);
+        additionalUserRequestsPanel.add(JScrollPanel);
 
         confirmTypeButton.addActionListener(e -> userRequestsField.setText(
                 additionalUserRequestsPresenter.formatAdditionalUserRequests((String)additionalUserRequestsComboBox.getSelectedItem())));

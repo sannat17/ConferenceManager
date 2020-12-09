@@ -24,6 +24,7 @@ public class Organizer extends User{
         this.eventOptions.add("Organize event");
         this.eventOptions.add("Cancel an event");
         this.menuOptions.add("Create a new user account");
+        this.menuOptions.add("Additional Requests");
 
         this.messageOptions.add("Message all speakers");
         this.messageOptions.add("Message a speaker");

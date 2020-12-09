@@ -17,6 +17,10 @@ public class MenuPresenter {
             case "Messages":
                 mainView.toPanel("Messages");
                 break;
+            case "Additional Requests":
+                mainView.toPanel("Additional Requests");
+                break;
+
         }
     }
 
