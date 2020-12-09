@@ -18,7 +18,8 @@ public class VIP extends User{
 
         this.messageOptions.add("Message an attendee");
         this.messageOptions.add("Message a speaker");
-        this.messageOptions.add("Join a VIP event");
+        this.eventOptions.add("Sign up for an event");
+        this.eventOptions.add("Cancel sign up for an event");
 
     }
 
