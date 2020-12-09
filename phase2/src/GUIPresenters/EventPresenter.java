@@ -2,9 +2,7 @@ package GUIPresenters;
 
 import GUI.mainView;
 import controllers.EventController;
-import entities.Event;
-import entities.User;
-import presenters.EventSorter;
+import useCases.EventSorter;
 import useCases.AuthManager;
 import useCases.EventManager;
 import useCases.UserManager;
@@ -49,17 +47,7 @@ public class EventPresenter {
      */
     public static String formatSchedule(String sortingOption) {
 
-        ArrayList<Event> listOfEvents = EventSorter.sortBy(sortingOption);
-        String sortedEvents = "";
-
-        for (Event e: listOfEvents) {
-            sortedEvents = sortedEvents + e.getTitle();
-            if (e.getAttending().contains(UserManager.giveIDOfUser(AuthManager.getLoggedInUser()))){
-                sortedEvents = sortedEvents + " (Currently Attending)";
-            }
-            sortedEvents = sortedEvents + "\n";
-        }
-        return sortedEvents.trim();
+        return EventSorter.formatSchedule(sortingOption);
     }
 
     /**

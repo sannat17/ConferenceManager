@@ -1,15 +1,36 @@
-package presenters;
+package useCases;
 
 import entities.Event;
 import useCases.EventManager;
 
-import java.time.LocalDate;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 
 /** The class of which sorts events based on given sorting option */
 public class EventSorter {
+
+    /**
+     * Format events based on given sorting option
+     *
+     * @param sortingOption method of which events are sorted
+     * @return a formatted string displaying available events/the schedule
+     */
+    public static String formatSchedule(String sortingOption) {
+
+        ArrayList<Event> listOfEvents = EventSorter.sortBy(sortingOption);
+        String sortedEvents = "";
+
+        for (Event e: listOfEvents) {
+            sortedEvents = sortedEvents + e.getTitle();
+            if (e.getAttending().contains(UserManager.giveIDOfUser(AuthManager.getLoggedInUser()))){
+                sortedEvents = sortedEvents + " (Currently Attending)";
+            }
+            sortedEvents = sortedEvents + "\n";
+        }
+        return sortedEvents.trim();
+    }
 
     /**
      * Return a sorted list of available events by a given sorting option
