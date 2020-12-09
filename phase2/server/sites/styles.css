@@ -85,3 +85,9 @@ body{
 .calendar-date-greyed{
     color: #BBBBBB;
 }
+
+.sidebar{
+    width: 200px;
+    height: 100%;
+    background-color: #1A3540;
+}
