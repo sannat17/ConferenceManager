@@ -2,6 +2,7 @@ package GUIPresenters;
 
 import GUI.mainView;
 import controllers.EventController;
+import gateways.EventExporter;
 import useCases.EventSorter;
 import useCases.AuthManager;
 import useCases.EventManager;
@@ -9,6 +10,7 @@ import useCases.UserManager;
 import useCases.UserTypeManager;
 
 import javax.swing.*;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -30,6 +32,9 @@ public class EventPresenter {
                 break;
             case "Cancel an event":
                 mainView.toPanel("Cancel Event");
+                break;
+            case "Print Events":
+                mainView.toPanel("Print Events");
                 break;
             }
         }
@@ -135,5 +140,9 @@ public class EventPresenter {
             mainView.createPopUp("Event Cancelled!");
             mainView.toPanel("Events");
         }
+    }
+
+    public static void export() throws IOException {
+        EventExporter.requestExport(AuthManager.getLoggedInUser().getUserID());
     }
 }
