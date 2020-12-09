@@ -62,7 +62,7 @@ public class UserManager{
      * @param username The username of the user being created
      * @param password The password of the user being created
      * @param name The name of the user being created
-     * @param type The type of the user (Attendee, Organizer, Speaker)
+     * @param type The type of the user (Attendee, Organizer, Speaker, VIP)
      * @return A boolean with true if the User was successfully created and false if it wasn't
      */
     public static Boolean makeNewUser(String username, String password, String name, String type){
