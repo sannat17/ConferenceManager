@@ -2,6 +2,7 @@ package GUI;
 
 import GUIPresenters.MessagePresenter;
 import GUIPresenters.SignoutPresenter;
+import entities.Message;
 import javafx.scene.control.ComboBox;
 
 import javax.swing.*;
@@ -15,19 +16,37 @@ import java.util.HashMap;
 public class displayMessagesView {
 
     static int currentMessageID;
-    static JComboBox<String> messages;
+    static boolean changeRead;
+    static boolean deleted;
+    static boolean inbox;
+    static boolean archive;
+    static JButton archiveButton;
+    static JButton unArchiveButton;
+    static JButton inboxDeleteButton;
+    static JButton archiveDeleteButton;
+    static JButton unreadButton;
 
     public static JPanel getDisplayMessagesPanel() {
         JPanel DisplayMessagesPanel = new JPanel();
         DisplayMessagesPanel.setLayout(null);
         currentMessageID = -1;
+        changeRead = true;
+        deleted = false;
+        inbox = true;
+        archive = false;
 
 
-        HashMap<Integer, String> messageHash = MessagePresenter.messageUsernamnes();
-        ArrayList<String> messageUsernamesList = new ArrayList<>(messageHash.values());
-        ArrayList<Integer> messageIDList = new ArrayList<>(messageHash.keySet());
-        messageUsernamesList.add(0,"Select an Option");
-        String [] messageUsernames = messageUsernamesList.toArray(new String[0]);
+        HashMap<Integer, String> inboxMessageHash = MessagePresenter.getUsernamesFromInbox();
+        ArrayList<String> inboxMessageUsernamesList = new ArrayList<>(inboxMessageHash.values());
+        ArrayList<Integer> inboxMessageIDList = new ArrayList<>(inboxMessageHash.keySet());
+        inboxMessageUsernamesList.add(0,"Select an Option");
+        String [] inboxMessageUsernames = inboxMessageUsernamesList.toArray(new String[0]);
+
+        HashMap<Integer, String> archivedMessageHash = MessagePresenter.getUsernamesFromArchived();
+        ArrayList<String> archivedMessageUsernamesList = new ArrayList<>(archivedMessageHash.values());
+        ArrayList<Integer> archivedMessageIDList = new ArrayList<>(archivedMessageHash.keySet());
+        archivedMessageUsernamesList.add(0,"Select an Option");
+        String [] archivedMessageUsernames = archivedMessageUsernamesList.toArray(new String[0]);
 
         JTextArea message = new JTextArea();
         message.setLineWrap(true);
@@ -38,44 +57,156 @@ public class displayMessagesView {
         message.setEditable(false);
         DisplayMessagesPanel.add(messageScrollPanel);
 
-        JComboBox<String> messages = new JComboBox<>(messageUsernames);
-        messages.setSelectedIndex(0);
-        messages.setBounds(10, 20, 160, 25);
-        DisplayMessagesPanel.add(messages);
+        JComboBox<String> inboxMessages = new JComboBox<>(inboxMessageUsernames);
+        inboxMessages.setSelectedIndex(0);
+        inboxMessages.setBounds(10, 20, 160, 25);
+        DisplayMessagesPanel.add(inboxMessages);
+
+        JComboBox<String> archivedMessages = new JComboBox<>(archivedMessageUsernames);
+        archivedMessages.setSelectedIndex(0);
+        archivedMessages.setBounds(10, 20, 160, 25);
+        DisplayMessagesPanel.add(archivedMessages);
+        archivedMessages.setVisible(false);
 
 
-        if (messages.getItemCount() > 1) {
+        if (inboxMessages.getItemCount() > 1 || archivedMessages.getItemCount() > 1) {
+
+            if(inboxMessages.getItemCount() > 1) {
+
+            }
 
             JButton unreadButton = new JButton("Mark as Unread");
             unreadButton.setBounds(200, 230, 100, 25);
             unreadButton.setFont(new Font("Dialog", Font.BOLD, 8));
             DisplayMessagesPanel.add(unreadButton);
+            unreadButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    if (inboxMessages.getSelectedIndex() != 0){
+                        MessagePresenter.markUnread(currentMessageID);
+                        String text = "";
+                        text += "Status: " + MessagePresenter.getMessageStatus(inboxMessages.getSelectedIndex()-1) + "\n";
+                        text += "Message: " + MessagePresenter.getMessageContent(inboxMessageIDList.get(inboxMessages.getSelectedIndex()-1));
+                        message.setText(text);
+                        changeRead = false;
+                    }
+                }
+            });
 
             JButton replyButton = new JButton("Reply");
             replyButton.setBounds(350, 230, 100, 25);
             DisplayMessagesPanel.add(replyButton);
 
-            JButton archiveButton = new JButton("Archive");
+            archiveButton = new JButton("Archive");
             archiveButton.setBounds(200, 260, 100, 25);
             DisplayMessagesPanel.add(archiveButton);
-
-            JButton deleteButton = new JButton("Delete");
-            deleteButton.setBounds(350, 260, 100, 25);
-            DisplayMessagesPanel.add(deleteButton);
-
-            messages.addActionListener(new ActionListener() {
+            archiveButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    if(currentMessageID != -1){
+                    if(inboxMessages.getSelectedIndex() != 0) {
+                        int index = inboxMessages.getSelectedIndex() - 1;
+                        MessagePresenter.markArchived(inboxMessageIDList.get(index));
+                        archivedMessages.addItem(inboxMessages.getItemAt(inboxMessages.getSelectedIndex()));
+                        archivedMessageUsernamesList.add(index, inboxMessageUsernamesList.get(index));
+                        archivedMessageIDList.add(index, inboxMessageIDList.get(index));
+                        inboxMessages.removeItemAt(inboxMessages.getSelectedIndex());
+                        inboxMessages.setSelectedIndex(index);
+                        inboxMessageUsernamesList.remove(index);
+                        inboxMessageIDList.remove(index);
+                    }
+                }
+            });
+
+            unArchiveButton = new JButton("Unarchive");
+            unArchiveButton.setBounds(200, 260, 100, 25);
+            DisplayMessagesPanel.add(unArchiveButton);
+            unArchiveButton.setVisible(false);
+            unArchiveButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    if(archivedMessages.getSelectedIndex() != 0) {
+                        int index = archivedMessages.getSelectedIndex() - 1;
+                        MessagePresenter.markRead(archivedMessageIDList.get(index));
+                        inboxMessages.addItem(archivedMessages.getItemAt(archivedMessages.getSelectedIndex()));
+                        inboxMessageUsernamesList.add(index, archivedMessageUsernamesList.get(index));
+                        inboxMessageIDList.add(index, archivedMessageIDList.get(index));
+                        archivedMessages.removeItemAt(archivedMessages.getSelectedIndex());
+                        archivedMessages.setSelectedIndex(index);
+                        archivedMessageUsernamesList.remove(index);
+                        archivedMessageIDList.remove(index);
+                    }
+                }
+            });
+
+            inboxDeleteButton = new JButton("Delete");
+            inboxDeleteButton.setBounds(350, 260, 100, 25);
+            DisplayMessagesPanel.add(inboxDeleteButton);
+            inboxDeleteButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    if(inboxMessages.getSelectedIndex() != 0){
+                        deleted = true;
+                        int index = inboxMessages.getSelectedIndex() - 1;
+                        MessagePresenter.deleteMessage(inboxMessageIDList.get(index));
+                        inboxMessages.removeItemAt(inboxMessages.getSelectedIndex());
+                        inboxMessages.setSelectedIndex(index);
+                        inboxMessageUsernamesList.remove(index);
+                        inboxMessageIDList.remove(index);
+                    }
+                }
+            });
+
+            archiveDeleteButton = new JButton("Delete");
+            archiveDeleteButton.setBounds(350, 260, 100, 25);
+            DisplayMessagesPanel.add(archiveDeleteButton);
+            archiveDeleteButton.setVisible(false);
+            archiveDeleteButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    if(archivedMessages.getSelectedIndex() != 0){
+                        deleted = true;
+                        int index = archivedMessages.getSelectedIndex() - 1;
+                        MessagePresenter.deleteMessage(archivedMessageIDList.get(index));
+                        archivedMessages.removeItemAt(archivedMessages.getSelectedIndex());
+                        archivedMessages.setSelectedIndex(index);
+                        archivedMessageUsernamesList.remove(index);
+                        archivedMessageIDList.remove(index);
+                    }
+                }
+            });
+
+            inboxMessages.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    if(currentMessageID != -1 && changeRead && !deleted){
                         MessagePresenter.markRead(currentMessageID);
                     }
 
-                    if (messages.getSelectedIndex() != 0){
+                    if (inboxMessages.getSelectedIndex() != 0){
                         String text = "";
-                        text += "Status: " + MessagePresenter.getMessageStatus(messages.getSelectedIndex()-1) + "\n";
-                        text += "Message: " + MessagePresenter.getMessageContent(messageIDList.get(messages.getSelectedIndex()-1));
+                        text += "Status: " + MessagePresenter.getMessageStatus(inboxMessages.getSelectedIndex()-1) + "\n";
+                        text += "Message: " + MessagePresenter.getMessageContent(inboxMessageIDList.get(inboxMessages.getSelectedIndex()-1));
                         message.setText(text);
-                        currentMessageID = messages.getSelectedIndex()-1;
+                        currentMessageID = inboxMessages.getSelectedIndex()-1;
+                        changeRead = true;
+                        deleted = false;
+                    } else {
+                        message.setText("");
+                    }
+                }
+            });
+
+            archivedMessages.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    if (archivedMessages.getSelectedIndex() != 0){
+                        String text = "";
+                        text += "Status: " + MessagePresenter.getMessageStatus(archivedMessages.getSelectedIndex()-1) + "\n";
+                        text += "Message: " + MessagePresenter.getMessageContent(archivedMessageIDList.get(archivedMessages.getSelectedIndex()-1));
+                        message.setText(text);
+                        currentMessageID = archivedMessages.getSelectedIndex()-1;
+                        changeRead = true;
+                        deleted = false;
                     } else {
                         message.setText("");
                     }
@@ -97,11 +228,24 @@ public class displayMessagesView {
         archivedButton.addActionListener(e -> {
             archivedButton.setVisible(false);
             inboxButton.setVisible(true);
+            archiveButton.setVisible(false);
+            unArchiveButton.setVisible(true);
+            archiveDeleteButton.setVisible(true);
+            inboxDeleteButton.setVisible(false);
+            inboxMessages.setVisible(false);
+            archivedMessages.setVisible(true);
+            //unreadButton.setVisible(false);
         });
 
         inboxButton.addActionListener(e -> {
             archivedButton.setVisible(true);
             inboxButton.setVisible(false);
+            archiveButton.setVisible(true);
+            unArchiveButton.setVisible(false);
+            archiveDeleteButton.setVisible(false);
+            inboxDeleteButton.setVisible(true);
+            inboxMessages.setVisible(true);
+            archivedMessages.setVisible(false);
         });
 
         JButton backButton = new JButton("Back");
