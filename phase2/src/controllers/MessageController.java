@@ -91,6 +91,10 @@ public class MessageController {
 
     }
 
+    public static void markAsUnArchive(int messageID) {
+        MessageStatusManager.markMessageAsUnArchived(messageID);
+    }
+
     public static void deleteMessage(int ID) {
         MessageManager.removeMessage(ID);
     }
