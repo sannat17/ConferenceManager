@@ -82,6 +82,12 @@ public abstract class User {
     @Override
     public String toString() {
         String delimiter = Character.toString((char) 31);
+        if(this.dietaryRestrictions.equals("")){
+            this.dietaryRestrictions = "\"\"";
+        }
+        if(this.accessibilityRequirements.equals("")){
+            this.accessibilityRequirements = "\"\"";
+        }
         return  userID + delimiter + username + delimiter + password + delimiter + firstName + delimiter + getType() +
                 delimiter + this.dietaryRestrictions + delimiter + this.accessibilityRequirements;
     }
