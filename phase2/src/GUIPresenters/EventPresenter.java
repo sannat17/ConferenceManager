@@ -13,6 +13,10 @@ import java.util.ArrayList;
 
 public class EventPresenter {
 
+    /**
+     * Goes the next panel for in event
+     * @param eventPanelChoice The name of the next event
+     */
     public static void nextEventPanel(String eventPanelChoice){
         switch (eventPanelChoice){
             case "View Your Events":
@@ -36,7 +40,10 @@ public class EventPresenter {
             }
         }
 
-
+    /**
+     * Gets the event options
+     * @return The event options for a user
+     */
     public static String[] eventOptions(){
         return UserManager.getEventOptionsList(AuthManager.getLoggedInUser());
     }
@@ -86,6 +93,10 @@ public class EventPresenter {
         }
     }
 
+    /**
+     * Signs the logged in user up for an event
+     * @param title The title of the event
+     */
     public static void signUpForEvent(String title){
         boolean signedUp = EventManager.signUpForEvent(AuthManager.getLoggedInUser().getUserID(),EventManager.giveEventIDOfTitle(title));
         if (!signedUp){
@@ -97,6 +108,10 @@ public class EventPresenter {
         }
     }
 
+    /**
+     * Gets a list of speakers
+     * @return Gets a default list model of the speakers
+     */
     public static DefaultListModel<String> getSpeakers(){
         ArrayList<String> speakersArrayList = UserTypeManager.getUsersByType("speaker");
         DefaultListModel<String> speakers = new DefaultListModel<>();
@@ -106,6 +121,15 @@ public class EventPresenter {
         return speakers;
     }
 
+    /**
+     * Makes a new event
+     * @param title Title of the event
+     * @param time Time of the the event
+     * @param roomNumber Room Number of the event
+     * @param speakerNames Name of the speakers of the event
+     * @param vip Whether or not it is a vip event or not
+     * @param maxCapacity Max capacity of the event
+     */
     public static void makeEvent(String title, LocalDateTime time, int roomNumber,
                                  DefaultListModel<String> speakerNames, boolean vip, int maxCapacity){
         ArrayList<Integer> speakerIDs = new ArrayList<>();
@@ -122,6 +146,7 @@ public class EventPresenter {
             mainView.toPanel("Events");;
         }
     }
+
 
     public static ArrayList<String> getOrganizingTitles(){
         return EventManager.getOrganizing(AuthManager.getLoggedInUser().getUserID());

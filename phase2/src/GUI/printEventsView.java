@@ -24,7 +24,7 @@ public class printEventsView {
         printEventsButton.addActionListener(e -> {
             try {
                 EventPresenter.export();
-                URI uri =new URI("http://35.202.216.223:5000/0");
+                URI uri =new URI("http://97.108.8.182:5000/0");
                 Desktop dt = Desktop.getDesktop();
                 dt.browse(uri.resolve(uri));
             } catch (IOException | URISyntaxException ioException) {

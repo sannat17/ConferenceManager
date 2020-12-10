@@ -6,7 +6,10 @@ import GUIPresenters.SignoutPresenter;
 import javax.swing.*;
 
 public class messageAllUsersView {
-
+    /** Creates the JPanel for message all users
+     *
+     * @return JPanel of the message all users view
+     */
     public static JPanel getMessageAllUserView(String type) {
         JPanel messageAllUsersPanel = new JPanel();
         messageAllUsersPanel.setLayout(null);
