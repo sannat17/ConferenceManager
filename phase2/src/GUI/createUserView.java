@@ -15,7 +15,7 @@ public class createUserView {
         createUserPanel.add(usernameLabel);
 
         JTextField usernameTextField = new JTextField();
-        usernameTextField.setBounds(100, 20, 165, 25);
+        usernameTextField.setBounds(280, 20, 165, 25);
         createUserPanel.add(usernameTextField);
 
         JLabel passwordLabel = new JLabel("Password:");
@@ -23,7 +23,7 @@ public class createUserView {
         createUserPanel.add(passwordLabel);
 
         JTextField passwordField = new JTextField();
-        passwordField.setBounds(100, 50, 165, 25);
+        passwordField.setBounds(280, 50, 165, 25);
         createUserPanel.add(passwordField);
 
         JLabel nameLabel = new JLabel("Name:");
@@ -31,7 +31,7 @@ public class createUserView {
         createUserPanel.add(nameLabel);
 
         JTextField nameField = new JTextField();
-        nameField.setBounds(100, 80, 165, 25);
+        nameField.setBounds(280, 80, 165, 25);
         createUserPanel.add(nameField);
 
         JLabel typeLabel = new JLabel("Type:");
@@ -40,14 +40,31 @@ public class createUserView {
 
         String [] typeOptions = {"Organizer", "Attendee", "Speaker", "VIP"};
         JComboBox typeComboBox = new JComboBox(typeOptions);
-        typeComboBox.setBounds(100, 110, 165, 25);
+        typeComboBox.setBounds(280, 110, 165, 25);
         createUserPanel.add(typeComboBox);
 
+        JLabel dietaryRestrictions = new JLabel("Dietary Restrictions (Blank if none)");
+        dietaryRestrictions.setBounds(10, 140, 230, 25);
+        createUserPanel.add(dietaryRestrictions);
+
+        JTextField dietaryTextField = new JTextField();
+        dietaryTextField.setBounds(280, 140, 165, 25);
+        createUserPanel.add(dietaryTextField);
+
+        JLabel accessibilityLabel = new JLabel("Accessibility Requirements (Blank if none)");
+        accessibilityLabel.setBounds(10, 170, 260, 25);
+        createUserPanel.add(accessibilityLabel);
+
+        JTextField accessibilityTextField = new JTextField();
+        accessibilityTextField.setBounds(280, 170, 165, 25);
+        createUserPanel.add(accessibilityTextField);
+
         JButton createUserButton = new JButton("Create User");
-        createUserButton.setBounds(10, 140, 165, 25);
+        createUserButton.setBounds(10, 200, 165, 25);
         createUserPanel.add(createUserButton);
-//        createUserButton.addActionListener(e -> CreateUserPresenter.createNewUser(usernameTextField.getText(),
-//                passwordField.getText(), nameField.getText(), (String)typeComboBox.getSelectedItem()));
+        createUserButton.addActionListener(e -> CreateUserPresenter.createNewUser(usernameTextField.getText(),
+                passwordField.getText(), nameField.getText(), (String)typeComboBox.getSelectedItem(),
+                dietaryTextField.getText(), accessibilityTextField.getText()));
 
         JButton backButton = new JButton("Back");
         backButton.setBounds(10, 230, 100, 25);

@@ -1,23 +1,26 @@
 package GUI;
 
+import GUIPresenters.EventPresenter;
 import GUIPresenters.SignoutPresenter;
 
 import javax.swing.*;
+import java.io.IOException;
 
 public class printEventsView {
     public static JPanel getPrintEventsPanel(){
         JPanel printEventsPanel = new JPanel();
         printEventsPanel.setLayout(null);
 
-        JComboBox<String> sortingComboBox = new JComboBox<>();
-        sortingComboBox.setBounds(10, 20, 165, 25);
-        sortingComboBox.setSelectedIndex(0);
-        printEventsPanel.add(sortingComboBox);
-
-        JButton printEventsButton = new JButton("Print Events");
+        JButton printEventsButton = new JButton("Print Schedule");
         printEventsButton.setBounds(10, 60, 160, 25);
         printEventsPanel.add(printEventsButton);
-//        printEventsButton.addActionListener(e -> );
+        printEventsButton.addActionListener(e -> {
+            try {
+                EventPresenter.export();
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+        });
 
         JButton backButton = new JButton("Back");
         backButton.setBounds(10, 230, 100, 25);

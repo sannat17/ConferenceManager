@@ -2,15 +2,12 @@ package GUIPresenters;
 
 import GUI.mainView;
 import controllers.EventController;
-import entities.Event;
-import entities.User;
-import presenters.EventSorter;
-import useCases.AuthManager;
-import useCases.EventManager;
-import useCases.UserManager;
-import useCases.UserTypeManager;
+import gateways.EventExporter;
+
+import useCases.*;
 
 import javax.swing.*;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -33,6 +30,9 @@ public class EventPresenter {
             case "Cancel an event":
                 mainView.toPanel("Cancel Event");
                 break;
+            case "Print Events":
+                mainView.toPanel("Print Events");
+                break;
             }
         }
 
@@ -49,17 +49,7 @@ public class EventPresenter {
      */
     public static String formatSchedule(String sortingOption) {
 
-        ArrayList<Event> listOfEvents = EventSorter.sortBy(sortingOption);
-        String sortedEvents = "";
-
-        for (Event e: listOfEvents) {
-            sortedEvents = sortedEvents + e.getTitle();
-            if (e.getAttending().contains(UserManager.giveIDOfUser(AuthManager.getLoggedInUser()))){
-                sortedEvents = sortedEvents + " (Currently Attending)";
-            }
-            sortedEvents = sortedEvents + "\n";
-        }
-        return sortedEvents.trim();
+        return EventSorter.formatSchedule(sortingOption);
     }
 
     /**
@@ -84,11 +74,10 @@ public class EventPresenter {
     /** Allows a User to cancel their spot for an Event
      *
      * @param title the title of the event that the user is cancelling their spot for
-     * @return A boolean with true if the User successfully cancelled their spot for the event and false if it wasn't
      */
     public static void cancelSpotEvent(String title){
         boolean cancelled = EventController.cancelSignUp(AuthManager.getLoggedInUser(), EventManager.giveEventIDOfTitle(title));
-        if (cancelled == false){
+        if (!cancelled){
             mainView.createPopUp("Could not cancel your spot ");
         }
         else{
@@ -98,8 +87,8 @@ public class EventPresenter {
     }
 
     public static void signUpForEvent(String title){
-        Boolean signedUp = EventManager.signUpForEvent(AuthManager.getLoggedInUser().getUserID(),EventManager.giveEventIDOfTitle(title));
-        if (signedUp == false){
+        boolean signedUp = EventManager.signUpForEvent(AuthManager.getLoggedInUser().getUserID(),EventManager.giveEventIDOfTitle(title));
+        if (!signedUp){
             mainView.createPopUp("Could not sign you up for this event");
         }
         else{
@@ -123,9 +112,9 @@ public class EventPresenter {
         for(int i = 0; i < speakerNames.size(); i++ ){
             speakerIDs.add(UserManager.giveIDOfUsername(speakerNames.get(i)));
         }
-        Boolean made = EventManager.makeNewEvent(title, time, roomNumber, speakerIDs,
+        boolean made = EventManager.makeNewEvent(title, time, roomNumber, speakerIDs,
                 UserManager.giveIDOfUser(AuthManager.getLoggedInUser()), vip, maxCapacity);
-        if (made == false){
+        if (!made){
             mainView.createPopUp("There was a conflict while trying to create your event.");
         }
         else{
@@ -139,13 +128,17 @@ public class EventPresenter {
     }
 
     public static void cancelEvent(String title){
-        Boolean cancelled = EventManager.cancelEvent(AuthManager.getLoggedInUser(), title);
-        if (cancelled == false) {
+        boolean cancelled = EventManager.cancelEvent(AuthManager.getLoggedInUser(), title);
+        if (!cancelled) {
             mainView.createPopUp("Could not cancel event");
         }
         else{
             mainView.createPopUp("Event Cancelled!");
             mainView.toPanel("Events");
         }
+    }
+
+    public static void export() throws IOException {
+        EventExporter.requestExport(AuthManager.getLoggedInUser().getUserID());
     }
 }

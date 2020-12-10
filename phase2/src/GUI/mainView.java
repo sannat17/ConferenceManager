@@ -56,6 +56,7 @@ public class mainView {
         mainContainer.add(messageView.getMessageView(), "Messages");
         mainContainer.add(displayMessagesView.getDisplayMessagesPanel(), "Display Messages");
         mainContainer.add(cancelEventView.getCancelEventPanel(), "Cancel Event");
+        mainContainer.add(printEventsView.getPrintEventsPanel(), "Print Events");
         mainContainer.add(additionalUserRequestsView.getAdditionalUserRequestsPanel(), "Additional Requests");
     }
 

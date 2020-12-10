@@ -1,7 +1,7 @@
 package gateways;
 
 import org.json.JSONArray;
-import presenters.EventSorter;
+import useCases.EventSorter;
 import sun.net.www.protocol.http.HttpURLConnection;
 
 import java.io.IOException;

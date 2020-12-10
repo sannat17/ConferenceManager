@@ -1,6 +1,5 @@
 import GUI.mainView;
 import gateways.*;
-import userInterfaces.*;
 import useCases.AuthManager;
 
 import java.time.LocalDateTime;

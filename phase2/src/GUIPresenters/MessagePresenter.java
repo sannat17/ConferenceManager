@@ -4,10 +4,7 @@ import GUI.mainView;
 import entities.Message;
 import entities.Speaker;
 import entities.User;
-import useCases.AuthManager;
-import useCases.MessageManager;
-import useCases.UserManager;
-import useCases.UserTypeManager;
+import useCases.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,12 +36,27 @@ public class MessagePresenter {
         HashMap<Integer, String> userHash = new HashMap<>();
         ArrayList<Message> messages = MessageManager.getAllReceivedMessages(
                 UserManager.giveIDOfUser(AuthManager.getLoggedInUser()));
+        String ID = "";
         for (Message m: messages){
-            userHash.put(MessageManager.getIDOfMessage(m),
-                    UserManager.giveUsername(UserManager.getUser(MessageManager.getSendersID(MessageManager.getIDOfMessage(m)))));
+            if (m.getStatusID() == 0 || m.getStatusID() == 1){
+                userHash.put(MessageManager.getIDOfMessage(m),
+                        "ID: " + ID + " " + UserManager.giveUsername(UserManager.getUser(MessageManager.getSendersID(MessageManager.getIDOfMessage(m)))));
+            }
+
         }
         return userHash;
     }
+
+    public static String getMessageStatus(int ID){
+        if(MessageStatusManager.getStatusOfMessage(ID) == 0) {
+            return "Unread";
+        } else if (MessageStatusManager.getStatusOfMessage(ID) == 1){
+            return "Read";
+        }
+        return "";
+    }
+
+    public static void markRead(int ID) {MessageStatusManager.markMessageAsRead(ID);}
 
     public static String getMessageContent(int ID){return MessageManager.getContent(ID);}
 

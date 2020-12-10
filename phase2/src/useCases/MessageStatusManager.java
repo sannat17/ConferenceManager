@@ -38,6 +38,11 @@ public class MessageStatusManager {
 //    }
 
     //*****************************************************************************************************************
+
+    public static int getStatusOfMessage(int MessageID){
+        return MessageManager.getMessage(MessageID).getStatusID();
+    }
+
     public static void markMessageAsArchived(int MessageID) {
 
         MessageManager.getMessage(MessageID).setStatusID(-2);

@@ -7,7 +7,7 @@ public class CreateUserPresenter {
     public static void createNewUser(String username, String password, String name, String type, String dietaryRestrictions,
                                      String accessibilityRequirements){
         boolean userBool = UserManager.makeNewUser(username, password, name, type, dietaryRestrictions, accessibilityRequirements);
-        if (userBool == false){
+        if (!userBool){
             mainView.createPopUp("Could not create this user");
         }
         else{
