@@ -4,10 +4,7 @@ import GUI.mainView;
 import entities.Message;
 import entities.Speaker;
 import entities.User;
-import useCases.AuthManager;
-import useCases.MessageManager;
-import useCases.UserManager;
-import useCases.UserTypeManager;
+import useCases.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,12 +36,23 @@ public class MessagePresenter {
         HashMap<Integer, String> userHash = new HashMap<>();
         ArrayList<Message> messages = MessageManager.getAllReceivedMessages(
                 UserManager.giveIDOfUser(AuthManager.getLoggedInUser()));
+        String ID = "";
         for (Message m: messages){
-            userHash.put(MessageManager.getIDOfMessage(m),
-                    UserManager.giveUsername(UserManager.getUser(MessageManager.getSendersID(MessageManager.getIDOfMessage(m)))));
+            String status = "";
+            if (m.getStatusID() == 0 || m.getStatusID() == 1){
+                ID = Integer.toString(m.getMessageID());
+                if (m.getStatusID() == 0) {
+                    status = " - Unread";
+                }
+                userHash.put(MessageManager.getIDOfMessage(m),
+                        "ID: " + ID + " " + UserManager.giveUsername(UserManager.getUser(MessageManager.getSendersID(MessageManager.getIDOfMessage(m)))) + status);
+            }
+
         }
         return userHash;
     }
+
+    public static void markRead(int ID) {MessageStatusManager.markMessageAsRead(ID);}
 
     public static String getMessageContent(int ID){return MessageManager.getContent(ID);}
 

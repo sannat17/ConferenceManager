@@ -32,7 +32,7 @@ public class additionalUserRequestsPresenter {
     public static String formatDietaryRestrictions(HashMap<Integer, String> dietaryRestrictionsDict) {
         String dietaryRestrictions = "";
         for (int userID : dietaryRestrictionsDict.keySet()) {
-            if (!(dietaryRestrictionsDict.get(userID).equals(""))) {
+            if (!(dietaryRestrictionsDict.get(userID).equals("\"\""))) {
                 dietaryRestrictions += "ID: " + Integer.toString(userID) + dietaryRestrictionsDict.get(userID) +
                 " (" + UserManager.getUser(userID).getDietaryRestrictionsStatus() + ")\n";
             }
@@ -49,7 +49,7 @@ public class additionalUserRequestsPresenter {
     public static String formatAccessibilityRequirements(HashMap<Integer, String> accessibilityRequirementsDict) {
         String accessibilityRequirements = "";
         for (int userID : accessibilityRequirementsDict.keySet()) {
-            if (!(accessibilityRequirementsDict.get(userID).equals(""))) {
+            if (!(accessibilityRequirementsDict.get(userID).equals("\"\""))) {
                 accessibilityRequirements += "ID: " + Integer.toString(userID) + accessibilityRequirementsDict.get(userID) +
                         " (" + UserManager.getUser(userID).getAccessibilityRequirementsStatus() + ")\n";
             }

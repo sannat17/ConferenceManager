@@ -1,6 +1,7 @@
 package GUI;
 
 import GUIPresenters.MessagePresenter;
+import GUIPresenters.SignoutPresenter;
 
 import javax.swing.*;
 
@@ -35,6 +36,11 @@ public class messageUserView {
         backButton.setBounds(10, 230, 100, 25);
         messageUserPanel.add(backButton);
         backButton.addActionListener(e -> mainView.toPanel("Messages"));
+
+        JButton signoutButton = new JButton("Sign Out");
+        signoutButton.setBounds(10, 260, 100, 25);
+        messageUserPanel.add(signoutButton);
+        signoutButton.addActionListener(e -> SignoutPresenter.signOut());
 
         return messageUserPanel;
     }
