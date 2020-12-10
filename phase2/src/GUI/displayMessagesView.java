@@ -18,8 +18,6 @@ public class displayMessagesView {
     static int currentMessageID;
     static boolean changeRead;
     static boolean deleted;
-    static boolean inbox;
-    static boolean archive;
     static JButton archiveButton;
     static JButton unArchiveButton;
     static JButton inboxDeleteButton;
@@ -32,8 +30,6 @@ public class displayMessagesView {
         currentMessageID = -1;
         changeRead = true;
         deleted = false;
-        inbox = true;
-        archive = false;
 
 
         HashMap<Integer, String> inboxMessageHash = MessagePresenter.getUsernamesFromInbox();

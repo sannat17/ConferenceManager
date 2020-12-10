@@ -79,4 +79,9 @@ public class mainView {
         mainCL.show(mainContainer, "Message User");
     }
 
+    public static void toMessageAllUsersPanel(String type){
+        mainContainer.add(messageAllUsersView.getMessageAllUserView(type), "Message all Users");
+        mainCL.show(mainContainer, "Message all Users");
+    }
+
 }

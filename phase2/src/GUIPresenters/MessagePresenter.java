@@ -24,13 +24,32 @@ public class MessagePresenter {
             case "Message an attendee":
                 mainView.toMessageUserPanel("attendee");
                 break;
+            case "Message all attendees":
+                mainView.toMessageAllUsersPanel("attendee");
+                break;
 
+            case "Message all speakers":
+                mainView.toMessageAllUsersPanel("speaker");
+                break;
+
+            case "Message all attendees of an event":
+                break;
+
+            case "Message all attendees of the talk":
+                break;
         }
     }
 
     public static void sendMessage(String receiver, String content) {
         MessageManager.makeNewMessage(UserManager.giveIDOfUser(AuthManager.getLoggedInUser()),
                 UserManager.giveIDOfUsername(receiver), -1, content);
+    }
+
+    public static void sendMessageToAllType(String type, String content){
+        ArrayList<String> users = UserTypeManager.getUsersByType(type);
+        for (String u: users){
+            sendMessage(u, content);
+        }
     }
 
     public static HashMap<Integer, String> getUsernamesFromInbox(){
@@ -92,5 +111,11 @@ public class MessagePresenter {
         return UserManager.getMessageOptionsList(AuthManager.getLoggedInUser());
     }
 
-    public static String[] usersUsernames(String type) {return UserTypeManager.getUsersByType(type).toArray(new String[0]);}
+    public static String[] usersUsernames(String type) {
+        ArrayList<String> users = UserTypeManager.getUsersByType(type);
+        if(users.contains(UserManager.giveUsername(AuthManager.getLoggedInUser()))){
+            users.remove(UserManager.giveUsername(AuthManager.getLoggedInUser()));
+        }
+        return users.toArray(new String[0]);
+    }
 }
