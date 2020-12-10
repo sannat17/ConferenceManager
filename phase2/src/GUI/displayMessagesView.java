@@ -14,20 +14,20 @@ import java.util.HashMap;
 
 public class displayMessagesView {
 
-    static int currentMessageID = -1;
+    static int currentMessageID;
     static JComboBox<String> messages;
 
     public static JPanel getDisplayMessagesPanel() {
         JPanel DisplayMessagesPanel = new JPanel();
         DisplayMessagesPanel.setLayout(null);
-        currentMessageID = 0;
+        currentMessageID = -1;
 
 
         HashMap<Integer, String> messageHash = MessagePresenter.messageUsernamnes();
-        //ArrayList<String> messageUsernamesList = new ArrayList<>(messageHash.values());
+        ArrayList<String> messageUsernamesList = new ArrayList<>(messageHash.values());
         ArrayList<Integer> messageIDList = new ArrayList<>(messageHash.keySet());
-        //messageUsernamesList.add(0,"Select an Option");
-        //String [] messageUsernames = messageUsernamesList.toArray(new String[0]);
+        messageUsernamesList.add(0,"Select an Option");
+        String [] messageUsernames = messageUsernamesList.toArray(new String[0]);
 
         JTextArea message = new JTextArea();
         message.setLineWrap(true);
@@ -38,10 +38,9 @@ public class displayMessagesView {
         message.setEditable(false);
         DisplayMessagesPanel.add(messageScrollPanel);
 
-        //JComboBox<String> messages = new JComboBox<>(messageUsernames);
-        //messages.setSelectedIndex(0);
-        //messages.setBounds(10, 20, 160, 25);
-        messages = changeComboBox();
+        JComboBox<String> messages = new JComboBox<>(messageUsernames);
+        messages.setSelectedIndex(0);
+        messages.setBounds(10, 20, 160, 25);
         DisplayMessagesPanel.add(messages);
 
 
@@ -67,12 +66,15 @@ public class displayMessagesView {
             messages.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
+                    if(currentMessageID != -1){
+                        MessagePresenter.markRead(currentMessageID);
+                    }
+
                     if (messages.getSelectedIndex() != 0){
-                        if(currentMessageID != -1){
-                            MessagePresenter.markRead(currentMessageID);
-                            messages = changeComboBox();
-                        }
-                        message.setText(MessagePresenter.getMessageContent(messageIDList.get(messages.getSelectedIndex()-1)));
+                        String text = "";
+                        text += "Status: " + MessagePresenter.getMessageStatus(messages.getSelectedIndex()-1) + "\n";
+                        text += "Message: " + MessagePresenter.getMessageContent(messageIDList.get(messages.getSelectedIndex()-1));
+                        message.setText(text);
                         currentMessageID = messages.getSelectedIndex()-1;
                     } else {
                         message.setText("");
@@ -113,20 +115,5 @@ public class displayMessagesView {
         signoutButton.addActionListener(e -> SignoutPresenter.signOut());
 
         return DisplayMessagesPanel;
-    }
-
-    private static JComboBox<String> changeComboBox(){
-        HashMap<Integer, String> messageHash = MessagePresenter.messageUsernamnes();
-        ArrayList<String> messageUsernamesList = new ArrayList<>(messageHash.values());
-        messageUsernamesList.add(0,"Select an Option");
-        String [] messageUsernames = messageUsernamesList.toArray(new String[0]);
-
-        JComboBox<String> messages = new JComboBox<>(messageUsernames);
-        messages.setSelectedIndex(0);
-        messages.setBounds(10, 20, 160, 25);
-
-
-
-        return messages;
     }
 }
