@@ -147,11 +147,18 @@ public class EventPresenter {
         }
     }
 
-
+    /**
+     * Get titles of the events an organizer is organizing
+     * @return An array list of the titles of the talks
+     */
     public static ArrayList<String> getOrganizingTitles(){
         return EventManager.getOrganizing(AuthManager.getLoggedInUser().getUserID());
     }
 
+    /**
+     * Cancels an event
+     * @param title Title of the event
+     */
     public static void cancelEvent(String title){
         boolean cancelled = EventManager.cancelEvent(AuthManager.getLoggedInUser(), title);
         if (!cancelled) {
@@ -163,6 +170,10 @@ public class EventPresenter {
         }
     }
 
+    /**
+     * Creates the webpage of the calendar of the talk
+     * @throws IOException
+     */
     public static void export() throws IOException {
         EventExporter.requestExport();
     }
