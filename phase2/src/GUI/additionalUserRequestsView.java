@@ -9,6 +9,10 @@ import javax.swing.*;
 import java.awt.*;
 
 public class additionalUserRequestsView {
+    /** Creates the JPanel for additional user request
+     *
+     * @return JPanel of the additional user requests
+     */
     public static JPanel getAdditionalUserRequestsPanel() {
         JPanel additionalUserRequestsPanel = new JPanel();
         additionalUserRequestsPanel.setLayout(null);

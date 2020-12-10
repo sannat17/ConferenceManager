@@ -7,6 +7,10 @@ import javax.swing.*;
 
 public class messageUserView {
 
+    /** Creates the JPanel for get messages
+     *
+     * @return JPanel of the get message user
+     */
     public static JPanel getMessageUserView(String type) {
         JPanel messageUserPanel = new JPanel();
         messageUserPanel.setLayout(null);

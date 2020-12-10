@@ -8,6 +8,10 @@ import javax.swing.*;
 
 public class messageView {
 
+    /** Creates the JPanel for the message menu
+     *
+     * @return JPanel of the message panel
+     */
     public static JPanel getMessageView(){
         JPanel messagePanel = new JPanel();
         messagePanel.setLayout(null);

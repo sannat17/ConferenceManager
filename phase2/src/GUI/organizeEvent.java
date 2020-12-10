@@ -15,6 +15,10 @@ import java.time.format.DateTimeParseException;
 import java.util.Date;
 
 public class organizeEvent {
+    /** Creates the JPanel to Organize Event
+     *
+     * @return JPanel of the Organize Event
+     */
     public static JPanel getOrganizeEventPanel(){
         JPanel organizeEventPanel = new JPanel();
         organizeEventPanel.setLayout(null);

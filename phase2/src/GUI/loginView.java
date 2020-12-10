@@ -12,8 +12,10 @@ import java.awt.event.KeyListener;
 
 public class loginView {
 
-    private static User user;
-
+    /** Creates the JPanel to Login
+     *
+     * @return JPanel of the login
+     */
     public static JPanel getLoginPanel(){
         JPanel loginPanel = new JPanel();
         loginPanel.setLayout(null);

@@ -10,6 +10,10 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 public class printEventsView {
+    /** Creates the JPanel to Print the Events
+     *
+     * @return JPanel of the print events
+     */
     public static JPanel getPrintEventsPanel(){
         JPanel printEventsPanel = new JPanel();
         printEventsPanel.setLayout(null);

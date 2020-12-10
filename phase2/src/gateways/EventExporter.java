@@ -32,10 +32,6 @@ public class EventExporter{
         catch(IOException e) {
             e.printStackTrace();
         }
-
-        System.out.println("36");
-        req.getInputStream();
-        System.out.println("POST attempted");
     }
 
 }

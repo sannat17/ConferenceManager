@@ -6,6 +6,10 @@ import GUIPresenters.SignoutPresenter;
 import javax.swing.*;
 
 public class yourEventsView {
+    /** Creates the JPanel to get your events
+     *
+     * @return JPanel of the get your events
+     */
     public static JPanel getYourEventsPanel(){
         JPanel yourEventsPanel = new JPanel();
         yourEventsPanel.setLayout(null);

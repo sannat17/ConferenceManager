@@ -26,6 +26,10 @@ public class displayMessagesView {
     static JButton archiveDeleteButton;
     static JButton unreadButton;
 
+    /** Creates the JPanel for Display Messages Panel
+     *
+     * @return JPanel of the display messages
+     */
     public static JPanel getDisplayMessagesPanel() {
         JPanel DisplayMessagesPanel = new JPanel();
         DisplayMessagesPanel.setLayout(null);
