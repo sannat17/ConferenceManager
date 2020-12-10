@@ -91,16 +91,12 @@ public class MessageController {
 
     }
 
+    public static void markAsUnArchive(int messageID) {
+        MessageStatusManager.markMessageAsUnArchived(messageID);
+    }
+
     public static void deleteMessage(int ID) {
         MessageManager.removeMessage(ID);
     }
 
-//    public static void deleteMessage(Message message) {
-//
-////      Calls the deleteReceivedMessage function from the MessageManager to set the statusID to -1 ie: deleted!
-//        MessageStatusManager.deleteReceivedMessage(message.getMessageID());
-//
-////      Adds the deleted messages to the deleted messages list for the presenter to present the list.
-//        MessageStatusManager.getAllDeletedMessages(message.getReceiverID()).add(message);
-//    }
 }
