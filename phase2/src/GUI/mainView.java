@@ -18,10 +18,16 @@ public class mainView {
     private static CardLayout mainCL;
     private JPanel loginPanel;
 
+    /**
+     * Calls the createUI() and creates an instance of it
+     */
     public mainView(){
         createUI();
     }
 
+    /**
+     * Creates the GUI for the program
+     */
     private void createUI(){
         LoginPresenter.readFiles();
         loginPanel = loginView.getLoginPanel();
@@ -45,6 +51,9 @@ public class mainView {
 
     }
 
+    /**
+     * Adds all the panels to the Frame
+     */
     public static void addPanels(){
         mainContainer.add(menuView.getMenuPanel(), "Menu");
         mainContainer.add(createUserView.getCreateUserPanel(), "Create User");
@@ -60,20 +69,35 @@ public class mainView {
         mainContainer.add(additionalUserRequestsView.getAdditionalUserRequestsPanel(), "Additional Requests");
     }
 
+    /**
+     * Creates a pop up with a message
+     * @param message The message that will be put on the pop up
+     */
     public static void createPopUp(String message) {
         JOptionPane.showMessageDialog(mainFrame, message);
     }
 
+    /**
+     * Goes to the next panel
+     * @param name The name of the panel you want to go to
+     */
     public static void toPanel(String name){
         addPanels();
         mainCL.show(mainContainer, name);
     }
 
+    /**
+     * Goes to the login panel
+     */
     public static void toLoginPanel(){
         mainContainer.add(loginView.getLoginPanel(), "Login");
         mainCL.show(mainContainer, "Login");
     }
 
+    /**
+     * Goes to the MessageUserPanel
+     * @param type The type of user
+     */
     public static void toMessageUserPanel(String type){
         mainContainer.add(messageUserView.getMessageUserView(type), "Message User");
         mainCL.show(mainContainer, "Message User");
