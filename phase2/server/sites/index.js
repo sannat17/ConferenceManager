@@ -2,9 +2,11 @@ var state = {
   current: new Date(new Date().setDate(1))
 }
 
-async function main(){
+async function render(){
+  //assembles all visual elements on screen
   generateCalendar();
   console.log(await getJSON());
+  generateSidebar();
 }
 
 function generateCalendar(){
@@ -17,47 +19,47 @@ function generateCalendar(){
   month.innerHTML = getMonthFromInt(state.current.getMonth());
 
   let root = document.getElementById("calendar-body");
+  root.innerHTML = ""; //clear previous
 
   let dates = getCalendarDates();
   for(const date of dates[0]){
-    let el = document.createElement("div");
-    el.innerHTML = date;
-    el.classList.add("calendar-date", "calendar-date-greyed");
+    let el = createElement("div", date, ["calendar-date", "calendar-date-greyed"]);
     root.appendChild(el);
   }
 
   for(const date of dates[1]){
-    let el = document.createElement("div");
-    el.innerHTML = date;
-    el.classList.add("calendar-date");
+    let el = createElement("div", date, ["calendar-date"]);
     root.appendChild(el);
   }
 
   for(const date of dates[2]){
-    let el = document.createElement("div");
-    el.innerHTML = date;
-    el.classList.add("calendar-date", "calendar-date-greyed");
+    let el = createElement("div", date, ["calendar-date", "calendar-date-greyed"]);
     root.appendChild(el);
   }
 }
 
-async function generateSidebar(){
-  let json = getJSON();
-  for(const obj in json){
-    let date = new Date(obj.timeOfEvent);
-  }
+function setMonth(value){
+  state.current.setMonth(state.current.getMonth() + value);
+  render();
 }
 
-async function getJSON(){
-  //gets event data from remote API
+async function generateSidebar(){
+  //populates sidebar with events
 
-  let params = document.URL.split("/");
-  if(params.length < 2)
-    return;
-  
-  //replace localhost with VPS address!
-  let url = "http://localhost:5000/json/" + params[params.length - 1];
+  let events = document.getElementById("events");
+  events.innerHTML = ""; //clear previous events
 
-  let result = await fetch(url);
-  return result.json();
+  let json = await getJSON();
+  let currentDate = new Date(json[0].timeOfEvent);
+  addDate(currentDate);
+
+  for(const obj of json){
+    let date = new Date(obj.timeOfEvent);
+    if(!isSameDay(currentDate, date)){
+      currentDate = date;
+      addDate(date);
+    }
+    addEvent(obj);
+  }
+
 }

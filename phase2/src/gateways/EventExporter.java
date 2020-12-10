@@ -3,7 +3,6 @@ package gateways;
 import org.json.JSONArray;
 import presenters.EventSorter;
 import sun.net.www.protocol.http.HttpURLConnection;
-import useCases.EventManager;
 
 import java.io.IOException;
 import java.io.OutputStream;

@@ -6,31 +6,35 @@
 
     <link rel = "stylesheet" type = "text/css" href = "styles.css"/>
     <script src="utils/dates.js"></script>
+    <script src="utils/api.js"></script>
+    <script src="utils/dom.js"></script>
     <script src="index.js"></script>
 
 </head>
 
-<body onload="main()">
+<body onload="render()">
 
     <div class="sidebar">
-        <div class="title">Calendar Plan</div>
-        <div class="options">
-            <div class="option option-selected">All Events</div>
-            <div class="option option-selected">Your Events</div>
-        </div>
+        <div class="title">Event Calendar</div>
 
-        <div class="datebox">December 9th, 2020</div>
+        <div class="datebox">All Upcoming Events</div>
 
-        <div>Upcoming Events:</div>
-        
-        <div>
-            Events
+        <div id="events">
+            
         </div>
     </div>
 
     <div class="calendar">
-        <div id="year"></div>
-        <div id="month"></div>
+        <div id="yearContainer">
+            <div class="arrow" onclick="setMonth(-12)">&lsaquo;</div>
+            <div id="year"></div>
+            <div class="arrow" onclick="setMonth(12)">&rsaquo;</div>
+        </div>
+        <div id="monthContainer">
+            <div class="arrow" onclick="setMonth(-1)">&lsaquo;</div>
+            <div id="month"></div>
+            <div class="arrow" onclick="setMonth(1)">&rsaquo;</div> 
+        </div>
         <div class="days">
             <div class="day-label">S</div>
             <div class="day-label">M</div>

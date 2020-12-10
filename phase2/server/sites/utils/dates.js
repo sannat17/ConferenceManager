@@ -9,6 +9,7 @@ function getMonthFromInt(value){
 }
 
 function getCalendarDates(){
+  //return lists of days on a calendar page
   let first = new Date(state.current);
   let temp = new Date(state.current);
   let last = new Date(temp.setDate(32))
@@ -35,14 +36,38 @@ function getCalendarDates(){
   return [pre, dates, post];
 }
 
-function toDate(str){
-  //converts java date string to js date obj
-  //assumes str is a java date string
-  return new Date(str);
-}
-
 function getStartEnd(){
+  //returns start and end date for this calendar page
   let first = new Date(state.current);
   let day = first.getDate();
-  first = new Date(first.setDate())
+  first = new Date(first.setDate(-day));
+  let last = new Date(first)
+  last.setDate(first.getDate() + 41);
+  return [first, last];
+}
+
+function getFormattedDate(date){
+  //accepts date obj, and formats into readable string
+  let month = getMonthFromInt(date.getMonth());
+  let day = date.getDate();
+  let year = date.getFullYear();
+  return `${month} ${day}, ${year}`;
+}
+
+function getFormattedTime(date){
+  let hours = date.getHours();
+  let minutes = date.getMinutes();
+  let ampm = hours >= 12 ? 'PM' : "AM";
+  hours = hours % 12;
+  hours = hours ? hours : 12; // the hour '0' should be '12'
+  minutes = minutes < 10 ? '0'+minutes : minutes;
+  var strTime = hours + ':' + minutes + ' ' + ampm;
+  return strTime;
+}
+
+function isSameDay(first, second){
+  //returns true if date objects day1 and day2 are in the same day
+  return first.getFullYear() === second.getFullYear() &&
+    first.getMonth() === second.getMonth() &&
+    first.getDate() === second.getDate();
 }
