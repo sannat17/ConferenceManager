@@ -139,6 +139,6 @@ public class EventPresenter {
     }
 
     public static void export() throws IOException {
-        EventExporter.requestExport(AuthManager.getLoggedInUser().getUserID());
+        EventExporter.requestExport();
     }
 }
