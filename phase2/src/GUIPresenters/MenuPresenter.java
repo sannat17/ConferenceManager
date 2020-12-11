@@ -5,7 +5,12 @@ import entities.User;
 import useCases.AuthManager;
 import useCases.UserManager;
 
+
 public class MenuPresenter {
+    /**
+     * Goes to the next panel depending on the choice
+     * @param panelChoice The name of the next panel
+     */
     public static void nextPanel(String panelChoice){
         switch(panelChoice){
             case "Events":
@@ -24,6 +29,10 @@ public class MenuPresenter {
         }
     }
 
+    /**
+     * Gets the options for the menu
+     * @return The options for the menu
+     */
     public static String[] menuOptions(){
         return UserManager.getMenuOptionsList(AuthManager.getLoggedInUserID());
     }

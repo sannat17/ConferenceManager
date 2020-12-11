@@ -24,8 +24,8 @@ public class EventManager {
         return eventHashMap.get(ID);
     }
 
-    /** Creates a new Event and adds it to the eventHashMap
-     *
+    /**
+     * Creates a new Event and adds it to the eventHashMap
      * @param eventID The ID of the event being created
      * @param title The title of the event
      * @param timeOfEvent The time of the event being created
@@ -33,7 +33,7 @@ public class EventManager {
      * @param speakerIDs The list of IDs of the speakers of the event being created
      * @param organizerID The ID of the organizer of the event
      * @param attendees The list of UserIDs that are attending the event
-     * @param vip Determines whether Event created is VIP or not
+     * @param vip Whether or not the event is a VIP event
      * @param maxCapacity The maximum capacity of the event
      * @return A boolean with true if the Event was successfully created and false if it wasn't
      */
@@ -87,13 +87,16 @@ public class EventManager {
         return true;
     }
 
-    /** Creates a new Event that does not already have an ID
-     *
+
+    /**
+     * Creates a new Event that does not already have an ID
      * @param title The title of the event being created
      * @param timeOfEvent The time of the event being created
      * @param roomNumber The number of the room of the event being created
      * @param speakerIDs The list of IDs of the speakers of the event being created
      * @param organizerID The ID of the organizer of the event
+     * @param vip Whether or not it is a VIP event
+     * @param maxCapacity The max capacity of the event
      * @return A boolean with true if the Event was successfully created and false if it wasn't
      */
     public static boolean makeNewEvent(String title, LocalDateTime timeOfEvent,
