@@ -88,14 +88,20 @@ public class UserManager{
         return true;
     }
 
-    public static User getUserFromUsername(String username){
-        User user = null;
+
+    /** Returns the username of a certain user's ID
+     *
+     * @param ID The ID that we want to check
+     * @return Returns the username of a certain user's ID
+     */
+    public static String getUsernameFromID(int ID){
+        String username = "";
         for (User u: userHashMap.values()){
-            if (username.equals(u.getUsername())){
-                user = u;
+            if (ID == u.getUserID()){
+                username = u.getUsername();
             }
         }
-        return user;
+        return username;
     }
 
     /** Gets the next usable ID for a user

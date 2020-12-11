@@ -33,11 +33,21 @@ public class MessagePresenter {
                 break;
 
             case "Message all attendees of an event":
+                mainView.toPanel("Message Attendees of An Event");
                 break;
 
             case "Message all attendees of the talk":
+                mainView.toPanel("Message Attendees of A Talk");
                 break;
         }
+    }
+
+    public static void replyToMessage(String content, int replyID, String recipientName){
+        mainView.toReplyPanel(content, replyID, recipientName);
+    }
+
+    public static void reply(int recieverID, int replyID, String content){
+        MessageManager.makeNewMessage(UserManager.giveIDOfUser(AuthManager.getLoggedInUser()), recieverID, replyID, content);
     }
 
     public static void sendMessage(String receiver, String content) {
@@ -49,6 +59,13 @@ public class MessagePresenter {
         ArrayList<String> users = UserTypeManager.getUsersByType(type);
         for (String u: users){
             sendMessage(u, content);
+        }
+    }
+
+    public static void sendMessageToAllAttendeesOfTalk(int talkID, String content){
+        ArrayList<Integer> attending = EventManager.getAttendingSpecificEvent(talkID);
+        for (int i: attending){
+            MessageManager.makeNewMessage(UserManager.giveIDOfUser(AuthManager.getLoggedInUser()), i, -1, content);
         }
     }
 
@@ -84,7 +101,17 @@ public class MessagePresenter {
         return userHash;
     }
 
+    public static String[] getTalksBySpeaker(){
+        return EventManager.getAllEventsBySpeaker(UserManager.giveIDOfUser(AuthManager.getLoggedInUser())).toArray(new String[0]);
+    }
 
+    public static String[] getAllTalks(){
+        return EventManager.getAllEventsTitles().toArray(new String[0]);
+    }
+
+    public static int getIDOfTalkByTitle(String title){
+        return EventManager.giveEventIDOfTitle(title);
+    }
 
     public static String getMessageStatus(int ID){
         if(MessageStatusManager.getStatusOfMessage(ID) == 0) {
@@ -99,7 +126,7 @@ public class MessagePresenter {
 
     public static void deleteMessage(int ID){MessageController.deleteMessage(ID);}
 
-    public static void markArchived(int ID){MessageStatusManager.markMessageAsArchived(ID);}
+    public static void markArchived(int ID){MessageController.markAsArchived(ID);}
 
     public static void markRead(int ID) {MessageStatusManager.markMessageAsRead(ID);}
 
@@ -117,5 +144,13 @@ public class MessagePresenter {
             users.remove(UserManager.giveUsername(AuthManager.getLoggedInUser()));
         }
         return users.toArray(new String[0]);
+    }
+
+    public static int getUsersID(String name){
+        return UserManager.giveIDOfUsername(name);
+    }
+
+    public static String getSendersUsername(int ID){
+        return UserManager.getUsernameFromID(MessageManager.getSendersID(ID));
     }
 }

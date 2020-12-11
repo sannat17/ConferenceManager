@@ -2,10 +2,6 @@ package GUI;
 
 import GUIPresenters.LoginPresenter;
 import GUIPresenters.SignoutPresenter;
-import entities.User;
-import gateways.EventIO;
-import gateways.MessageIO;
-import gateways.UserIO;
 
 import javax.swing.*;
 import java.awt.*;
@@ -67,6 +63,8 @@ public class mainView {
         mainContainer.add(cancelEventView.getCancelEventPanel(), "Cancel Event");
         mainContainer.add(printEventsView.getPrintEventsPanel(), "Print Events");
         mainContainer.add(additionalUserRequestsView.getAdditionalUserRequestsPanel(), "Additional Requests");
+        mainContainer.add(messageAllAttendeesOfTalkView.getMessageAllAttendeesOfTalkView(), "Message Attendees of A Talk");
+        mainContainer.add(messageAllAttendeesOfEventView.getMessageAllAttendeesOfTalkView(), "Message Attendees of An Event");
     }
 
     /**
@@ -106,6 +104,11 @@ public class mainView {
     public static void toMessageAllUsersPanel(String type){
         mainContainer.add(messageAllUsersView.getMessageAllUserView(type), "Message all Users");
         mainCL.show(mainContainer, "Message all Users");
+    }
+
+    public static void toReplyPanel(String content, int replyID, String recipientName){
+        mainContainer.add(replyView.getReplyPanel(content, replyID, recipientName), "Reply");
+        mainCL.show(mainContainer, "Reply");
     }
 
 }

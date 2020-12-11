@@ -4,6 +4,7 @@ import entities.Event;
 import entities.User;
 import entities.VIP;
 
+import java.lang.reflect.Array;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -179,6 +180,18 @@ public class EventManager {
         return allEventInfo;
     }
 
+    /** Returns a list of all the Events' titles
+     *
+     * @return a list of all the Events' titles
+     */
+    public static ArrayList<String> getAllEventsTitles() {
+        ArrayList<String> allEventTitles = new ArrayList<>();
+        for (Event e: eventHashMap.values()){
+            allEventTitles.add(e.getTitle());
+        }
+        return allEventTitles;
+    }
+
     /** Gets the next usable ID for an Event
      *
      * @return The maximum ID from all events plus 1
@@ -210,6 +223,24 @@ public class EventManager {
         }
 
         return eventsByUser;
+    }
+
+    /**
+     * Return events of which a speaker is speaking at
+     *
+     * @param speakerID the ID of the speaker
+     * @return an unsorted list of titles of events of which the speaker is speaking at
+     */
+    public static ArrayList<String> getAllEventsBySpeaker(int speakerID){
+        ArrayList<String> eventsBySpeaker = new ArrayList<>();
+
+        for (Event e: eventHashMap.values()){
+            if (e.getSpeakerIDs().contains(speakerID)) {
+                eventsBySpeaker.add(e.getTitle());
+            }
+        }
+
+        return eventsBySpeaker;
     }
 
     /**

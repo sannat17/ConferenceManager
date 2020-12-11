@@ -19,7 +19,6 @@ public class Speaker extends User{
     public Speaker(String username, String password, int ID, String firstName, String dietaryRestrictions, String accessibilityRequirements) {
         super(username, password, ID, firstName, dietaryRestrictions, accessibilityRequirements);
         this.messageOptions.add("Message all attendees of the talk");
-        this.messageOptions.add("Respond to an attendee");
     }
 
     @Override
