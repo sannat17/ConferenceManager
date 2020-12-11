@@ -80,10 +80,10 @@ public class displayMessagesView {
             unreadButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    if (inboxMessages.getSelectedIndex() != 0){
-                        MessagePresenter.markUnread(currentMessageID);
+                    if (inboxMessages.getSelectedIndex() != 0 && inbox){
+                        MessagePresenter.markUnread(inboxMessageIDList.get(inboxMessages.getSelectedIndex()-1));
                         String text = "";
-                        text += "Status: " + MessagePresenter.getMessageStatus(inboxMessages.getSelectedIndex()-1) + "\n";
+                        text += "Status: " + MessagePresenter.getMessageStatus(inboxMessageIDList.get(inboxMessages.getSelectedIndex()-1)) + "\n";
                         text += "Message: " + MessagePresenter.getMessageContent(inboxMessageIDList.get(inboxMessages.getSelectedIndex()-1));
                         message.setText(text);
                         changeRead = false;
