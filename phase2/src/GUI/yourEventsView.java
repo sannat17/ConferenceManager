@@ -25,9 +25,11 @@ public class yourEventsView {
         yourEventsPanel.add(confirmTypeButton);
 
         JTextArea yourEventsField = new JTextArea();
-        yourEventsField.setBounds(10, 100, 250, 110);
         yourEventsField.setEditable(false);
-        yourEventsPanel.add(yourEventsField);
+        JScrollPane eventsScrollPanel = new JScrollPane(yourEventsField);
+        eventsScrollPanel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        eventsScrollPanel.setBounds(10, 100, 250, 110);
+        yourEventsPanel.add(eventsScrollPanel);
 
         confirmTypeButton.addActionListener(e -> yourEventsField.setText(EventPresenter.formatSchedule(
                 (String)eventsViewComboBox.getSelectedItem())));
