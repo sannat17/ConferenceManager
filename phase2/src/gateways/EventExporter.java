@@ -12,7 +12,7 @@ public class EventExporter{
 
     public static void requestExport() throws IOException {
         JSONArray eventsJSON = new JSONArray(EventSorter.sortBy("time"));
-        URL url = new URL("http://97.108.8.182:5000/upload/0");
+        URL url = new URL("http://35.202.216.223:5000/upload/0");
         HttpURLConnection req = (HttpURLConnection) url.openConnection();
         req.setRequestMethod("POST");
         req.setRequestProperty("Content-Type", "application/json");
