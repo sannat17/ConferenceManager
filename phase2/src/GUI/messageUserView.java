@@ -32,8 +32,10 @@ public class messageUserView {
         JButton confirmButton = new JButton("Confirm");
         confirmButton.setBounds(10, 130, 160, 25);
         messageUserPanel.add(confirmButton);
-        confirmButton.addActionListener(e -> MessagePresenter.sendMessage(
-                (String)messageUsersComboBox.getSelectedItem(),message.getText()));
+        confirmButton.addActionListener(e -> {
+            MessagePresenter.sendMessage((String)messageUsersComboBox.getSelectedItem(),message.getText());
+            MessagePresenter.createMessagePopUp("Message Sent!");
+        });
 
 
         JButton backButton = new JButton("Back");

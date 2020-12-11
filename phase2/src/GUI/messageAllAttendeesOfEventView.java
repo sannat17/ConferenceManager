@@ -27,7 +27,10 @@ public class messageAllAttendeesOfEventView {
         JButton confirmButton = new JButton("Confirm");
         confirmButton.setBounds(10, 130, 160, 25);
         messageAllAttendeesOfTalkPanel.add(confirmButton);
-        confirmButton.addActionListener(e -> MessagePresenter.sendMessageToAllAttendeesOfTalk(MessagePresenter.getIDOfTalkByTitle((String)messageTalksComboBox.getSelectedItem()), message.getText()));
+        confirmButton.addActionListener(e -> {
+            MessagePresenter.sendMessageToAllAttendeesOfTalk(MessagePresenter.getIDOfTalkByTitle((String)messageTalksComboBox.getSelectedItem()), message.getText());
+            MessagePresenter.createMessagePopUp("Message Sent!");
+        });
 
         JButton backButton = new JButton("Back");
         backButton.setBounds(10, 230, 100, 25);

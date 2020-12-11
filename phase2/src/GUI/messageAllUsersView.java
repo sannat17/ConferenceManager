@@ -29,7 +29,10 @@ public class messageAllUsersView {
         JButton confirmButton = new JButton("Confirm");
         confirmButton.setBounds(10, 130, 160, 25);
         messageAllUsersPanel.add(confirmButton);
-        confirmButton.addActionListener(e -> MessagePresenter.sendMessageToAllType(type, message.getText()));
+        confirmButton.addActionListener(e -> {
+            MessagePresenter.sendMessageToAllType(type, message.getText());
+            MessagePresenter.createMessagePopUp("Message Sent!");
+        });
 
         JButton backButton = new JButton("Back");
         backButton.setBounds(10, 230, 100, 25);

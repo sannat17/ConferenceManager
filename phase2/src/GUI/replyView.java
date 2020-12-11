@@ -2,6 +2,7 @@ package GUI;
 
 import GUIPresenters.MessagePresenter;
 import GUIPresenters.SignoutPresenter;
+import entities.Message;
 
 import javax.swing.*;
 
@@ -33,7 +34,10 @@ public class replyView {
         JButton replyButton = new JButton("Reply");
         replyButton.setBounds(270, 230, 100, 25);
         replyPanel.add(replyButton);
-        replyButton.addActionListener(e -> MessagePresenter.reply(MessagePresenter.getUsersID(recipientName),replyID,reply.getText()));
+        replyButton.addActionListener(e -> {
+            MessagePresenter.reply(MessagePresenter.getUsersID(recipientName),replyID,reply.getText());
+            MessagePresenter.createMessagePopUp("Reply Sent!");
+        });
 
         JButton backButton = new JButton("Back");
         backButton.setBounds(10, 230, 100, 25);

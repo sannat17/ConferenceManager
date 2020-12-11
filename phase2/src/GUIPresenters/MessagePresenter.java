@@ -153,4 +153,8 @@ public class MessagePresenter {
     public static String getSendersUsername(int ID){
         return UserManager.getUsernameFromID(MessageManager.getSendersID(ID));
     }
+
+    public static void createMessagePopUp(String message){
+        mainView.createPopUp(message);
+    }
 }
