@@ -19,7 +19,7 @@ public abstract class EventCreator {
      * @param organizerID   The ID of the Organizer
      * @param vip A boolean specifying whether this event is restricted to VIP users
      * @param maxCapacity The maximum capacity of this event
-     * @return
+     * @return The created event object
      */
     public abstract Event createEvent(int eventID, String title, LocalDateTime timeOfEvent,
                                     int roomNumber, ArrayList<Integer> speakerIDs, int organizerID, boolean vip,

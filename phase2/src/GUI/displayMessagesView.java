@@ -2,15 +2,12 @@ package GUI;
 
 import GUIPresenters.MessagePresenter;
 import GUIPresenters.SignoutPresenter;
-import entities.Message;
-import javafx.scene.control.ComboBox;
-import useCases.MessageManager;
+
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 

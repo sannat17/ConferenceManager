@@ -25,6 +25,6 @@ public class MenuPresenter {
     }
 
     public static String[] menuOptions(){
-        return UserManager.getMenuOptionsList(AuthManager.getLoggedInUser());
+        return UserManager.getMenuOptionsList(AuthManager.getLoggedInUserID());
     }
 }

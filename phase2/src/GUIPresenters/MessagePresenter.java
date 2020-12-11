@@ -47,11 +47,11 @@ public class MessagePresenter {
     }
 
     public static void reply(int recieverID, int replyID, String content){
-        MessageManager.makeNewMessage(UserManager.giveIDOfUser(AuthManager.getLoggedInUser()), recieverID, replyID, content);
+        MessageManager.makeNewMessage(AuthManager.getLoggedInUserID(), recieverID, replyID, content);
     }
 
     public static void sendMessage(String receiver, String content) {
-        MessageManager.makeNewMessage(UserManager.giveIDOfUser(AuthManager.getLoggedInUser()),
+        MessageManager.makeNewMessage(AuthManager.getLoggedInUserID(),
                 UserManager.giveIDOfUsername(receiver), -1, content);
     }
 
@@ -65,20 +65,20 @@ public class MessagePresenter {
     public static void sendMessageToAllAttendeesOfTalk(int talkID, String content){
         ArrayList<Integer> attending = EventManager.getAttendingSpecificEvent(talkID);
         for (int i: attending){
-            MessageManager.makeNewMessage(UserManager.giveIDOfUser(AuthManager.getLoggedInUser()), i, -1, content);
+            MessageManager.makeNewMessage(AuthManager.getLoggedInUserID(), i, -1, content);
         }
     }
 
     public static HashMap<Integer, String> getUsernamesFromInbox(){
         HashMap<Integer, String> userHash = new HashMap<>();
         ArrayList<Message> messages = MessageManager.getAllReceivedMessages(
-                UserManager.giveIDOfUser(AuthManager.getLoggedInUser()));
+                AuthManager.getLoggedInUserID());
         String ID = "";
         for (Message m: messages){
             if (m.getStatusID() == 0 || m.getStatusID() == 1){
                 ID = Integer.toString(MessageManager.getIDOfMessage(m));
                 userHash.put(MessageManager.getIDOfMessage(m),
-                        "ID: " + ID + " " + UserManager.giveUsername(UserManager.getUser(MessageManager.getSendersID(MessageManager.getIDOfMessage(m)))));
+                        "ID: " + ID + " " + UserManager.giveUsername(MessageManager.getSendersID(MessageManager.getIDOfMessage(m))));
             }
 
         }
@@ -88,13 +88,13 @@ public class MessagePresenter {
     public static HashMap<Integer, String> getUsernamesFromArchived(){
         HashMap<Integer, String> userHash = new HashMap<>();
         ArrayList<Message> messages = MessageManager.getAllReceivedMessages(
-                UserManager.giveIDOfUser(AuthManager.getLoggedInUser()));
+                AuthManager.getLoggedInUserID());
         String ID = "";
         for (Message m: messages){
             if (m.getStatusID() == -2){
                 ID = Integer.toString(MessageManager.getIDOfMessage(m));
                 userHash.put(MessageManager.getIDOfMessage(m),
-                        "ID: " + ID + " " + UserManager.giveUsername(UserManager.getUser(MessageManager.getSendersID(MessageManager.getIDOfMessage(m)))));
+                        "ID: " + ID + " " + UserManager.giveUsername(MessageManager.getSendersID(MessageManager.getIDOfMessage(m))));
             }
 
         }
@@ -102,7 +102,7 @@ public class MessagePresenter {
     }
 
     public static String[] getTalksBySpeaker(){
-        return EventManager.getAllEventsBySpeaker(UserManager.giveIDOfUser(AuthManager.getLoggedInUser())).toArray(new String[0]);
+        return EventManager.getAllEventsBySpeaker(AuthManager.getLoggedInUserID()).toArray(new String[0]);
     }
 
     public static String[] getAllTalks(){
@@ -135,14 +135,12 @@ public class MessagePresenter {
     public static String getMessageContent(int ID){return MessageManager.getContent(ID);}
 
     public static String[] messageOptions(){
-        return UserManager.getMessageOptionsList(AuthManager.getLoggedInUser());
+        return UserManager.getMessageOptionsList(AuthManager.getLoggedInUserID());
     }
 
     public static String[] usersUsernames(String type) {
         ArrayList<String> users = UserTypeManager.getUsersByType(type);
-        if(users.contains(UserManager.giveUsername(AuthManager.getLoggedInUser()))){
-            users.remove(UserManager.giveUsername(AuthManager.getLoggedInUser()));
-        }
+        users.remove(UserManager.giveUsername(AuthManager.getLoggedInUserID()));
         return users.toArray(new String[0]);
     }
 

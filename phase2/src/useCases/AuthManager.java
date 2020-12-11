@@ -29,7 +29,11 @@ public class AuthManager {
         loggedInUser = null;
     }
 
-    public static User getLoggedInUser(){
+    public static User getLoggedInUse(){
         return loggedInUser;
+    }
+
+    public static int getLoggedInUserID() {
+        return loggedInUser.getUserID();
     }
 }

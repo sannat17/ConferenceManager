@@ -45,7 +45,7 @@ public class EventPresenter {
      * @return The event options for a user
      */
     public static String[] eventOptions(){
-        return UserManager.getEventOptionsList(AuthManager.getLoggedInUser());
+        return UserManager.getEventOptionsList(AuthManager.getLoggedInUserID());
     }
 
     /**
@@ -65,7 +65,7 @@ public class EventPresenter {
      * @return A list of events titles that the user can sign up for
      */
     public static ArrayList<String> getSignUpEventTitle(){
-        return EventManager.getSignUpEventsTitle(UserManager.giveIDOfUser(AuthManager.getLoggedInUser()));
+        return EventManager.getSignUpEventsTitle(AuthManager.getLoggedInUserID());
 
     }
 
@@ -75,7 +75,7 @@ public class EventPresenter {
      * @return A list of events that the user is attending
      */
     public static ArrayList<String> getAttending(){
-        return EventManager.getAttending(AuthManager.getLoggedInUser().getUserID());
+        return EventManager.getAttending(AuthManager.getLoggedInUserID());
     }
 
     /** Allows a User to cancel their spot for an Event
@@ -83,7 +83,7 @@ public class EventPresenter {
      * @param title the title of the event that the user is cancelling their spot for
      */
     public static void cancelSpotEvent(String title){
-        boolean cancelled = EventController.cancelSignUp(AuthManager.getLoggedInUser(), EventManager.giveEventIDOfTitle(title));
+        boolean cancelled = EventController.cancelSignUp(AuthManager.getLoggedInUserID(), EventManager.giveEventIDOfTitle(title));
         if (!cancelled){
             mainView.createPopUp("Could not cancel your spot ");
         }
@@ -98,7 +98,7 @@ public class EventPresenter {
      * @param title The title of the event
      */
     public static void signUpForEvent(String title){
-        boolean signedUp = EventManager.signUpForEvent(AuthManager.getLoggedInUser().getUserID(),EventManager.giveEventIDOfTitle(title));
+        boolean signedUp = EventManager.signUpForEvent(AuthManager.getLoggedInUserID(),EventManager.giveEventIDOfTitle(title));
         if (!signedUp){
             mainView.createPopUp("Could not sign you up for this event");
         }
@@ -137,7 +137,7 @@ public class EventPresenter {
             speakerIDs.add(UserManager.giveIDOfUsername(speakerNames.get(i)));
         }
         boolean made = EventManager.makeNewEvent(title, time, roomNumber, speakerIDs,
-                UserManager.giveIDOfUser(AuthManager.getLoggedInUser()), vip, maxCapacity);
+                AuthManager.getLoggedInUserID(), vip, maxCapacity);
         if (!made){
             mainView.createPopUp("There was a conflict while trying to create your event.");
         }
@@ -152,7 +152,7 @@ public class EventPresenter {
      * @return An array list of the titles of the talks
      */
     public static ArrayList<String> getOrganizingTitles(){
-        return EventManager.getOrganizing(AuthManager.getLoggedInUser().getUserID());
+        return EventManager.getOrganizing(AuthManager.getLoggedInUserID());
     }
 
     /**
@@ -160,7 +160,7 @@ public class EventPresenter {
      * @param title Title of the event
      */
     public static void cancelEvent(String title){
-        boolean cancelled = EventManager.cancelEvent(AuthManager.getLoggedInUser(), title);
+        boolean cancelled = EventManager.cancelEvent(AuthManager.getLoggedInUserID(), title);
         if (!cancelled) {
             mainView.createPopUp("Could not cancel event");
         }
