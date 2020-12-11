@@ -33,6 +33,7 @@ public class EventManager {
      * @param speakerIDs The list of IDs of the speakers of the event being created
      * @param organizerID The ID of the organizer of the event
      * @param attendees The list of UserIDs that are attending the event
+     * @param vip Determines whether Event created is VIP or not
      * @param maxCapacity The maximum capacity of the event
      * @return A boolean with true if the Event was successfully created and false if it wasn't
      */

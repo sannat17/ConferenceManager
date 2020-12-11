@@ -5,7 +5,7 @@ public class VIP extends User{
     private String type = "VIP";
 
     /**
-     * Create a new User and generate its base available menu options
+     * Create a new VIP user that's able to join VIP events
      *
      * @param username  the username of this user
      * @param password  the password of this user
