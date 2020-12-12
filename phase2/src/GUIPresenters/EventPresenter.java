@@ -1,7 +1,6 @@
 package GUIPresenters;
 
 import GUI.mainView;
-import controllers.EventController;
 import gateways.EventExporter;
 
 import useCases.*;
