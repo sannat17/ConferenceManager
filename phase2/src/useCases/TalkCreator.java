@@ -16,6 +16,8 @@ public class TalkCreator extends EventCreator {
      * @param roomNumber    The room number of the talk
      * @param speakerIDs    A list of IDs of the speakers
      * @param organizerID   The ID of the Organizer
+     * @param vip           Determines whether the Talk is VIP or not
+     * @param maxCapacity   The maximum capacity of people attending
      * @return Talk
      */
     @Override

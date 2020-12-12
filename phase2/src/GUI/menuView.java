@@ -6,6 +6,10 @@ import GUIPresenters.SignoutPresenter;
 import javax.swing.*;
 
 public class menuView {
+    /** Creates the JPanel for the menu
+     *
+     * @return JPanel of the menu
+     */
     public static JPanel getMenuPanel(){
         JPanel MenuPanel = new JPanel();
         MenuPanel.setLayout(null);

@@ -6,6 +6,10 @@ import GUIPresenters.SignoutPresenter;
 import javax.swing.*;
 
 public class createUserView {
+    /** Creates the JPanel to create user
+     *
+     * @return JPanel of the create user
+     */
     public static JPanel getCreateUserPanel(){
         JPanel createUserPanel = new JPanel();
         createUserPanel.setLayout(null);

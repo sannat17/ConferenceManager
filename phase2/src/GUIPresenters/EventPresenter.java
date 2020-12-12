@@ -13,6 +13,10 @@ import java.util.ArrayList;
 
 public class EventPresenter {
 
+    /**
+     * Goes the next panel for in event
+     * @param eventPanelChoice The name of the next event
+     */
     public static void nextEventPanel(String eventPanelChoice){
         switch (eventPanelChoice){
             case "View Your Events":
@@ -36,9 +40,12 @@ public class EventPresenter {
             }
         }
 
-
+    /**
+     * Gets the event options
+     * @return The event options for a user
+     */
     public static String[] eventOptions(){
-        return UserManager.getEventOptionsList(AuthManager.getLoggedInUser());
+        return UserManager.getEventOptionsList(AuthManager.getLoggedInUserID());
     }
 
     /**
@@ -58,7 +65,7 @@ public class EventPresenter {
      * @return A list of events titles that the user can sign up for
      */
     public static ArrayList<String> getSignUpEventTitle(){
-        return EventManager.getSignUpEventsTitle(UserManager.giveIDOfUser(AuthManager.getLoggedInUser()));
+        return EventManager.getSignUpEventsTitle(AuthManager.getLoggedInUserID());
 
     }
 
@@ -68,7 +75,7 @@ public class EventPresenter {
      * @return A list of events that the user is attending
      */
     public static ArrayList<String> getAttending(){
-        return EventManager.getAttending(AuthManager.getLoggedInUser().getUserID());
+        return EventManager.getAttending(AuthManager.getLoggedInUserID());
     }
 
     /** Allows a User to cancel their spot for an Event
@@ -76,7 +83,7 @@ public class EventPresenter {
      * @param title the title of the event that the user is cancelling their spot for
      */
     public static void cancelSpotEvent(String title){
-        boolean cancelled = EventController.cancelSignUp(AuthManager.getLoggedInUser(), EventManager.giveEventIDOfTitle(title));
+        boolean cancelled = EventController.cancelSignUp(AuthManager.getLoggedInUserID(), EventManager.giveEventIDOfTitle(title));
         if (!cancelled){
             mainView.createPopUp("Could not cancel your spot ");
         }
@@ -86,8 +93,12 @@ public class EventPresenter {
         }
     }
 
+    /**
+     * Signs the logged in user up for an event
+     * @param title The title of the event
+     */
     public static void signUpForEvent(String title){
-        boolean signedUp = EventManager.signUpForEvent(AuthManager.getLoggedInUser().getUserID(),EventManager.giveEventIDOfTitle(title));
+        boolean signedUp = EventManager.signUpForEvent(AuthManager.getLoggedInUserID(),EventManager.giveEventIDOfTitle(title));
         if (!signedUp){
             mainView.createPopUp("Could not sign you up for this event");
         }
@@ -97,6 +108,10 @@ public class EventPresenter {
         }
     }
 
+    /**
+     * Gets a list of speakers
+     * @return Gets a default list model of the speakers
+     */
     public static DefaultListModel<String> getSpeakers(){
         ArrayList<String> speakersArrayList = UserTypeManager.getUsersByType("speaker");
         DefaultListModel<String> speakers = new DefaultListModel<>();
@@ -106,6 +121,15 @@ public class EventPresenter {
         return speakers;
     }
 
+    /**
+     * Makes a new event
+     * @param title Title of the event
+     * @param time Time of the the event
+     * @param roomNumber Room Number of the event
+     * @param speakerNames Name of the speakers of the event
+     * @param vip Whether or not it is a vip event or not
+     * @param maxCapacity Max capacity of the event
+     */
     public static void makeEvent(String title, LocalDateTime time, int roomNumber,
                                  DefaultListModel<String> speakerNames, boolean vip, int maxCapacity){
         ArrayList<Integer> speakerIDs = new ArrayList<>();
@@ -113,7 +137,7 @@ public class EventPresenter {
             speakerIDs.add(UserManager.giveIDOfUsername(speakerNames.get(i)));
         }
         boolean made = EventManager.makeNewEvent(title, time, roomNumber, speakerIDs,
-                UserManager.giveIDOfUser(AuthManager.getLoggedInUser()), vip, maxCapacity);
+                AuthManager.getLoggedInUserID(), vip, maxCapacity);
         if (!made){
             mainView.createPopUp("There was a conflict while trying to create your event.");
         }
@@ -123,12 +147,20 @@ public class EventPresenter {
         }
     }
 
+    /**
+     * Get titles of the events an organizer is organizing
+     * @return An array list of the titles of the talks
+     */
     public static ArrayList<String> getOrganizingTitles(){
-        return EventManager.getOrganizing(AuthManager.getLoggedInUser().getUserID());
+        return EventManager.getOrganizing(AuthManager.getLoggedInUserID());
     }
 
+    /**
+     * Cancels an event
+     * @param title Title of the event
+     */
     public static void cancelEvent(String title){
-        boolean cancelled = EventManager.cancelEvent(AuthManager.getLoggedInUser(), title);
+        boolean cancelled = EventManager.cancelEvent(AuthManager.getLoggedInUserID(), title);
         if (!cancelled) {
             mainView.createPopUp("Could not cancel event");
         }
@@ -138,7 +170,11 @@ public class EventPresenter {
         }
     }
 
+    /**
+     * Creates the webpage of the calendar of the talk
+     * @throws IOException
+     */
     public static void export() throws IOException {
-        EventExporter.requestExport(AuthManager.getLoggedInUser().getUserID());
+        EventExporter.requestExport();
     }
 }

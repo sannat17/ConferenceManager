@@ -127,15 +127,33 @@ public class MessageManager {
         return to_return;
     }
 
+    /**
+     * Removes a message with ID
+     * @param ID The ID of the message
+     */
     public static void removeMessage(int ID) {
         messageHashMap.remove(ID);
     }
 
+    /**
+     * Gets the content of the message
+     * @param ID The ID of the message
+     * @return The content of the message
+     */
     public static String getContent(int ID){return getMessage(ID).getMessageContent();}
 
+    /**
+     * Gets the ID of the sender
+     * @param ID The ID of the message
+     * @return The ID of the sender
+     */
     public static int getSendersID(int ID){return getMessage(ID).getSenderID();}
 
+    /**
+     * The ID of the message
+     * @param m The message
+     * @return The ID of the message
+     */
     public static int getIDOfMessage(Message m){return m.getMessageID();}
 
-//*****************************************************************************************************************
 }

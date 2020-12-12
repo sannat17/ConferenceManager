@@ -6,6 +6,10 @@ import GUIPresenters.SignoutPresenter;
 import javax.swing.*;
 
 public class signUpEventView {
+    /** Creates the JPanel to sign up to an event
+     *
+     * @return JPanel of the Sign up event
+     */
     public static JPanel getSignUpEventPanel(){
         JPanel signUpEventPanel = new JPanel();
         signUpEventPanel.setLayout(null);

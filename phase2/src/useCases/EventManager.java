@@ -4,6 +4,7 @@ import entities.Event;
 import entities.User;
 import entities.VIP;
 
+import java.lang.reflect.Array;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,8 +24,8 @@ public class EventManager {
         return eventHashMap.get(ID);
     }
 
-    /** Creates a new Event and adds it to the eventHashMap
-     *
+    /**
+     * Creates a new Event and adds it to the eventHashMap
      * @param eventID The ID of the event being created
      * @param title The title of the event
      * @param timeOfEvent The time of the event being created
@@ -32,6 +33,7 @@ public class EventManager {
      * @param speakerIDs The list of IDs of the speakers of the event being created
      * @param organizerID The ID of the organizer of the event
      * @param attendees The list of UserIDs that are attending the event
+     * @param vip Whether or not the event is a VIP event
      * @param maxCapacity The maximum capacity of the event
      * @return A boolean with true if the Event was successfully created and false if it wasn't
      */
@@ -85,13 +87,16 @@ public class EventManager {
         return true;
     }
 
-    /** Creates a new Event that does not already have an ID
-     *
+
+    /**
+     * Creates a new Event that does not already have an ID
      * @param title The title of the event being created
      * @param timeOfEvent The time of the event being created
      * @param roomNumber The number of the room of the event being created
      * @param speakerIDs The list of IDs of the speakers of the event being created
      * @param organizerID The ID of the organizer of the event
+     * @param vip Whether or not it is a VIP event
+     * @param maxCapacity The max capacity of the event
      * @return A boolean with true if the Event was successfully created and false if it wasn't
      */
     public static boolean makeNewEvent(String title, LocalDateTime timeOfEvent,
@@ -144,14 +149,14 @@ public class EventManager {
     /** Allows an organizer to cancel any Event
      *
      *
-     * @param user the current user
+     * @param userID the current user's ID
      * @param title the title of the event that the organizer is cancelling
      * @return A boolean with true if the Organizer successfully cancelled the event
      */
-    public static boolean cancelEvent(User user, String title){
+    public static boolean cancelEvent(int userID, String title){
         int id = giveEventIDOfTitle(title);
         if (eventHashMap.containsKey(id)){
-            if (user.getUserID() == giveOrganizerIDOfTitle(title)) {
+            if (userID == giveOrganizerIDOfTitle(title)) {
                 eventHashMap.remove(id);
                 return true;
             }
@@ -177,6 +182,18 @@ public class EventManager {
             allEventInfo.add(e.toString());
         }
         return allEventInfo;
+    }
+
+    /** Returns a list of all the Events' titles
+     *
+     * @return a list of all the Events' titles
+     */
+    public static ArrayList<String> getAllEventsTitles() {
+        ArrayList<String> allEventTitles = new ArrayList<>();
+        for (Event e: eventHashMap.values()){
+            allEventTitles.add(e.getTitle());
+        }
+        return allEventTitles;
     }
 
     /** Gets the next usable ID for an Event
@@ -210,6 +227,24 @@ public class EventManager {
         }
 
         return eventsByUser;
+    }
+
+    /**
+     * Return events of which a speaker is speaking at
+     *
+     * @param speakerID the ID of the speaker
+     * @return an unsorted list of titles of events of which the speaker is speaking at
+     */
+    public static ArrayList<String> getAllEventsBySpeaker(int speakerID){
+        ArrayList<String> eventsBySpeaker = new ArrayList<>();
+
+        for (Event e: eventHashMap.values()){
+            if (e.getSpeakerIDs().contains(speakerID)) {
+                eventsBySpeaker.add(e.getTitle());
+            }
+        }
+
+        return eventsBySpeaker;
     }
 
     /**

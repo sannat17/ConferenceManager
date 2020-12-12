@@ -88,14 +88,20 @@ public class UserManager{
         return true;
     }
 
-    public static User getUserFromUsername(String username){
-        User user = null;
+
+    /** Returns the username of a certain user's ID
+     *
+     * @param ID The ID that we want to check
+     * @return Returns the username of a certain user's ID
+     */
+    public static String getUsernameFromID(int ID){
+        String username = "";
         for (User u: userHashMap.values()){
-            if (username.equals(u.getUsername())){
-                user = u;
+            if (ID == u.getUserID()){
+                username = u.getUsername();
             }
         }
-        return user;
+        return username;
     }
 
     /** Gets the next usable ID for a user
@@ -157,19 +163,19 @@ public class UserManager{
         return u.getUserID();
     }
 
-    public static String giveUsername(User u){return u.getUsername();}
+    public static String giveUsername(int userID){return getUser(userID).getUsername();}
 
 
-    public static String[] getMenuOptionsList(User u){
-        return u.getMenuOptions().toArray(new String[0]);
+    public static String[] getMenuOptionsList(int userID){
+        return getUser(userID).getMenuOptions().toArray(new String[0]);
     }
 
-    public static String[] getEventOptionsList(User u){
-        return u.getEventOptions().toArray(new String[0]);
+    public static String[] getEventOptionsList(int userID){
+        return getUser(userID).getEventOptions().toArray(new String[0]);
     }
 
-    public static String[] getMessageOptionsList(User u){
-        return u.getMessageOptions().toArray(new String[0]);
+    public static String[] getMessageOptionsList(int userID){
+        return getUser(userID).getMessageOptions().toArray(new String[0]);
     }
 
     /**

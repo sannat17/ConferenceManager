@@ -17,7 +17,7 @@ public class PartyCreator extends EventCreator {
      * @param organizerID   The ID of the Organizer
      * @param vip A boolean specifying whether this event is restricted to VIP users
      * @param maxCapacity The maximum capacity of this event
-     * @return Talk
+     * @return Party
      */
     @Override
     public Party createEvent(int eventID, String title, LocalDateTime timeOfEvent,

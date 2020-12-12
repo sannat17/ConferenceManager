@@ -4,9 +4,16 @@ import GUIPresenters.EventPresenter;
 import GUIPresenters.SignoutPresenter;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 public class printEventsView {
+    /** Creates the JPanel to Print the Events
+     *
+     * @return JPanel of the print events
+     */
     public static JPanel getPrintEventsPanel(){
         JPanel printEventsPanel = new JPanel();
         printEventsPanel.setLayout(null);
@@ -17,7 +24,10 @@ public class printEventsView {
         printEventsButton.addActionListener(e -> {
             try {
                 EventPresenter.export();
-            } catch (IOException ioException) {
+                URI uri =new URI("http://35.202.216.223:5000/0");
+                Desktop dt = Desktop.getDesktop();
+                dt.browse(uri.resolve(uri));
+            } catch (IOException | URISyntaxException ioException) {
                 ioException.printStackTrace();
             }
         });

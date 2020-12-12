@@ -8,18 +8,22 @@ import javax.swing.*;
 
 public class messageView {
 
+    /** Creates the JPanel for the message menu
+     *
+     * @return JPanel of the message panel
+     */
     public static JPanel getMessageView(){
         JPanel messagePanel = new JPanel();
         messagePanel.setLayout(null);
 
         String[] messageOptions = MessagePresenter.messageOptions();
         JComboBox<String> messageComboBox = new JComboBox<>(messageOptions);
-        messageComboBox.setBounds(10, 20, 160, 25);
+        messageComboBox.setBounds(10, 20, 240, 25);
         messageComboBox.setSelectedIndex(0);
         messagePanel.add(messageComboBox);
 
         JButton confirmButton = new JButton("Confirm");
-        confirmButton.setBounds(10, 60, 160, 25);
+        confirmButton.setBounds(10, 60, 240, 25);
         messagePanel.add(confirmButton);
         confirmButton.addActionListener(e -> MessagePresenter.nextMessagePanel((String)messageComboBox.getSelectedItem()));
 

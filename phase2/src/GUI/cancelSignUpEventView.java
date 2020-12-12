@@ -6,6 +6,10 @@ import GUIPresenters.SignoutPresenter;
 import javax.swing.*;
 
 public class cancelSignUpEventView {
+    /** Creates the JPanel for cancel sign up
+     *
+     * @return JPanel of the cancel sign up
+     */
     public static JPanel getCancelSignUpEventPanel(){
         JPanel CancelSignUpEventPanel = new JPanel();
         CancelSignUpEventPanel.setLayout(null);

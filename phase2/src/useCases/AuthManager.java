@@ -11,6 +11,12 @@ public class AuthManager {
 
     private static User loggedInUser = null;
 
+    /**
+     * Checks the users credentials
+     * @param username The username of the user
+     * @param password The password of the user
+     * @return true if the user successfully logs in and false if it doesn't
+     */
     public static boolean login(String username, String password) {
         ArrayList<User> users = UserManager.getAllUsers();
         if (users.isEmpty()) {
@@ -25,11 +31,18 @@ public class AuthManager {
         return false;
     }
 
+    /**
+     * Changes the logged in user to null
+     */
     public static void logout(){
         loggedInUser = null;
     }
 
-    public static User getLoggedInUser(){
-        return loggedInUser;
+    /**
+     * Gets the ID of the logged in user
+     * @return The user ID
+     */
+    public static int getLoggedInUserID() {
+        return loggedInUser.getUserID();
     }
 }

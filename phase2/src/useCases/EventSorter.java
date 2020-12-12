@@ -24,7 +24,7 @@ public class EventSorter {
 
         for (Event e: listOfEvents) {
             sortedEvents = sortedEvents + e.getTitle();
-            if (e.getAttending().contains(UserManager.giveIDOfUser(AuthManager.getLoggedInUser()))){
+            if (e.getAttending().contains(AuthManager.getLoggedInUserID())){
                 sortedEvents = sortedEvents + " (Currently Attending)";
             }
             sortedEvents = sortedEvents + "\n";
