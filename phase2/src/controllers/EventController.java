@@ -1,5 +1,4 @@
 package controllers;
-import entities.Event;
 import useCases.EventManager;
 
 /** The controller class for events */
