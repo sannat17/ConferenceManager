@@ -2,12 +2,10 @@ package GUIPresenters;
 
 
 import GUI.mainView;
-import entities.User;
 import gateways.EventIO;
 import gateways.MessageIO;
 import gateways.UserIO;
 import useCases.AuthManager;
-import useCases.UserManager;
 
 import java.util.ArrayList;
 

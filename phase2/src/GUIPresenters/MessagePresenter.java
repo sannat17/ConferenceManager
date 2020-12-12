@@ -2,9 +2,6 @@ package GUIPresenters;
 
 import GUI.mainView;
 import controllers.MessageController;
-import entities.Message;
-import entities.Speaker;
-import entities.User;
 import useCases.*;
 
 import java.util.ArrayList;
@@ -103,14 +100,14 @@ public class MessagePresenter {
      */
     public static HashMap<Integer, String> getUsernamesFromInbox(){
         HashMap<Integer, String> userHash = new HashMap<>();
-        ArrayList<Message> messages = MessageManager.getAllReceivedMessages(
+        ArrayList<Integer> messages = MessageManager.getAllReceivedMessagesIDs(
                 AuthManager.getLoggedInUserID());
         String ID = "";
-        for (Message m: messages){
-            if (m.getStatusID() == 0 || m.getStatusID() == 1){
-                ID = Integer.toString(MessageManager.getIDOfMessage(m));
-                userHash.put(MessageManager.getIDOfMessage(m),
-                        "ID: " + ID + " " + UserManager.giveUsername(MessageManager.getSendersID(MessageManager.getIDOfMessage(m))));
+        for (int id: messages){
+            if (MessageStatusManager.getStatusOfMessage(id) == 0 || MessageStatusManager.getStatusOfMessage(id) == 1){
+                ID = Integer.toString(id);
+                userHash.put(id,
+                        "ID: " + ID + " " + UserManager.giveUsername(MessageManager.getSendersID(id)));
             }
 
         }
@@ -122,14 +119,14 @@ public class MessagePresenter {
      */
     public static HashMap<Integer, String> getUsernamesFromArchived(){
         HashMap<Integer, String> userHash = new HashMap<>();
-        ArrayList<Message> messages = MessageManager.getAllReceivedMessages(
+        ArrayList<Integer> messages = MessageManager.getAllReceivedMessagesIDs(
                 AuthManager.getLoggedInUserID());
         String ID = "";
-        for (Message m: messages){
-            if (m.getStatusID() == -2){
-                ID = Integer.toString(MessageManager.getIDOfMessage(m));
-                userHash.put(MessageManager.getIDOfMessage(m),
-                        "ID: " + ID + " " + UserManager.giveUsername(MessageManager.getSendersID(MessageManager.getIDOfMessage(m))));
+        for (int id: messages){
+            if (MessageStatusManager.getStatusOfMessage(id) == -2){
+                ID = Integer.toString(id);
+                userHash.put(id,
+                        "ID: " + ID + " " + UserManager.giveUsername(MessageManager.getSendersID(id)));
             }
 
         }

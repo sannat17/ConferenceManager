@@ -8,6 +8,10 @@ import javax.swing.*;
 
 public class messageAllAttendeesOfTalkView {
 
+    /** Creates the JPanel for message all attendees of a talk
+     *
+     * @return JPanel of the message all attendees of a talk
+     */
     public static JPanel getMessageAllAttendeesOfTalkView() {
         JPanel messageAllAttendeesOfTalkPanel = new JPanel();
         messageAllAttendeesOfTalkPanel.setLayout(null);

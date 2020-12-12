@@ -2,12 +2,15 @@ package GUI;
 
 import GUIPresenters.MessagePresenter;
 import GUIPresenters.SignoutPresenter;
-import entities.Message;
 
 import javax.swing.*;
 
 public class replyView {
 
+    /** Creates the JPanel for reply to messages
+     *
+     * @return JPanel of the reply view
+     */
     public static JPanel getReplyPanel(String content, int replyID, String recipientName) {
         JPanel replyPanel = new JPanel();
         replyPanel.setLayout(null);

@@ -103,6 +103,23 @@ public class MessageManager {
     }
 
     /**
+     * Return all messages received by user
+     *
+     * @param ID The userID of the user
+     * @return return an ArrayList of all the Message objects of messages received by the user
+     */
+    public static ArrayList<Integer> getAllReceivedMessagesIDs(int ID) {
+
+        ArrayList<Integer> to_return = new ArrayList<>();
+        for (Message m : messageHashMap.values()) {
+            if (m.getReceiverID() == ID) {
+                to_return.add(m.getMessageID());
+            }
+        }
+        return to_return;
+    }
+
+    /**
      * Return all the messages in the system.
      *
      * @return return an ArrayList of all Message objects that exist on the system.
