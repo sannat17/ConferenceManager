@@ -41,7 +41,7 @@ public class changeRequestStatusPresenter {
      * @param status the status of which the request is changed to
      */
     public static void changeAccessibilityRequirementStatus(int userID, String status) {
-        UserManager.setDietaryRestrictionStatus(userID, status);
+        UserManager.setAccessibilityRequirementStatus(userID, status);
     }
 
     /**
