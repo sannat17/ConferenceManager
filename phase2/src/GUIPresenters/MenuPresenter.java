@@ -1,7 +1,6 @@
 package GUIPresenters;
 
 import GUI.mainView;
-import entities.User;
 import useCases.AuthManager;
 import useCases.UserManager;
 
