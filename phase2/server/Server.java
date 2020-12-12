@@ -37,6 +37,9 @@ public class Server{
         }
     }
 
+    /** An event handler for GET requests to the / path.
+     * Responds by serving index.html, or a 404 if this user is unrecognized
+     */
     public static void handleGet(Request req, Response res){
         //get userID field
         //serve webpage alongside JSON, will generate on client side
@@ -50,6 +53,9 @@ public class Server{
         }
     }
 
+    /** An event handler for GET requests to the /json path.
+     * Responds with the raw JSON file associated with this user, or 404 if user is not found
+     */
     public static void handleGetJSON(Request req, Response res){
         String userID = req.getParam("id");
         File userJSON = new File("./server/users/" + userID + ".json");
@@ -61,6 +67,10 @@ public class Server{
         }
     }
 
+    /** An event handler for POST requests to the /upload path.
+     * This path is only used for clients to send or update their event data.
+     * The user sends an JSON describing their events, which the server will save and catalogue.
+     */
     public static void handlePost(Request req, Response res) {
         //get userID field
         //stores json file associated with userID in users
