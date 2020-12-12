@@ -65,6 +65,7 @@ public class mainView {
         mainContainer.add(additionalUserRequestsView.getAdditionalUserRequestsPanel(), "Additional Requests");
         mainContainer.add(messageAllAttendeesOfTalkView.getMessageAllAttendeesOfTalkView(), "Message Attendees of A Talk");
         mainContainer.add(messageAllAttendeesOfEventView.getMessageAllAttendeesOfTalkView(), "Message Attendees of An Event");
+        mainContainer.add(changeAdditionalRequestStatusView.getChangeRequestStatusPanel(), "Change Additional Request Status");
     }
 
     /**
@@ -101,11 +102,21 @@ public class mainView {
         mainCL.show(mainContainer, "Message User");
     }
 
+    /**
+     * Goes to the MessageAllUsersPanel
+     * @param type The type of user
+     */
     public static void toMessageAllUsersPanel(String type){
         mainContainer.add(messageAllUsersView.getMessageAllUserView(type), "Message all Users");
         mainCL.show(mainContainer, "Message all Users");
     }
 
+    /**
+     * Goes to the replyPanel
+     * @param content the content of the message
+     * @param replyID the ID of the message being replied to
+     * @param recipientName the username of the recipient
+     */
     public static void toReplyPanel(String content, int replyID, String recipientName){
         mainContainer.add(replyView.getReplyPanel(content, replyID, recipientName), "Reply");
         mainCL.show(mainContainer, "Reply");

@@ -39,8 +39,17 @@ public abstract class User {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
-        this.dietaryRestrictions = dietaryRestrictions;
-        this.accessibilityRequirements = accessibilityRequirements;
+        if ((dietaryRestrictions == null) || (dietaryRestrictions.isEmpty())) {
+            this.dietaryRestrictions = "\"\"";
+        } else {
+            this.dietaryRestrictions = dietaryRestrictions;
+        }
+        if ((accessibilityRequirements == null) || (accessibilityRequirements.isEmpty())) {
+            this.accessibilityRequirements = "\"\"";
+        } else {
+            this.accessibilityRequirements = accessibilityRequirements;
+        }
+
         this.dietaryRestrictionsStatus = "pending";
         this.accessibilityRequirementsStatus = "pending";
         this.menuOptions.add("Messages");

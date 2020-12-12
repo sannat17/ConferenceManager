@@ -1,6 +1,5 @@
 package controllers;
 
-import entities.*;
 import useCases.MessageManager;
 import useCases.MessageStatusManager;
 import useCases.UserManager;
@@ -30,40 +29,6 @@ public class MessageController {
         int senderID = giveIDOfUsername(senderUsername);
         int receiverID = giveIDOfUsername(receiverUsername);
         MessageManager.makeNewMessage(senderID, receiverID, replyToID, content);
-    }
-
-    /**
-     * An organizer can message all the speakers
-     * @param senderUsername - username of sender
-     * @param content - content of message
-     */
-    public static void messageAllSpeakers(String senderUsername, String content){
-        int senderID = giveIDOfUsername(senderUsername);
-        for (User i : UserManager.getAllUsers()) { //goes through each User one by one
-                                        //from UserManager
-            if (i instanceof Speaker) { //if the current user is an instance of Speaker
-                MessageManager.makeNewMessage(senderID, i.getUserID(),
-                        -1, content);
-//                create the message with no reply
-            }
-        }
-    }
-
-    /**
-     * An organizer can message all the attendees
-     * @param senderUsername - username of sender
-     * @param content - content of message
-     */
-    public static void messageAllAttendees(String senderUsername, String content){
-        int senderID = giveIDOfUsername(senderUsername);
-        for (User i : UserManager.getAllUsers()) {//goes through each User one by one
-                                        //from UserManager
-            if (i instanceof Attendee) { //if the current user is an instance of Attendee
-                MessageManager.makeNewMessage(senderID, i.getUserID(),
-                        -1, content);
-//                create a message with no reply
-            }
-        }
     }
 
     /**

@@ -10,6 +10,8 @@ import java.net.URL;
 
 public class EventExporter{
 
+    /** Sends all events to the remote server in JSON form
+     */
     public static void requestExport() throws IOException {
         JSONArray eventsJSON = new JSONArray(EventSorter.sortBy("time"));
         URL url = new URL("http://35.202.216.223:5000/upload/0");

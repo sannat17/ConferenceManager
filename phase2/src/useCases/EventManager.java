@@ -342,4 +342,21 @@ public class EventManager {
         return organizing;
     }
 
+    /**
+     * Cancel signup for a user of a corresponding event
+     *
+     * @param userID the user ID of the user which wants to cancel sign up for the event
+     * @param eventID the event ID of the event the user wants to cancel signup for
+     * @return true if cancellation successful or false if cancellation unsuccessful
+     */
+    public static boolean cancelSignUp(int userID, int eventID) {
+        for (Event e: EventManager.getAllEventsByUser(userID)) {
+            if (e.getEventID() == eventID) {
+                EventManager.cancelSpotForEvent(userID, eventID);
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

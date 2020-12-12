@@ -55,6 +55,7 @@ function getFormattedDate(date){
 }
 
 function getFormattedTime(date){
+  //returns date formatted in HH:MM AM/PM
   let hours = date.getHours();
   let minutes = date.getMinutes();
   let ampm = hours >= 12 ? 'PM' : "AM";

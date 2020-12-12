@@ -2,15 +2,11 @@ package gateways;
 
 import useCases.EventManager;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Scanner;
 
-public class EventIO {
+public class EventIO extends AbstractIO {
     private static final String delimiter = Character.toString((char) 31);
     private static final DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
 
@@ -18,32 +14,25 @@ public class EventIO {
      * reads in events file and passes event data to EventManager
      */
     public static void readFile(){
-        try{
-            String dir = "./src/data/events.txt";
-            File file = new File(dir);
-            Scanner fs = new Scanner(file);
+        String dir = "./src/data/events.txt";
 
-            while(fs.hasNextLine()){
-                //file format ID-Username-Password-Type
-                String[] user = fs.nextLine().split(delimiter);
-                int eventID = Integer.parseInt(user[0]);
-                String title = user[1];
-                LocalDateTime timeOfEvent = LocalDateTime.parse(user[2], formatter);
-                int roomNumber = Integer.parseInt(user[3]);
-                ArrayList<Integer> speakerIDs = toIntArray(user[4]);
-                int organizerID = Integer.parseInt(user[5]);
-                ArrayList<Integer> attendees = toIntArray(user[6]);
-                boolean vip = Boolean.parseBoolean(user[7]);
-                int maxCapacity = Integer.parseInt(user[8]);
+        ArrayList<String> data = read(dir);
+        data.forEach((String value) -> {
+            //file format ID-Username-Password-Type
+            String[] user = value.split(delimiter);
+            int eventID = Integer.parseInt(user[0]);
+            String title = user[1];
+            LocalDateTime timeOfEvent = LocalDateTime.parse(user[2], formatter);
+            int roomNumber = Integer.parseInt(user[3]);
+            ArrayList<Integer> speakerIDs = toIntArray(user[4]);
+            int organizerID = Integer.parseInt(user[5]);
+            ArrayList<Integer> attendees = toIntArray(user[6]);
+            boolean vip = Boolean.parseBoolean(user[7]);
+            int maxCapacity = Integer.parseInt(user[8]);
 
-                EventManager.loadEvent(eventID, title, timeOfEvent, roomNumber, speakerIDs, organizerID, attendees, vip,
-                        maxCapacity);
-            }
-        }
-        catch(Exception e){
-            System.out.println("An error has occurred.");
-            e.printStackTrace();
-        }
+            EventManager.loadEvent(eventID, title, timeOfEvent, roomNumber, speakerIDs, organizerID, attendees, vip,
+                    maxCapacity);
+        });
     }
 
     /**
@@ -74,26 +63,8 @@ public class EventIO {
      * writes all event data from event to file
      */
     public static void writeFile(){
-        try{
-            String dir = "./src/data/events.txt";
-            File file = new File(dir);
-            boolean existing = file.createNewFile(); //attempt to create new file if not preexisting
-
-            FileWriter writer = new FileWriter(dir);
-            ArrayList<String> info = EventManager.getAllEventsInfo();
-            info.forEach((String value) -> {
-                try {
-                    writer.write(value + "\n");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            });
-
-            writer.close();
-        }
-        catch(Exception e){
-            System.out.println("An error has occurred.");
-            e.printStackTrace();
-        }
+        String dir = "./src/data/events.txt";
+        ArrayList<String> info = EventManager.getAllEventsInfo();
+        write(dir, info);
     }
 }

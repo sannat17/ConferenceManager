@@ -1,4 +1,5 @@
 function createElement(type, innerHTML, classList){
+  //creates and returns a new DOM node
   let el = document.createElement(type);
   el.innerHTML = innerHTML;
   el.classList.add(...classList);
@@ -13,6 +14,7 @@ function addDate(date){
 }
 
 function addEvent(obj){
+  //adds an event to the events root element
   let root = document.getElementById("events");
   let el = createElement("div", null, ["event"]);
   let title = createElement("div", obj.title, ["event-name"]);
