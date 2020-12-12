@@ -1,14 +1,10 @@
 package gateways;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Scanner;
-
 import useCases.UserManager;
 
-public class UserIO {
+import java.util.ArrayList;
+
+public class UserIO extends AbstractIO {
     //handles reading and writing from user file
 
     private static final String delimiter = Character.toString((char) 31);
@@ -17,54 +13,30 @@ public class UserIO {
      * reads in user file and passes user data to UserManager
      */
     public static void readFile(){
-        try{
-            String dir = "./src/data/users.txt";
-            File file = new File(dir);
-            Scanner fs = new Scanner(file);
+        String dir = "./src/data/users.txt";
 
-            while(fs.hasNextLine()){
-                //file format ID-Username-Password-Name-Type-eventIDs-dietaryRestrictions-accessbilityRequirements
-                String[] user = fs.nextLine().split(delimiter);
-                Integer ID = Integer.parseInt(user[0]);
-                String username = user[1];
-                String password = user[2];
-                String name = user[3];
-                String type = user[4];
-                String dietaryRestrictions = user[5];
-                String accessibilityRequirements = user[6];
-                UserManager.loadUser(ID, username, password, name, type, dietaryRestrictions, accessibilityRequirements);
-            }
-        }
-        catch(Exception e){
-            System.out.println("An error has occurred.");
-            e.printStackTrace();
-        }
+        ArrayList<String> data = read(dir);
+        data.forEach((String value) -> {
+            //file format ID-Username-Password-Name-Type-eventIDs-dietaryRestrictions-accessibilityRequirements
+            String[] user = value.split(delimiter);
+            Integer ID = Integer.parseInt(user[0]);
+            String username = user[1];
+            String password = user[2];
+            String name = user[3];
+            String type = user[4];
+            String dietaryRestrictions = user[5];
+            String accessibilityRequirements = user[6];
+            UserManager.loadUser(ID, username, password, name, type, dietaryRestrictions, accessibilityRequirements);
+        });
     }
 
     /**
      * writes all user data from UserManager to file
      */
     public static void writeFile(){
-        try{
-            String dir = "./src/data/users.txt";
-            File file = new File(dir);
-            boolean existing = file.createNewFile(); //attempt to create new file if not preexisting
-            FileWriter writer = new FileWriter(dir);
-            ArrayList<String> info = UserManager.getAllUsersInfo();
-            info.forEach((String value) -> {
-                try {
-                    writer.write(value + "\n");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            });
-
-            writer.close();
-        }
-        catch(Exception e){
-            System.out.println("An error has occurred.");
-            e.printStackTrace();
-        }
+        String dir = "./src/data/users.txt";
+        ArrayList<String> info = UserManager.getAllUsersInfo();
+        write(dir, info);
     }
 
 }
