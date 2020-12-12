@@ -85,16 +85,28 @@ public class MessageController {
         }
     }
 
+    /**
+     * This function calls the method that marks the message as archived from the Manager.
+     * @param messageID The ID of the message.
+     */
     public static void markAsArchived(int messageID) {
 
         MessageStatusManager.markMessageAsArchived(messageID);
 
     }
 
+    /**
+     * This function calls the method that marks the message as unarchived.
+     * @param messageID The ID of the message.
+     */
     public static void markAsUnArchive(int messageID) {
         MessageStatusManager.markMessageAsUnArchived(messageID);
     }
 
+    /**
+     * This function deleted the message from the program, by calling the method removeMessage from the Manager.
+     * @param ID The ID of the message.
+     */
     public static void deleteMessage(int ID) {
         MessageManager.removeMessage(ID);
     }
