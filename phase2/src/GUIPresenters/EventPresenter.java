@@ -83,7 +83,7 @@ public class EventPresenter {
      * @param title the title of the event that the user is cancelling their spot for
      */
     public static void cancelSpotEvent(String title){
-        boolean cancelled = EventController.cancelSignUp(AuthManager.getLoggedInUserID(), EventManager.giveEventIDOfTitle(title));
+        boolean cancelled = EventManager.cancelSignUp(AuthManager.getLoggedInUserID(), EventManager.giveEventIDOfTitle(title));
         if (!cancelled){
             mainView.createPopUp("Could not cancel your spot ");
         }
