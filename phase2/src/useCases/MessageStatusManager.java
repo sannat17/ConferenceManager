@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 /**
  * This class manages the status of the messages, and contains methods
- * that deal with manipulating the statusID of messages.
+ * that deal with manipulating the statusID of messages
  */
 public class MessageStatusManager {
 
