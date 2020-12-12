@@ -7,6 +7,10 @@ import javax.swing.*;
 
 public class messageAllAttendeesOfEventView {
 
+    /** Creates the JPanel for sending a message to all attendees of a talk
+     *
+     * @return JPanel for sending a message to all attendees of a talk
+     */
     public static JPanel getMessageAllAttendeesOfTalkView() {
         JPanel messageAllAttendeesOfTalkPanel = new JPanel();
         messageAllAttendeesOfTalkPanel.setLayout(null);
