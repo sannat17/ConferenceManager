@@ -1,7 +1,6 @@
 package GUIPresenters;
 
 import GUI.mainView;
-import controllers.MessageController;
 import useCases.*;
 
 import java.util.ArrayList;
@@ -169,15 +168,10 @@ public class MessagePresenter {
         return "";
     }
     /**
-     * Deletes the message
-     * @param ID ID of the message that is to be deleted
+     * This function calls the method that marks the message as archived from the Manager.
+     * @param messageID The ID of the message.
      */
-    public static void deleteMessage(int ID){MessageController.deleteMessage(ID);}
-    /**
-     * Marks the message as Archived
-     * @param ID ID of the message that is to be marked
-     */
-    public static void markArchived(int ID){MessageController.markAsArchived(ID);}
+    public static void markArchived(int messageID) {MessageStatusManager.markMessageAsArchived(messageID);}
 
     /**
      * Marks the message as read
@@ -228,6 +222,16 @@ public class MessagePresenter {
     public static String getSendersUsername(int ID){
         return UserManager.getUsernameFromID(MessageManager.getSendersID(ID));
     }
+
+    /**
+     * This function deleted the message from the program, by calling the method removeMessage from the Manager.
+     * @param ID The ID of the message.
+     */
+    public static void deleteMessage(int ID) {
+        MessageManager.removeMessage(ID);
+    }
+
+
     /**
      * Displays the message
      * @param message the message being displayed
