@@ -14,7 +14,6 @@ public class MessagePresenter {
      *
      */
     public static void nextMessagePanel(String messagePanelChoice){
-        System.out.println(messagePanelChoice);
         switch (messagePanelChoice){
             case "Display all messages":
                 mainView.toPanel("Display Messages");
@@ -235,5 +234,6 @@ public class MessagePresenter {
      */
     public static void createMessagePopUp(String message){
         mainView.createPopUp(message);
+        mainView.toPanel("Messages");;
     }
 }
