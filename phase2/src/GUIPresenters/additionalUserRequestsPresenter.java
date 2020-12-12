@@ -33,8 +33,8 @@ public class additionalUserRequestsPresenter {
         String dietaryRestrictions = "";
         for (int userID : dietaryRestrictionsDict.keySet()) {
             if (!(dietaryRestrictionsDict.get(userID).equals("\"\""))) {
-                dietaryRestrictions += "ID: " + Integer.toString(userID) + dietaryRestrictionsDict.get(userID) +
-                " (" + UserManager.getUser(userID).getDietaryRestrictionsStatus() + ")\n";
+                dietaryRestrictions += "ID: " + Integer.toString(userID) + ", Username: " +
+                        UserManager.getUsernameFromID(userID) + " - " + dietaryRestrictionsDict.get(userID) + " (" + UserManager.getUser(userID).getDietaryRestrictionsStatus() + ")\n";
             }
         }
         return dietaryRestrictions;
@@ -50,8 +50,8 @@ public class additionalUserRequestsPresenter {
         String accessibilityRequirements = "";
         for (int userID : accessibilityRequirementsDict.keySet()) {
             if (!(accessibilityRequirementsDict.get(userID).equals("\"\""))) {
-                accessibilityRequirements += "ID: " + Integer.toString(userID) + accessibilityRequirementsDict.get(userID) +
-                        " (" + UserManager.getUser(userID).getAccessibilityRequirementsStatus() + ")\n";
+                accessibilityRequirements += "ID: " + Integer.toString(userID) + ", Username: " +
+                        UserManager.getUsernameFromID(userID) + " - " + accessibilityRequirementsDict.get(userID) + " (" + UserManager.getUser(userID).getAccessibilityRequirementsStatus() + ")\n";
             }
         }
         return accessibilityRequirements;

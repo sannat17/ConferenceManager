@@ -25,7 +25,8 @@ public class MenuPresenter {
             case "Additional Requests":
                 mainView.toPanel("Additional Requests");
                 break;
-
+            case "Change Additional Request Status":
+                mainView.toPanel("Change Additional Request Status");
         }
     }
 

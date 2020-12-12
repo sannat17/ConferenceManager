@@ -65,6 +65,7 @@ public class mainView {
         mainContainer.add(additionalUserRequestsView.getAdditionalUserRequestsPanel(), "Additional Requests");
         mainContainer.add(messageAllAttendeesOfTalkView.getMessageAllAttendeesOfTalkView(), "Message Attendees of A Talk");
         mainContainer.add(messageAllAttendeesOfEventView.getMessageAllAttendeesOfTalkView(), "Message Attendees of An Event");
+//        mainContainer.add(changeAdditionalRequestStatusView.getChangeRequestStatusPanel(), "Change Additional Request Status");
     }
 
     /**
