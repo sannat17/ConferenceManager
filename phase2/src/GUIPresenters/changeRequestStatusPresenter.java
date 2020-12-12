@@ -16,9 +16,9 @@ public class changeRequestStatusPresenter {
      * @param status the status of which the request is changed to
      */
     public static void changeRequestStatus(int userID, String accommodation, String status) {
-        if (accommodation.equals("Change Dietary Restrictions")) {
+        if (accommodation.equals("Change Dietary Restrictions Status")) {
             changeDietRestrictionStatus(userID, status);
-        } else if (accommodation.equals("Change Accessibility Requirements")) {
+        } else if (accommodation.equals("Change Accessibility Requirements Status")) {
             changeAccessibilityRequirementStatus(userID, status);
         }
     }
