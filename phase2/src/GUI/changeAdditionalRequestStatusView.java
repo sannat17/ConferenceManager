@@ -2,8 +2,11 @@ package GUI;
 
 import GUIPresenters.MessagePresenter;
 import GUIPresenters.SignoutPresenter;
+import GUIPresenters.changeRequestStatusPresenter;
 
 import javax.swing.*;
+import javax.swing.text.NumberFormatter;
+import java.text.NumberFormat;
 
 public class changeAdditionalRequestStatusView {
 
@@ -15,16 +18,46 @@ public class changeAdditionalRequestStatusView {
         JPanel additionalRequests = new JPanel();
         additionalRequests.setLayout(null);
 
-        String[] messageOptions = MessagePresenter.messageOptions();
-        JComboBox<String> messageComboBox = new JComboBox<>(messageOptions);
-        messageComboBox.setBounds(10, 20, 100, 25);
-        messageComboBox.setSelectedIndex(0);
-        additionalRequests.add(messageComboBox);
+
+        String[] viewTypes = {"Change Dietary Restrictions Status", "Change Accessibility Requirements Status"};
+        JComboBox<String> changeUserRequestsComboBox = new JComboBox<>(viewTypes);
+        changeUserRequestsComboBox.setBounds(10, 20, 260, 25);
+        changeUserRequestsComboBox.setSelectedIndex(0);
+        additionalRequests.add(changeUserRequestsComboBox);
+
+        JLabel userID = new JLabel("User ID");
+        userID.setBounds(10,80, 100, 25);
+        additionalRequests.add(userID);
+
+        NumberFormat userIDFormat = NumberFormat.getInstance();
+        NumberFormatter userIDFormatter = new NumberFormatter(userIDFormat);
+        userIDFormatter.setValueClass(Integer.class);
+        userIDFormatter.setMinimum(0);
+        userIDFormatter.setMaximum(Integer.MAX_VALUE);
+        userIDFormatter.setAllowsInvalid(false);
+        userIDFormatter.setCommitsOnValidEdit(true);
+        JFormattedTextField userIDDField = new JFormattedTextField(userIDFormatter);
+        userIDDField.setBounds(290, 80, 165, 25);
+        additionalRequests.add(userIDDField);
+
+        JLabel newStatus = new JLabel("New Status");
+        newStatus.setBounds(10, 120, 100, 25);
+        additionalRequests.add(newStatus);
+
+        JTextField newStatusTextField = new JTextField();
+        newStatusTextField.setBounds(290, 120, 165, 25);
+        additionalRequests.add(newStatusTextField);
 
         JButton confirmButton = new JButton("Confirm");
-        confirmButton.setBounds(10, 60, 100, 25);
+        confirmButton.setBounds(10, 200, 100, 25);
         additionalRequests.add(confirmButton);
-        confirmButton.addActionListener(e -> MessagePresenter.nextMessagePanel((String)messageComboBox.getSelectedItem()));
+        confirmButton.addActionListener(e -> {
+            changeRequestStatusPresenter.changeRequestStatus(
+                    Integer.parseInt(userIDDField.getText()),
+                    (String)changeUserRequestsComboBox.getSelectedItem(),
+                    newStatusTextField.getText());
+            changeRequestStatusPresenter.createMessagePopUp("Status Changed");
+        });
 
         JButton backButton = new JButton("Back");
         backButton.setBounds(10, 230, 100, 25);

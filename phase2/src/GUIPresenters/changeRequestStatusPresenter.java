@@ -1,5 +1,6 @@
 package GUIPresenters;
 
+import GUI.mainView;
 import com.sun.javafx.image.IntPixelGetter;
 import useCases.UserManager;
 
@@ -40,6 +41,15 @@ public class changeRequestStatusPresenter {
      * @param status the status of which the request is changed to
      */
     public static void changeAccessibilityRequirementStatus(int userID, String status) {
-        UserManager.setDietaryRestrictionStatus(userID, status);
+        UserManager.setAccessibilityRequirementStatus(userID, status);
+    }
+
+    /**
+     * Displays the message
+     * @param message the message being displayed
+     */
+    public static void createMessagePopUp(String message){
+        mainView.createPopUp(message);
+        mainView.toPanel("Menu");;
     }
 }
