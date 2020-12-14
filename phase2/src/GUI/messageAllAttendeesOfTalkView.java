@@ -2,7 +2,6 @@ package GUI;
 
 import GUIPresenters.MessagePresenter;
 import GUIPresenters.SignoutPresenter;
-import useCases.MessageManager;
 
 import javax.swing.*;
 

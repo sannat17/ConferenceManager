@@ -1,6 +1,5 @@
 package GUI;
 
-import GUIPresenters.MessagePresenter;
 import GUIPresenters.SignoutPresenter;
 import GUIPresenters.changeRequestStatusPresenter;
 

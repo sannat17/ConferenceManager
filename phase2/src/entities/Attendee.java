@@ -1,7 +1,5 @@
 package entities;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 
 /** An attendee user */
 public class Attendee extends User{

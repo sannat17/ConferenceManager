@@ -1,12 +1,9 @@
 package GUI;
 
-import GUIPresenters.EventPresenter;
 import GUIPresenters.SignoutPresenter;
 import GUIPresenters.additionalUserRequestsPresenter;
-import useCases.UserManager;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class additionalUserRequestsView {
     /** Creates the JPanel for additional user request

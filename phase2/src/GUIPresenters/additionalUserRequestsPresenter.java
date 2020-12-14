@@ -1,6 +1,5 @@
 package GUIPresenters;
 
-import com.sun.javafx.image.IntPixelGetter;
 import useCases.UserManager;
 
 import java.util.HashMap;
@@ -33,7 +32,7 @@ public class additionalUserRequestsPresenter {
         String dietaryRestrictions = "";
         for (int userID : dietaryRestrictionsDict.keySet()) {
             if (!(dietaryRestrictionsDict.get(userID).equals("\"\""))) {
-                dietaryRestrictions += "ID: " + Integer.toString(userID) + ", Username: " +
+                dietaryRestrictions += "ID: " + userID + ", Username: " +
                         UserManager.getUsernameFromID(userID) + " - " + dietaryRestrictionsDict.get(userID) + " (" + UserManager.getUser(userID).getDietaryRestrictionsStatus() + ")\n";
             }
         }
@@ -50,7 +49,7 @@ public class additionalUserRequestsPresenter {
         String accessibilityRequirements = "";
         for (int userID : accessibilityRequirementsDict.keySet()) {
             if (!(accessibilityRequirementsDict.get(userID).equals("\"\""))) {
-                accessibilityRequirements += "ID: " + Integer.toString(userID) + ", Username: " +
+                accessibilityRequirements += "ID: " + userID + ", Username: " +
                         UserManager.getUsernameFromID(userID) + " - " + accessibilityRequirementsDict.get(userID) + " (" + UserManager.getUser(userID).getAccessibilityRequirementsStatus() + ")\n";
             }
         }

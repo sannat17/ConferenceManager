@@ -1,6 +1,5 @@
 package entities;
 
-import java.util.ArrayList;
 
 /** A speaker user that gives speeches */
 public class Speaker extends User{

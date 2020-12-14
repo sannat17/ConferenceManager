@@ -7,7 +7,6 @@ import gateways.MessageIO;
 import gateways.UserIO;
 import useCases.AuthManager;
 
-import java.util.ArrayList;
 
 public class LoginPresenter {
 
@@ -18,7 +17,7 @@ public class LoginPresenter {
      */
     public static void loginCheck(String username, String password) {
         boolean loggedIn = AuthManager.login(username, password);
-        if (loggedIn == true){
+        if (loggedIn){
             mainView.addPanels();
             mainView.toPanel("Menu");
         }

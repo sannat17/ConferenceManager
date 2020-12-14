@@ -1,10 +1,8 @@
 package GUIPresenters;
 
 import GUI.mainView;
-import com.sun.javafx.image.IntPixelGetter;
 import useCases.UserManager;
 
-import java.util.HashMap;
 
 /** A presenter of which formats the additional user requests */
 public class changeRequestStatusPresenter {
@@ -50,6 +48,6 @@ public class changeRequestStatusPresenter {
      */
     public static void createMessagePopUp(String message){
         mainView.createPopUp(message);
-        mainView.toPanel("Menu");;
+        mainView.toPanel("Menu");
     }
 }
