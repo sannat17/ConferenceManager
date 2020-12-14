@@ -115,19 +115,24 @@ If you decide you no longer wish to attend an event, select the event from the d
 sign up, you will be removed from this event. Then you'll be taken back to the previous page.
 
 #####3.2.5 - Organize event
-...
+This is the feature used to organize events, following a simple step-by-step form filling process.  The date formatting
+must be followed very strictly.  Pressing confirm will inform you of the event organization outcome.
 
 #####3.2.6 - Cancel an event
-...
+This feature consists of a dropdown menu of all active events.  Selecting an event, then pressing confirm will cancel
+the corresponding event, and you are immediately notified whether event cancellation was successful.
 
 ###3.3 Create a new user account
-...
+This is the feature for creating new user accounts, following a simple step-by-step form filling process.  After filling
+in the information, pressing confirm will inform you whether user creation was successful.
 
-###3.4 Additional requests
-...
+###3.4 Additional requests (Optional Extension #5)
+This feature generates and prints a list of additional user requests for view.  After choosing from dietary restrictions
+or accessibility requirements, pressing confirm will print out the list of corresponding user requests.
 
 ###3.5 Change additional requests
-...
+After a particular user request has been addressed and accommodated for, this feature allows you to update the status
+of the corresponding user's request.
 
 ##4. Using the program as a Speaker
 After opening up the program as an organizer, you will see a home page with a dropdown menu for the following options:  
