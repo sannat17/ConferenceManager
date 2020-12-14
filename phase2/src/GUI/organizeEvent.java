@@ -48,6 +48,7 @@ public class organizeEvent {
         organizeEventPanel.add(roomLabel);
 
         NumberFormat roomFormat = NumberFormat.getInstance();
+        roomFormat.setGroupingUsed(false);
         NumberFormatter roomFormatter = new NumberFormatter(roomFormat);
         roomFormatter.setValueClass(Integer.class);
         roomFormatter.setMinimum(0);
@@ -104,6 +105,7 @@ public class organizeEvent {
         organizeEventPanel.add(maxCapacityLabel);
 
         NumberFormat maxCapacityFormat = NumberFormat.getInstance();
+        maxCapacityFormat.setGroupingUsed(false);
         NumberFormatter maxCapacityFormatter = new NumberFormatter(maxCapacityFormat);
         maxCapacityFormatter.setValueClass(Integer.class);
         maxCapacityFormatter.setMinimum(0);
